@@ -4,7 +4,7 @@
 
 ### Seeberger
 
-Sie haben gemeinsam mit einem weiteren Frontend-Entwickler ein neues Shopify Theme für Seeberger entwickelt. Dabei kamen das Framework Riba.js und TailwindCSS zum Einsatz. Obwohl es sich um ein klassisches Shopify Theme handelt, ähnelt der Shop in seiner Funktionsweise einer Single-Page-Webanwendung. Inhalte werden dynamisch nachgeladen, ohne dass zusätzliche Services benötigt werden. Dies ermöglicht eine hohe Skalierbarkeit des Shops bei gleichzeitig geringem Aufwand und geringer komplexität.
+In einem kleinen Team entwickelte ich ein maßgeschneidertes Shopify-Theme mit Riba.js, Tailwind CSS und Vite.js 3. Die kreative Umsetzung der Produktvarianten-Darstellung stellte eine spannende Herausforderung dar. Obwohl das Projekt abgeschlossen ist, werde ich als Spezialist für weitere kontinuierliche Optimierung herangezogen.
 
 Laufzeit: 2022 - 2023
 
@@ -14,7 +14,7 @@ Links:
 
 ### Paul Valentine
 
-In Zusammenarbeit mit einer englischen Agentur war ich an der Neuentwicklung des Paul Valentine Onlineshops beteiligt. Dabei setzten wir auf eine Headless-Architektur, mit Shopify als Backend, Nuxt und Vue.js für das Frontend, und Contentful als Headless CMS. Wir entwickelten individuelle Shopfunktionalitäten wie Warenkorb und PDP, bezogen Inhalte über Contentful und deployten die Anwendung mit Netlify. Diese Herangehensweise ermöglichte uns erweiterte Features, wie Mehrsprachigkeit und Währungsunterstützung und eine hohe Skalierbarkeit.
+In einem internationelem Team war ich an der Neuentwicklung des Paul Valentine Onlineshops beteiligt. Dabei setzten wir auf eine Headless-Architektur, mit Shopify als Backend, Nuxt und Vue.js für das Frontend, und Contentful als Headless CMS. Wir entwickelten individuelle Shopfunktionalitäten wie Warenkorb und PDP, bezogen Inhalte über Contentful und deployten die Anwendung mit Netlify. Diese Herangehensweise ermöglichte uns erweiterte Features, wie Mehrsprachigkeit und Währungsunterstützung und eine hohe Skalierbarkeit.
 
 Laufzeit: 2020 - 2022
 
