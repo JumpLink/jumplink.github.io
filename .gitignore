@@ -131,3 +131,6 @@ dist
 
 # Vite files
 vite.config.js.timestamp-*
+
+# Github Pages
+_site/

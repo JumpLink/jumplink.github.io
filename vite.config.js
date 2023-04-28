@@ -15,7 +15,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
     root: './src',
     assetsInclude: ['**/*.svg'],
     build: {
-      outDir: '../dist',
+      outDir: '../_site',
       emptyOutDir: true,
       rollupOptions: {
         input: {
