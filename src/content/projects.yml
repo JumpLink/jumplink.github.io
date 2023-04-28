@@ -1,0 +1,297 @@
+# E-Commerce
+- name: Seeberger
+  desc:  In einem kleinen Team entwickelte ich ein maßgeschneidertes Shopify-Theme mit Riba.js, Tailwind CSS und Vite.js 3. Die kreative Umsetzung der Produktvarianten-Darstellung stellte eine spannende Herausforderung dar. Obwohl das Projekt abgeschlossen ist, werde ich als Spezialist für weitere kontinuierliche Optimierung herangezogen.
+  start: 2022
+  end: 2023
+  tags:
+    - E-Commerce
+    - Shopify
+    - Riba.js
+    - Tailwind CSS
+    - Vite.js
+  links:
+    - https://www.seeberger.de/
+
+- name: Paul Valentine
+  desc: Die gelungene Neuentwicklung des Paul Valentine Onlineshops erfolgte in enger Zusammenarbeit mit einer internationalen Agentur. Unsere vorausschauende Herangehensweise und der Einsatz einer Headless-Architektur mit Shopify als Backend und Nuxt & Vue.js für das Frontend sowie Contentful als Headless CMS ermöglichten eine Vielzahl individueller Shop-Funktionalitäten wie den umfangreichen Warenkorb, Mehrsprachigkeit, Währungsunterstützung, eine hohe Skalierbarkeit und weitere Features.
+  start: 2020
+  end: 2022
+  tags:
+    - E-Commerce
+    - Shopify
+    - Nuxt.js
+    - Vue.js
+    - Contentful
+  links:
+    - https://de.paul-valentine.com/
+
+- name: Peek & Cloppenburg
+  desc: Während meiner Tätigkeit bei Peek & Cloppenburg (Fashion Digital GmbH & Co.KG ) wurde ich bei der Vorbereitung auf die internationale Expansion als Spezialist im Frontend-Team eingesetzt. Durch agile Softwareentwicklung (Scrum) mit dem Checkout-Team, notwendigen Anpassungen an Microservices, Onlineshop-System und Frontend, verlief der internationale Launch des Onlineshops reibungslos. Im weiteren Entwicklungsprozess des Onlineshops konnte ich ebenso intensiv im Backend Neuerungen bewirken, modernisierte teamübergreifend interne Services und führte TypeScript ein. Einen großen Mehrwert bot beispielhaft die Erneurung eines Microservices zur Berechnung von Versand- und Lieferzeiten sowie Kosten. Darüberhinaus erforderte das komplexe Onlineshop-System die Entwicklung nachhaltiger Tests. Schließlich initiierte ich ein Rewrite des hauseigenen Onlineshop-Systems und präsentierte strategische Konzepte, innovative Softwarearchitekturen und Frameworks.
+  start: 2019
+  links:
+    - https://www.peek-cloppenburg.de/
+  tags:
+    - E-Commerce
+
+- name: Fassbender
+  desc: Dieses Projekt erforderte die Entwicklung eines individuelle Shopify-Themes für ein innovatives Fashion Label aus Hamburg. Ziel war es, die Vorteile eines CRM-basierten Shopsystems mit denen einer progressive Web App zu kombinieren. Um serverseitiges und clientseitiges Rendern/Routing effektiv zu verbinden, wurde das TypeScript-Framework Riba eingesetzt – eine Eigenentwicklung, die aus Erfahrungen vorheriger Theme-Projekte entstanden ist. Das neu entwickelte Theme vereint somit die Stärken von CRM-Systemen und PWAs für ein modernes und leistungsfähiges E-Commerce-Erlebnis.
+  start: 2018
+  links:
+    - https://myfassbender.com/
+  tags:
+    - E-Commerce
+    - Shopify
+    - Riba.js
+    - Bootstrap
+
+- name: STUDIO PEZZETTA
+  desc: Das exklusive entwickelte B2B-Onlineshop Shopify-Theme einer Sales Agency aus München, erforderte die Implementierung einer speziellen Funktion, bei der bestimmte Produktkategorien im Backend erst für registrierte B2B-Kunden freigeschaltet werden. Diese Exklusivität wurde durch eine eigens entwickelte App ermöglicht, die auf die individuellen Kundenanforderungen eingeht.
+  start: 2017
+  links:
+    - https://studio-pezzetta.com
+  tags:
+    - E-Commerce
+    - Shopify
+    - Bootstrap
+
+- name: Chou-Chou-Berlin
+  desc: Spezielle Kundenanforderungen eines Beautystudios aus Hamburg/Berlin erforderte ein maßgeschneidertes Shopify-Theme für spezielle Produktkategorien. Der erfolgreiche Shop wurde samt  Unternehmen verkauft und befindet sich derzeit in neuem Aufbau.
+  start: 2017
+  links:
+    - https://chou-chou-berlin.com
+  tags:
+    - E-Commerce
+    - Shopify
+    - Bootstrap
+
+- name: Anita Hass
+  desc: Bei diesem Shopify Onlineshop handelte es sich um eine Eigenentwicklung, die selbst bei Spitzenzeiten mit mehreren 1000 Besuchern stabil lief. Mit eigens entwickelten Shopify Backend-Erweiterungen wurden Funktionen wie IP-Ortserkennung zur Anzeige von Preisen ohne MwSt. für ausländische Besucher, E-Mail-Benachrichtigungen bei erneuter Verfügbarkeit von ausverkauften Produkten und eine zeitbedingte Versandfunktion integriert, die den Versand noch am selben Tag bei Bestellung innerhalb eines Zeitfensters gewährleistet.
+  start: 2016
+  links:
+    - https://onlyanita.com
+  tags:
+    - E-Commerce
+    - Shopify
+    - Bootstrap
+
+- name: Jewelberry
+  desc: Bei meinem ersten Shopify-Theme verwendete ich die Shopify-Theme-Vorlage Timber als Basis und passte sie entsprechend an. Eine besondere Eigenentwicklung ist die Möglichkeit für Besucher, bei gravierbaren Produkten die Schriftart und den Text selbst auszuwählen und individuell anzupassen.
+  start: 2015
+  end: 2016
+  links:
+    - https://jewelberry.de
+  tags:
+    - E-Commerce
+    - Shopify
+
+# Shopify App Developer
+
+- name: ParcelLab
+  desc: Für einen Kunden entwickelte ich eine Shopify App, die den Shop an den Dienst "ParcelLab" anbindet. Dadurch erhalten Kunden des Shops Echtzeitinformationen über den Versandprozess auf einer individuellen Track-and-Trace-Seite. Die App wurde mit Nest.js und dem hauseigenen Nest Shopify Module erstellt. Zusätzlich entstand ein Node.js-Modul als SDK für eine einfache und effektive Integration von Node.js und ParcelLab.
+  links:
+    - https://apps.shopify.com/parcellab
+    - https://www.parcellab.com/
+  start: 2021
+  tags:
+    - E-Commerce
+    - Shopify
+    - Shopify App
+    - Nest.js
+    - Node.js
+
+- name: Shopify-Modul für Nest.js
+  desc: Nachdem ich mehrere Shopify-Apps mit Nest.js entwickelt habe, entstand ein Nest.js-Modul, das die Entwicklung neuer Shopify-Apps erheblich beschleunigt. Dieses Modul bietet automatisches Handling von Shopify Webhooks, Zugriff auf sämtliche Shopify APIs, Authentifizierung und viele weitere Funktionen, um den Entwicklungsprozess effizienter zu gestalten.
+  links:
+    - https://github.com/ArtCodeStudio/nestjs-shopify-module
+  start: 2018
+  tags:
+    - E-Commerce
+    - Shopify
+    - Shopify App
+    - Nest.js
+    - Node.js
+
+- name: The Developer App
+  desc: Bei einigen meiner Shopify-Projekte lag der Fokus auf hochwertiger und individueller Entwicklung. Dabei entstand eine eigene App, die sich an anspruchsvolle Entwickler richtet und die Shopify-API um zusätzliche Funktionen erweitert, wie mehrsprachige Themes und Anbindungen an soziale Netzwerke wie Facebook und Instagram. Hierfür entwickelte ich einen API-Explorer, mit dem Entwickler die erweiterte API direkt ausprobieren können. Zukünftig sind weitere APIs und ein umfangreicher Metafield-Editor geplant.
+        Die serverseitige Umsetzung der App erfolgte mit Nest.js, einem TypeScript-Framework basierend auf Express und Node.js. Für den clientseitigen Teil wurde Riba verwendet, und API-Anfragen werden mittels Redis gecached.
+  start: 2018
+  tags:
+    - E-Commerce
+    - Shopify
+    - Shopify App
+    - Nest.js
+    - Node.js
+
+- name: EasyGoBD
+  desc: Shopify ist erst seit kurzem auf dem europäischen Markt vertreten (Stand 2017) und noch nicht vollständig an den deutschen Markt angepasst. Daher haben wir uns entschieden, eine App in Eigenentwicklung umzusetzen, die das Shopify-Kassensystem (POS) an die Anforderungen des deutschen Markts anpasst und GoBD-konform macht. Serverseitig nutzen wir Node.js mit Koa und TypeScript, während die App in der Google App Engine gehostet wird, die kürzlich Node.js-Unterstützung hinzufügte. Die Entscheidung für die Google App Engine basierte hauptsächlich auf ihrer Skalierbarkeit. Clientseitig setzen wir auf Angular 5 und Angular Material.
+        Ich entwickle die App gemeinsam mit einem weiteren freiberuflichen Backend-Entwickler. Eine große Herausforderung bestand darin, alle Shopdaten mit der App zu synchronisieren und fehlerfrei synchron zu halten. Zudem war es schwierig, das vorgegebene Datenformat vom deutschen Bundesministerium der Finanzen für den Export zu berücksichtigen, da die Spezifikation und der entsprechende Leitfaden sehr umfangreich sind. Weiterhin mussten wir bei der Synchronisation und dem Export die DSGVO-Vorgaben für personenbezogene Daten einhalten.
+  start: 2017
+  tags:
+    - E-Commerce
+    - Shopify
+    - Shopify App
+    - Nest.js
+    - Node.js
+
+# Hobby, Lernen und Forschung
+
+- name: Gjsify
+  desc: Ich arbeite derzeit an "Gjsify", einem Projekt zur Entwicklung nativer Linux-Desktop-Anwendungen. Das Ziel ist es, die Sprache TypeScript und Module aus dem Node.js/Deno/Web-Ökosystem für native GTK-Linux-Anwendungen nutzbar zu machen. Dafür verwende ich die JavaScript-Runtime "Gjs" und entwickle unter anderem einen Kompatibilitäts-Layer, um diese Runtime mit Modulen für Node.js, Deno und den Browser kompatibel zu gestalten.
+        Dieses Projekt dient mir hauptsächlich als Lerneffekt, da ich tief in die Details von TypeScript und JavaScript eintauche. Langfristig soll es dazu beitragen, das TypeScript- und JavaScript-Ökosystem um native GNOME/GTK Linux-Desktop-Anwendungen zu erweitern. Dies ist beispielsweise für POS-Systeme interessant, die unter Linux laufen sollen und möglichst benutzerfreundlich sein sollen.
+  start: 2020
+  end: today
+  links:
+    - https://gjsify.org/
+  tags:
+    - Education
+    - Learning
+    - Research
+    - TypeScript
+    - Node.js
+    - Deno
+    - Gjs
+    - GNOME
+    - GTK
+    - Linux
+    - Desktop
+
+- name: ts-for-gir
+  desc: Bei diesem Projekt handelt es sich um einen TypeScript Type Definition Generator, dessen Ziel es ist, die Entwicklung von nativen GTK-Anwendungen in TypeScript zu ermöglichen. GTK bietet dank GObject Introspection ein XML-Format, das die Anbindung des in C geschriebenen GTK an verschiedene Sprachen wie Python, Rust, JavaScript und viele mehr ermöglicht. Ich nutze dieses XML-Format, um daraus Typdefinitionen für TypeScript zu generieren.
+  start: 2020
+  end: today
+  links:
+    - https://github.com/gjsify/ts-for-gir
+  tags:
+    - Education
+    - Learning
+    - Research
+    - TypeScript
+    - Node.js
+    - Gjs
+    - GNOME
+    - GTK
+    - Linux
+    - Desktop
+
+- name: Riba
+  desc: Riba.js ist ein von mir entwickeltes Web-Framework, das nativen Web Components und DOM APIs verwendet, um reaktive Webanwendungen zu erstellen. Im Vergleich zu etablierten Frameworks wie React, Vue und Angular nutzt Riba.js Webstandards und verzichtet auf einen virtuellen DOM. Dabei werden möglichst viele Browserfunktionen eingesetzt, statt diese neu zu implementieren. Das Framework unterstützt clientseitige Routing und ermöglicht die Entwicklung von SPA-ähnlichen Anwendungen, während es mit anderen Frameworks oder Vanilla-Projekten kompatibel bleibt.
+  start: 2018
+  end: today
+  links:
+    - https://ribajs.com/
+  tags:
+    - Education
+    - Learning
+    - Research
+    - TypeScript
+    - Node.js
+    - Web Components
+    - Web Standards
+    - Web APIs
+    - Web Development
+    - Web Framework
+    - SPA
+    - PWA
+
+- name: Angular Time Picker
+  desc: Während der Entwicklung der Shopify-App EasyGoBD mit Angular stellten wir fest, dass uns im Angular Material Framework ein Timepicker fehlte, ähnlich dem Android-Wecker. Da kein passendes Angular-Modul gefunden wurde, haben wir das am besten geeignete Modul ausgewählt, geforkt und verbessert. Inzwischen wird dieses Modul erfolgreich von anderen Angular-Entwicklern genutzt.
+  start: 2018
+  links:
+    - https://stackblitz.com/edit/material-time-control
+  
+# Websites
+
+- name: Markus Morische Rechtsanwalt
+  desc: In diesem kleineren Projekt hatte ich die Gelegenheit, erstmals Deno einzusetzen. Deno ist eine junge Laufzeitumgebung für JavaScript und TypeScript und bietet im Vergleich zu Node.js den Vorteil, dass es sich stärker an Webstandards orientiert und in Rust entwickelt wird. Rust ist eine aufstrebende Low-Level Programmiersprache mit großem Potenzial. Daher nutze ich gerne die Möglichkeit, mich mit neuen Technologien auseinanderzusetzen und sie praktisch anzuwenden. Für die Inhalte wurde das Headless CMS Strapi verwendet, für das Backend kam das Deno-Framework Alosaur und für das Frontend das Riba.js-Framework zum Einsatz.
+  start: 2021
+  links:
+    - https://markusmorische.de/
+  tags:
+    - Deno
+    - TypeScript
+    - Riba.js
+    - Alosaur
+    - Strapi
+    - Headless CMS
+    - Web Development
+    - Web Framework
+    - Bootstrap
+
+- name: Gymnasium Otterndorf
+  desc: Gemeinsam mit einem Team entwickelte ich die neue Webpräsenz für das Gymnasium Otterndorf. Dabei setzten wir auf das Headless CMS Strapi und GraphQL, was sehr gute Erfahrungen mit sich brachte. Die Webpräsenz ist vollständig Open Source und die API öffentlich zugänglich. Als Framework wurde Riba.js verwendet und, inspiriert von NuxtJS, um Server-Side Rendering und Server-Side Generation erweitert. Dies ermöglichte es uns, Code flexibel zwischen Client und Server zu verschieben und eine einheitliche Codebasis für Frontend und Backend zu schaffen. Für die Volltextsuche nutzten wir Lunr.js. Weitere bemerkenswerte Features sind der Podcast-Feed und die Kalender-Anbindung an iServe.
+  start: 2021
+  links:
+    - https://gymnasium-otterndorf.de/
+    - https://github.com/ArtCodeStudio/gymnasium-otterndorf-website/
+  tags:
+    - TypeScript
+    - Riba.js
+    - Strapi
+    - Headless CMS
+    - GraphQL
+    - Web Development
+    - Web Framework
+    - Bootstrap
+    - Server-Side Rendering
+    - Server-Side Generation
+    - Lunr.js
+    - Podcast
+    - iServe
+
+- name: Nordseeheide Lodges Cuxhaven
+  desc: Ein neues Theme für eine Webseite wurde entwickelt und dabei Bootstrap, Rivets.js und Barba.js als Frameworks verwendet. Das CMS war OctoberCMS. Besonders hervorzuheben ist die Bildergalerie, welche sich perfekt an unterschiedliche Bildschirmgrößen anpasst und durch Gestensteuerung auf verschiedenen Geräten bedienbar ist.
+  start: 2018
+  links:
+    - https://nordseeheide-lodges-cuxhaven.de
+  tags:
+    - OctoberCMS
+    - Bootstrap
+    - Rivets.js
+    - Barba.js
+    - Web Development
+    - Web Framework
+
+- name: Mahlzeit am Meer
+  desc: Dieses Projekt wurde für ein Restaurant umgesetzt und beinhaltet entwickelte Flipbooks für die Speisekarten, die mit reinem JavaScript, CSS und HTML umgesetzt sind. Das Eventsystem von watt-land-fluss wurde in angepasster Form verwendet.
+  start: 2018
+  links:
+    - https://mahlzeit-am-meer.de/
+  tags:
+    - OctoberCMS
+    - Bootstrap
+    - Rivets.js
+    - Barba.js
+    - Web Development
+    - Web Framework
+
+- name: watt-land-fluss
+  desc: Diese individuelle Webseite wurde nach Kundenanforderung mit OctoberCMS entwickelt. Als Frameworks kamen Bootstrap, Rivets.js und Barba.js zum Einsatz. Eine Besonderheit ist das vollständig clientseitig realisierte Event- und Buchungssystem, das auf der Google App Engine / Firebase basiert – einer Infrastruktur, die eigentlich für Apps / PWAs konzipiert ist. Die Events werden in der Firebase Realtime Database gespeichert, während die Bilder im Google Cloud Storage abgelegt sind. Geschäftslogik und Darstellung wurden clientseitig mittels JavaScript implementiert.
+  start: 2018
+  links:
+    - https://watt-land-fluss.de/
+
+- name: feinfineart
+  desc: Es handelt sich um ein selbst entwickeltes Theme für die Webseite eines Designerpartners, welches schräge und zweispaltige Seitenlayouts sowie 'Sticky'-Überschriften.
+  start: 2016
+  links:
+    - https://feinfineart.de
+  tags:
+    - OctoberCMS
+    - Bootstrap
+    - Rivets.js
+    - Barba.js
+    - Web Development
+    - Web Framework
+
+- name: JumpLink Network
+  desc: Hier habe ich eigene Webseite für ein Netzwerk entwickelt, die es Netzwerkmitgliedern ermöglicht, sich in einem internen Bereich anzumelden. Das Framework Bootstrap, angepasst an das Material Design, wurde verwendet. Ein weiteres Highlight ist der Live-Chat, der direkt mit dem Messagingdienst Telegram verbunden ist.
+  start: 2016
+  links:
+    - https://jumplink.eu/
+  tags:
+    - OctoberCMS
+    - Bootstrap
+    - Rivets.js
+    - Barba.js
+    - Web Development
+    - Web Framework

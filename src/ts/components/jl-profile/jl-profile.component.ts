@@ -7,6 +7,7 @@ import iconPens from "@ribajs/iconset/dist/svg/icon_pens.svg?url";
 import iconProfile from "@ribajs/iconset/dist/svg/icon_profile.svg?url";
 
 import educations from "../../../content/educations.yml";
+import projects from "../../../content/projects.yml";
 import * as aboutMe from "../../../content/about-me-de.md";
 
 export class JLProfileComponent extends Component {
@@ -28,7 +29,8 @@ export class JLProfileComponent extends Component {
     aboutMe: {
       html: aboutMe.html,
       attributes: aboutMe.attributes,
-    }
+    },
+    projects,
   };
 
   protected connectedCallback() {
