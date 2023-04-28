@@ -2390,15 +2390,15 @@ __metadata:
     "@babel/runtime": "npm:^7.21.0"
     "@babel/runtime-corejs3": "npm:^7.21.0"
     "@modyfi/vite-plugin-yaml": "npm:^1.0.4"
-    "@ribajs/babel-config": "npm:^2.0.0-beta.9"
-    "@ribajs/bs5": "npm:^2.0.0-beta.9"
-    "@ribajs/core": "npm:^2.0.0-beta.9"
-    "@ribajs/eslint-config": "npm:^2.0.0-beta.9"
-    "@ribajs/extras": "npm:^2.0.0-beta.9"
-    "@ribajs/iconset": "npm:^2.0.0-beta.9"
-    "@ribajs/tsconfig": "npm:^2.0.0-beta.9"
-    "@ribajs/types": "npm:^2.0.0-beta.9"
-    "@ribajs/utils": "npm:^2.0.0-beta.9"
+    "@ribajs/babel-config": "npm:^2.0.0-beta.10"
+    "@ribajs/bs5": "npm:^2.0.0-beta.10"
+    "@ribajs/core": "npm:^2.0.0-beta.10"
+    "@ribajs/eslint-config": "npm:^2.0.0-beta.10"
+    "@ribajs/extras": "npm:^2.0.0-beta.10"
+    "@ribajs/iconset": "npm:^2.0.0-beta.10"
+    "@ribajs/tsconfig": "npm:^2.0.0-beta.10"
+    "@ribajs/types": "npm:^2.0.0-beta.10"
+    "@ribajs/utils": "npm:^2.0.0-beta.10"
     "@types/jest": "npm:^29.5.1"
     "@typescript-eslint/eslint-plugin": "npm:^5.59.1"
     "@typescript-eslint/experimental-utils": "npm:^5.59.1"
@@ -2523,9 +2523,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ribajs/babel-config@portal:../riba/infra/babel-config::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/babel-config@portal:../riba/infra/babel-config::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/babel-config@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/babel-config@npm:2.0.0-beta.10"
   dependencies:
     "@babel/cli": "npm:^7.21.0"
     "@babel/core": "npm:^7.21.4"
@@ -2548,50 +2548,54 @@ __metadata:
   dependenciesMeta:
     prettier:
       unplugged: true
+  checksum: 3bad3c44b25632b2b17560f7b33450fa132d15081d2bc7cac700dd54e6d05e50416e922abc463ad2ca3bd25f9be0d3d1ff95b9046c16f2ddbd053d360d9df4eb
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/bs5@portal:../riba/packages/bs5::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/bs5@portal:../riba/packages/bs5::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/bs5@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/bs5@npm:2.0.0-beta.10"
   dependencies:
     "@popperjs/core": "npm:^2.11.7"
-    "@ribajs/cache": "workspace:^"
-    "@ribajs/core": "workspace:^"
-    "@ribajs/events": "workspace:^"
-    "@ribajs/extras": "workspace:^"
-    "@ribajs/jsx": "workspace:^"
-    "@ribajs/utils": "workspace:^"
+    "@ribajs/cache": "npm:^2.0.0-beta.10"
+    "@ribajs/core": "npm:^2.0.0-beta.10"
+    "@ribajs/events": "npm:^2.0.0-beta.10"
+    "@ribajs/extras": "npm:^2.0.0-beta.10"
+    "@ribajs/jsx": "npm:^2.0.0-beta.10"
+    "@ribajs/utils": "npm:^2.0.0-beta.10"
     "@sphinxxxx/color-conversion": "npm:^2.2.2"
     "@types/bootstrap": "npm:^5.2.6"
     bootstrap: "npm:^5.3.0-alpha3"
+  checksum: b100fbf37a1528efcaebaf782e5f6290fbe3a1ef9e7bd138022a8c5c63716cd66a2ab8cea1357fcec3223624a0edb95df2130f3d263ffae1b9357a1c594af4f5
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/cache@portal:../riba/packages/cache::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/cache@portal:../riba/packages/cache::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/cache@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/cache@npm:2.0.0-beta.10"
   dependencies:
     idb-keyval: "npm:^6.2.0"
     keshi: "npm:^2.0.7"
+  checksum: d60edddb64a541fa2fefaebd4730d9dd535297c643e598ecf3dc5d6f322d567623a8d957aef8bc248dac633226469aa579282649221febdd188c50c4f9399bed
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/core@portal:../riba/packages/core::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/core@portal:../riba/packages/core::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/core@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/core@npm:2.0.0-beta.10"
   dependencies:
-    "@ribajs/events": "workspace:^"
-    "@ribajs/history": "workspace:^"
-    "@ribajs/jsx": "workspace:^"
-    "@ribajs/ssr": "workspace:^"
-    "@ribajs/utils": "workspace:^"
+    "@ribajs/events": "npm:^2.0.0-beta.10"
+    "@ribajs/history": "npm:^2.0.0-beta.10"
+    "@ribajs/jsx": "npm:^2.0.0-beta.10"
+    "@ribajs/ssr": "npm:^2.0.0-beta.10"
+    "@ribajs/utils": "npm:^2.0.0-beta.10"
+  checksum: 00cf9962fc67f9095894b5409efc0ecd100eafe27b497cd6c2da563b2949fb4ae4404add62be10738da029d030aeeaa5f17e6d5182339ca4aa036fb4bec15a57
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/eslint-config@portal:../riba/infra/eslint-config::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/eslint-config@portal:../riba/infra/eslint-config::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/eslint-config@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/eslint-config@npm:2.0.0-beta.10"
   dependencies:
     "@typescript-eslint/eslint-plugin": "npm:^5.59.1"
     "@typescript-eslint/experimental-utils": "npm:^5.59.1"
@@ -2603,79 +2607,89 @@ __metadata:
     eslint-plugin-prettier: "npm:^4.2.1"
     prettier: "npm:^2.8.8"
     typescript: "npm:5.0.4"
+  checksum: 5521225e0682435d5fd5b38f8c0d6f7543d657e5166a90d80ea2eb8f96e46ddf24f73a3b7e83d9a26e44ed5f5c6de828c623fb9bcbc2c12e373c4d6f1bf0ed70
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/events@portal:../riba/packages/events::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/events@portal:../riba/packages/events::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/events@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/events@npm:2.0.0-beta.10"
+  checksum: c6ce849d2751fb1aaceae25ac04d6e85ea0ff4ca22afeab355433fafd967e762a9619902bb923d965b4ef71d73793574c2bc83259ab84c5a435e215f0b0e8954
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/extras@portal:../riba/packages/extras::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/extras@portal:../riba/packages/extras::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/extras@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/extras@npm:2.0.0-beta.10"
   dependencies:
-    "@ribajs/core": "workspace:^"
-    "@ribajs/events": "workspace:^"
-    "@ribajs/utils": "workspace:^"
+    "@ribajs/core": "npm:^2.0.0-beta.10"
+    "@ribajs/events": "npm:^2.0.0-beta.10"
+    "@ribajs/utils": "npm:^2.0.0-beta.10"
     ev-emitter: "npm:^2.1.2"
     imagesloaded: "github:JumpLink/imagesloaded"
+  checksum: 45846e50002d3b14e29829d2c5f7d2d30e93b6eedfd51f61722413b89c876ce8965e202dc38eac32f03bc1f6e04c104a92a661d5acb694da30bc5c2ce309ebfe
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/history@portal:../riba/packages/history::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/history@portal:../riba/packages/history::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/history@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/history@npm:2.0.0-beta.10"
+  checksum: 57ad24bcfe8199faabc742cca56cd84d8d5e65370d489032e5b003557e9aa4b2ed2b539cf4a0803dac40a569d05a9f8f329ff875d4df12cc839a74c13173cbd4
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/iconset@portal:../riba/packages/iconset::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/iconset@portal:../riba/packages/iconset::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/iconset@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/iconset@npm:2.0.0-beta.10"
+  checksum: 814bd6f64ca5c2f6861fce070e1de5bb4f00a1ddbdb5eb45a21a5b5f03980370a2a33be01c4c31aa2c55dd14abe7f9dc511f41bdfee454fad7188548ab38690d
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/jsx@portal:../riba/packages/jsx::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/jsx@portal:../riba/packages/jsx::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/jsx@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/jsx@npm:2.0.0-beta.10"
   dependencies:
-    "@ribajs/core": "workspace:^"
-    "@ribajs/utils": "workspace:^"
+    "@ribajs/core": "npm:^2.0.0-beta.10"
+    "@ribajs/utils": "npm:^2.0.0-beta.10"
+  checksum: 9dd1396d79b75eb5a34e84cec1adbfe06c07d8a0e839e6649755be5d6de9ad82fca10ca4e66328e5e7bfb7d955634c5423adaee5e4bc31f56b17ed77677815cd
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/ssr@portal:../riba/packages/ssr::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/ssr@portal:../riba/packages/ssr::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/ssr@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/ssr@npm:2.0.0-beta.10"
   dependencies:
-    "@ribajs/core": "workspace:^"
-    "@ribajs/events": "workspace:^"
-    "@ribajs/jsx": "workspace:^"
-    "@ribajs/utils": "workspace:^"
+    "@ribajs/core": "npm:^2.0.0-beta.10"
+    "@ribajs/events": "npm:^2.0.0-beta.10"
+    "@ribajs/jsx": "npm:^2.0.0-beta.10"
+    "@ribajs/utils": "npm:^2.0.0-beta.10"
     "@types/express": "npm:^4.17.17"
+  checksum: d136d42e599eb2b296a46032d3448794863dfeeecdd7f0982cd9c96ab9c00932cb54b63e1a9237e18583be305cd84bf2f25eaccb1552f615f65641907e849b61
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/tsconfig@portal:../riba/infra/tsconfig::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/tsconfig@portal:../riba/infra/tsconfig::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/tsconfig@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/tsconfig@npm:2.0.0-beta.10"
+  checksum: 273a00996706aa0e45ce7a0e971791f56707632287c1103ad172ef7695578b0069b644b8d4a2005692b13c052b0cc72d946da81d135479f4ba93914150dcf3f3
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/types@portal:../riba/infra/types::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/types@portal:../riba/infra/types::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/types@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/types@npm:2.0.0-beta.10"
   dependencies:
     "@types/resize-observer-browser": "npm:^0.1.7"
+  checksum: 2e31943b89f1dd7b8248a2096c55f064e0b7205e5aabd480df351d8451ebd40383973f647c6d7b75bda0848a593a3d16c0f16510eed404a12664953b8377be92
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@ribajs/utils@portal:../riba/packages/utils::locator=%40jumplink%2Fcv%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@ribajs/utils@portal:../riba/packages/utils::locator=%40jumplink%2Fcv%40workspace%3A."
+"@ribajs/utils@npm:^2.0.0-beta.10":
+  version: 2.0.0-beta.10
+  resolution: "@ribajs/utils@npm:2.0.0-beta.10"
+  checksum: b2037dac08f80c2c753b6bfdafc40d42f9dbdaa3448df9a9812a400846fc11ba57018e4b94b220aa4e9705339aa60715baedae014e8c9bfce7d362cc8c598cd9
   languageName: node
-  linkType: soft
+  linkType: hard
 
 "@rollup/pluginutils@npm:5.0.2":
   version: 5.0.2
