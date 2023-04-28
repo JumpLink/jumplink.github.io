@@ -2412,6 +2412,7 @@ __metadata:
     concurrently: "npm:^8.0.1"
     core-js: "npm:^3.30.1"
     css-loader: "npm:^6.7.3"
+    domhandler: "npm:^5.0.3"
     eslint: "npm:^8.39.0"
     eslint-config-prettier: "npm:^8.8.0"
     eslint-plugin-prettier: "npm:^4.2.1"
@@ -2430,6 +2431,7 @@ __metadata:
     sass-loader: "npm:^13.2.2"
     typescript: "npm:5.0.4"
     vite: "npm:^4.3.3"
+    vite-plugin-markdown: "npm:^2.1.0"
     vite-plugin-pug: "npm:^0.3.2"
     yaml: "npm:^2.2.2"
   languageName: unknown
@@ -4637,6 +4639,53 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dom-serializer@npm:^1.0.1":
+  version: 1.4.1
+  resolution: "dom-serializer@npm:1.4.1"
+  dependencies:
+    domelementtype: "npm:^2.0.1"
+    domhandler: "npm:^4.2.0"
+    entities: "npm:^2.0.0"
+  checksum: 94f1d57ee01a9bb1f8f82b83484de837daa89fd99e66356f9e92c9e936c7acdc7902386320edf4d3340cd3fa116d0e9553b0cca6a94df6562aa0f4661b63c322
+  languageName: node
+  linkType: hard
+
+"domelementtype@npm:^2.0.1, domelementtype@npm:^2.2.0, domelementtype@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "domelementtype@npm:2.3.0"
+  checksum: 07afcb90734e39b324e19271effc13389bb27a3957fa68a99b19d0ffdc0338fe669e9170a876f0fc4948bedd28b1f937042ada4948bee54e01a833c37a54dd74
+  languageName: node
+  linkType: hard
+
+"domhandler@npm:^4.0.0, domhandler@npm:^4.2.0":
+  version: 4.3.1
+  resolution: "domhandler@npm:4.3.1"
+  dependencies:
+    domelementtype: "npm:^2.2.0"
+  checksum: bc5b81fc04a2ebdc9ff971cec46382c00c2dfe488635f0e00b56ee18e78d3da5c0a4388cad802dbb93219e5d39efdba42107214dbea7d9db8325b8c2793cbb5a
+  languageName: node
+  linkType: hard
+
+"domhandler@npm:^5.0.3":
+  version: 5.0.3
+  resolution: "domhandler@npm:5.0.3"
+  dependencies:
+    domelementtype: "npm:^2.3.0"
+  checksum: c5242d9dcf9a91ebfb53869f1be972c52d332119d90351cd8cefabf55848021a4329ae5a77cdeab7565e338031c9c163d7a43009527cfa634e1cd0873eb8ae74
+  languageName: node
+  linkType: hard
+
+"domutils@npm:^2.5.2":
+  version: 2.8.0
+  resolution: "domutils@npm:2.8.0"
+  dependencies:
+    dom-serializer: "npm:^1.0.1"
+    domelementtype: "npm:^2.2.0"
+    domhandler: "npm:^4.2.0"
+  checksum: 7d3ccd2fa5046b263d6080ae7584f41c2b1e1a9b60b0ed333d6f5a0ba35ccd182fabfe380185bca020e29d9c2cffabde75dec654eda260aaebf63ac1df82ed5c
+  languageName: node
+  linkType: hard
+
 "dot-case@npm:^3.0.4":
   version: 3.0.4
   resolution: "dot-case@npm:3.0.4"
@@ -4703,10 +4752,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"entities@npm:^2.0.0":
+  version: 2.2.0
+  resolution: "entities@npm:2.2.0"
+  checksum: eec79bcb8fe0e6e8c5fcd83fe87115535a4a616220db35ddec38aac360f0f19669da3150a87f2bd9fba9829cea0857c806ea216177adc3d099b143db9e89d46f
+  languageName: node
+  linkType: hard
+
 "entities@npm:^4.4.0":
   version: 4.5.0
   resolution: "entities@npm:4.5.0"
   checksum: 3c45485495e0a5481893b0b618aec46fbe960130bf0437b052ec08c25a8c781b978a06fca889ad7af79634d9111df159c2a37b56d2b2a847c0c4625cd40ab1be
+  languageName: node
+  linkType: hard
+
+"entities@npm:~2.1.0":
+  version: 2.1.0
+  resolution: "entities@npm:2.1.0"
+  checksum: 87e14da51029c0f52f439d82e39188af6433afa86e72f34446979fa37580f3250ed581cdd51073842117ac76d0501995a20b27bd8eafa64f62edada0d5f35d0e
   languageName: node
   linkType: hard
 
@@ -5347,6 +5410,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"front-matter@npm:^4.0.0":
+  version: 4.0.2
+  resolution: "front-matter@npm:4.0.2"
+  dependencies:
+    js-yaml: "npm:^3.13.1"
+  checksum: 2eee64072372aa704c5a158f16d1c016c9d1054d19a8c9021312bf195f4489993f55efbe1476462a4f07376587fea1fd4b7c66ae0c395f86f562865f34639221
+  languageName: node
+  linkType: hard
+
 "fs-minipass@npm:^2.0.0, fs-minipass@npm:^2.1.0":
   version: 2.1.0
   resolution: "fs-minipass@npm:2.1.0"
@@ -5769,6 +5841,18 @@ __metadata:
   bin:
     html-minifier-terser: cli.js
   checksum: 9287823ef09537f522a138930bce6cf28fad9740c194f13dce0b80d22c7870de3814e3e6780f56a4e0bdc2cb20b87af2edbfd12835e3773e60f887bff9e1798f
+  languageName: node
+  linkType: hard
+
+"htmlparser2@npm:^6.0.0":
+  version: 6.1.0
+  resolution: "htmlparser2@npm:6.1.0"
+  dependencies:
+    domelementtype: "npm:^2.0.1"
+    domhandler: "npm:^4.0.0"
+    domutils: "npm:^2.5.2"
+    entities: "npm:^2.0.0"
+  checksum: 6b8a9603d26a83f873b312380cae3291f2dc1ca202288959d336a58ade7c86142b072c182b2c13cd7715cb82e9722afa0b654d95dbd88185f2d4e6b6a4829efe
   languageName: node
   linkType: hard
 
@@ -6961,6 +7045,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"linkify-it@npm:^3.0.1":
+  version: 3.0.3
+  resolution: "linkify-it@npm:3.0.3"
+  dependencies:
+    uc.micro: "npm:^1.0.1"
+  checksum: 314f9d994b7192991a209b0518b4cd2d82662b1d688f281b222d269c6b4921557daddd2fd12a3fdac31ca69f44b50f96a7218661657a37f7ece174bc6ebd847a
+  languageName: node
+  linkType: hard
+
 "loader-utils@npm:^1.1.0":
   version: 1.4.2
   resolution: "loader-utils@npm:1.4.2"
@@ -7122,6 +7215,28 @@ __metadata:
   dependencies:
     tmpl: "npm:1.0.5"
   checksum: b7e1f11b28dcd46849278e628c1b8ff7696530700f3bbb1b843b510b5ff225c7e5930e795953237fa95584b9ba68bcb5995e811dd0dc65cca4a417e0444e0155
+  languageName: node
+  linkType: hard
+
+"markdown-it@npm:^12.0.0":
+  version: 12.3.2
+  resolution: "markdown-it@npm:12.3.2"
+  dependencies:
+    argparse: "npm:^2.0.1"
+    entities: "npm:~2.1.0"
+    linkify-it: "npm:^3.0.1"
+    mdurl: "npm:^1.0.1"
+    uc.micro: "npm:^1.0.5"
+  bin:
+    markdown-it: bin/markdown-it.js
+  checksum: 5d937f600be0135f2881fa7c98abbdcf026731dfb190d700b3f14f556af0fe2fb087cddfc5397216b802634240b871106ae32ad5332ec2e4746797b6525d261a
+  languageName: node
+  linkType: hard
+
+"mdurl@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "mdurl@npm:1.0.1"
+  checksum: de89d573bab7a689c8f24680ec7612d60c2858ec9527738312737845c0890d6b36832cd1a95cfe5c590c694cd96a7ca3e4dc9bf8d7f7048906ba8f8049929a02
   languageName: node
   linkType: hard
 
@@ -9552,6 +9667,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"uc.micro@npm:^1.0.1, uc.micro@npm:^1.0.5":
+  version: 1.0.6
+  resolution: "uc.micro@npm:1.0.6"
+  checksum: 1091718106ef95d70ccb6e81fb3b60a1fedb583e0651dfe9ac125f394e783a7d1f524213a56a70c2822610b65f24a2c03a4414a8322446f52ae1acbae68c392d
+  languageName: node
+  linkType: hard
+
 "uglify-js@npm:^2.6.1":
   version: 2.8.29
   resolution: "uglify-js@npm:2.8.29"
@@ -9674,6 +9796,19 @@ __metadata:
     "@types/istanbul-lib-coverage": "npm:^2.0.1"
     convert-source-map: "npm:^1.6.0"
   checksum: 33066fd1d97888d05c15ea015253d35510ea975a80fd2f96e4cd1b40420c3180f6af747e90a2729ea934a91d3b8b17d18b92a30fc9bca3dfde43bca679366514
+  languageName: node
+  linkType: hard
+
+"vite-plugin-markdown@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "vite-plugin-markdown@npm:2.1.0"
+  dependencies:
+    front-matter: "npm:^4.0.0"
+    htmlparser2: "npm:^6.0.0"
+    markdown-it: "npm:^12.0.0"
+  peerDependencies:
+    vite: ^2.0.0 || ^3.0.0
+  checksum: 7d0d3afba6f07eb67490729e6cbdcb0211f9ec837df46b54e6b2718afdbece593b9c461c2af450a6bdd0834fb751492393d577720a7873ce21f26394d12dc08f
   languageName: node
   linkType: hard
 

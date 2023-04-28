@@ -4,6 +4,7 @@ import { resolve } from 'path'
 import pugPlugin from "vite-plugin-pug"
 import pugRollupPlugin from 'rollup-plugin-pug';
 import yamPlugin from '@modyfi/vite-plugin-yaml';
+import { plugin as mdPlugin } from 'vite-plugin-markdown';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 dns.setDefaultResultOrder('verbatim')
@@ -29,6 +30,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
     plugins: [
       pugPlugin(),
       yamPlugin(),
+      mdPlugin({mode: 'html'}),
     ],
   }
 });

@@ -1,0 +1,52 @@
+jl-timeline {
+  display: block;
+  .timeline {
+    @extend .border-start;
+    @extend .border-2;
+    @extend .border-dark;
+
+    position: relative;
+    list-style: none;
+
+    .timeline-title {
+      @extend .border-bottom;
+      @extend .border-2;
+      @extend .border-dark;
+
+      position: relative;
+    }
+
+    .timeline-icon {
+      background-color: var(--bs-dark);
+      border-radius: 50%;
+      position: absolute;
+      left: -50px;
+      top: 0px;
+      z-index: 1;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-item {
+      position: relative;
+
+      &:after {
+        position: absolute;
+        display: block;
+        top: 6px;
+        background-color: var(--bs-dark);
+        left: -38px;
+        border-radius: 50%;
+        height: 11px;
+        width: 11px;
+        content: "";
+      }
+    }
+    
+  }
+}
+
+

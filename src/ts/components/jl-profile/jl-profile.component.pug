@@ -8,18 +8,24 @@ jl-navbar.fixed-top
 #main-container.py-5
   .container-fluid
     .row
-      section.col-12.mb-5
-        | ...
-      section.col-12.mb-5
-        form
-          .mb-3
-            label.form-label(for='exampleInputEmail1') Email address
-            input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp')
-            #emailHelp.form-text | We'll never share your email with anyone else.
-          .mb-3
-            label.form-label(for='exampleInputPassword1') Password
-            input#exampleInputPassword1.form-control(type='password')
-          .mb-3.form-check
-            input#exampleCheck1.form-check-input(type='checkbox')
-            label.form-check-label(for='exampleCheck1') Check me out
-          button.btn.btn-primary(type='submit') Submit
+      section.col-12.mb-4
+        jl-timeline.px-4(rv-parent)
+          ul.timeline
+            li.timeline-title.mb-4
+              h2.h3 Über mich
+              .timeline-icon.text-light.bg-dark
+                bs5-icon(rv-co-src="$parent.iconProfile" size="24")
+            li.timeline-item.mb-4
+              p(rv-html="$parent.aboutMe.html")
+      section.col-12.mb-4
+        jl-timeline.px-4(rv-co-items="educations", rv-parent)
+          ul.timeline
+            li.timeline-title.mb-4
+              h2.h3 Ausbildung
+              .timeline-icon.text-light.bg-dark
+                bs5-icon(rv-co-src="$parent.iconPens" size="24")
+            li.timeline-item.mb-4(rv-each-item="items")
+              div.d-flex.justify-content-between
+                h5.fw-bold { item.name }
+                p.mb-2.fw-bold.text-end { item.start } - { item.end }
+              p { item.school }

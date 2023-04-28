@@ -83,6 +83,8 @@
     "@ribajs/types": "^2.0.0-beta.10",
     "@ribajs/utils": "^2.0.0-beta.10",
     "bootstrap": "^5.3.0-alpha3",
+    "domhandler": "^5.0.3",
+    "vite-plugin-markdown": "^2.1.0",
     "yaml": "^2.2.2"
   },
   "packageManager": "yarn@4.0.0-rc.42",
