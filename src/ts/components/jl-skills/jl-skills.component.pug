@@ -1,0 +1,10 @@
+section.row
+  .col-12
+    h2 Skills
+    hr
+  .col-12.small(rv-each-skill="skills")
+    .row
+      .col.text-end { skill.name }
+      .col
+        .progress.bg-dark.rounded-0
+          .progress-bar.text-bg-light(role="progressbar", aria-valuenow="skill.score", aria-valuemin="0", aria-valuemax="100", rv-style-width="skill.score | append '%'")

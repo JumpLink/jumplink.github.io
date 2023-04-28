@@ -1,38 +1,25 @@
-.mt-5
-  bs5-sidebar#left-sidebar.bg-tl-dark.bg-td-dark.text-td-light.text-tl-light.d-flex.justify-content-center.align-items-center.mt-5(container-selector='#main-container' position='left' rv-bs5-co-xs-auto-hide='true' rv-bs5-co-xl-auto-hide='false' rv-bs5-co-xs-auto-show='false' rv-bs5-co-xl-auto-show='true' rv-bs5-co-xs-mode="'overlap'" rv-bs5-co-xl-mode="'side'")
-    h1 Left
-  bs5-navbar.navbar.navbar-top.fixed-top.bg-tl-dark.bg-td-dark.text-td-light.text-tl-light(rv-parent)
-    .container-fluid.d-block
-      .row.justify-content-start
-        .col-12.d-flex.align-items-center.justify-content-between
-          // Left
-          bs5-toggle-button(target-id='left-sidebar' rv-parent)
-            ul.nav
-              li.nav-item.d-flex.align-items-center
-                bs5-icon(rv-co-src='$parent.$parent.iconMenu' size='32' rv-hide='isActive' rv-on-click='toggle')
-              li.nav-item.d-flex.align-items-center
-                bs5-icon(rv-co-src='$parent.$parent.iconClose' size='32' rv-show='isActive' rv-on-click='toggle')
-          // Right
-          .d-flex.flex-row.align-items-center
-            bs5-theme-button.mx-3(mode='icon', rv-co-light-icon-src="$parent.lightIcon", rv-co-dark-icon-src="$parent.darkIcon")
-  #main-container.py-5
-    .container-fluid
-      .row
-        section.col-12.mb-5.text-center
-          h1
-            | Switch your OS or this site to
-            span.d-tl-none  Light Mode
-            span.d-td-none  Dark Mode
-        section.col-12.mb-5
-          form
-            .mb-3
-              label.form-label(for='exampleInputEmail1') Email address
-              input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp')
-              #emailHelp.form-text We&apos;ll never share your email with anyone else.
-            .mb-3
-              label.form-label(for='exampleInputPassword1') Password
-              input#exampleInputPassword1.form-control(type='password')
-            .mb-3.form-check
-              input#exampleCheck1.form-check-input(type='checkbox')
-              label.form-check-label(for='exampleCheck1') Check me out
-            button.btn.btn-primary(type='submit') Submit
+
+bs5-sidebar#left-sidebar.bg-tl-dark.bg-td-dark.text-td-light.text-tl-light.d-flex.flex-column.justify-content-start.align-items-center.mt-5.px-4(container-selector='#main-container' position='left' rv-bs5-co-xs-auto-hide='true' rv-bs5-co-xl-auto-hide='false' rv-bs5-co-xs-auto-show='false' rv-bs5-co-xl-auto-show='true' rv-bs5-co-xs-mode="'overlap'" rv-bs5-co-xl-mode="'side'" width="260px" rv-parent)
+  .pb-4.pt-0
+    img.img-fluid.rounded-circle.border.border-4.border-light(rv-src='$parent.avatar' alt='Pascal Garber')
+  jl-contact.my-4
+  jl-skills.my-4
+jl-navbar.fixed-top
+#main-container.py-5
+  .container-fluid
+    .row
+      section.col-12.mb-5
+        | ...
+      section.col-12.mb-5
+        form
+          .mb-3
+            label.form-label(for='exampleInputEmail1') Email address
+            input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp')
+            #emailHelp.form-text | We'll never share your email with anyone else.
+          .mb-3
+            label.form-label(for='exampleInputPassword1') Password
+            input#exampleInputPassword1.form-control(type='password')
+          .mb-3.form-check
+            input#exampleCheck1.form-check-input(type='checkbox')
+            label.form-check-label(for='exampleCheck1') Check me out
+          button.btn.btn-primary(type='submit') Submit

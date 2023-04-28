@@ -1,0 +1,17 @@
+- name: Gymnasium mit schwerpunkt Technik
+  school: BBS Cuxhaven
+  location: Cuxhaven
+  start: 2006
+  end: 2009
+
+- name: Studium Medieninformatik
+  school: Fachhochschule Wedel
+  location: Wedel
+  start: 2009 
+  end: 2012
+
+- name: Online-Studium Medieninformatik
+  school: Hochschule Emden/Leer
+  location: Emden
+  start: 2012
+  end: 2015

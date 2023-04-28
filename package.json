@@ -11,8 +11,9 @@
     "build": "vite build --mode production",
     "build:dev": "vite build --mode development",
     "watch": "yarn build:dev --watch --mode development",
-    "start": "concurrently 'yarn:watch' 'yarn:serve'",
-    "serve": "vite preview --mode development --logLevel info",
+    "start": "concurrently 'yarn:watch' 'yarn:preview'",
+    "hmr": "vite serve",
+    "preview": "vite preview",
     "clear": "rm -rf ./dist",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx,.cts,.mts --fix && tsc --noEmit",
     "test": "jest"
@@ -69,18 +70,20 @@
     "rollup-plugin-pug": "^1.1.1",
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
-    "serve": "^14.2.0",
     "typescript": "5.0.4",
-    "vite": "^4.3.3"
+    "vite": "^4.3.3",
+    "vite-plugin-pug": "^0.3.2"
   },
   "dependencies": {
+    "@modyfi/vite-plugin-yaml": "^1.0.4",
     "@ribajs/bs5": "^2.0.0-beta.9",
     "@ribajs/core": "^2.0.0-beta.9",
     "@ribajs/extras": "^2.0.0-beta.9",
     "@ribajs/iconset": "^2.0.0-beta.9",
     "@ribajs/types": "^2.0.0-beta.9",
     "@ribajs/utils": "^2.0.0-beta.9",
-    "bootstrap": "^5.3.0-alpha3"
+    "bootstrap": "^5.3.0-alpha3",
+    "yaml": "^2.2.2"
   },
   "packageManager": "yarn@4.0.0-rc.42",
   "resolutions": {

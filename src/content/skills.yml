@@ -1,0 +1,59 @@
+- name: JavaScript
+  score: 90
+
+- name: TypeScript
+  score: 90
+
+- name: HTML
+  score: 90
+
+- name: CSS / SCSS
+  score: 90
+
+- name: CSS / SCSS
+  score: 90
+
+- name: Riba.js
+  score: 100
+
+- name: Vue.js
+  score: 60
+
+- name: Angular
+  score: 60
+
+- name: React
+  score: 50
+
+- name: Vanilla
+  score: 90
+
+- name: Node.js
+  score: 90
+
+- name: Deno
+  score: 90
+
+- name: SQL
+  score: 70
+
+- name: noSQL
+  score: 80
+
+- name: Git
+  score: 90
+
+- name: Ctn.
+  score: 60
+
+- name: Tests
+  score: 70
+
+- name: CI
+  score: 60
+
+- name: Teamwork
+  score: 90
+
+- name: Agile
+  score: 90

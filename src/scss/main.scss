@@ -3,3 +3,6 @@
 // Bootstrap style extensions from @ribajs/bs5
 @import '@ribajs/bs5/src/index';
 @import '../ts/components/index';
+
+@import './navbar';
+@import './sidebar';

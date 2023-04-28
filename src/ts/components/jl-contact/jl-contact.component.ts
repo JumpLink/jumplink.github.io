@@ -1,11 +1,14 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
-import { JLNavbarComponent } from '../jl-navbar/jl-navbar.component.js'
 
-import avatar from "../../../assets/avatar.jpg?url"
+import iconMobile from "@ribajs/iconset/dist/svg/icon_mobile.svg?url";
+import iconMail from "@ribajs/iconset/dist/svg/icon_mail.svg?url";
+import socialMastodon from "@ribajs/iconset/dist/svg/social_mastodon.svg?url";
+import socialGithub from "@ribajs/iconset/dist/svg/social_github.svg?url";
 
-export class JLProfileComponent extends Component {
-  public static tagName = "jl-profile";
+
+export class JLContactComponent extends Component {
+  public static tagName = "jl-contact";
 
   protected autobind = true;
 
@@ -13,15 +16,20 @@ export class JLProfileComponent extends Component {
     return [];
   }
 
-  protected navbar: JLNavbarComponent | null = null;
-
   public scope = {
-    avatar,
+    iconMobile,
+    iconMail,
+    socialMastodon,
+    socialGithub,
   };
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(JLProfileComponent.observedAttributes);
+    this.init(JLContactComponent.observedAttributes);
+  }
+
+  protected async afterBind() {
+    await super.afterBind();
   }
 
   protected requiredAttributes(): string[] {
@@ -34,7 +42,7 @@ export class JLProfileComponent extends Component {
       return null;
     } else {
       const { default: template } = await import(
-        "./jl-profile.component.pug"
+        "./jl-contact.component.pug"
       )
       return template(this.scope);
     }

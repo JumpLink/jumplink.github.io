@@ -1,11 +1,12 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
-import { JLNavbarComponent } from '../jl-navbar/jl-navbar.component.js'
 
-import avatar from "../../../assets/avatar.jpg?url"
+import type { Skill } from "../../types/skill.js";
 
-export class JLProfileComponent extends Component {
-  public static tagName = "jl-profile";
+import skills from "../../../content/skills.yml";
+
+export class JLSkillsComponent extends Component {
+  public static tagName = "jl-skills";
 
   protected autobind = true;
 
@@ -13,15 +14,18 @@ export class JLProfileComponent extends Component {
     return [];
   }
 
-  protected navbar: JLNavbarComponent | null = null;
-
   public scope = {
-    avatar,
+    skills: skills as Skill[],
   };
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(JLProfileComponent.observedAttributes);
+    this.init(JLSkillsComponent.observedAttributes);
+    console.debug("connectedCallback", this.scope);
+  }
+
+  protected async afterBind() {
+    await super.afterBind();
   }
 
   protected requiredAttributes(): string[] {
@@ -34,7 +38,7 @@ export class JLProfileComponent extends Component {
       return null;
     } else {
       const { default: template } = await import(
-        "./jl-profile.component.pug"
+        "./jl-skills.component.pug"
       )
       return template(this.scope);
     }
