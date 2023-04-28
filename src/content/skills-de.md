@@ -1,5 +1,3 @@
-# Expertise in der Softwareentwicklung
-
 Ich habe Medieninformatik in Wedel studiert und mich schon währenddessen selbstständig gemacht. Seitdem bin ich als Freelancer unterwegs. Unter anderem war ich als freier Mitarbeiter bei Peek & Cloppenburg tätig und habe so Erfahrung in der Zusammenarbeit mit verschiedenen Teamgrößen gesammelt.
 
 Agile Softwareentwicklung, wie Scrum und andere Methoden, sind mir vertraut und sorgen für effizientes Arbeiten. Als erfahrener Softwareentwickler kenne ich mich mit Webtechnologien im Frontend und Backend aus.
