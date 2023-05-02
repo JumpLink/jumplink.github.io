@@ -2433,6 +2433,7 @@ __metadata:
     vite: "npm:^4.3.3"
     vite-plugin-markdown: "npm:^2.1.0"
     vite-plugin-pug: "npm:^0.3.2"
+    vite-plugin-static-copy: "npm:^0.14.0"
     yaml: "npm:^2.2.2"
   languageName: unknown
   linkType: soft
@@ -2682,7 +2683,7 @@ __metadata:
   resolution: "@ribajs/types@npm:2.0.0-beta.10"
   dependencies:
     "@types/resize-observer-browser": "npm:^0.1.7"
-  checksum: 2e31943b89f1dd7b8248a2096c55f064e0b7205e5aabd480df351d8451ebd40383973f647c6d7b75bda0848a593a3d16c0f16510eed404a12664953b8377be92
+  checksum: 89ce38762fe8bdf7da386003b40f85a75f2bd29ee26cd448a3734bce48ffff42631042f5eb6f85c324187e76d4d19ab7b3ae01c89a2b23dc4be1c45db5fdd4c3
   languageName: node
   linkType: hard
 
@@ -4078,7 +4079,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:>=3.0.0 <4.0.0, chokidar@npm:^3.4.0":
+"chokidar@npm:>=3.0.0 <4.0.0, chokidar@npm:^3.4.0, chokidar@npm:^3.5.3":
   version: 3.5.3
   resolution: "chokidar@npm:3.5.3"
   dependencies:
@@ -5419,6 +5420,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fs-extra@npm:^11.1.0":
+  version: 11.1.1
+  resolution: "fs-extra@npm:11.1.1"
+  dependencies:
+    graceful-fs: "npm:^4.2.0"
+    jsonfile: "npm:^6.0.1"
+    universalify: "npm:^2.0.0"
+  checksum: 9bc3e5ce6860e97abf1fb408f1d716253e1bb16da36203b2ee3f71160e5ec1e7a9d2b9bae4c99a50598a250be6db0e3b17e8031ea7c498c24513857f48db5402
+  languageName: node
+  linkType: hard
+
 "fs-minipass@npm:^2.0.0, fs-minipass@npm:^2.1.0":
   version: 2.1.0
   resolution: "fs-minipass@npm:2.1.0"
@@ -5725,7 +5737,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
+"graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
   version: 4.2.11
   resolution: "graceful-fs@npm:4.2.11"
   checksum: 0228fc1080e6cb20d31920aff457e5d44f137b8864220c204b5ba6461d2d46d30361557a4c054373a8c04a03b59c92a42d40230104bb59c5ea737072bc15709c
@@ -6960,6 +6972,19 @@ __metadata:
   bin:
     json5: lib/cli.js
   checksum: e298f92c92197e956eb7a93304f74b5b80b4c3fe412f44a1f3d4c966e5ddf2e8ef2ac7ce0b0c40c78735bf2901c29257a653e1da684dae8e7835932e4904d6a0
+  languageName: node
+  linkType: hard
+
+"jsonfile@npm:^6.0.1":
+  version: 6.1.0
+  resolution: "jsonfile@npm:6.1.0"
+  dependencies:
+    graceful-fs: "npm:^4.1.6"
+    universalify: "npm:^2.0.0"
+  dependenciesMeta:
+    graceful-fs:
+      optional: true
+  checksum: d1fe80d443f7b3257aef1ef918231c9cf8a57127f004f74232869dfa408188b6ccf9d8a6724f7dbf7a6797355969cacfe1f2a16779f4ec636999bfaa876c13b0
   languageName: node
   linkType: hard
 
@@ -9758,6 +9783,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"universalify@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "universalify@npm:2.0.0"
+  checksum: 243b0697a640cda1912e62a79f9439ec24b937df9a9a47ee7dd5fe813c4547300a3dc346e0c7c10dbd925f54a19507e8de915f2562a5e694716bdcd0825d48f6
+  languageName: node
+  linkType: hard
+
 "update-browserslist-db@npm:^1.0.10":
   version: 1.0.11
   resolution: "update-browserslist-db@npm:1.0.11"
@@ -9819,6 +9851,20 @@ __metadata:
     picocolors: "npm:~1"
     pug: "npm:^3.0.2"
   checksum: 7cd80d298b1856b626bca4f32ee9fca14b011880bf34a0fa6c32c505ac36849285eff9651ba4458430a118584256beb589b3dd75ff6c946a26d38447a30f23ed
+  languageName: node
+  linkType: hard
+
+"vite-plugin-static-copy@npm:^0.14.0":
+  version: 0.14.0
+  resolution: "vite-plugin-static-copy@npm:0.14.0"
+  dependencies:
+    chokidar: "npm:^3.5.3"
+    fast-glob: "npm:^3.2.11"
+    fs-extra: "npm:^11.1.0"
+    picocolors: "npm:^1.0.0"
+  peerDependencies:
+    vite: ^3.0.0 || ^4.0.0
+  checksum: 611d4f1cbf6a469e301701c5375165d310add5fbbedf1e84c5a3c00c257a834b01d26b7477cfcf5cef06076ad7b261eb7855da322d32176063e0db68115661ab
   languageName: node
   linkType: hard
 

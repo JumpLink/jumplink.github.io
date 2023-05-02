@@ -3,6 +3,15 @@ import '../scss/main.scss'
 import { ready } from "@ribajs/utils/src/dom.js";
 
 
+const mediaQueryList = window.matchMedia("print")
+mediaQueryList.addEventListener('change', (event) => {
+    if (event.matches) {
+        console.log("print")
+    } else {
+        console.log("not print")
+    }
+}, {});
+
 ready(async () => {
     const { coreModule, Riba } = await import("@ribajs/core");
     const { extrasModule } = await import("@ribajs/extras");

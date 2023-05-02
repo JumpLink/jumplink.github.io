@@ -4,5 +4,11 @@
 @import '@ribajs/bs5/src/index';
 @import '../ts/components/index';
 
+@import './variables';
+
+@import './body';
+@import './fonts';
 @import './navbar';
+@import './pixify';
+@import './print';
 @import './sidebar';

@@ -2,7 +2,6 @@ import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 import { JLNavbarComponent } from '../jl-navbar/jl-navbar.component.js'
 
-import avatar from "../../../assets/avatar.jpg?url";
 import iconPens from "@ribajs/iconset/dist/svg/icon_pens.svg?url";
 import iconProfile from "@ribajs/iconset/dist/svg/icon_profile.svg?url";
 
@@ -23,7 +22,6 @@ export class JLProfileComponent extends Component {
   protected navbar: JLNavbarComponent | null = null;
 
   public scope = {
-    avatar,
     iconPens,
     iconProfile,
     educations,

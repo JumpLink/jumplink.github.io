@@ -1,9 +1,9 @@
 nav#top-navbar.navbar.navbar-top.bg-tl-dark.bg-td-dark.text-td-light.text-tl-light
   .container-fluid.d-block
-    .row
+    .row.opacity-print-0
       .col-12.d-flex.align-items-center.justify-content-between
         // Left part of navbar
-        bs5-toggle-button(target-id='left-sidebar' rv-parent)
+        bs5-toggle-button.z-1(target-id='left-sidebar' rv-parent)
           ul.nav
             li.nav-item.d-flex.align-items-center
               bs5-icon(rv-co-src='$parent.iconMenu' size='32' rv-hide='isActive' rv-on-click='toggle')

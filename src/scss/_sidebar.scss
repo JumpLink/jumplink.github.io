@@ -1,3 +1,15 @@
-#left-sidebar {
-    
+@media print {
+
+    #left-sidebar {
+        max-height: none !important;
+        min-height: 100% !important;
+        overflow: visible !important;
+        top: 0;
+        bottom: 0;
+    }
+
+    #main-container {
+        // This margin is setted by the sidebar
+        margin-left: 0 !important;
+    }
 }

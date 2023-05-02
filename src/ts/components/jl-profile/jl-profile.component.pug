@@ -1,13 +1,23 @@
 
-bs5-sidebar#left-sidebar.bg-tl-dark.bg-td-dark.text-td-light.text-tl-light.d-flex.flex-column.justify-content-start.align-items-center.mt-5.px-4(container-selector='#main-container' position='left' rv-bs5-co-xs-auto-hide='true' rv-bs5-co-xl-auto-hide='false' rv-bs5-co-xs-auto-show='false' rv-bs5-co-xl-auto-show='true' rv-bs5-co-xs-mode="'overlap'" rv-bs5-co-xl-mode="'side'" width="260px" rv-parent)
-  .pb-4.pt-0
-    img.img-fluid.rounded-circle.border.border-4.border-light(rv-src='$parent.avatar' alt='Pascal Garber')
+// Sidebar not visible on print
+bs5-sidebar#left-sidebar.d-print-none.bg-dark.text-light.d-flex.flex-column.justify-content-start.align-items-center.mt-5.py-5.px-4.overflow-y-auto(container-selector='#main-container' position='left' rv-bs5-co-xs-auto-hide='true' rv-bs5-co-xl-auto-hide='false' rv-bs5-co-xs-auto-show='false' rv-bs5-co-xl-auto-show='true' rv-bs5-co-xs-mode="'overlap'" rv-bs5-co-xl-mode="'side'" width="260px" rv-parent)
+  jl-avatar
   jl-contact.my-4
   jl-skills.my-4
-jl-navbar.fixed-top
-#main-container.py-5
+jl-navbar.fixed-top.position-print-static
+#main-container
   .container-fluid
-    .row
+    // Header only visible on print
+    .row.bg-dark.text-light.d-none.d-print-flex
+      .col-6 
+        jl-avatar.p-5
+      .col-6 
+        // TODO
+      .col-6
+        jl-contact.my-4
+      .col-6 
+        jl-skills.my-4
+    .row.mt-5
       section.col-12.mb-4
         jl-timeline.px-4(rv-parent)
           ul.timeline

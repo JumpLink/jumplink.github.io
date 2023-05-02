@@ -25,19 +25,37 @@ export class JLNavbarComponent extends Component {
     iconMoon,
   };
 
+  constructor() {
+    super();
+    this.setPageStyleByNavbar = this.setPageStyleByNavbar.bind(this);
+  }
+
   protected connectedCallback() {
     super.connectedCallback();
     this.init(JLNavbarComponent.observedAttributes);
   }
 
-  protected async afterBind() {
-    await super.afterBind();
-    this.profile = this.closest<JLProfileComponent>(JLProfileComponent.tagName);
+  protected setPageStyleByNavbar() {
+    this.profile = this.profile || this.closest<JLProfileComponent>(JLProfileComponent.tagName);
     if(this.profile) {
-      this.profile.style.paddingTop = `${this.getBoundingClientRect().height}px`;
+      this.profile.style.paddingTop = `${this.clientHeight}px`;
+      console.debug(`setPageStyleByNavbar ${JLProfileComponent.tagName} padding-top: ${this.profile.style.paddingTop}`);
     }
     
-    console.debug(`${this.getBoundingClientRect().height}px`, this.profile);
+  }
+
+  protected addEventListeners() {
+    window.addEventListener("resize", this.setPageStyleByNavbar);
+  }
+
+  protected removeEventListeners() {
+    window.removeEventListener("resize", this.setPageStyleByNavbar);
+  }
+
+  protected async afterBind() {
+    await super.afterBind();
+    this.setPageStyleByNavbar();
+    this.addEventListeners();
   }
 
   protected requiredAttributes(): string[] {

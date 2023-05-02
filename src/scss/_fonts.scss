@@ -1,0 +1,79 @@
+@font-face {
+  font-family: "Ark-Pixel-10px";
+  src: url(fonts/ark-pixel-10px-proportional-latin.woff2)
+}
+@font-face {
+  font-family: "Ark-Pixel-12px";
+  src: url(fonts/ark-pixel-12px-proportional-latin.woff2)
+}
+@font-face {
+  font-family: "Ark-Pixel-16px";
+  src: url(fonts/ark-pixel-16px-proportional-latin.woff2)
+}
+
+@font-face {
+  font-family: "Silkscreen";
+  src: url(fonts/Silkscreen-Regular.ttf)
+}
+@font-face {
+  font-family: "Silkscreen";
+  font-weight: bold;
+  src: url(fonts/Silkscreen-Bold.ttf)
+}
+
+.fs-10 {
+  @include font-size(10px);
+}
+.fs-12 {
+  @include font-size(12px);
+}
+.fs-16 {
+  @include font-size(16px);
+}
+.fs-20 {
+  @include font-size(20px);
+}
+.fs-24 {
+  @include font-size(24px);
+}
+.fs-32 {
+  @include font-size(32px);
+}
+
+// Pixel font with size and font-family
+.pixel-font-8 {
+  font-family: "Silkscreen";
+  @include font-size(10px);
+}
+.pixel-font-10 {
+  font-family: "Ark-Pixel-10px";
+  @include font-size(10px);
+}
+.pixel-font-12 {
+  font-family: "Ark-Pixel-12px";
+  @include font-size(12px);
+}
+.pixel-font-16 {
+  font-family: "Ark-Pixel-16px";
+  @include font-size(16px);
+}
+.pixel-font-8x2 {
+  font-family: "Silkscreen";
+  @include font-size(16px);
+}
+.pixel-font-10x2 {
+  font-family: "Ark-Pixel-10px";
+  @include font-size(20px);
+}
+.pixel-font-12x2 {
+  font-family: "Ark-Pixel-12px";
+  @include font-size(24px);
+}
+.pixel-font-8x4 {
+  font-family: "Silkscreen";
+  @include font-size(32px);
+}
+.pixel-font-16x2 {
+  font-family: "Ark-Pixel-16px";
+  @include font-size(32px);
+}

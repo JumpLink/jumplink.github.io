@@ -1,0 +1,20 @@
+.pixify {
+    // Disable anti-aliasing to prevent blury fonts.
+    // Only enable pixify filter if device has a dpr === 1.
+    // This filter is only available if the corresponding svg snippet is available in html.
+    // https://stackoverflow.com/a/66657195/1465919
+    @media (-webkit-device-pixel-ratio: 1) {
+        filter: url(#pixify);
+    }
+    @media (resolution: 1dppx) {
+        filter: url(#pixify);
+    }
+
+    // Disable anti-aliasing for images on all devices
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: optimizeSpeed;
+    image-rendering: pixelated;
+}
