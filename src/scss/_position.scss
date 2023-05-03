@@ -1,0 +1,33 @@
+// Additional bootstrap position styles, see https://getbootstrap.com/docs/5.3/utilities/position/#position-values
+
+.position-offscreen {
+    position: absolute;
+    left: -100000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+@media print {
+    .position-print-static {
+        position: static !important;
+    }
+
+    .position-print-relative {
+        position: relative !important;
+    }
+
+    .position-print-absolute {
+        position: absolute !important;
+    }
+
+    .position-print-fixed {
+        position: fixed !important;
+    }
+
+    .position-print-sticky {
+        position: -webkit-sticky !important;
+        position: sticky !important;
+    }
+}

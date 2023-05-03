@@ -2,8 +2,12 @@ import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 import { JLNavbarComponent } from '../jl-navbar/jl-navbar.component.js'
 
-import iconPens from "@ribajs/iconset/dist/svg/icon_pens.svg?url";
-import iconProfile from "@ribajs/iconset/dist/svg/icon_profile.svg?url";
+// Pixelarticons
+import iconBookOpen from "../../../assets/icons/book-open.svg?url";
+import iconCheck from "../../../assets/icons/check.svg?url";
+import iconLight from "../../../assets/icons/light.svg?url";
+import iconUser from "../../../assets/icons/user.svg?url";
+import iconCode from "../../../assets/icons/code.svg?url";
 
 import educations from "../../../content/educations.yml";
 import projects from "../../../content/projects.yml";
@@ -22,8 +26,11 @@ export class JLProfileComponent extends Component {
   protected navbar: JLNavbarComponent | null = null;
 
   public scope = {
-    iconPens,
-    iconProfile,
+    iconBookOpen,
+    iconCheck,
+    iconLight,
+    iconUser,
+    iconCode,
     educations,
     projects,
     aboutMe: {

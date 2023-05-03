@@ -1,0 +1,7 @@
+// See .pixify css class in src/styles/_pixify.scss
+// see https://stackoverflow.com/a/66657195/1465919
+svg.offscreen(width='0' height='0' xmlns='http://www.w3.org/2000/svg')
+  defs
+    filter#pixify
+      fecomponenttransfer
+        fefunca(type='discrete' tablevalues='0 1')

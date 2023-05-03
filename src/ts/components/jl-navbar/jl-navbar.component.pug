@@ -6,15 +6,15 @@ nav#top-navbar.navbar.navbar-top.bg-tl-dark.bg-td-dark.text-td-light.text-tl-lig
         bs5-toggle-button.z-1(target-id='left-sidebar' rv-parent)
           ul.nav
             li.nav-item.d-flex.align-items-center
-              bs5-icon(rv-co-src='$parent.iconMenu' size='32' rv-hide='isActive' rv-on-click='toggle')
+              bs5-icon(rv-co-src='$parent.iconMenu' size='24' rv-hide='isActive' rv-on-click='toggle')
             li.nav-item.d-flex.align-items-center
-              bs5-icon(rv-co-src='$parent.iconClose' size='32' rv-show='isActive' rv-on-click='toggle')
+              bs5-icon(rv-co-src='$parent.iconClose' size='24' rv-show='isActive' rv-on-click='toggle')
         // Right part of navbar
         .d-flex.flex-row.align-items-center
-          bs5-theme-button.mx-3(mode='icon' rv-co-light-icon-src='iconSun' rv-co-dark-icon-src='iconMoon')
+          bs5-theme-button.mx-3(mode='icon' icon-size="24" rv-co-light-icon-src='iconSun' rv-co-dark-icon-src='iconMoon')
     .row
       .col-12.d-flex.align-items-center.justify-content-center 
-        h1
-          | Pascal Garber
+        h1.font-pixel-8x4.text-center
+          span Pascal Garber
           br
-          .h5 Software-Entwickler
+          span.font-pixel-8x2.fst-normal Software-Entwickler

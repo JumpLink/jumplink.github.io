@@ -1,10 +1,11 @@
-
 // Sidebar not visible on print
 bs5-sidebar#left-sidebar.d-print-none.bg-dark.text-light.d-flex.flex-column.justify-content-start.align-items-center.mt-5.py-5.px-4.overflow-y-auto(container-selector='#main-container' position='left' rv-bs5-co-xs-auto-hide='true' rv-bs5-co-xl-auto-hide='false' rv-bs5-co-xs-auto-show='false' rv-bs5-co-xl-auto-show='true' rv-bs5-co-xs-mode="'overlap'" rv-bs5-co-xl-mode="'side'" width="260px" rv-parent)
   jl-avatar
   jl-contact.my-4
   jl-skills.my-4
+
 jl-navbar.fixed-top.position-print-static
+
 #main-container
   .container-fluid
     // Header only visible on print
@@ -12,50 +13,55 @@ jl-navbar.fixed-top.position-print-static
       .col-6 
         jl-avatar.p-5
       .col-6 
-        // TODO
-      .col-6
         jl-contact.my-4
+      .col-6
+        // TODO
       .col-6 
         jl-skills.my-4
     .row.mt-5
+      // About me
       section.col-12.mb-4
         jl-timeline.px-4(rv-parent)
           ul.timeline
             li.timeline-title.mb-4
-              h2.h3 Über mich
+              h2.font-pixel-12x2 Über mich
               .timeline-icon.text-light.bg-dark
-                bs5-icon(rv-co-src="$parent.iconProfile" size="24")
+                bs5-icon(rv-co-src="$parent.iconUser" size="24")
             li.timeline-item.mb-4
               p(rv-html="$parent.aboutMe.html")
+      // Expertise
+      section.col-12.mb-4
         jl-timeline.px-4(rv-parent)
           ul.timeline
             li.timeline-title.mb-4
-              h2.h3 Expertise
+              h2.font-pixel-12x2 Expertise
               .timeline-icon.text-light.bg-dark
-                bs5-icon(rv-co-src="$parent.iconProfile" size="24")
+                bs5-icon(rv-co-src="$parent.iconLight" size="24")
             li.timeline-item.mb-4
               p(rv-html="$parent.skills.html")
+      // Projects
       section.col-12.mb-4
         jl-timeline.px-4(rv-co-items="projects", rv-parent)
           ul.timeline
             li.timeline-title.mb-4
-              h2.h3 Projekterfahrung
+              h2.font-pixel-12x2.fw-bold Projekterfahrung
               .timeline-icon.text-light.bg-dark
-                bs5-icon(rv-co-src="$parent.iconPens" size="24")
+                bs5-icon(rv-co-src="$parent.iconCode" size="24")
             li.timeline-item.mb-4(rv-each-item="items")
               div.d-flex.justify-content-between
-                h5.fw-bold { item.name }
-                p.mb-2.fw-bold.text-end { item.start }
+                h3.font-pixel-8x2 { item.name }
+                p.font-pixel-8x2.mb-2.text-end { getTimeRange | call item.start item.end }
               p { item.desc }
+      // Education
       section.col-12.mb-4
         jl-timeline.px-4(rv-co-items="educations", rv-parent)
           ul.timeline
             li.timeline-title.mb-4
-              h2.h3 Ausbildung
+              h2.font-pixel-12x2.fw-bold Ausbildung
               .timeline-icon.text-light.bg-dark
-                bs5-icon(rv-co-src="$parent.iconPens" size="24")
+                bs5-icon(rv-co-src="$parent.iconBookOpen" size="24")
             li.timeline-item.mb-4(rv-each-item="items")
               div.d-flex.justify-content-between
-                h5.fw-bold { item.name }
-                p.mb-2.fw-bold.text-end { item.start } - { item.end }
+                h3.font-pixel-8x2 { item.name }
+                p.font-pixel-8x2.mb-2.text-end { getTimeRange | call item.start item.end }
               p { item.school }

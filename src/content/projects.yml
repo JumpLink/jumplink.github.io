@@ -139,7 +139,7 @@
   desc: Ich arbeite derzeit an "Gjsify", einem Projekt zur Entwicklung nativer Linux-Desktop-Anwendungen. Das Ziel ist es, die Sprache TypeScript und Module aus dem Node.js/Deno/Web-Ökosystem für native GTK-Linux-Anwendungen nutzbar zu machen. Dafür verwende ich die JavaScript-Runtime "Gjs" und entwickle unter anderem einen Kompatibilitäts-Layer, um diese Runtime mit Modulen für Node.js, Deno und den Browser kompatibel zu gestalten.
         Dieses Projekt dient mir hauptsächlich als Lerneffekt, da ich tief in die Details von TypeScript und JavaScript eintauche. Langfristig soll es dazu beitragen, das TypeScript- und JavaScript-Ökosystem um native GNOME/GTK Linux-Desktop-Anwendungen zu erweitern. Dies ist beispielsweise für POS-Systeme interessant, die unter Linux laufen sollen und möglichst benutzerfreundlich sein sollen.
   start: 2020
-  end: today
+  end: present
   links:
     - https://gjsify.org/
   tags:
@@ -158,7 +158,7 @@
 - name: ts-for-gir
   desc: Bei diesem Projekt handelt es sich um einen TypeScript Type Definition Generator, dessen Ziel es ist, die Entwicklung von nativen GTK-Anwendungen in TypeScript zu ermöglichen. GTK bietet dank GObject Introspection ein XML-Format, das die Anbindung des in C geschriebenen GTK an verschiedene Sprachen wie Python, Rust, JavaScript und viele mehr ermöglicht. Ich nutze dieses XML-Format, um daraus Typdefinitionen für TypeScript zu generieren.
   start: 2020
-  end: today
+  end: present
   links:
     - https://github.com/gjsify/ts-for-gir
   tags:
@@ -176,7 +176,7 @@
 - name: Riba
   desc: Riba.js ist ein von mir entwickeltes Web-Framework, das nativen Web Components und DOM APIs verwendet, um reaktive Webanwendungen zu erstellen. Im Vergleich zu etablierten Frameworks wie React, Vue und Angular nutzt Riba.js Webstandards und verzichtet auf einen virtuellen DOM. Dabei werden möglichst viele Browserfunktionen eingesetzt, statt diese neu zu implementieren. Das Framework unterstützt clientseitige Routing und ermöglicht die Entwicklung von SPA-ähnlichen Anwendungen, während es mit anderen Frameworks oder Vanilla-Projekten kompatibel bleibt.
   start: 2018
-  end: today
+  end: present
   links:
     - https://ribajs.com/
   tags:

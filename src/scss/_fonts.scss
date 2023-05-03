@@ -21,59 +21,67 @@
   src: url(fonts/Silkscreen-Bold.ttf)
 }
 
-.fs-10 {
-  @include font-size(10px);
-}
-.fs-12 {
-  @include font-size(12px);
-}
-.fs-16 {
-  @include font-size(16px);
-}
-.fs-20 {
-  @include font-size(20px);
-}
-.fs-24 {
-  @include font-size(24px);
-}
-.fs-32 {
-  @include font-size(32px);
-}
-
 // Pixel font with size and font-family
-.pixel-font-8 {
+.font-pixel-8 {
   font-family: "Silkscreen";
-  @include font-size(10px);
+  // @include font-size(8px);
+  font-size: 8px;
+  line-height: 8px;
+  @extend .pixify;
 }
-.pixel-font-10 {
+.font-pixel-10 {
   font-family: "Ark-Pixel-10px";
-  @include font-size(10px);
+  // @include font-size(10px);
+  font-size: 10px;
+  line-height: 10px;
+  @extend .pixify;
 }
-.pixel-font-12 {
+.font-pixel-12 {
   font-family: "Ark-Pixel-12px";
-  @include font-size(12px);
+  // @include font-size(12px);
+  font-size: 12px;
+  line-height: 12px;
+  @extend .pixify;
 }
-.pixel-font-16 {
+.font-pixel-16 {
   font-family: "Ark-Pixel-16px";
-  @include font-size(16px);
+  // @include font-size(16px);
+  font-size: 16px;
+  line-height: 16px;
+  @extend .pixify;
 }
-.pixel-font-8x2 {
+.font-pixel-8x2 {
   font-family: "Silkscreen";
-  @include font-size(16px);
+  // @include font-size(16px);
+  font-size: 16px;
+  line-height: 16px;
+  @extend .pixify;
 }
-.pixel-font-10x2 {
+.font-pixel-10x2 {
   font-family: "Ark-Pixel-10px";
-  @include font-size(20px);
+  // @include font-size(20px);
+  font-size: 20px;
+  line-height: 20px;
+  @extend .pixify;
 }
-.pixel-font-12x2 {
+.font-pixel-12x2 {
   font-family: "Ark-Pixel-12px";
-  @include font-size(24px);
+  // @include font-size(24px);
+  font-size: 24px;
+  line-height: 24px;
+  @extend .pixify;
 }
-.pixel-font-8x4 {
+.font-pixel-8x4 {
   font-family: "Silkscreen";
-  @include font-size(32px);
+  // @include font-size(32px);
+  font-size: 32px;
+  line-height: 32px;
+  @extend .pixify;
 }
-.pixel-font-16x2 {
+.font-pixel-16x2 {
   font-family: "Ark-Pixel-16px";
-  @include font-size(32px);
+  // @include font-size(32px);
+  font-size: 32px;
+  line-height: 32px;
+  @extend .pixify;
 }

@@ -11,17 +11,18 @@ const __dirname = new URL('.', import.meta.url).pathname;
 dns.setDefaultResultOrder('verbatim')
 
 export default defineConfig(({ command, mode, ssrBuild }) => {
+  const basedir =  resolve(__dirname, 'src');
   console.debug('vite.config.js', { command, mode, ssrBuild })
   return {
     mode,
-    root: './src',
+    root: basedir,
     assetsInclude: ['**/*.svg'],
     build: {
       outDir: '../_site',
       emptyOutDir: true,
       rollupOptions: {
         input: {
-          'main': resolve(__dirname, 'src/index.html'),
+          'main': resolve(basedir, 'index.html'),
         },
         plugins: [
           pugRollupPlugin(),
@@ -29,7 +30,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
       }
     },
     plugins: [
-      pugPlugin(),
+      pugPlugin({ basedir,}),
       yamPlugin(),
       mdPlugin({mode: 'html'}),
       viteStaticCopy({

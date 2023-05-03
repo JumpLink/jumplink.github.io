@@ -24,7 +24,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/cli@npm:^7.21.0":
+"@babel/cli@npm:^7.21.0, @babel/cli@npm:^7.21.5":
   version: 7.21.5
   resolution: "@babel/cli@npm:7.21.5"
   dependencies:
@@ -87,6 +87,29 @@ __metadata:
     json5: "npm:^2.2.2"
     semver: "npm:^6.3.0"
   checksum: fe1abf0bde9f3776534801ca4a59234a1b90bb99ddef071e74f91ef741f5225c92f1644011d8bc78dc62c042d66bb4bffee7d10d6a04ff74ff5e3f9e84cb0d4f
+  languageName: node
+  linkType: hard
+
+"@babel/core@npm:^7.21.8":
+  version: 7.21.8
+  resolution: "@babel/core@npm:7.21.8"
+  dependencies:
+    "@ampproject/remapping": "npm:^2.2.0"
+    "@babel/code-frame": "npm:^7.21.4"
+    "@babel/generator": "npm:^7.21.5"
+    "@babel/helper-compilation-targets": "npm:^7.21.5"
+    "@babel/helper-module-transforms": "npm:^7.21.5"
+    "@babel/helpers": "npm:^7.21.5"
+    "@babel/parser": "npm:^7.21.8"
+    "@babel/template": "npm:^7.20.7"
+    "@babel/traverse": "npm:^7.21.5"
+    "@babel/types": "npm:^7.21.5"
+    convert-source-map: "npm:^1.7.0"
+    debug: "npm:^4.1.0"
+    gensync: "npm:^1.0.0-beta.2"
+    json5: "npm:^2.2.2"
+    semver: "npm:^6.3.0"
+  checksum: 81e8853407b3a6b0808f7d8f196612f9a510dec1cec0a45a07bc7b0982c24abe848944fe0d8efc6840842e272ef55825537c5870e5a52def9e0111231d020fd8
   languageName: node
   linkType: hard
 
@@ -375,6 +398,15 @@ __metadata:
   bin:
     parser: ./bin/babel-parser.js
   checksum: 05b612bebd65737a33c244de41e103305da4498081c05a1a7d6a164c304829d19ed07e9e91b3c2da63d0f78435745d9426e5bec142972758a3decfde9d81d390
+  languageName: node
+  linkType: hard
+
+"@babel/parser@npm:^7.21.8":
+  version: 7.21.8
+  resolution: "@babel/parser@npm:7.21.8"
+  bin:
+    parser: ./bin/babel-parser.js
+  checksum: bd71a12bc76ff70317a20d10b9a9de9142b00608eeb45904e40a1337af82538aae8c18f30ee0ef16b384de28584197e39c960cdd10576a8e72f34f7ecdadff5e
   languageName: node
   linkType: hard
 
@@ -1281,7 +1313,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-env@npm:^7.21.4":
+"@babel/preset-env@npm:^7.21.4, @babel/preset-env@npm:^7.21.5":
   version: 7.21.5
   resolution: "@babel/preset-env@npm:7.21.5"
   dependencies:
@@ -1398,7 +1430,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-typescript@npm:^7.21.4":
+"@babel/preset-typescript@npm:^7.21.4, @babel/preset-typescript@npm:^7.21.5":
   version: 7.21.5
   resolution: "@babel/preset-typescript@npm:7.21.5"
   dependencies:
@@ -1420,7 +1452,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime-corejs3@npm:^7.21.0":
+"@babel/runtime-corejs3@npm:^7.21.0, @babel/runtime-corejs3@npm:^7.21.5":
   version: 7.21.5
   resolution: "@babel/runtime-corejs3@npm:7.21.5"
   dependencies:
@@ -1430,7 +1462,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.21.5, @babel/runtime@npm:^7.8.4":
   version: 7.21.5
   resolution: "@babel/runtime@npm:7.21.5"
   dependencies:
@@ -2367,8 +2399,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@jumplink/cv@workspace:."
   dependencies:
-    "@babel/cli": "npm:^7.21.0"
-    "@babel/core": "npm:^7.21.4"
+    "@babel/cli": "npm:^7.21.5"
+    "@babel/core": "npm:^7.21.8"
     "@babel/plugin-proposal-class-properties": "npm:^7.18.6"
     "@babel/plugin-proposal-export-default-from": "npm:^7.18.10"
     "@babel/plugin-proposal-object-rest-spread": "npm:^7.20.7"
@@ -2377,11 +2409,11 @@ __metadata:
     "@babel/plugin-syntax-top-level-await": "npm:^7.14.5"
     "@babel/plugin-transform-runtime": "npm:^7.21.4"
     "@babel/plugin-transform-typescript": "npm:^7.21.3"
-    "@babel/preset-env": "npm:^7.21.4"
+    "@babel/preset-env": "npm:^7.21.5"
     "@babel/preset-react": "npm:^7.18.6"
-    "@babel/preset-typescript": "npm:^7.21.4"
-    "@babel/runtime": "npm:^7.21.0"
-    "@babel/runtime-corejs3": "npm:^7.21.0"
+    "@babel/preset-typescript": "npm:^7.21.5"
+    "@babel/runtime": "npm:^7.21.5"
+    "@babel/runtime-corejs3": "npm:^7.21.5"
     "@modyfi/vite-plugin-yaml": "npm:^1.0.4"
     "@ribajs/babel-config": "npm:^2.0.0-beta.10"
     "@ribajs/bs5": "npm:^2.0.0-beta.10"
@@ -2393,10 +2425,10 @@ __metadata:
     "@ribajs/types": "npm:^2.0.0-beta.10"
     "@ribajs/utils": "npm:^2.0.0-beta.10"
     "@types/jest": "npm:^29.5.1"
-    "@typescript-eslint/eslint-plugin": "npm:^5.59.1"
-    "@typescript-eslint/experimental-utils": "npm:^5.59.1"
-    "@typescript-eslint/parser": "npm:^5.59.1"
-    "@yarnpkg/pnpify": "npm:^4.0.0-rc.42"
+    "@typescript-eslint/eslint-plugin": "npm:^5.59.2"
+    "@typescript-eslint/experimental-utils": "npm:^5.59.2"
+    "@typescript-eslint/parser": "npm:^5.59.2"
+    "@yarnpkg/pnpify": "npm:^4.0.0-rc.43"
     babel-jest: "npm:^29.5.0"
     babel-loader: "npm:^9.1.2"
     babel-plugin-array-includes: "npm:^2.0.3"
@@ -2414,7 +2446,7 @@ __metadata:
     jest: "npm:^29.5.0"
     jest-extended: "npm:^3.2.4"
     mini-css-extract-plugin: "npm:^2.7.5"
-    postcss-loader: "npm:^7.2.4"
+    postcss-loader: "npm:^7.3.0"
     postcss-modules: "npm:^6.0.0"
     postcss-preset-env: "npm:^8.3.2"
     prettier: "npm:^2.8.8"
@@ -2423,7 +2455,7 @@ __metadata:
     sass: "npm:^1.62.1"
     sass-loader: "npm:^13.2.2"
     typescript: "npm:5.0.4"
-    vite: "npm:^4.3.3"
+    vite: "npm:^4.3.4"
     vite-plugin-markdown: "npm:^2.1.0"
     vite-plugin-pug: "npm:^0.3.2"
     vite-plugin-static-copy: "npm:^0.14.0"
@@ -3082,7 +3114,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^5.59.1":
+"@typescript-eslint/eslint-plugin@npm:^5.59.1, @typescript-eslint/eslint-plugin@npm:^5.59.2":
   version: 5.59.2
   resolution: "@typescript-eslint/eslint-plugin@npm:5.59.2"
   dependencies:
@@ -3106,7 +3138,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/experimental-utils@npm:^5.59.1":
+"@typescript-eslint/experimental-utils@npm:^5.59.1, @typescript-eslint/experimental-utils@npm:^5.59.2":
   version: 5.59.2
   resolution: "@typescript-eslint/experimental-utils@npm:5.59.2"
   dependencies:
@@ -3117,7 +3149,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.59.1":
+"@typescript-eslint/parser@npm:^5.59.1, @typescript-eslint/parser@npm:^5.59.2":
   version: 5.59.2
   resolution: "@typescript-eslint/parser@npm:5.59.2"
   dependencies:
@@ -3300,7 +3332,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/pnpify@npm:^4.0.0-rc.42":
+"@yarnpkg/pnpify@npm:^4.0.0-rc.43":
   version: 4.0.0-rc.43
   resolution: "@yarnpkg/pnpify@npm:4.0.0-rc.43"
   dependencies:
@@ -8176,7 +8208,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-loader@npm:^7.2.4":
+"postcss-loader@npm:^7.3.0":
   version: 7.3.0
   resolution: "postcss-loader@npm:7.3.0"
   dependencies:
@@ -10008,7 +10040,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^4.3.3":
+"vite@npm:^4.3.4":
   version: 4.3.4
   resolution: "vite@npm:4.3.4"
   dependencies:

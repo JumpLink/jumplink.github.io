@@ -17,8 +17,7 @@ jl-timeline {
     }
 
     .timeline-icon {
-      background-color: var(--bs-dark);
-      border-radius: 50%;
+      // background-color: var(--bs-dark);
       position: absolute;
       left: -50px;
       top: 0px;
@@ -34,12 +33,11 @@ jl-timeline {
       position: relative;
 
       &:after {
+        background-color: var(--bs-dark);
         position: absolute;
         display: block;
         top: 6px;
-        background-color: var(--bs-dark);
         left: -38px;
-        border-radius: 50%;
         height: 11px;
         width: 11px;
         content: "";

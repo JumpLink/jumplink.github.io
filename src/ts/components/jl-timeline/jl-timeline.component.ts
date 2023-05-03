@@ -16,7 +16,18 @@ export class JLTimelineComponent extends Component {
   public scope = {
     items: [] as TimelineItem[],
     title: '',
+    getTimeRange: this.getTimeRange,
   };
+
+  public getTimeRange(start: number | string, end?: number | string) {
+    if (end === 'present' || end === 'today') {
+      end = new Date().getFullYear();
+    }
+    if(!end) {
+      return start.toString();
+    }
+    return `${start} - ${end}`;
+  }
 
   protected connectedCallback() {
     super.connectedCallback();

@@ -1,10 +1,10 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 
-import iconMobile from "@ribajs/iconset/dist/svg/icon_mobile.svg?url";
-import iconMail from "@ribajs/iconset/dist/svg/icon_mail.svg?url";
+import iconMobile from "../../../assets/icons/device-phone.svg?url";
+import iconMail from "../../../assets/icons/mail.svg?url";
 import socialMastodon from "@ribajs/iconset/dist/svg/social_mastodon.svg?url";
-import socialGithub from "@ribajs/iconset/dist/svg/social_github.svg?url";
+import socialGithub from "../../../assets/icons/social-github.svg?url";
 
 
 export class JLContactComponent extends Component {

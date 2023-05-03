@@ -2,10 +2,10 @@ import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 import { JLProfileComponent } from "../jl-profile/jl-profile.component.js";
 
-import iconMenu from "@ribajs/iconset/dist/svg/icon_menu.svg?url";
-import iconClose from "@ribajs/iconset/dist/svg/icon_close.svg?url";
-import iconSun from "@ribajs/iconset/dist/svg/icon_sun.svg?url";
-import iconMoon from "@ribajs/iconset/dist/svg/icon_moon.svg?url";
+import iconMenu from "../../../assets/icons/menu.svg?url";
+import iconClose from "../../../assets/icons/close.svg?url";
+import iconSun from "../../../assets/icons/sun.svg?url";
+import iconMoon from "../../../assets/icons/moon.svg?url";
 
 export class JLNavbarComponent extends Component {
   public static tagName = "jl-navbar";
