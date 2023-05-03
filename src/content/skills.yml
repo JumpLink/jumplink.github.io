@@ -10,9 +10,6 @@
 - name: CSS / SCSS
   score: 90
 
-- name: CSS / SCSS
-  score: 90
-
 - name: Riba.js
   score: 100
 
@@ -29,10 +26,10 @@
   score: 90
 
 - name: Node.js
-  score: 90
+  score: 80
 
 - name: Deno
-  score: 90
+  score: 80
 
 - name: SQL
   score: 70

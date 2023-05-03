@@ -1,5 +1,6 @@
 import { Component } from "@ribajs/core";
-import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
+import { Bs5SidebarComponent } from "@ribajs/bs5";
+import { hasChildNodesTrim, getViewportDimensions } from "@ribajs/utils/src/dom.js";
 import { JLProfileComponent } from "../jl-profile/jl-profile.component.js";
 
 import iconMenu from "../../../assets/icons/menu.svg?url";
@@ -12,7 +13,8 @@ export class JLNavbarComponent extends Component {
 
   protected autobind = true;
 
-  protected profile: JLProfileComponent | null = null; 
+  protected profile: JLProfileComponent | null = null;
+  protected sidebar: Bs5SidebarComponent | null = null;
 
   static get observedAttributes(): string[] {
     return [];
@@ -36,12 +38,17 @@ export class JLNavbarComponent extends Component {
   }
 
   protected setPageStyleByNavbar() {
-    this.profile = this.profile || this.closest<JLProfileComponent>(JLProfileComponent.tagName);
+    this.profile = this.profile || this.closest<JLProfileComponent>(JLProfileComponent.tagName.toLowerCase());
+    this.sidebar = this.sidebar || document.querySelector<Bs5SidebarComponent>(Bs5SidebarComponent.tagName.toLowerCase());
     if(this.profile) {
       this.profile.style.paddingTop = `${this.clientHeight}px`;
-      console.debug(`setPageStyleByNavbar ${JLProfileComponent.tagName} padding-top: ${this.profile.style.paddingTop}`);
     }
-    
+    if(this.sidebar) {
+      const height = getViewportDimensions().h - this.clientHeight;
+      this.sidebar.style.top = `${this.clientHeight}px`;
+      this.sidebar.style.height = `calc(100vh - ${this.clientHeight}px)`;
+      console.debug("setPageStyleByNavbar", this.clientHeight, height)
+    }
   }
 
   protected addEventListeners() {
@@ -53,10 +60,16 @@ export class JLNavbarComponent extends Component {
   }
 
   protected async afterBind() {
-    await super.afterBind();
     this.setPageStyleByNavbar();
     this.addEventListeners();
+    await super.afterBind();
   }
+
+  protected async afterAllBind() {
+    this.setPageStyleByNavbar();
+    await super.afterAllBind();
+  }
+
 
   protected requiredAttributes(): string[] {
     return [];

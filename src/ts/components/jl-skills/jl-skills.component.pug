@@ -2,9 +2,9 @@ section.row
   .col-12
     h2.font-pixel-8x2 Skills
     hr.border-2.opacity-100
-  .col-12.small(rv-each-skill="skills")
+  .col-12(rv-each-skill="skills")
     .row
-      .col.text-end { skill.name }
+      small.col.text-end { skill.name }
       .col
-        .progress.bg-dark.rounded-0
+        .progress.bg-dark.rounded-0.border.border-1.border-dark
           .progress-bar.text-bg-light(role="progressbar", aria-valuenow="skill.score", aria-valuemin="0", aria-valuemax="100", rv-style-width="skill.score | append '%'")
