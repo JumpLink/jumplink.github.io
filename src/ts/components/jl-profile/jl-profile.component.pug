@@ -1,38 +1,28 @@
 // Sidebar not visible on print
 bs5-sidebar#left-sidebar.px-4.d-print-none.bg-dark.text-light.d-flex.flex-column.justify-content-start.align-items-center.overflow-y-auto(container-selector='#main-container' position='left' rv-bs5-co-xs-auto-hide='true' rv-bs5-co-xl-auto-hide='false' rv-bs5-co-xs-auto-show='false' rv-bs5-co-xl-auto-show='true' rv-bs5-co-xs-mode="'overlap'" rv-bs5-co-xl-mode="'side'" width="260px" rv-parent)
   jl-avatar
-  jl-contact.mt-4
-  jl-skills.mt-4
+  jl-about.my-3
+  jl-contact.my-3
+  jl-skills.my-3
 
 jl-navbar.fixed-top.position-print-static
 
 #main-container
+  // Header only visible on print
+  .bg-dark.text-light.d-none.d-print-block
+    .container
+      .row
+        .col-12.col-md-6.d-flex.justify-content-start.align-items-center
+          jl-avatar.my-3
+        .col-12.col-md-6 
+          jl-contact.my-3
+      .row
+        .col-12.col-md-6
+          jl-about.my-3
+        .col-12.col-md-6 
+          jl-skills.my-3
   .container-fluid
-    // Header only visible on print
-    .row.bg-dark.text-light.d-none.d-print-flex
-      .col-12.col-md-6 
-        jl-avatar.p-5
-      .col-12.col-md-6 
-        jl-contact.my-4
-    .row.bg-dark.text-light.d-none.d-print-flex
-      .col-12.col-md-6 
-        section.my-4
-          h2.font-pixel-8x2 Über mich
-          hr.border-2.opacity-100
-          p(rv-html="aboutMe.html")
-      .col-12.col-md-6 
-        jl-skills.my-4
     .row.mt-5
-      // About me
-      section.col-12.mb-4
-        jl-timeline.px-4(rv-parent)
-          ul.timeline
-            li.timeline-title.mb-4
-              h2.font-pixel-12x2 Über mich
-              .timeline-icon.text-light.bg-dark
-                bs5-icon(rv-co-src="$parent.iconUser" size="24")
-            li.timeline-item.mb-4
-              p(rv-html="$parent.aboutMe.html")
       // Expertise
       section.col-12.mb-4
         jl-timeline.px-4(rv-parent)

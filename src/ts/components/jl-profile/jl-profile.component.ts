@@ -11,7 +11,6 @@ import iconCode from "../../../assets/icons/code.svg?url";
 
 import educations from "../../../content/educations.yml";
 import projects from "../../../content/projects.yml";
-import * as aboutMe from "../../../content/about-me-de.md";
 import * as skills from "../../../content/skills-de.md";
 
 export class JLProfileComponent extends Component {
@@ -33,10 +32,6 @@ export class JLProfileComponent extends Component {
     iconCode,
     educations,
     projects,
-    aboutMe: {
-      html: aboutMe.html,
-      attributes: aboutMe.attributes,
-    },
     skills: {
       html: skills.html,
       attributes: skills.attributes,

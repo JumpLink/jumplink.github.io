@@ -2,6 +2,7 @@ import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 
 import iconMobile from "../../../assets/icons/device-phone.svg?url";
+import iconChat from "../../../assets/icons/chat.svg?url";
 import iconMail from "../../../assets/icons/mail.svg?url";
 import socialMastodon from "../../../assets/icons/social-mastodon.svg?url";
 import socialGithub from "../../../assets/icons/social-github.svg?url";
@@ -18,6 +19,7 @@ export class JLContactComponent extends Component {
 
   public scope = {
     iconMobile,
+    iconChat,
     iconMail,
     socialMastodon,
     socialGithub,

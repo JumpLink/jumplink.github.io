@@ -1,3 +1,8 @@
 jl-avatar {
-  display: block;
+  display: flex;
+  @extend .justify-content-center;
+  @extend .align-items-center;
+  img {
+    max-width: 250px !important;
+  }
 }
