@@ -2676,7 +2676,7 @@ __metadata:
   resolution: "@ribajs/types@npm:2.0.0-beta.10"
   dependencies:
     "@types/resize-observer-browser": "npm:^0.1.7"
-  checksum: 89ce38762fe8bdf7da386003b40f85a75f2bd29ee26cd448a3734bce48ffff42631042f5eb6f85c324187e76d4d19ab7b3ae01c89a2b23dc4be1c45db5fdd4c3
+  checksum: 2e31943b89f1dd7b8248a2096c55f064e0b7205e5aabd480df351d8451ebd40383973f647c6d7b75bda0848a593a3d16c0f16510eed404a12664953b8377be92
   languageName: node
   linkType: hard
 
