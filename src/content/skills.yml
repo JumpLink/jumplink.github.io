@@ -37,7 +37,6 @@ other:
   - React
   - SQL
   - noSQL
-  - Continuous Integration
-  - Continuous Deployment
+  - CI/CD
   - Containerisierung
   - Test Driven Development
