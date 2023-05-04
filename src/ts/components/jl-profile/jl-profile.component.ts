@@ -13,7 +13,7 @@ import imageTree from "../../../assets/tree.png?url";
 
 import educations from "../../../content/educations.yml";
 import projects from "../../../content/projects.yml";
-import * as skills from "../../../content/skills-de.md";
+import * as experience from "../../../content/experience-de.md";
 
 export class JLProfileComponent extends Component {
   public static tagName = "jl-profile";
@@ -35,9 +35,9 @@ export class JLProfileComponent extends Component {
     imageTree,
     educations,
     projects,
-    skills: {
-      html: skills.html,
-      attributes: skills.attributes,
+    experience: {
+      html: experience.html,
+      ...experience.attributes,
     },
   };
 

@@ -1,6 +1,7 @@
 export { JLAboutComponent } from "./jl-about/jl-about.component.js";
 export { JLAvatarComponent } from "./jl-avatar/jl-avatar.component.js";
 export { JLContactComponent } from "./jl-contact/jl-contact.component.js";
+export { JLInterestsComponent } from "./jl-interests/jl-interests.component.js";
 export { JLProfileComponent } from "./jl-profile/jl-profile.component.js";
 export { JLNavbarComponent } from "./jl-navbar/jl-navbar.component.js";
 export { JLSkillsComponent } from "./jl-skills/jl-skills.component.js";

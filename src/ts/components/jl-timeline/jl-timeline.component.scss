@@ -45,6 +45,16 @@ jl-timeline {
       }
     }
     
+    &.timeline-no-anchor-points {
+      // border: none !important;
+
+      .timeline-item {
+        &:before {
+          display: none;
+        }
+      }
+    }
+
   }
 }
 

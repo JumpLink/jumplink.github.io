@@ -1,0 +1,6 @@
+section
+  h2.font-pixel-8x2 { title }
+  hr.border-2.opacity-100
+  p
+    small(rv-each-interest="interests") { interest }
+      span(rv-if="interests | size | minus 1 | gt %interest%")  ⋅ 

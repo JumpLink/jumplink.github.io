@@ -9,10 +9,9 @@ section.row
         .progress.bg-dark.rounded-0.border.border-1.border-dark
           .progress-bar.text-bg-light(role="progressbar", aria-valuenow="skill.score", aria-valuemin="0", aria-valuemax="100", rv-style-width="skill.score | append '%'")
   .col-12
-    .clearfix.row.gx-2
-      small.col-12.text-start
-        span.col-4.float-start.text-end.pe-1 Weitere
-        span.ps-1
-          span(rv-each-skill="skills.other")
-            span { skill }
-            span(rv-if="skills.other | size | minus 1 | gt %skill%") , 
+    small.row.gx-2
+      small.col-4.text-end Weitere
+      .col-8.text-start
+        span(rv-each-skill="skills.other")
+          span { skill }
+          span(rv-if="skills.other | size | minus 1 | gt %skill%")  ⋅ 

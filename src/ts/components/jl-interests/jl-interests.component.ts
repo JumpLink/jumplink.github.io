@@ -2,10 +2,12 @@ import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 import { JLNavbarComponent } from '../jl-navbar/jl-navbar.component.js'
 
-import * as aboutMe from "../../../content/about-me-de.md";
+import type { Interests } from '../../types/index.js'
 
-export class JLAboutComponent extends Component {
-  public static tagName = "jl-about";
+import interests from "../../../content/interests.yml"
+
+export class JLInterestsComponent extends Component {
+  public static tagName = "jl-interests";
 
   protected autobind = true;
 
@@ -16,13 +18,13 @@ export class JLAboutComponent extends Component {
   protected navbar: JLNavbarComponent | null = null;
 
   public scope = {
-    html: aboutMe.html,
-    ...aboutMe.attributes,
+    interests: (interests as Interests).de.list,
+    title: (interests as Interests).de.title,
   };
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(JLAboutComponent.observedAttributes);
+    this.init(JLInterestsComponent.observedAttributes);
     console.debug("connectedCallback", this.scope);
   }
 
@@ -36,7 +38,7 @@ export class JLAboutComponent extends Component {
       return null;
     } else {
       const { default: template } = await import(
-        "./jl-about.component.pug"
+        "./jl-interests.component.pug"
       )
       return template(this.scope);
     }

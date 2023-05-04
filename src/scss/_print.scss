@@ -6,7 +6,24 @@
 //     }
 // }
 
+// See https://developer.mozilla.org/en-US/docs/Web/CSS/@page
 @page {
     size: a4;
-    margin: 0;
+
+    // Set print background colors to on by default
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+
+    margin-left: 0;
+    margin-right: 0;
+
+    // TODO not working to set a different margin for the first page
+    // margin-top: 1cm;
+    // margin-bottom: 1cm;
+    // :first {
+    //     margin-top: 0;
+    // }
+    margin-top: 0;
+    margin-bottom: 0;
 }

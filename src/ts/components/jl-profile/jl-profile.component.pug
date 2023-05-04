@@ -4,6 +4,7 @@ bs5-sidebar#left-sidebar.px-4.d-print-none.bg-dark.text-light.border-end.border-
   jl-about.my-3
   jl-contact.my-3
   jl-skills.my-3
+  jl-interests.my-3
 
 jl-navbar.fixed-top.position-print-static.border-bottom.border-2.border-light
 
@@ -12,14 +13,15 @@ jl-navbar.fixed-top.position-print-static.border-bottom.border-2.border-light
   .print-header.dark-variant.bg-dark.text-light.d-none.d-print-block
     .container-xxl.ps-6.pe-4
       .row.pt-3
-        .col-12.col-md-4.d-flex.justify-content-start.align-items-center
+        .col-12.col-sm-4.d-flex.justify-content-start.align-items-center
           jl-avatar
-        .col-12.col-md-8.d-flex.justify-content-start.align-items-center
+        .col-12.col-sm-8.d-flex.justify-content-start.align-items-center
           jl-about
       .row
-        .col-12.col-md-4
+        .col-12.col-sm-4
           jl-contact.my-3
-        .col-12.col-md-8 
+          jl-interests.py-3
+        .col-12.col-sm-8 
           jl-skills.my-3
   .container-xxl.ps-print-6.pe-print-5
     .row.mt-4
@@ -27,20 +29,21 @@ jl-navbar.fixed-top.position-print-static.border-bottom.border-2.border-light
       section.col-12.d-none.d-print-block.mb-4
         .alert.alert-success.ms-1.me-3.d-flex.justify-content-start.align-items-center(role="alert" style="min-height: 84px;")
           img.float-start.pixify.me-3(rv-src="imageTree", alt="Pixelart Tree" width="48" height="48")
-          small Sie haben gerade die Druckversion meines Lebenslaufs vor sich. Stattdessen empfehle ich, die Online-Version unter 
+          small Sie haben gerade die Druckversion meines digitalen Lebenslaufs vor sich. Bitte drucken Sie diese möglichst <strong>nicht</strong> aus. Stattdessen empfehle ich, die Online-Version unter 
             a.alert-link(href="https://https://jumplink.github.io/") jumplink.github.io
             |  zu nutzen. So tragen Sie zum Umweltschutz bei.
 
       // Expertise
       section.col-12.mb-4
         jl-timeline.px-4(rv-parent)
-          ul.timeline
+          ul.timeline.timeline-no-anchor-points
             li.timeline-title.mb-4
-              h2.font-pixel-12x2 Expertise
+              h2.font-pixel-12x2 { experience.title }
               .timeline-icon
                 bs5-icon(rv-co-src="$parent.iconLight" size="24")
             li.timeline-item.mb-4
-              p(rv-html="$parent.skills.html")
+              p(rv-html="$parent.experience.html")
+
       // Projects
       section.col-12.mb-4
         jl-timeline.px-4(rv-co-items="projects", rv-parent)
@@ -52,8 +55,9 @@ jl-navbar.fixed-top.position-print-static.border-bottom.border-2.border-light
             li.timeline-item.mb-4(rv-each-item="items")
               div.d-flex.justify-content-between
                 h3.font-pixel-8x2 { item.name }
-                p.font-pixel-8x2.mb-2.text-end { getTimeRange | call item.start item.end }
+                p.font-pixel-8x2.mb-2.text-end.text-nowrap { getTimeRange | call item.start item.end }
               p { item.desc }
+
       // Education
       section.col-12.mb-4
         jl-timeline.px-4(rv-co-items="educations", rv-parent)
@@ -65,5 +69,5 @@ jl-navbar.fixed-top.position-print-static.border-bottom.border-2.border-light
             li.timeline-item.mb-4(rv-each-item="items")
               div.d-flex.justify-content-between
                 h3.font-pixel-8x2 { item.name }
-                p.font-pixel-8x2.mb-2.text-end { getTimeRange | call item.start item.end }
+                p.font-pixel-8x2.mb-2.ms-2.text-end.text-nowrap { getTimeRange | call item.start item.end }
               p { item.school }
