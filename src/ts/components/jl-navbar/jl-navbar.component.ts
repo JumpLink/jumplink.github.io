@@ -7,6 +7,7 @@ import iconMenu from "../../../assets/icons/menu.svg?url";
 import iconClose from "../../../assets/icons/close.svg?url";
 import iconSun from "../../../assets/icons/sun.svg?url";
 import iconMoon from "../../../assets/icons/moon.svg?url";
+import iconPrint from "../../../assets/icons/print.svg?url";
 
 export class JLNavbarComponent extends Component {
   public static tagName = "jl-navbar";
@@ -25,7 +26,14 @@ export class JLNavbarComponent extends Component {
     iconClose,
     iconSun,
     iconMoon,
+    iconPrint,
+    print: this.print.bind(this),
   };
+
+  public print() {
+    console.debug("print")
+    window.print();
+  }
 
   constructor() {
     super();
@@ -40,14 +48,15 @@ export class JLNavbarComponent extends Component {
   protected setPageStyleByNavbar() {
     this.profile = this.profile || this.closest<JLProfileComponent>(JLProfileComponent.tagName.toLowerCase());
     this.sidebar = this.sidebar || document.querySelector<Bs5SidebarComponent>(Bs5SidebarComponent.tagName.toLowerCase());
+    const offset = this.clientHeight - 0.5;
+
     if(this.profile) {
-      this.profile.style.paddingTop = `${this.clientHeight}px`;
+      this.profile.style.paddingTop = `${offset}px`;
     }
     if(this.sidebar) {
-      const height = getViewportDimensions().h - this.clientHeight;
-      this.sidebar.style.top = `${this.clientHeight}px`;
-      this.sidebar.style.height = `calc(100vh - ${this.clientHeight}px)`;
-      console.debug("setPageStyleByNavbar", this.clientHeight, height)
+      
+      this.sidebar.style.top = `${offset}px`;
+      this.sidebar.style.height = `calc(100vh - ${offset}px)`;
     }
   }
 

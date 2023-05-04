@@ -14,29 +14,30 @@ jl-timeline {
       @extend .border-dark;
 
       position: relative;
-    }
 
-    .timeline-icon {
-      // background-color: var(--bs-dark);
-      position: absolute;
-      left: -50px;
-      top: 0px;
-      z-index: 1;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      .timeline-icon {
+        background-color: var(--bs-dark);
+        color: var(--bs-gray-200);
+        position: absolute;
+        left: -50px;
+        top: 0px;
+        z-index: 1;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
     }
 
     .timeline-item {
-      position: relative;
 
-      &:after {
+      &:before {
         background-color: var(--bs-dark);
-        position: absolute;
+        position: relative;
         display: block;
-        top: 6px;
+        top: 15px;
         left: -38px;
         height: 11px;
         width: 11px;
@@ -47,4 +48,30 @@ jl-timeline {
   }
 }
 
-
+[data-bs-theme="dark"] {
+  jl-timeline {
+    .timeline {
+      @extend .border-light;
+      .timeline-title {
+        @extend .border-light;
+        .timeline-icon {
+          background-color: var(--bs-gray-200);
+          color: var(--bs-dark);
+        }
+      }
+      .timeline-item {
+        &:before {
+          background-color: var(--bs-gray-200);
+          color: var(--bs-dark);
+          position: relative;
+          display: block;
+          top: 15px;
+          left: -38px;
+          height: 11px;
+          width: 11px;
+          content: "";
+        }
+      }
+    }
+  }
+}

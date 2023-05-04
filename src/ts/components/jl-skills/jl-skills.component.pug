@@ -3,15 +3,16 @@ section.row
     h2.font-pixel-8x2 Skills
     hr.border-2.opacity-100
   .col-12(rv-each-skill="skills.list")
-    .row
-      small.col-4.text-end { skill.name }
-      small.col-8
+    small.row.gx-2.text-end
+      span.col-4 { skill.name }
+      .col-8
         .progress.bg-dark.rounded-0.border.border-1.border-dark
           .progress-bar.text-bg-light(role="progressbar", aria-valuenow="skill.score", aria-valuemin="0", aria-valuemax="100", rv-style-width="skill.score | append '%'")
   .col-12
-    .row
-      small.col-4.text-end Weitere
-      small.col-8
-        span(rv-each-other="skills.other")
-          span { other }
-          span(rv-if="skills.other | size | minus 1 | gt %other%") , 
+    .clearfix.row.gx-2
+      small.col-12.text-start
+        span.col-4.float-start.text-end.pe-1 Weitere
+        span.ps-1
+          span(rv-each-skill="skills.other")
+            span { skill }
+            span(rv-if="skills.other | size | minus 1 | gt %skill%") , 

@@ -1,18 +1,12 @@
 // Root / Body CSS Variables
 
-@media print {
+// @media print {
+//     :root {
+//         @include font-size(var(--bs-print-body-font-size));
+//     }
+// }
 
-    :root {
-        @include font-size(var(--bs-print-body-font-size));
-    }
-
-    // Opacity
-
-    .opacity-print-0 {
-        opacity: 0 !important;
-    }
-
-    .opacity-print-100 {
-        opacity: 100 !important;
-    }
+@page {
+    size: a4;
+    margin: 0;
 }

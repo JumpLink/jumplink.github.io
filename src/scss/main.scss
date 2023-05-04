@@ -1,14 +1,17 @@
+@import './variables';
+
 // Original Bootstrap 5 Styles
 @import 'bootstrap/scss/bootstrap';
 // Bootstrap style extensions from @ribajs/bs5
 @import '@ribajs/bs5/src/index';
 @import '../ts/components/index';
 
-@import './variables';
-
 @import './body';
+@import './dark';
 @import './fonts';
 @import './navbar';
+@import './opacity';
+@import './padding';
 @import './pixify';
 @import './position';
 @import './print';

@@ -3,6 +3,14 @@ jl-avatar {
   @extend .justify-content-center;
   @extend .align-items-center;
   img {
-    max-width: 250px !important;
+    width: 250px;
+  }
+}
+
+.print-header {
+  jl-avatar {
+    img {
+      width: 220px;
+    }
   }
 }

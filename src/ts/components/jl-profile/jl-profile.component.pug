@@ -1,35 +1,43 @@
 // Sidebar not visible on print
-bs5-sidebar#left-sidebar.px-4.d-print-none.bg-dark.text-light.d-flex.flex-column.justify-content-start.align-items-center.overflow-y-auto(container-selector='#main-container' position='left' rv-bs5-co-xs-auto-hide='true' rv-bs5-co-xl-auto-hide='false' rv-bs5-co-xs-auto-show='false' rv-bs5-co-xl-auto-show='true' rv-bs5-co-xs-mode="'overlap'" rv-bs5-co-xl-mode="'side'" width="260px" rv-parent)
+bs5-sidebar#left-sidebar.px-4.d-print-none.bg-dark.text-light.border-end.border-2.border-light.d-flex.flex-column.justify-content-start.align-items-center.overflow-y-auto(container-selector='#main-container' position='left' rv-bs5-co-xs-auto-hide='true' rv-bs5-co-xl-auto-hide='false' rv-bs5-co-xs-auto-show='false' rv-bs5-co-xl-auto-show='true' rv-bs5-co-xs-mode="'overlap'" rv-bs5-co-xl-mode="'side'" width="260px" rv-parent)
   jl-avatar
   jl-about.my-3
   jl-contact.my-3
   jl-skills.my-3
 
-jl-navbar.fixed-top.position-print-static
+jl-navbar.fixed-top.position-print-static.border-bottom.border-2.border-light
 
 #main-container
-  // Header only visible on print
-  .bg-dark.text-light.d-none.d-print-block
-    .container
+  // Page header (only visible on print)
+  .print-header.dark-variant.bg-dark.text-light.d-none.d-print-block
+    .container-xxl.ps-6.pe-4
+      .row.pt-3
+        .col-12.col-md-4.d-flex.justify-content-start.align-items-center
+          jl-avatar
+        .col-12.col-md-8.d-flex.justify-content-start.align-items-center
+          jl-about
       .row
-        .col-12.col-md-6.d-flex.justify-content-start.align-items-center
-          jl-avatar.my-3
-        .col-12.col-md-6 
+        .col-12.col-md-4
           jl-contact.my-3
-      .row
-        .col-12.col-md-6
-          jl-about.my-3
-        .col-12.col-md-6 
+        .col-12.col-md-8 
           jl-skills.my-3
-  .container-fluid
-    .row.mt-5
+  .container-xxl.ps-print-6.pe-print-5
+    .row.mt-4
+
+      section.col-12.d-none.d-print-block.mb-4
+        .alert.alert-success.ms-1.me-3.d-flex.justify-content-start.align-items-center(role="alert" style="min-height: 84px;")
+          img.float-start.pixify.me-3(rv-src="imageTree", alt="Pixelart Tree" width="48" height="48")
+          small Sie haben gerade die Druckversion meines Lebenslaufs vor sich. Stattdessen empfehle ich, die Online-Version unter 
+            a.alert-link(href="https://https://jumplink.github.io/") jumplink.github.io
+            |  zu nutzen. So tragen Sie zum Umweltschutz bei.
+
       // Expertise
       section.col-12.mb-4
         jl-timeline.px-4(rv-parent)
           ul.timeline
             li.timeline-title.mb-4
               h2.font-pixel-12x2 Expertise
-              .timeline-icon.text-light.bg-dark
+              .timeline-icon
                 bs5-icon(rv-co-src="$parent.iconLight" size="24")
             li.timeline-item.mb-4
               p(rv-html="$parent.skills.html")
@@ -38,8 +46,8 @@ jl-navbar.fixed-top.position-print-static
         jl-timeline.px-4(rv-co-items="projects", rv-parent)
           ul.timeline
             li.timeline-title.mb-4
-              h2.font-pixel-12x2.fw-bold Projekterfahrung
-              .timeline-icon.text-light.bg-dark
+              h2.font-pixel-12x2 Projekterfahrung
+              .timeline-icon
                 bs5-icon(rv-co-src="$parent.iconCode" size="24")
             li.timeline-item.mb-4(rv-each-item="items")
               div.d-flex.justify-content-between
@@ -51,8 +59,8 @@ jl-navbar.fixed-top.position-print-static
         jl-timeline.px-4(rv-co-items="educations", rv-parent)
           ul.timeline
             li.timeline-title.mb-4
-              h2.font-pixel-12x2.fw-bold Ausbildung
-              .timeline-icon.text-light.bg-dark
+              h2.font-pixel-12x2 Ausbildung
+              .timeline-icon
                 bs5-icon(rv-co-src="$parent.iconBookOpen" size="24")
             li.timeline-item.mb-4(rv-each-item="items")
               div.d-flex.justify-content-between

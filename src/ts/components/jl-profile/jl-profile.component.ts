@@ -9,6 +9,8 @@ import iconLight from "../../../assets/icons/light.svg?url";
 import iconUser from "../../../assets/icons/user.svg?url";
 import iconCode from "../../../assets/icons/code.svg?url";
 
+import imageTree from "../../../assets/tree.png?url";
+
 import educations from "../../../content/educations.yml";
 import projects from "../../../content/projects.yml";
 import * as skills from "../../../content/skills-de.md";
@@ -30,6 +32,7 @@ export class JLProfileComponent extends Component {
     iconLight,
     iconUser,
     iconCode,
+    imageTree,
     educations,
     projects,
     skills: {
