@@ -1,7 +1,8 @@
 import { Component } from "@ribajs/core";
 import { Bs5SidebarComponent } from "@ribajs/bs5";
-import { hasChildNodesTrim, getViewportDimensions } from "@ribajs/utils/src/dom.js";
+import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 import { JLProfileComponent } from "../jl-profile/jl-profile.component.js";
+import { JLPrintModalComponent } from "../jl-print-modal/jl-print-modal.component.js"
 
 import iconMenu from "../../../assets/icons/menu.svg?url";
 import iconClose from "../../../assets/icons/close.svg?url";
@@ -31,8 +32,7 @@ export class JLNavbarComponent extends Component {
   };
 
   public print() {
-    console.debug("print")
-    window.print();
+    document.querySelector<JLPrintModalComponent>(JLPrintModalComponent.tagName.toLowerCase())?.show();
   }
 
   constructor() {

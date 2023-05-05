@@ -1,0 +1,17 @@
+bs5-modal(rv-parent)
+  .modal.modal-dark.fade(tabindex="-1", role="dialog", rv-add-class="color | prepend 'modal-'")
+    .modal-dialog
+      .modal-content
+        .modal-header.d-flex.justify-content-between
+          .start
+            button.btn.btn-secondary.font-pixel-8x2(type="button", aria-label="Close", rv-on-click="hide")
+              span Schließen
+              // bs5-icon(rv-co-src="$parent.iconClose" size="24")
+          .middle 
+            .modal-title.font-pixel-12x2.text-center Drucken
+          .end
+            button.btn.btn-success.font-pixel-8x2(type="button", aria-label="Print", rv-on-click="print")
+              span Starten
+              // bs5-icon(rv-co-src="$parent.iconPrint" size="24")
+        .modal-body
+          jl-print-alert(want-to-print="true")

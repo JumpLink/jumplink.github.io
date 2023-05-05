@@ -71,7 +71,7 @@
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
     "typescript": "5.0.4",
-    "vite": "^4.3.4",
+    "vite": "^4.3.5",
     "vite-plugin-pug": "^0.3.2",
     "vite-plugin-static-copy": "^0.14.0"
   },

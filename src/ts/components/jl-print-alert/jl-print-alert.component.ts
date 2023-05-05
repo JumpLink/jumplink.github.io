@@ -1,27 +1,26 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 
-import type { Interests } from '../../types/index.js'
+import icon from "../../../assets/tree.png?url";
+import template from "./jl-print-alert.component.pug"
 
-import interests from "../../../content/interests.yml"
-
-export class JLInterestsComponent extends Component {
-  public static tagName = "jl-interests";
+export class JLPrintAlertComponent extends Component {
+  public static tagName = "jl-print-alert";
 
   protected autobind = true;
 
   static get observedAttributes(): string[] {
-    return [];
+    return ['want-to-print'];
   }
 
   public scope = {
-    interests: (interests as Interests).de.list,
-    title: (interests as Interests).de.title,
+    icon,
+    wantToPrint: false,
   };
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(JLInterestsComponent.observedAttributes);
+    this.init(JLPrintAlertComponent.observedAttributes);
     console.debug("connectedCallback", this.scope);
   }
 
@@ -34,9 +33,6 @@ export class JLInterestsComponent extends Component {
     if (hasChildNodesTrim(this)) {
       return null;
     } else {
-      const { default: template } = await import(
-        "./jl-interests.component.pug"
-      )
       return template(this.scope);
     }
   }

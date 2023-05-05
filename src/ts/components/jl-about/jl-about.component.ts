@@ -1,6 +1,5 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
-import { JLNavbarComponent } from '../jl-navbar/jl-navbar.component.js'
 
 import * as aboutMe from "../../../content/about-me-de.md";
 
@@ -12,8 +11,6 @@ export class JLAboutComponent extends Component {
   static get observedAttributes(): string[] {
     return [];
   }
-
-  protected navbar: JLNavbarComponent | null = null;
 
   public scope = {
     html: aboutMe.html,

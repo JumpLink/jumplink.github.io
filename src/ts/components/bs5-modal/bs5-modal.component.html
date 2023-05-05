@@ -1,0 +1,18 @@
+<div class="modal fade" tabindex="-1" role="dialog" rv-add-class="color | prepend 'modal-'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" rv-show="title">
+        <h5 class="modal-title" rv-template="title"></h5>
+        <button type="button" class="btn-close" aria-label="Close" rv-on-click="hide"></button>
+      </div>
+      <div class="modal-body" rv-template="body"></div>
+      <!-- TODO
+        <div class="modal-footer" rv-show="buttons | size | gt 0">
+        <div rv-each-button="buttons">
+          <button type="button" class="btn" rv-add-class="button.class" rv-on-click="button.action" rv-template="label"></button>
+        </div>
+      </div>
+    -->
+    </div>
+  </div>
+</div>

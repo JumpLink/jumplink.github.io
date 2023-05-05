@@ -1,8 +1,11 @@
+export { Bs5ModalComponent } from "./bs5-modal/bs5-modal.component.js";
 export { JLAboutComponent } from "./jl-about/jl-about.component.js";
 export { JLAvatarComponent } from "./jl-avatar/jl-avatar.component.js";
 export { JLContactComponent } from "./jl-contact/jl-contact.component.js";
 export { JLInterestsComponent } from "./jl-interests/jl-interests.component.js";
 export { JLProfileComponent } from "./jl-profile/jl-profile.component.js";
 export { JLNavbarComponent } from "./jl-navbar/jl-navbar.component.js";
+export { JLPrintAlertComponent } from "./jl-print-alert/jl-print-alert.component.js";
+export { JLPrintModalComponent } from "./jl-print-modal/jl-print-modal.component.js";
 export { JLSkillsComponent } from "./jl-skills/jl-skills.component.js";
 export { JLTimelineComponent } from "./jl-timeline/jl-timeline.component.js";

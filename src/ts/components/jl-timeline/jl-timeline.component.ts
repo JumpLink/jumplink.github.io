@@ -3,7 +3,6 @@ import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 
 import type { TimelineItem } from "../../types/timeline-item.js";
 
-
 export class JLTimelineComponent extends Component {
   public static tagName = "jl-timeline";
 

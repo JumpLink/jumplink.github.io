@@ -1,6 +1,5 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
-import { JLNavbarComponent } from '../jl-navbar/jl-navbar.component.js'
 
 // Pixelarticons
 import iconBookOpen from "../../../assets/icons/book-open.svg?url";
@@ -8,8 +7,6 @@ import iconCheck from "../../../assets/icons/check.svg?url";
 import iconLight from "../../../assets/icons/light.svg?url";
 import iconUser from "../../../assets/icons/user.svg?url";
 import iconCode from "../../../assets/icons/code.svg?url";
-
-import imageTree from "../../../assets/tree.png?url";
 
 import educations from "../../../content/educations.yml";
 import projects from "../../../content/projects.yml";
@@ -24,15 +21,12 @@ export class JLProfileComponent extends Component {
     return [];
   }
 
-  protected navbar: JLNavbarComponent | null = null;
-
   public scope = {
     iconBookOpen,
     iconCheck,
     iconLight,
     iconUser,
     iconCode,
-    imageTree,
     educations,
     projects,
     experience: {
