@@ -1,7 +1,7 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 
-import imageSrc from "../../../assets/avatar.jpg?url";
+import imageSrc from "../../../assets/avatar_01.jpg?url";
 
 export class JLAvatarComponent extends Component {
   public static tagName = "jl-avatar";
