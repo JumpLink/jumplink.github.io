@@ -1,0 +1,11 @@
+.dark-scheme {
+  a {
+    @extend .link-light;
+  }
+}
+
+.light-scheme {
+  a {
+    @extend .link-dark;
+  }
+}

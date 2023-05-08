@@ -37,9 +37,14 @@ $gray-800: #363238;
 $gray-900: #2c292e;
 $black:    #000;
 
-// Dark
-$body-color-dark:                   $light;
-$body-bg-dark:                      $dark;
+// Links
+$link-color: $dark;
+
+// Progress bars
+$progress-bg: var(--#{$prefix}progress-bg);
+$progress-border-radius: 0;
+$progress-bar-color: var(--#{$prefix}progress-bar-color);
+$progress-bar-bg: var(--#{$prefix}progress-bar-bg);
 
 // Borders
 $border-width: 2px;
@@ -52,6 +57,7 @@ $utilities: map-merge(
         "opacity": (
             property: opacity,
             print: true,
+            state: hover,
             values: (
             0: 0,
             25: .25,

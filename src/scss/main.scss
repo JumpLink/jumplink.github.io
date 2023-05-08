@@ -1,4 +1,5 @@
 @import './variables';
+@import './variables-dark';
 
 // Original Bootstrap 5 Styles
 @import 'bootstrap/scss/bootstrap';
@@ -7,12 +8,11 @@
 @import '../ts/components/index';
 
 @import './body';
-@import './dark';
 @import './fonts';
-@import './navbar';
-@import './opacity';
-@import './padding';
+@import './links';
 @import './pixify';
 @import './position';
 @import './print';
+@import './progress-bar';
+@import './scheme';
 @import './sidebar';

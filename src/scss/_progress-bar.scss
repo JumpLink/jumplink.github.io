@@ -1,0 +1,30 @@
+// Cutsom css variables
+@include color-mode(dark) {
+    .progress, .progress-stacked {
+      --#{$prefix}progress-bg: var(--#{$prefix}secondary-bg);
+      --#{$prefix}progress-bar-color: var(--#{$prefix}dark);
+      --#{$prefix}progress-bar-bg: var(--#{$prefix}light);
+    }
+  }
+  .dark-scheme {
+    .progress, .progress-stacked {
+      --#{$prefix}progress-bg: var(--#{$prefix}secondary-bg) !important;
+      --#{$prefix}progress-bar-color: var(--#{$prefix}dark) !important;
+      --#{$prefix}progress-bar-bg: var(--#{$prefix}light) !important;
+    }
+  }
+  
+  @include color-mode(light) {
+    .progress, .progress-stacked {
+      --#{$prefix}progress-bg: var(--#{$prefix}secondary-bg);
+      --#{$prefix}progress-bar-color: var(--#{$prefix}light);
+      --#{$prefix}progress-bar-bg: var(--#{$prefix}dark);
+    }
+  }
+  .light-scheme {
+    .progress, .progress-stacked {
+      --#{$prefix}progress-bg: var(--#{$prefix}secondary-bg) !important;
+      --#{$prefix}progress-bar-color: var(--#{$prefix}light) !important;
+      --#{$prefix}progress-bar-bg: var(--#{$prefix}dark) !important;
+    }
+  }

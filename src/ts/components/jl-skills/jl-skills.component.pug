@@ -6,11 +6,13 @@ section.row
     small.row.gx-2.text-end
       span.col-4 { skill.name }
       .col-8
-        .progress.bg-dark.rounded-0.border.border-1.border-dark
-          .progress-bar.text-bg-light(role="progressbar", aria-valuenow="skill.score", aria-valuemin="0", aria-valuemax="100", rv-style-width="skill.score | append '%'")
+        // .bg-dark.border-dark
+        .progress.rounded-0.border.border-1
+          // .text-bg-light
+          .progress-bar(role="progressbar", aria-valuenow="skill.score", aria-valuemin="0", aria-valuemax="100", rv-style-width="skill.score | append '%'")
   .col-12
     small.row.gx-2
-      small.col-4.text-end Weitere
+      span.col-4.text-end Weitere
       .col-8.text-start
         span(rv-each-skill="skills.other")
           span { skill }

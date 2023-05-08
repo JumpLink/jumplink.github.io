@@ -1,9 +1,3 @@
 jl-contact {
   display: block;
-  a {
-    @extend .link-underline;
-    @extend .link-underline-opacity-0;
-    @extend .link-light;
-    @extend .link-opacity-75-hover;
-  }
 }
