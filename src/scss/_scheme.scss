@@ -73,6 +73,22 @@
   --#{$prefix}tertiary-bg: #{$body-tertiary-bg};
   --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
 
+  @each $color, $value in $colors {
+    --#{$prefix}#{$color}: #{$value};
+  }
+
+  @each $color, $value in $grays {
+    --#{$prefix}gray-#{$color}: #{$value};
+  }
+
+  @each $color, $value in $theme-colors {
+    --#{$prefix}#{$color}: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-rgb {
+    --#{$prefix}#{$color}-rgb: #{$value};
+  }
+
   @each $color, $value in $theme-colors-text {
     --#{$prefix}#{$color}-text-emphasis: #{$value};
   }
@@ -84,6 +100,9 @@
   @each $color, $value in $theme-colors-border-subtle {
     --#{$prefix}#{$color}-border-subtle: #{$value};
   }
+
+  --#{$prefix}white-rgb: #{to-rgb($white)};
+  --#{$prefix}black-rgb: #{to-rgb($black)};
 
   --#{$prefix}heading-color: #{$headings-color};
 
