@@ -20,6 +20,7 @@ export class JLPrintModalComponent extends Component {
     print: this.print.bind(this),
     show: this.show.bind(this),
     hide: this.hide.bind(this),
+    color: "dark",
     iconClose,
     iconPrint,
   };

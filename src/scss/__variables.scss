@@ -12,9 +12,12 @@
 
 @import 'bootstrap/scss/utilities/api';
 
+@import '@ribajs/bs5/src/scss/variables';
+@import '@ribajs/bs5/src/scss/mixins/index';
+
 
 :root {
-    --bs-print-body-font-size: 1rem;
+  --bs-print-body-font-size: 1rem;
 }
 
 // Bootstrap
@@ -366,26 +369,6 @@ $progress-bar-bg: var(--#{$prefix}progress-bar-bg);
 // Borders
 $border-width: 2px;
 
-// Opacity
-
-$utilities: map-merge(
-    $utilities,
-    (
-        "opacity": (
-            property: opacity,
-            print: true,
-            state: hover,
-            values: (
-            0: 0,
-            25: .25,
-            50: .5,
-            75: .75,
-            100: 1,
-        )
-    )
-  )
-);
-
 // Spacing
 
 $spacer: 1rem;
@@ -397,62 +380,4 @@ $spacers: (
   4: $spacer * 1.5,
   5: $spacer * 3,
   6: $spacer * 4,
-);
-
-
-// Padding utilities
-
-$utilities:  map-merge(
-    $utilities,
-    (
-        "padding": (
-        responsive: true,
-        property: padding,
-        class: p,
-        print: true,
-        values: $spacers
-        ),
-        "padding-x": (
-        responsive: true,
-        property: padding-right padding-left,
-        class: px,
-        print: true,
-        values: $spacers
-        ),
-        "padding-y": (
-        responsive: true,
-        property: padding-top padding-bottom,
-        class: py,
-        print: true,
-        values: $spacers
-        ),
-        "padding-top": (
-        responsive: true,
-        property: padding-top,
-        class: pt,
-        print: true,
-        values: $spacers
-        ),
-        "padding-end": (
-        responsive: true,
-        property: padding-right,
-        class: pe,
-        print: true,
-        values: $spacers
-        ),
-        "padding-bottom": (
-        responsive: true,
-        property: padding-bottom,
-        class: pb,
-        print: true,
-        values: $spacers
-        ),
-        "padding-start": (
-        responsive: true,
-        property: padding-left,
-        class: ps,
-        print: true,
-        values: $spacers
-        )
-    )
 );

@@ -1,0 +1,177 @@
+// Opacity
+
+$utilities: map-merge(
+    $utilities,
+    (
+        "opacity": (
+            property: opacity,
+            print: true,
+            state: hover,
+            values: (
+                0: 0,
+                25: .25,
+                50: .5,
+                75: .75,
+                100: 1,
+            )
+        )
+    )
+);
+
+// Display
+
+$utilities: map-merge(
+    $utilities,
+    (
+        "display": (
+            responsive: true,
+            print: true,
+            property: display,
+            class: d,
+            values: inline inline-block block grid inline-grid table table-row table-cell flex inline-flex none
+        )
+    )
+);
+
+// Backgrounds
+
+$utilities: map-merge(
+    $utilities,
+    (
+        "background-color": (
+            property: background-color,
+            class: bg,
+            print: true,
+            local-vars: (
+                "bg-opacity": 1
+            ),
+            values: map-merge(
+                $utilities-bg-colors,
+                (
+                "transparent": transparent,
+                "body-secondary": rgba(var(--#{$prefix}secondary-bg-rgb), var(--#{$prefix}bg-opacity)),
+                "body-tertiary": rgba(var(--#{$prefix}tertiary-bg-rgb), var(--#{$prefix}bg-opacity)),
+                )
+            )
+        ),
+        "bg-opacity": (
+            css-var: true,
+            class: bg-opacity,
+            print: true,
+            values: (
+                10: .1,
+                25: .25,
+                50: .5,
+                75: .75,
+                100: 1
+            )
+            ),
+            "subtle-background-color": (
+            property: background-color,
+            class: bg,
+            values: $utilities-bg-subtle
+        )
+    )
+);
+
+// Colors
+
+$utilities: map-merge(
+    $utilities,
+    (
+        "color": (
+            property: color,
+            class: text,
+            print: true,
+            local-vars: (
+                "text-opacity": 1
+            ),
+            values: map-merge(
+                $utilities-text-colors,
+                (
+                "muted": var(--#{$prefix}secondary-color), // deprecated
+                "black-50": rgba($black, .5), // deprecated
+                "white-50": rgba($white, .5), // deprecated
+                "body-secondary": var(--#{$prefix}secondary-color),
+                "body-tertiary": var(--#{$prefix}tertiary-color),
+                "body-emphasis": var(--#{$prefix}emphasis-color),
+                "reset": inherit,
+                )
+            )
+        ),
+        "text-opacity": (
+            css-var: true,
+            class: text-opacity,
+            print: true,
+            values: (
+                25: .25,
+                50: .5,
+                75: .75,
+                100: 1
+            )
+        ),
+        "text-color": (
+            property: color,
+            class: text,
+            print: true,
+            values: $utilities-text-emphasis-colors
+        )
+    )
+);
+
+// Padding
+
+$utilities:  map-merge(
+    $utilities,
+    (
+        "padding": (
+        responsive: true,
+        property: padding,
+        class: p,
+        print: true,
+        values: $spacers
+        ),
+        "padding-x": (
+        responsive: true,
+        property: padding-right padding-left,
+        class: px,
+        print: true,
+        values: $spacers
+        ),
+        "padding-y": (
+        responsive: true,
+        property: padding-top padding-bottom,
+        class: py,
+        print: true,
+        values: $spacers
+        ),
+        "padding-top": (
+        responsive: true,
+        property: padding-top,
+        class: pt,
+        print: true,
+        values: $spacers
+        ),
+        "padding-end": (
+        responsive: true,
+        property: padding-right,
+        class: pe,
+        print: true,
+        values: $spacers
+        ),
+        "padding-bottom": (
+        responsive: true,
+        property: padding-bottom,
+        class: pb,
+        print: true,
+        values: $spacers
+        ),
+        "padding-start": (
+        responsive: true,
+        property: padding-left,
+        class: ps,
+        print: true,
+        values: $spacers
+        )
+    )
+);

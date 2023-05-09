@@ -1,3 +1,42 @@
 jl-print-alert {
   display: block;
+
+  .d-none-hover {
+    display: block;
+  }
+  .d-block-hover {
+    display: none;
+  }
+
+  &:hover {
+    .d-none-hover {
+      display: none;
+    }
+    .d-block-hover {
+      display: block;
+    }
+  }
+}
+
+.modal-content:hover {
+  jl-print-alert {
+    .d-none-hover {
+      display: none;
+    }
+    .d-block-hover {
+      display: block;
+    }
+  }
+}
+
+// Show colored icon in print mode
+@media print {
+  jl-print-alert {
+    .d-none-hover {
+      display: none;
+    }
+    .d-block-hover {
+      display: block;
+    }
+  }
 }

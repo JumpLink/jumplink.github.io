@@ -1,7 +1,8 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 
-import icon from "../../../assets/tree.png?url";
+import icon from "../../../assets/tree-2.png?url";
+import iconHover from "../../../assets/tree-2-colored.png?url";
 import template from "./jl-print-alert.component.pug"
 
 export class JLPrintAlertComponent extends Component {
@@ -15,6 +16,7 @@ export class JLPrintAlertComponent extends Component {
 
   public scope = {
     icon,
+    iconHover,
     wantToPrint: false,
   };
 

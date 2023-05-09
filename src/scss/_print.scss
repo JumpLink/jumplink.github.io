@@ -51,12 +51,24 @@
     --#{$prefix}form-valid-border-color: #{$form-valid-border-color};
     --#{$prefix}form-invalid-color: #{$form-invalid-color};
     --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
+
+    // Overrides
+    --#{$prefix}light: #{$white};
+    --#{$prefix}light-rgb: 255, 255, 255;
   }
 }
 
 // See https://developer.mozilla.org/en-US/docs/Web/CSS/@page
 @page {
-    size: a4;
+    // A4 landscape with 72dpi
+    // size: 794px 1123px;
+
+    // A4 landscape with 80dpi
+    size: 882px 1248px;
+
+    // A4 landscape with 96dpi
+    // size: 1060px 1500px;
+
 
     // Set print background colors to on by default
     color-adjust: exact;
@@ -66,12 +78,13 @@
     margin-left: 0;
     margin-right: 0;
 
+    margin-top: 1.5cm;
+    margin-bottom: 1.5cm;
+
     // TODO not working to set a different margin for the first page
     // margin-top: 1cm;
     // margin-bottom: 1cm;
     // :first {
     //     margin-top: 0;
     // }
-    margin-top: 0;
-    margin-bottom: 0;
 }
