@@ -4,4 +4,5 @@ export * from './interests.js';
 export * from './project.js';
 export * from './skill.js';
 export * from './skills.js';
+export * from './source-code.js';
 export * from './timeline-item.js';

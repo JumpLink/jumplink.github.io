@@ -8,4 +8,5 @@ export { JLNavbarComponent } from "./jl-navbar/jl-navbar.component.js";
 export { JLPrintAlertComponent } from "./jl-print-alert/jl-print-alert.component.js";
 export { JLPrintModalComponent } from "./jl-print-modal/jl-print-modal.component.js";
 export { JLSkillsComponent } from "./jl-skills/jl-skills.component.js";
+export { JLSourceCodeComponent } from "./jl-source-code/jl-source-code.component.js";
 export { JLTimelineComponent } from "./jl-timeline/jl-timeline.component.js";
