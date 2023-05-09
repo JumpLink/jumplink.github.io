@@ -4,7 +4,6 @@ import { Bs5ModalComponent } from "../bs5-modal/bs5-modal.component.js"
 
 import iconClose from "../../../assets/icons/close.svg?url";
 import iconPrint from "../../../assets/icons/print.svg?url";
-import { set } from "yaml/dist/schema/yaml-1.1/set.js";
 
 export class JLPrintModalComponent extends Component {
   public static tagName = "jl-print-modal";

@@ -1,7 +1,8 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 
-import * as aboutMe from "../../../content/about-me-de.md";
+import * as aboutMeDE from "../../../content/about-me-de.md";
+// import * as aboutMeEN from "../../../content/about-me-en.md";
 
 export class JLAboutComponent extends Component {
   public static tagName = "jl-about";
@@ -13,8 +14,8 @@ export class JLAboutComponent extends Component {
   }
 
   public scope = {
-    html: aboutMe.html,
-    ...aboutMe.attributes,
+    html: aboutMeDE.html,
+    ...aboutMeDE.attributes,
   };
 
   protected connectedCallback() {

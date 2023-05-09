@@ -10,7 +10,9 @@ import iconCode from "../../../assets/icons/code.svg?url";
 
 import educations from "../../../content/educations.yml";
 import projects from "../../../content/projects.yml";
-import * as experience from "../../../content/experience-de.md";
+import * as experienceDe from "../../../content/experience-de.md";
+
+import type { Project, Education } from "../../types/index.js";
 
 export class JLProfileComponent extends Component {
   public static tagName = "jl-profile";
@@ -27,13 +29,35 @@ export class JLProfileComponent extends Component {
     iconLight,
     iconUser,
     iconCode,
-    educations,
-    projects,
+    educations: this.educations,
+    projects: this.projects,
     experience: {
-      html: experience.html,
-      ...experience.attributes,
+      html: experienceDe.html,
+      ...experienceDe.attributes,
     },
   };
+
+  get projects() {
+    const lang = "de"
+    const _projects: Project[] = [];
+    for (const project of projects) {
+      if (project[lang]) {
+        _projects.push({...project, ...project[lang]});
+      }
+    }
+    return _projects
+  }
+
+  get educations() {
+    const lang = "de"
+    const _educations: Education[] = [];
+    for (const education of educations) {
+      if (education[lang]) {
+        _educations.push({...education, ...education[lang]});
+      }
+    }
+    return _educations
+  }
 
   protected connectedCallback() {
     super.connectedCallback();
