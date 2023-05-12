@@ -1,5 +1,6 @@
 import { Component } from "@ribajs/core";
-import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
+import { hasChildNodesTrim } from "@ribajs/utils";
+import { I18nService, LocalesService } from "@ribajs/i18n";
 
 import type { Skills } from "../../types/index.js";
 
@@ -10,22 +11,46 @@ export class JLSkillsComponent extends Component {
 
   protected autobind = true;
 
+  protected localesService?: LocalesService;
+
   static get observedAttributes(): string[] {
     return [];
   }
 
   public scope = {
-    skills: skills as Skills,
+    skills: this.skills,
   };
+
+  get skills(): Skills {
+    const lang = (this.localesService?.getLangcode() || "en") as "en" | "de";
+    const _skills: Skills = {...skills, ...skills[lang]};
+    return _skills
+  }
 
   protected connectedCallback() {
     super.connectedCallback();
     this.init(JLSkillsComponent.observedAttributes);
-    console.debug("connectedCallback", this.scope);
   }
 
-  protected async afterBind() {
-    await super.afterBind();
+  protected async beforeBind() {
+    await super.beforeBind();
+    this.initLanguage();
+  }
+
+  protected initLanguage() {
+    this.localesService = I18nService.options.localesService;
+    this.localesService?.event.on(
+      "changed",
+      this.onLanguageChange,
+      this
+    );
+    if (this.localesService.ready) {
+      this.onLanguageChange()
+    }
+  }
+
+  protected onLanguageChange() {
+    this.scope.skills = this.skills;
   }
 
   protected requiredAttributes(): string[] {

@@ -1,10 +1,8 @@
+import type { ProjectItem } from './index.js';
+
 export interface Project {
-    name: string;
-    desc: string;
-    start: number
-    end: number | 'present' | 'today';
-    tags: string[];
-    links: string[];
-    de: Partial<Project>;
-    en: Partial<Project>;
+    list: ProjectItem[];
+    title: string;
+    de?: Partial<Project>;
+    en?: Partial<Project>;
 }

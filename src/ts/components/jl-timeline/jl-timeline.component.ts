@@ -31,7 +31,6 @@ export class JLTimelineComponent extends Component {
   protected connectedCallback() {
     super.connectedCallback();
     this.init(JLTimelineComponent.observedAttributes);
-    console.debug("connectedCallback", this.scope);
   }
 
   protected async afterBind() {

@@ -44,7 +44,6 @@ export class JLPrintModalComponent extends Component {
   protected connectedCallback() {
     super.connectedCallback();
     this.init(JLPrintModalComponent.observedAttributes);
-    console.debug("connectedCallback", this.scope);
   }
 
   protected afterBind(): Promise<any> {

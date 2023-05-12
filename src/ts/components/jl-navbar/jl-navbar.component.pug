@@ -11,12 +11,15 @@ nav#top-navbar.navbar.navbar-top.bg-dark.bg-print-light.text-light.text-print-da
               bs5-icon(rv-co-src='$parent.iconClose' size='24' rv-show='isActive' rv-on-click='toggle')
         // Right part of navbar
         .d-flex.flex-row.align-items-center
+          i18n-switcher
+            button.btn.btn-link.link-light.py-0.px-2.d-flex.flex-row.align-items-center.font-pixel-8x2(type='button' rv-on-click="toggle")
+              span(rv-each-langcode="langcodes" rv-show="langcode.active") { langcode.code }
           button.btn.btn-link.link-light.py-0.px-2.d-flex.flex-row.align-items-center(type='button' rv-on-click='print')
             bs5-icon.mx-2(rv-co-src='iconPrint' size='24')
           bs5-theme-button.mx-2(mode='icon' icon-size="24" rv-co-light-icon-src='iconSun' rv-co-dark-icon-src='iconMoon')
     .row.mt-2
       .col-12.d-flex.align-items-center.justify-content-center 
         h1.font-pixel-8x4.text-center
-          span Pascal Garber
+          span(rv-i18n-text="'profile.name'")
           br
-          span.font-pixel-8x2.fst-normal Software-Entwickler
+          span.font-pixel-8x2.fst-normal(rv-i18n-text="'profile.job'")

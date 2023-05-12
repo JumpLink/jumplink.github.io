@@ -1,6 +1,6 @@
 section.row
   .col-12
-    h2.font-pixel-8x2 Skills
+    h2.font-pixel-8x2 { skills.title }
     hr.border-2.opacity-100
   .col-12(rv-each-skill="skills.list")
     small.row.gx-2.text-end
@@ -12,7 +12,7 @@ section.row
           .progress-bar(role="progressbar", aria-valuenow="skill.score", aria-valuemin="0", aria-valuemax="100", rv-style-width="skill.score | append '%'")
   .col-12
     small.row.gx-2
-      span.col-4.text-end Weitere
+      span.col-4.text-end(rv-i18n-text="'moreSkills'") More
       .col-8.text-start
         span(rv-each-skill="skills.other")
           span { skill }

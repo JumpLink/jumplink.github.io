@@ -1,32 +1,37 @@
-- start: 2006
-  end: 2009
-  de:
-    name: Gymnasium mit schwerpunkt Technik
-    school: BBS Cuxhaven
-    location: Cuxhaven
-  en:
-    name: Gymnasium (grammar school) with focus on technology
-    school: BBS Cuxhaven
-    location: Cuxhaven
+de:
+  title: Ausbildung
+en:
+  title: Education
+list:
+  - start: 2006
+    end: 2009
+    de:
+      name: Gymnasium mit schwerpunkt Technik
+      school: BBS Cuxhaven
+      location: Cuxhaven
+    en:
+      name: Gymnasium (grammar school) with focus on technology
+      school: BBS Cuxhaven
+      location: Cuxhaven
 
-- start: 2009 
-  end: 2012
-  de:
-    name: Studium Medieninformatik
-    school: Fachhochschule Wedel
-    location: Wedel
-  en:
-    name: Studying Media Informatics
-    school: University of Applied Sciences Wedel
-    location: Wedel
+  - start: 2009 
+    end: 2012
+    de:
+      name: Studium Medieninformatik
+      school: Fachhochschule Wedel
+      location: Wedel
+    en:
+      name: Studying Media Informatics
+      school: University of Applied Sciences Wedel
+      location: Wedel
 
-- start: 2012
-  end: 2015
-  de:
-    name: Online-Studium Medieninformatik
-    school: Hochschule Emden/Leer
-    location: Emden
-  en:
-    name: Online degree program Media Informatics
-    school: University of Applied Sciences Emden/Leer
-    location: Emden
+  - start: 2012
+    end: 2015
+    de:
+      name: Online-Studium Medieninformatik
+      school: Hochschule Emden/Leer
+      location: Emden
+    en:
+      name: Online degree program Media Informatics
+      school: University of Applied Sciences Emden/Leer
+      location: Emden

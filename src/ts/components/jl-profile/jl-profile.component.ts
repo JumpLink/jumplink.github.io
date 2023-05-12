@@ -1,5 +1,6 @@
 import { Component } from "@ribajs/core";
-import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
+import { hasChildNodesTrim } from "@ribajs/utils";
+import { I18nService, LocalesService } from "@ribajs/i18n";
 
 // Pixelarticons
 import iconBookOpen from "../../../assets/icons/book-open.svg?url";
@@ -8,16 +9,22 @@ import iconLight from "../../../assets/icons/light.svg?url";
 import iconUser from "../../../assets/icons/user.svg?url";
 import iconCode from "../../../assets/icons/code.svg?url";
 
-import educations from "../../../content/educations.yml";
-import projects from "../../../content/projects.yml";
-import * as experienceDe from "../../../content/experience-de.md";
+import _educations from "../../../content/educations.yml";
+import _projects from "../../../content/projects.yml";
+import * as experienceDE from "../../../content/experience-de.md";
+import * as experienceEN from "../../../content/experience-en.md";
 
 import type { Project, Education } from "../../types/index.js";
+
+const projects = _projects as Project;
+const educations = _educations as Education;
 
 export class JLProfileComponent extends Component {
   public static tagName = "jl-profile";
 
   protected autobind = true;
+
+  protected localesService?: LocalesService;
 
   static get observedAttributes(): string[] {
     return [];
@@ -29,40 +36,85 @@ export class JLProfileComponent extends Component {
     iconLight,
     iconUser,
     iconCode,
-    educations: this.educations,
-    projects: this.projects,
-    experience: {
-      html: experienceDe.html,
-      ...experienceDe.attributes,
-    },
+    education: this.education,
+    project: this.project,
+    experience: this.experience,
   };
 
-  get projects() {
-    const lang = "de"
-    const _projects: Project[] = [];
-    for (const project of projects) {
-      if (project[lang]) {
-        _projects.push({...project, ...project[lang]});
-      }
+  get project() {
+    const lang = (this.localesService?.getLangcode() || "en") as "en" | "de";
+    const result: Project = {
+      list: [],
+      title: projects[lang]?.title || projects.title || "",
     }
-    return _projects
+
+    for (let item of projects.list) {
+      if (item[lang]) {
+        item = {...item, ...item[lang]};
+      }
+      result.list.push(item);
+    }
+    return result
   }
 
-  get educations() {
-    const lang = "de"
-    const _educations: Education[] = [];
-    for (const education of educations) {
-      if (education[lang]) {
-        _educations.push({...education, ...education[lang]});
-      }
+  get education() {
+    const lang = (this.localesService?.getLangcode() || "en") as "en" | "de";
+    const result: Education = {
+      list: [],
+      title: educations[lang]?.title || educations.title || "",
     }
-    return _educations
+
+    for (let item of educations.list) {
+      if (item[lang]) {
+        item = {...item, ...item[lang]};
+      }
+      result.list.push(item);
+    }
+    return result
+  }
+
+  get experience() {
+    const lang = this.localesService?.getLangcode() || "en"
+    if (lang === "de") {
+      return {
+        html: experienceDE.html,
+        ...experienceDE.attributes,
+      };
+    }
+    if (lang === "en") {
+      return {
+        html: experienceEN.html,
+        ...experienceEN.attributes,
+      };
+    }
   }
 
   protected connectedCallback() {
     super.connectedCallback();
     this.init(JLProfileComponent.observedAttributes);
-    console.debug("connectedCallback", this.scope);
+  }
+
+  protected async beforeBind() {
+    await super.beforeBind();
+    this.initLanguage();
+  }
+
+  protected initLanguage() {
+    this.localesService = I18nService.options.localesService;
+    this.localesService?.event.on(
+      "changed",
+      this.onLanguageChange,
+      this
+    );
+    if (this.localesService.ready) {
+      this.onLanguageChange()
+    }
+  }
+
+  protected onLanguageChange() {
+    this.scope.project = this.project;
+    this.scope.education = this.education;
+    this.scope.experience = this.experience;
   }
 
   protected requiredAttributes(): string[] {

@@ -47,10 +47,10 @@ jl-navbar.fixed-top.position-print-static.border-bottom.border-2.border-light
 
       // Projects
       section.col-12.mb-4
-        jl-timeline.px-4(rv-co-items="projects", rv-parent)
+        jl-timeline.px-4(rv-co-items="project.list", rv-parent)
           ul.timeline
             li.timeline-title.mb-4
-              h2.font-pixel-12x2 Projekterfahrung
+              h2.font-pixel-12x2 { $parent.project.title }
               .timeline-icon
                 bs5-icon(rv-co-src="$parent.iconCode" size="24")
             li.timeline-item.mb-4(rv-each-item="items")
@@ -61,10 +61,10 @@ jl-navbar.fixed-top.position-print-static.border-bottom.border-2.border-light
 
       // Education
       section.col-12.mb-4
-        jl-timeline.px-4(rv-co-items="educations", rv-parent)
+        jl-timeline.px-4(rv-co-items="education.list", rv-parent)
           ul.timeline
             li.timeline-title.mb-4
-              h2.font-pixel-12x2 Ausbildung
+              h2.font-pixel-12x2 { $parent.education.title }
               .timeline-icon
                 bs5-icon(rv-co-src="$parent.iconBookOpen" size="24")
             li.timeline-item.mb-4(rv-each-item="items")

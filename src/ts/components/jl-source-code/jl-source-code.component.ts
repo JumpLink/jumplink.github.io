@@ -1,5 +1,6 @@
 import { Component } from "@ribajs/core";
-import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
+import { hasChildNodesTrim } from "@ribajs/utils";
+import { I18nService, LocalesService } from "@ribajs/i18n";
 
 import type { SourceCode } from '../../types/index.js'
 
@@ -10,16 +11,18 @@ export class JLSourceCodeComponent extends Component {
 
   protected autobind = true;
 
+  protected localesService?: LocalesService;
+
   static get observedAttributes(): string[] {
     return [];
   }
 
   public scope = {
-    ...this.sourceCode,
+    sourceCode: this.sourceCode,
   };
 
   get sourceCode(): SourceCode {
-    const lang = "de"
+    const lang = (this.localesService?.getLangcode() || "en") as "en" | "de";
     const _sourceCode: SourceCode = {...sourceCode, ...sourceCode[lang]};
     return _sourceCode
   }
@@ -27,11 +30,32 @@ export class JLSourceCodeComponent extends Component {
   protected connectedCallback() {
     super.connectedCallback();
     this.init(JLSourceCodeComponent.observedAttributes);
-    console.debug("connectedCallback", this.scope);
   }
 
   protected requiredAttributes(): string[] {
     return [];
+  }
+
+  protected async beforeBind() {
+    await super.beforeBind();
+    this.initLanguage();
+  }
+
+  protected initLanguage() {
+    this.localesService = I18nService.options.localesService;
+    this.localesService?.event.on(
+      "changed",
+      this.onLanguageChange,
+      this
+    );
+    const langcode = this.localesService?.getLangcode();
+    if (this.localesService.ready && langcode) {
+      this.onLanguageChange(langcode)
+    }
+  }
+
+  protected onLanguageChange(langcode: string) {
+    this.scope.sourceCode = this.sourceCode;
   }
 
   protected async template() {

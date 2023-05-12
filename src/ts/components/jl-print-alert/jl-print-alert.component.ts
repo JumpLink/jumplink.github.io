@@ -23,7 +23,6 @@ export class JLPrintAlertComponent extends Component {
   protected connectedCallback() {
     super.connectedCallback();
     this.init(JLPrintAlertComponent.observedAttributes);
-    console.debug("connectedCallback", this.scope);
   }
 
   protected requiredAttributes(): string[] {

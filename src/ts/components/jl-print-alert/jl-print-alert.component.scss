@@ -8,6 +8,10 @@ jl-print-alert {
     display: none;
   }
 
+  a {
+    color: var(--bs-light) !important;
+  }
+
   &:hover {
     .d-none-hover {
       display: none;
@@ -37,6 +41,9 @@ jl-print-alert {
     }
     .d-block-hover {
       display: block;
+    }
+    a {
+      color: var(--bs-dark) !important;
     }
   }
 }

@@ -1,0 +1,30 @@
+de:
+  print: Drucken
+  close: Schließen
+  start: Starten
+  contact: Kontakt
+  mobile: Mobil
+  mastodon: Mastodon
+  email: E-Mail
+  github: GitHub
+  printAlert: Bitte drucken Sie meinen digitalen Lebenslauf möglichst <strong>nicht</strong> aus. Stattdessen empfehle ich, die Online-Version unter <a href="https://https://jumplink.github.io/">jumplink.github.io</a> zu nutzen oder diesen nur als PDF zu speichern. So tragen Sie zum Umweltschutz bei. Vielen Dank!
+  printAlertPrinted: Sie haben gerade die Druckversion meines digitalen Lebenslaufs vor sich. Bitte drucken Sie diesen möglichst <strong>nicht</strong> aus. Stattdessen empfehle ich, die Online-Version unter <a href="https://https://jumplink.github.io/">jumplink.github.io</a> zu nutzen. So tragen Sie zum Umweltschutz bei. Vielen Dank!</small>
+  profile:
+    job: Full-Stack Software Entwickler
+    name: Pascal Garber
+  moreSkills: Weitere
+en:
+  print: Print
+  close: Close
+  start: Start
+  contact: Contact
+  mobile: Mobile
+  mastodon: Mastodon
+  email: Email
+  github: GitHub
+  printAlert: Please do not print my digital resume. Instead I recommend to use the online version at <a href="https://https://jumplink.github.io/">jumplink.github.io</a> or save this as PDF. This way you help to protect the environment. Thank you!
+  printAlertPrinted: You are currently viewing the print version of my digital resume. Please do not print this. Instead I recommend to use the online version at <a href="https://https://jumplink.github.io/">jumplink.github.io</a>. This way you help to protect the environment. Thank you!</small>
+  profile:
+    job: Full-Stack Software Developer
+    name: Pascal Garber
+  moreSkills: More

@@ -1,9 +1,8 @@
+import type { EducationItem } from './index.js';
+
 export interface Education {
-    name: string;
-    school: string;
-    location: string;
-    start: number
-    end: number | 'present' | 'today';
-    de: Partial<Education>;
-    en: Partial<Education>;
+    list: EducationItem[];
+    title: string;
+    de?: Partial<Education>;
+    en?: Partial<Education>;
 }
