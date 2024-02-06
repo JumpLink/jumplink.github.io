@@ -17,7 +17,7 @@ jl-timeline {
 
       .timeline-icon {
         background-color: var(--bs-dark);
-        color: var(--bs-gray-200);
+        color: var(--bs-gray-100);
         position: absolute;
         left: -50px;
         top: 0px;
@@ -27,6 +27,7 @@ jl-timeline {
         display: flex;
         align-items: center;
         justify-content: center;
+        border: solid 2px var(--bs-dark);
       }
 
     }
@@ -42,6 +43,7 @@ jl-timeline {
         height: 11px;
         width: 11px;
         content: "";
+        border: solid 2px var(--bs-dark);
       }
     }
     
@@ -63,14 +65,16 @@ jl-timeline {
       .timeline-title {
         --bs-border-color: var(--bs-light);
         .timeline-icon {
-          background-color: var(--bs-gray-200);
+          background-color: var(--bs-gray-100);
           color: var(--bs-dark);
+          border-color: var(--bs-gray-100);
         }
       }
       .timeline-item {
         &:before {
-          background-color: var(--bs-gray-200);
+          background-color: var(--bs-gray-100);
           color: var(--bs-dark);
+          border-color: var(--bs-gray-100);
         }
       }
     }
@@ -88,12 +92,14 @@ jl-timeline {
           .timeline-icon {
             background-color: var(--bs-light) !important;
             color: var(--bs-dark) !important;
+            border-color: var(--bs-dark) !important;
           }
         }
         .timeline-item {
           &:before {
             background-color: var(--bs-dark) !important;
             color: var(--bs-dark) !important;
+            border-color: var(--bs-dark) !important;
           }
         }
       }

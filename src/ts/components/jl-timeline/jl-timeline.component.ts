@@ -16,6 +16,7 @@ export class JLTimelineComponent extends Component {
     items: [] as TimelineItem[],
     title: '',
     getTimeRange: this.getTimeRange,
+    urlToName: this.urlToName,
   };
 
   public getTimeRange(start: number | string, end?: number | string) {
@@ -26,6 +27,11 @@ export class JLTimelineComponent extends Component {
       return start.toString();
     }
     return `${start} - ${end}`;
+  }
+
+  public urlToName(src: string) {
+    const url = new URL(src, window.location.origin);
+    return `${url.hostname}${url.pathname !== '/' ? url.pathname : ''}` ;
   }
 
   protected connectedCallback() {

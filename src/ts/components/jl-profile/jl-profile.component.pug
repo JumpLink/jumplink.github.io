@@ -58,6 +58,9 @@ jl-navbar.fixed-top.position-print-static.border-bottom.border-2.border-light
                 h3.font-pixel-8x2 { item.name }
                 p.font-pixel-8x2.mb-2.text-end.text-nowrap { getTimeRange | call item.start item.end }
               p { item.desc }
+              ul.list-inline(rv-show="item.links | size")
+                li.list-inline-item(rv-each-link="item.links")
+                  a(rv-href="link", target="_blank", rel="noopener noreferrer", rv-text="urlToName | call link")
 
       // Education
       section.col-12.mb-4
