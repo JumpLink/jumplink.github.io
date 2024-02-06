@@ -69,6 +69,7 @@ list:
     start: 2018
     links:
       - https://myfassbender.com/
+      - https://github.com/ArtCodeStudio/fassbender-shopify-theme
     tags:
       - E-Commerce
       - Shopify
@@ -135,8 +136,7 @@ list:
 
   - name: ParcelLab
     links:
-      - https://apps.shopify.com/parcellab
-      - https://www.parcellab.com/
+      - https://github.com/ArtCodeStudio/parcel-lab-shopify-app
     start: 2021
     tags:
       - E-Commerce
@@ -282,6 +282,7 @@ list:
     start: 2021
     links:
       - https://markusmorische.de/
+      - https://github.com/ArtCodeStudio/markus-morische-rechtsanwalt-website
     tags:
       - Deno
       - TypeScript
@@ -352,6 +353,7 @@ list:
     start: 2018
     links:
       - https://watt-land-fluss.de/
+      - https://github.com/ArtCodeStudio/wattlandfluss-october-theme
     de:
       desc: In diesem einzigartigen Projekt wurde eine maßgeschneiderte Webseite nach Kundenwunsch mit OctoberCMS entwickelt. Dabei kamen innovative Frameworks wie Bootstrap, Rivets.js und Barba.js zum Einsatz. Ein herausragendes Merkmal ist das vollständig clientseitige Event- und Buchungssystem, das auf der Google App Engine / Firebase aufbaut – einer Infrastruktur, die ursprünglich für Apps / PWAs konzipiert wurde. Die Events lagern in der Firebase Realtime Database, während die Bilder im Google Cloud Storage Platz finden. Geschäftslogik und Darstellung wurden gekonnt mittels JavaScript umgesetzt. Beim Design haben wir uns kreativ ausgetobt und mit gestrichelten Linien gespielt, die an einen gezeichneten Pfad auf einer Schatzkarte erinnern.
     en:
@@ -377,6 +379,7 @@ list:
     start: 2016
     links:
       - https://jumplink.eu/
+      - https://github.com/ArtCodeStudio/jumplink-october-theme
     tags:
       - OctoberCMS
       - Bootstrap
