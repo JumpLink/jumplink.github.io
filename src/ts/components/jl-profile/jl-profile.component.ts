@@ -48,12 +48,21 @@ export class JLProfileComponent extends Component {
       title: projects[lang]?.title || projects.title || "",
     }
 
+    // Make sure the project is available in the current language
     for (let item of projects.list) {
       if (item[lang]) {
         item = {...item, ...item[lang]};
       }
       result.list.push(item);
     }
+
+    // Sort list by end date or date
+    result.list.sort((a, b) => {
+      const dateA = new Date(a.start || a.end);
+      const dateB = new Date(b.start || b.end);
+      return dateB.getTime() - dateA.getTime();
+    });
+
     return result
   }
 
