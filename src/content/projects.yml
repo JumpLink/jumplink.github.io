@@ -3,6 +3,24 @@ de:
 en:
   title: Project Experience
 list:
+  # Journalism
+  - name: CORRECTIV
+    start: 2023
+    end: 2024
+    tags:
+      - Telegram
+      - Deno
+      - Node.js
+      - Vue.js 
+      - Vite.js
+    links:
+      - https://correctiv.org/
+      - https://github.com/beabee-communityrm
+    de:
+      desc: In einem dreimonatigen Projekt für CORRECTIV übernahm ich Optimierungen der Sicherheitsmechanismen der Beabee-Plattform und entwickelte eine Integration für Telegram. Meine Beiträge, einschließlich der Code-Dokumentation und der entwickelten Features, sind öffentlich auf GitHub einsehbar. Ich werde das Projekt vorraussichtlich weiter fortführen.
+    en:
+      desc: In a three-month project for CORRECTIV, I undertook optimizations of the security mechanisms of the Beabee platform and developed an integration for Telegram. My contributions, including code documentation and developed features, are publicly accessible on GitHub. I am expected to continue working on the project.
+
   # E-Commerce
   - name: Seeberger
     start: 2022
@@ -30,7 +48,7 @@ list:
       - Vue.js
       - Contentful
     links:
-      - https://de.paul-valentine.com/#
+      - https://de.paul-valentine.com/
     de:
       desc: Die Neuentwicklung des Paul Valentine Onlineshops erfolgte in enger Zusammenarbeit mit einer internationalen Agentur. Unsere vorausschauende Herangehensweise und der Einsatz einer Headless-Architektur mit Shopify als Backend und Nuxt & Vue.js für das Frontend sowie Contentful als Headless CMS ermöglichten eine Vielzahl individueller Shop-Funktionalitäten wie den umfangreichen Warenkorb, Mehrsprachigkeit, Währungsunterstützung, eine hohe Skalierbarkeit und weitere Features.
     en:
@@ -353,7 +371,7 @@ list:
     de:
       desc: Dieses faszinierende und eigens kreierte Theme für die Webseite einer talentierten Designerpartnerin besticht durch sein unkonventionelles, schräges und zweispaltiges Seitenlayout sowie auffällige 'Sticky'-Überschriften, die für eine moderne und dynamische Optik sorgen.
     en:
-      desc: This fascinating and specially created theme for the website of a talented designer partner impresses with its unconventional, oblique and two-column page layout as well as striking 'sticky' headings, which provide a modern and dynamic look.
+      desc: This fascinating and uniquely created theme for the website of a talented designer partner stands out with its unconventional, slanted, and two-column page layout, as well as striking 'sticky' headings that ensure a modern and dynamic look.
 
   - name: JumpLink Network
     start: 2016
@@ -369,4 +387,4 @@ list:
     de:
       desc: In diesem Projekt kreierte ich eine fesselnde und benutzerfreundliche Webseite für ein Netzwerk, welche den Mitgliedern eine nahtlose Anmeldung im internen Bereich ermöglicht. Durch die Anpassung des bewährten Bootstrap-Frameworks an das ästhetisch ansprechende Material Design entstand ein ansprechendes und modernes Erscheinungsbild. Als besonderes Schmankerl ist ein innovativer Live-Chat integriert, der eine direkte Verbindung zum beliebten Messagingdienst Telegram ermöglicht und somit die Kommunikation unter den Mitgliedern in Echtzeit fördert.
     en:
-      desc: In this project I created a captivating and user-friendly website for a network, which allows members to seamlessly log in to the internal area. By adapting the proven Bootstrap framework to the aesthetically pleasing Material Design, an appealing and modern appearance was created. As a special treat, an innovative live chat is integrated, which allows a direct connection to the popular messaging service Telegram and thus promotes communication among the members in real time.
+      desc: In this project, I created a captivating and user-friendly website for a network, enabling members to seamlessly sign up for an internal area. By adapting the proven Bootstrap framework to the aesthetically pleasing Material Design, an appealing and modern appearance was achieved. As a special feature, an innovative live chat is integrated, providing a direct connection to the popular messaging service Telegram, thereby promoting real-time communication among members.

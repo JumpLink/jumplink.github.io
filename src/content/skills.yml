@@ -22,13 +22,13 @@ list:
     score: 90
 
   - name: Node.js
-    score: 80
+    score: 85
 
   - name: Deno
-    score: 80
+    score: 90
 
   - name: Git
-    score: 90
+    score: 80
 
   - name: Teamwork
     score: 90

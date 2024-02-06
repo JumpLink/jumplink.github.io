@@ -79,21 +79,21 @@ jl-timeline {
 
 // Force light theme on printing also if dark theme is selected
 @media print {
-  [data-bs-theme="dark"] {
+  [data-bs-theme="dark"], [data-bs-theme="light"] {
     jl-timeline {
       .timeline {
-        --bs-border-color: var(--bs-dark);
+        --bs-border-color: var(--bs-dark) !important;
         .timeline-title {
-          --bs-border-color: var(--bs-dark);
+          --bs-border-color: var(--bs-dark) !important;
           .timeline-icon {
-            background-color: var(--bs-dark) !important;
-            color: var(--bs-light) !important;
+            background-color: var(--bs-light) !important;
+            color: var(--bs-dark) !important;
           }
         }
         .timeline-item {
           &:before {
             background-color: var(--bs-dark) !important;
-            color: var(--bs-light) !important;
+            color: var(--bs-dark) !important;
           }
         }
       }
