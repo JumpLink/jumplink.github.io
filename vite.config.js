@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import dns from 'dns'
 import { resolve } from 'path'
-import pugPlugin from "vite-plugin-pug"
 import pugRollupPlugin from 'rollup-plugin-pug';
 import yamPlugin from '@modyfi/vite-plugin-yaml';
 import { plugin as mdPlugin } from 'vite-plugin-markdown';
@@ -30,7 +29,6 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
       }
     },
     plugins: [
-      pugPlugin({ basedir,}),
       yamPlugin(),
       mdPlugin({mode: 'html'}),
       viteStaticCopy({
