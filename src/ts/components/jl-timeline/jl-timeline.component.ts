@@ -29,9 +29,19 @@ export class JLTimelineComponent extends Component {
     return `${start} - ${end}`;
   }
 
+  /**
+   * Transform a URL to a for human better readable name,
+   * e.g. https://jumplink.github.io/ -> jumplink.github.io
+   * @param src The url source to transform to name
+   * @returns The transformed name
+   */
   public urlToName(src: string) {
     const url = new URL(src, window.location.origin);
-    return `${url.hostname}${url.pathname !== '/' ? url.pathname : ''}` ;
+    let name = `${url.hostname}${url.pathname !== '/' ? url.pathname : ''}` ;
+    if(name.endsWith('/')) {
+      name = name.substring(0, name.length - 1); 
+    }
+    return name;
   }
 
   protected connectedCallback() {
