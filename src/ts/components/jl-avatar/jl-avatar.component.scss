@@ -6,6 +6,7 @@ jl-avatar {
     width: 250px;
     --bs-border-color: var(--bs-light);
   }
+  filter: grayscale(100%);
 }
 
 .print-header {
