@@ -1,12 +1,10 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 
-import imageSrc from "../../../assets/avatar_01.jpg?url";
+import imageSrc from "../../../assets/avatar_03.jpg?url";
 
 export class JLAvatarComponent extends Component {
   public static tagName = "jl-avatar";
-
-  protected autobind = true;
 
   static get observedAttributes(): string[] {
     return [];
@@ -19,10 +17,6 @@ export class JLAvatarComponent extends Component {
   protected connectedCallback() {
     super.connectedCallback();
     this.init(JLAvatarComponent.observedAttributes);
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
   }
 
   protected requiredAttributes(): string[] {

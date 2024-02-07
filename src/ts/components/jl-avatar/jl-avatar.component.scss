@@ -4,13 +4,14 @@ jl-avatar {
   @extend .align-items-center;
   img {
     width: 250px;
+    --bs-border-color: var(--bs-light);
   }
 }
 
 .print-header {
   jl-avatar {
     img {
-      width: 150px;
+      --bs-border-color: var(--bs-dark);
     }
   }
 }
