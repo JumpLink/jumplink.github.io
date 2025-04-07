@@ -45,5 +45,5 @@
     "@ribajs/utils": "2.0.0-rc.21",
     "bootstrap": "^5.3.5"
   },
-  "packageManager": "yarn@4.5.3"
+  "packageManager": "yarn@4.8.1"
 }
