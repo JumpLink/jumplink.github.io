@@ -3,6 +3,8 @@ import { Bs5SidebarComponent } from "@ribajs/bs5";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom.js";
 import { JLProfileComponent } from "../jl-profile/jl-profile.component.js";
 import { JLPrintModalComponent } from "../jl-print-modal/jl-print-modal.component.js"
+import { I18nService, type LocalesService } from "@ribajs/i18n";
+
 
 import iconMenu from "../../../assets/icons/menu.svg?url";
 import iconClose from "../../../assets/icons/close.svg?url";
@@ -17,6 +19,7 @@ export class JLNavbarComponent extends Component {
 
   protected profile: JLProfileComponent | null = null;
   protected sidebar: Bs5SidebarComponent | null = null;
+  protected localesService?: LocalesService;
 
   static get observedAttributes(): string[] {
     return [];
@@ -53,8 +56,8 @@ export class JLNavbarComponent extends Component {
     if(this.profile) {
       this.profile.style.paddingTop = `${offset}px`;
     }
+
     if(this.sidebar) {
-      
       this.sidebar.style.top = `${offset}px`;
       this.sidebar.style.height = `calc(100vh - ${offset}px)`;
     }
@@ -68,8 +71,12 @@ export class JLNavbarComponent extends Component {
     window.removeEventListener("resize", this.setPageStyleByNavbar);
   }
 
+  protected async beforeBind() {
+    await super.beforeBind();
+    this.initLanguage();
+  }
+
   protected async afterBind() {
-    this.setPageStyleByNavbar();
     this.addEventListeners();
     await super.afterBind();
   }
@@ -79,9 +86,23 @@ export class JLNavbarComponent extends Component {
     await super.afterAllBind();
   }
 
-
   protected requiredAttributes(): string[] {
     return [];
+  }
+
+  protected initLanguage() {
+    this.localesService ||= I18nService.options.localesService;
+    this.localesService?.event.on(
+      "changed",
+      this.onLanguageChange,
+      this
+    );
+  }
+
+  protected onLanguageChange(langcode: string) {    
+    window.requestAnimationFrame(() => {
+      this.setPageStyleByNavbar();
+    });
   }
 
   protected async template() {

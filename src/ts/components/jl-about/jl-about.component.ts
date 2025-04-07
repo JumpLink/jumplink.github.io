@@ -1,6 +1,6 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils";
-import { I18nService, LocalesService } from "@ribajs/i18n";
+import { I18nService, type LocalesService } from "@ribajs/i18n";
 
 import * as aboutMeDE from "../../../content/about-me-de.md";
 import * as aboutMeEN from "../../../content/about-me-en.md";

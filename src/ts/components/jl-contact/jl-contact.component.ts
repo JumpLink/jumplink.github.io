@@ -30,10 +30,6 @@ export class JLContactComponent extends Component {
     this.init(JLContactComponent.observedAttributes);
   }
 
-  protected async afterBind() {
-    await super.afterBind();
-  }
-
   protected requiredAttributes(): string[] {
     return [];
   }
