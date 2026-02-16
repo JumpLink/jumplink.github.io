@@ -14,14 +14,16 @@
     "start": "concurrently 'yarn:watch' 'yarn:preview'",
     "hmr": "vite serve",
     "preview": "vite preview",
-    "clear": "rm -rf ./dist",
-    "test": "jest"
+    "clear": "rm -rf ./dist"
   },
   "files": [
     "src"
   ],
-  "author": "",
+  "author": "Pascal Garber",
   "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
   "devDependencies": {
     "@ribajs/tsconfig": "2.0.0-rc.23",
     "@yarnpkg/pnpify": "^4.1.6",
