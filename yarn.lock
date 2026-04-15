@@ -208,14 +208,14 @@ __metadata:
   resolution: "@jumplink/cv@workspace:."
   dependencies:
     "@modyfi/vite-plugin-yaml": "npm:^1.1.1"
-    "@ribajs/bs5": "npm:2.0.0-rc.23"
-    "@ribajs/core": "npm:2.0.0-rc.23"
-    "@ribajs/extras": "npm:2.0.0-rc.23"
-    "@ribajs/i18n": "npm:2.0.0-rc.23"
-    "@ribajs/iconset": "npm:2.0.0-rc.23"
-    "@ribajs/tsconfig": "npm:2.0.0-rc.23"
-    "@ribajs/types": "npm:2.0.0-rc.23"
-    "@ribajs/utils": "npm:2.0.0-rc.23"
+    "@ribajs/bs5": "npm:2.0.0"
+    "@ribajs/core": "npm:2.0.0"
+    "@ribajs/extras": "npm:2.0.0"
+    "@ribajs/i18n": "npm:2.0.0"
+    "@ribajs/iconset": "npm:2.0.0"
+    "@ribajs/tsconfig": "npm:2.0.0"
+    "@ribajs/types": "npm:2.0.0"
+    "@ribajs/utils": "npm:2.0.0"
     "@yarnpkg/pnpify": "npm:^4.1.6"
     bootstrap: "npm:^5.3.8"
     concurrently: "npm:^9.2.1"
@@ -447,135 +447,136 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ribajs/bs5@npm:2.0.0-rc.23, @ribajs/bs5@npm:^2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/bs5@npm:2.0.0-rc.23"
+"@ribajs/bs5@npm:2.0.0, @ribajs/bs5@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/bs5@npm:2.0.0"
   dependencies:
     "@popperjs/core": "npm:^2.11.8"
-    "@ribajs/cache": "npm:^2.0.0-rc.23"
-    "@ribajs/core": "npm:^2.0.0-rc.23"
-    "@ribajs/events": "npm:^2.0.0-rc.23"
-    "@ribajs/extras": "npm:^2.0.0-rc.23"
-    "@ribajs/jsx": "npm:^2.0.0-rc.23"
-    "@ribajs/utils": "npm:^2.0.0-rc.23"
+    "@ribajs/cache": "npm:^2.0.0"
+    "@ribajs/core": "npm:^2.0.0"
+    "@ribajs/events": "npm:^2.0.0"
+    "@ribajs/extras": "npm:^2.0.0"
+    "@ribajs/iconset": "npm:^2.0.0"
+    "@ribajs/jsx": "npm:^2.0.0"
+    "@ribajs/utils": "npm:^2.0.0"
     "@sphinxxxx/color-conversion": "npm:^2.2.2"
     "@types/bootstrap": "npm:^5.2.10"
-    bootstrap: "npm:^5.3.6"
-  checksum: 10/df0dc3ad8e162b23e410db59a88bf20094b04670cd51be3dd533ebdeb7871dee8edf86c24afeb6e78b2ecc880904f43fec99b75830e3fc1873c1e72e31b8c852
+    bootstrap: "npm:^5.3.8"
+  checksum: 10/20cf2b2efb3bdad81c342e9d45ef2c0fd7c33bc79dfb6eb0ed4ac25be38a965280e33f35f9034a0b8245c23937795339da81444813ca44c7e757e9c6087f21bc
   languageName: node
   linkType: hard
 
-"@ribajs/cache@npm:^2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/cache@npm:2.0.0-rc.23"
+"@ribajs/cache@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/cache@npm:2.0.0"
   dependencies:
     idb-keyval: "npm:^6.2.2"
-    keshi: "npm:^2.0.7"
-  checksum: 10/12cc6d2dba90795a4b779b0ca31d046cd1d0b2b1d2f5b3c00035a29c99718892de70ddaced688cbff6ebbcc7679b05c281d13307f69640170268e1398cb1c171
+    keshi: "npm:^3.0.2"
+  checksum: 10/f49fd0a0750f7c7952b88f63d9d75d6a224472aef3c99fbb8569b1e12b06c4c13a0cf19efcb649525e76d62ec566f6f593dae21cfba8f1801a9919596b56b5bc
   languageName: node
   linkType: hard
 
-"@ribajs/core@npm:2.0.0-rc.23, @ribajs/core@npm:^2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/core@npm:2.0.0-rc.23"
+"@ribajs/core@npm:2.0.0, @ribajs/core@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/core@npm:2.0.0"
   dependencies:
-    "@ribajs/events": "npm:^2.0.0-rc.23"
-    "@ribajs/history": "npm:^2.0.0-rc.23"
-    "@ribajs/jsx": "npm:^2.0.0-rc.23"
-    "@ribajs/ssr": "npm:^2.0.0-rc.23"
-    "@ribajs/utils": "npm:^2.0.0-rc.23"
-  checksum: 10/5fa607adce0e0b6929fc3472dd92255f5a4b3a7f792f166fa3e3328e1814b67984ad2ce7256f7e98f5b1321007604f44fbf7554ce0c0d0036ebdfee4dc3df49f
+    "@ribajs/events": "npm:^2.0.0"
+    "@ribajs/history": "npm:^2.0.0"
+    "@ribajs/jsx": "npm:^2.0.0"
+    "@ribajs/ssr": "npm:^2.0.0"
+    "@ribajs/utils": "npm:^2.0.0"
+  checksum: 10/d000487fd47ccdfc15a78c1cd73034cd3562755d8ad5f3f802fbf710ccefa5b24536a0e885456dc0b170b3ef1a74d88791de8aa2f809e4719d255de4b91f839f
   languageName: node
   linkType: hard
 
-"@ribajs/events@npm:^2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/events@npm:2.0.0-rc.23"
-  checksum: 10/9ed2373f04bd18bb036b7a5ac96a50799f3068742129baf750fc5812a16360290fcdd6abb3bedc7845db2d210d2c89e8b87de15f7b09350801cd521248ea4b09
+"@ribajs/events@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/events@npm:2.0.0"
+  checksum: 10/cf5b88d6ea2cfc338192472bfbefdde84e4eba2996ea044b0dec26b66cda8b153474f7492d0bc5cc45d9d6d8b2542980e4caa9edab49facb78b1e059c796cd7f
   languageName: node
   linkType: hard
 
-"@ribajs/extras@npm:2.0.0-rc.23, @ribajs/extras@npm:^2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/extras@npm:2.0.0-rc.23"
+"@ribajs/extras@npm:2.0.0, @ribajs/extras@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/extras@npm:2.0.0"
   dependencies:
-    "@ribajs/core": "npm:^2.0.0-rc.23"
-    "@ribajs/events": "npm:^2.0.0-rc.23"
-    "@ribajs/utils": "npm:^2.0.0-rc.23"
+    "@ribajs/core": "npm:^2.0.0"
+    "@ribajs/events": "npm:^2.0.0"
+    "@ribajs/utils": "npm:^2.0.0"
     ev-emitter: "npm:^2.1.2"
-  checksum: 10/c95431d4ea980c8cf534c215afbb583228693ed1cc8068bf34422467987e031d087d1982774471c32b766099a2b02d2d7ead3e7c574d23e32dd0e07121b42be0
+  checksum: 10/e5d778a4048f6bf22e93d5815ddde963e554dd72c4dd9e0f92d4f4a395a365be03ed7b801453d3ef59e06d97c9257bf10ace60c5ba8af4da46b390b3d5888262
   languageName: node
   linkType: hard
 
-"@ribajs/history@npm:^2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/history@npm:2.0.0-rc.23"
-  checksum: 10/e804ebc332c56a94031d4d518d5b99a798cbfa5b15061fa7a17bc6f5546fe5f3690835e20730df591c2f89fa94d6b4973c597c7fa19b96116fb82f506e8af079
+"@ribajs/history@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/history@npm:2.0.0"
+  checksum: 10/a34205435511108c1e8e9fdece43477a84dc4e76ba57fd98ee7ed4976104ffcb45216d03c7b3ba4e9178bf24fca85f6288ba7d52000c949e36ffcc55ce0f2693
   languageName: node
   linkType: hard
 
-"@ribajs/i18n@npm:2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/i18n@npm:2.0.0-rc.23"
+"@ribajs/i18n@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/i18n@npm:2.0.0"
   dependencies:
-    "@ribajs/bs5": "npm:^2.0.0-rc.23"
-    "@ribajs/core": "npm:^2.0.0-rc.23"
-    "@ribajs/events": "npm:^2.0.0-rc.23"
-    "@ribajs/utils": "npm:^2.0.0-rc.23"
-  checksum: 10/a8805363cddedc5c296a0938613bafdbbe448594897d8a3939787660887de84ec3d085ca812afabad022e02a0c94568380cad0bbdcb212446963f6d43b610c61
+    "@ribajs/bs5": "npm:^2.0.0"
+    "@ribajs/core": "npm:^2.0.0"
+    "@ribajs/events": "npm:^2.0.0"
+    "@ribajs/utils": "npm:^2.0.0"
+  checksum: 10/f6173e3d4e540b6abc4d2d40f9c25dabcf5f3edb3c1cba087e27953e357478bedded96739edcbe39625311926da10d2e818dd0895dc6e65aa0c51e634879615f
   languageName: node
   linkType: hard
 
-"@ribajs/iconset@npm:2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/iconset@npm:2.0.0-rc.23"
-  checksum: 10/38c99b9faefa6c9e8f61f36b7c5ca4b617314fb609982d6dc3231c408430392a3fe1b6c28b0dc1d934edf1d00aa52e4f7a74394b718cda6db188042276c3becc
+"@ribajs/iconset@npm:2.0.0, @ribajs/iconset@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/iconset@npm:2.0.0"
+  checksum: 10/48f1c1061095221b263002b1e160658b0893977a4da7ffe345929f0eaea7141fd5e2f00620d93b41375c6eee1aac816690c10ae9b17990b50052baf964b2afba
   languageName: node
   linkType: hard
 
-"@ribajs/jsx@npm:^2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/jsx@npm:2.0.0-rc.23"
+"@ribajs/jsx@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/jsx@npm:2.0.0"
   dependencies:
-    "@ribajs/core": "npm:^2.0.0-rc.23"
-    "@ribajs/utils": "npm:^2.0.0-rc.23"
-  checksum: 10/50fc65cb3f335bd3123bc7a255013ab011f9ba21a006d3ca8ea6c4b2522610a805861b50907b8fd04970b90625d6bf0217519fb20cb9b581c8bb87f20cfd4e23
+    "@ribajs/core": "npm:^2.0.0"
+    "@ribajs/utils": "npm:^2.0.0"
+  checksum: 10/2eca9c701e08370aa1fed516df36c7859da1db7189e9382164577b93fcf54a0740ab337499435bc05680bdd77ac49f3a02dc462470d66c4f0afd0ee70dea492d
   languageName: node
   linkType: hard
 
-"@ribajs/ssr@npm:^2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/ssr@npm:2.0.0-rc.23"
+"@ribajs/ssr@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/ssr@npm:2.0.0"
   dependencies:
-    "@ribajs/core": "npm:^2.0.0-rc.23"
-    "@ribajs/events": "npm:^2.0.0-rc.23"
-    "@ribajs/jsx": "npm:^2.0.0-rc.23"
-    "@ribajs/utils": "npm:^2.0.0-rc.23"
-    "@types/express": "npm:^5.0.3"
-  checksum: 10/9bfd60e9592e3af5c4584406f71547daae60194a5edeae7c7f6de231fcb0cca246959d00b9a38e205778ec66e849b71e9482c99293099dae8c9af03d3b41317e
+    "@ribajs/core": "npm:^2.0.0"
+    "@ribajs/events": "npm:^2.0.0"
+    "@ribajs/jsx": "npm:^2.0.0"
+    "@ribajs/utils": "npm:^2.0.0"
+    "@types/express": "npm:^5.0.6"
+  checksum: 10/a0d34f37f4face66d47aea2e9b90135239f8d7fdd08154cf1e8a62ced78b08886a326a333c1b9432b6c04300fd62df62b8b89302921822dc4db373ddeb59130a
   languageName: node
   linkType: hard
 
-"@ribajs/tsconfig@npm:2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/tsconfig@npm:2.0.0-rc.23"
-  checksum: 10/c88c3e899c699d6d32e6e1508742b4d6749bfe4f90252c1c052f1a83ad67954b2daa773016683c875395251ff2fbd2587f44e969aacc65d6d79064433e413a2a
+"@ribajs/tsconfig@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/tsconfig@npm:2.0.0"
+  checksum: 10/60abbb74a95f7ad2d241183e11dbc80e83cab8744ad657cb9dfd23f8abfa6c854f7496cf4503b249ef6e8b3682b1f7159b216899803af51bcb928595869fa7ca
   languageName: node
   linkType: hard
 
-"@ribajs/types@npm:2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/types@npm:2.0.0-rc.23"
+"@ribajs/types@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/types@npm:2.0.0"
   dependencies:
     "@types/resize-observer-browser": "npm:^0.1.11"
-  checksum: 10/7ca969e32d326466c2aa42177c3019f11bef4c6c460b05f17e8a05058bfe0d99d7b41e56da3091ab1dfca9e7e07671bff18ca58373d56570d5a937bbd4da1eb6
+  checksum: 10/e557d8e50ec73a78079a103e71f4be84f8cb215213ad1917d874298aa9485abaf14b5262820e1cf47cdfca2bdddb919f407c7e862b85e1045c4e1e9d1304e6f6
   languageName: node
   linkType: hard
 
-"@ribajs/utils@npm:2.0.0-rc.23, @ribajs/utils@npm:^2.0.0-rc.23":
-  version: 2.0.0-rc.23
-  resolution: "@ribajs/utils@npm:2.0.0-rc.23"
-  checksum: 10/9ea2654e9b6d77b7927d85adbdea65a9a18c932bc948e3f6198b2351432abac03baf5edb8f0dbec1fa37f1d4b1e0ab7fb15cc9b3040b610f9761afe66f63b1ad
+"@ribajs/utils@npm:2.0.0, @ribajs/utils@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@ribajs/utils@npm:2.0.0"
+  checksum: 10/92ec4210b30a7d502f6a4a79f2020785f25639b17b57ce6abbe997d3ce47e6328af7d83f7af917bff8eba9fce7a8c903f88acb4e7db25142ce8da0819a1e79df
   languageName: node
   linkType: hard
 
@@ -889,7 +890,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express@npm:^5.0.3":
+"@types/express@npm:^5.0.6":
   version: 5.0.6
   resolution: "@types/express@npm:5.0.6"
   dependencies:
@@ -1325,7 +1326,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap@npm:^5.3.6, bootstrap@npm:^5.3.8":
+"bootstrap@npm:^5.3.8":
   version: 5.3.8
   resolution: "bootstrap@npm:5.3.8"
   peerDependencies:
@@ -2533,12 +2534,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"keshi@npm:^2.0.7":
-  version: 2.0.7
-  resolution: "keshi@npm:2.0.7"
+"keshi@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "keshi@npm:3.0.2"
   dependencies:
     ms: "npm:^2.1.3"
-  checksum: 10/133e8753c4e194a4cae4105f1e8b2bb6681a59d514cb9ff2f87abc548b9a253285f5f0a32ae10d04c5f101dfa2f637f810a43bf6e9a935087844fd06dfa4c8a0
+  checksum: 10/dc6defdb2e9d295db3e41bc011254068ff58f86527ed4b9a1d1842b5c14debff299265ae6d26ddef0dddc647372e3a02b936ac822e0fb5a6f21891ab398d6a74
   languageName: node
   linkType: hard
 
@@ -3626,6 +3627,13 @@ __metadata:
   dependencies:
     ansi-regex: "npm:^5.0.1"
   checksum: 10/ae3b5436d34fadeb6096367626ce987057713c566e1e7768818797e00ac5d62023d0f198c4e681eae9e20701721980b26a64a8f5b91238869592a9c6800719a2
+  languageName: node
+  linkType: hard
+
+"supports-color@npm:*":
+  version: 10.2.2
+  resolution: "supports-color@npm:10.2.2"
+  checksum: 10/bd132705fc07213a4024131fb061f0a46a48b49ecaf434bb029c0a5aa0339b969236d496d63969e3c248a90fdcac16d4f9c5bf187e7be0bfb5e804ed13bef6b0
   languageName: node
   linkType: hard
 
