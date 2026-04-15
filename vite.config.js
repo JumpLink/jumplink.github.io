@@ -54,7 +54,13 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
       yamPlugin(),
       mdPlugin({ mode: "html" }),
       viteStaticCopy({
-        targets: [{ src: "assets/fonts/*", dest: "../_site/assets/fonts" }],
+        targets: [
+          {
+            src: "assets/fonts/*",
+            dest: "assets/fonts",
+            rename: { stripBase: true },
+          },
+        ],
       }),
     ],
   };
