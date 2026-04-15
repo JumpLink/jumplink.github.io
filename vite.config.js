@@ -16,6 +16,30 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
     mode,
     root: basedir,
     assetsInclude: ['**/*.svg'],
+    esbuild: {
+      jsxFactory: 'jsxCreateElement',
+      jsxFragment: 'jsxFragment',
+    },
+    oxc: {
+      jsx: {
+        runtime: 'classic',
+        pragma: 'jsxCreateElement',
+        pragmaFrag: 'jsxFragment',
+      },
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+          silenceDeprecations: [
+            'import',
+            'global-builtin',
+            'color-functions',
+            'if-function',
+          ],
+        },
+      },
+    },
     build: {
       outDir: '../_site',
       emptyOutDir: true,
