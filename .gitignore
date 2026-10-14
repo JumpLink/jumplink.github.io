@@ -134,3 +134,4 @@ vite.config.js.timestamp-*
 
 # Github Pages
 _site/
+.apps/
