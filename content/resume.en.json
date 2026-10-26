@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Pascal Garber",
+    "label": "Software developer — TypeScript, the web and GNOME",
+    "image": "assets/images/avatar.jpg",
+    "email": "pascal@artandcode.studio",
+    "url": "https://jumplink.eu/",
+    "summary": "I build software for the web and the Linux desktop, mostly in TypeScript. At CORRECTIV I work on the tools behind independent journalism; as JumpLink I take on client projects and write free software — above all [gjsify](https://gjsify.org/), which brings the Node.js and web ecosystem to GJS, and the GNOME apps I build with it.\n\nI live in Cuxhaven with my two children. Away from the keyboard: cycling, woodworking, survival, retro games and anime.",
+    "location": { "city": "Cuxhaven", "countryCode": "DE" },
+    "profiles": [
+      { "network": "GitHub", "username": "JumpLink", "url": "https://github.com/JumpLink" },
+      { "network": "Mastodon", "username": "@jumplink@floss.social", "url": "https://floss.social/@jumplink" }
+    ]
+  },
+  "work": [
+    {
+      "name": "CORRECTIV",
+      "url": "https://correctiv.org/",
+      "position": "Software developer",
+      "startDate": "2023",
+      "summary": "Software for a non-profit newsroom: hardened the security of the beabee membership platform and built its Telegram integration; work in public on GitHub.",
+      "highlights": []
+    },
+    {
+      "name": "JumpLink / Art+Code Studio",
+      "url": "https://jumplink.eu/",
+      "position": "Freelance developer",
+      "startDate": "2012",
+      "summary": "Web shops, websites and backend services for clients, from first concept to operation.",
+      "highlights": [
+        "Custom Shopify themes and apps since 2015 — inventory, shipping and accounting integrations, peak loads of thousands of orders a minute",
+        "Peek & Cloppenburg: frontend specialist for the international launch, then backend services, TypeScript and testing across teams",
+        "Headless shops and sites with Nuxt, Vue, Strapi and Contentful",
+        "Riba.js, a web framework on web components, used in production for client themes"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "gjsify",
+      "url": "https://gjsify.org/",
+      "startDate": "2020",
+      "description": "Node.js, Deno and web APIs for GJS, a bundler and CLI, and the toolchain to build, test and ship GNOME apps written in TypeScript.",
+      "highlights": [],
+      "keywords": ["TypeScript", "GJS", "GNOME", "GTK"]
+    },
+    {
+      "name": "ts-for-gir",
+      "url": "https://github.com/gjsify/ts-for-gir",
+      "startDate": "2020",
+      "description": "Generates TypeScript types from GObject Introspection data, so GTK and every other introspected library can be written with full type checking.",
+      "highlights": [],
+      "keywords": ["TypeScript", "GObject Introspection"]
+    },
+    {
+      "name": "Riba.js",
+      "url": "https://ribajs.com/",
+      "startDate": "2018",
+      "description": "A web framework that builds on web components and the DOM instead of a virtual DOM, with client-side routing and server-side rendering.",
+      "highlights": [],
+      "keywords": ["TypeScript", "Web Components"]
+    },
+    {
+      "name": "Shopify module for Nest.js",
+      "url": "https://github.com/ArtCodeStudio/nestjs-shopify-module",
+      "description": "Webhooks, API access and authentication for Shopify apps built on Nest.js.",
+      "highlights": [],
+      "keywords": ["Nest.js", "Shopify"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Applied Sciences Emden/Leer",
+      "studyType": "Online degree programme",
+      "area": "Media informatics",
+      "startDate": "2012",
+      "endDate": "2015"
+    },
+    {
+      "institution": "University of Applied Sciences Wedel",
+      "studyType": "Degree programme",
+      "area": "Media informatics",
+      "startDate": "2009",
+      "endDate": "2012"
+    },
+    {
+      "institution": "BBS Cuxhaven",
+      "studyType": "Technical grammar school",
+      "startDate": "2006",
+      "endDate": "2009"
+    }
+  ],
+  "skills": [
+    { "name": "Languages", "keywords": ["TypeScript", "JavaScript", "HTML", "CSS / SCSS", "SQL"] },
+    { "name": "Desktop", "keywords": ["GJS", "GTK", "libadwaita", "GObject Introspection", "Flatpak"] },
+    { "name": "Web", "keywords": ["Node.js", "Deno", "Nest.js", "Vue / Nuxt", "Angular", "React", "Web Components"] },
+    { "name": "E-commerce", "keywords": ["Shopify themes", "Shopify apps", "Headless CMS"] },
+    { "name": "Ways of working", "keywords": ["Open source", "CI/CD", "Containers", "Test-driven development", "Scrum"] }
+  ],
+  "languages": [
+    { "language": "German", "fluency": "Native speaker" },
+    { "language": "English", "fluency": "Professional working proficiency" }
+  ]
+}

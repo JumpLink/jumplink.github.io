@@ -1,51 +1,56 @@
 {
-  "name": "@jumplink/cv",
-  "version": "2.0.0",
-  "type": "module",
-  "description": "",
-  "main": "./src/ts/main.ts",
-  "module": "src/ts/main.ts",
-  "source": "src/ts/main.ts",
+  "name": "@jumplink/site",
+  "version": "3.0.0",
   "private": true,
-  "scripts": {
-    "build": "vite build --mode production",
-    "build:dev": "vite build --mode development",
-    "watch": "yarn build:dev --watch --mode development",
-    "start": "concurrently 'yarn:watch' 'yarn:preview'",
-    "hmr": "vite serve",
-    "preview": "vite preview",
-    "clear": "rm -rf ./dist"
-  },
-  "files": [
-    "src"
-  ],
+  "type": "module",
+  "description": "jumplink.eu: Pascal Garber's apps, blog and CV",
   "author": "Pascal Garber",
   "license": "MIT",
-  "engines": {
-    "node": ">=24"
+  "scripts": {
+    "build": "gjsify site build --out _site && cp -r static/. _site/",
+    "build:drafts": "gjsify site build --out _site --drafts && cp -r static/. _site/",
+    "i18n": "gjsify site i18n"
   },
   "devDependencies": {
-    "@ribajs/tsconfig": "2.0.0",
-    "@yarnpkg/pnpify": "^4.1.6",
-    "concurrently": "^9.2.1",
-    "rollup-plugin-pug": "^1.1.1",
-    "sass": "^1.99.0",
-    "typescript": "6.0.2",
-    "vite": "^8.0.8",
-    "vite-plugin-markdown": "^2.2.0",
-    "vite-plugin-static-copy": "^4.0.1",
-    "yaml": "^2.8.3"
+    "@gjsify/cli": "0.64.11",
+    "@gjsify/site": "0.64.11"
   },
-  "dependencies": {
-    "@modyfi/vite-plugin-yaml": "^1.1.1",
-    "@ribajs/bs5": "2.0.0",
-    "@ribajs/core": "2.0.0",
-    "@ribajs/extras": "2.0.0",
-    "@ribajs/i18n": "2.0.0",
-    "@ribajs/iconset": "2.0.0",
-    "@ribajs/types": "2.0.0",
-    "@ribajs/utils": "2.0.0",
-    "bootstrap": "^5.3.8"
-  },
-  "packageManager": "yarn@4.13.0"
+  "gjsify": {
+    "site": {
+      "url": "https://jumplink.eu/",
+      "languages": ["en", "de"],
+      "defaultLanguage": "en",
+      "repository": "JumpLink/jumplink.github.io",
+      "developer": {
+        "resume": {
+          "en": "content/resume.en.json",
+          "de": "content/resume.de.json"
+        },
+        "apps": [
+          "https://jumplink.eu/beifahrer/",
+          "https://jumplink.eu/steuererklaerung/",
+          "https://jumplink.eu/Learn6502/"
+        ]
+      },
+      "blog": { "posts": "blog" },
+      "theme": {
+        "accent": { "light": "#1c7a4a", "dark": "#57e389" },
+        "displayFont": "assets/fonts/ark-pixel-16px-proportional-latin.woff2",
+        "imageRendering": "pixelated"
+      },
+      "support": [
+        { "kind": "GitHub Sponsors", "url": "https://github.com/sponsors/JumpLink" },
+        { "kind": "Liberapay", "url": "https://liberapay.com/JumpLink" },
+        { "kind": "PayPal", "url": "https://paypal.me/JumpLink" },
+        { "kind": "sepa", "name": "JumpLink - Pascal Garber", "iban": "DE94100101232090324020" }
+      ],
+      "privacy": {
+        "statements": { "en": "content/privacy.en.md", "de": "content/privacy.de.md" },
+        "hostingPolicyUrl": "https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
+      },
+      "legalNotice": {
+        "statements": { "en": "content/legal-notice.en.md", "de": "content/legal-notice.de.md" }
+      }
+    }
+  }
 }

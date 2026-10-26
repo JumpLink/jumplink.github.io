@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "name": "jumplink",
+  "description": "jumplink.eu, a static site built from this repository. Everything local is regenerable.",
+  "entries": [
+    {
+      "path": "node_modules",
+      "class": "derived",
+      "recreate": "gjsify install"
+    },
+    {
+      "path": "_site",
+      "class": "derived",
+      "recreate": "gjsify run build"
+    }
+  ]
+}
