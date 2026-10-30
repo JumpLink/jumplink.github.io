@@ -1,7 +1,0 @@
-{
-  "url": "https://jumplink.eu",
-  "base": "/support/",
-  "languages": ["de", "en"],
-  "defaultLanguage": "de",
-  "apps": ["../.apps/Learn6502", "../.apps/beifahrer", "../.apps/steuererklaerung"]
-}

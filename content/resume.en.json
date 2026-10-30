@@ -1,0 +1,212 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Pascal Garber",
+    "label": "Software developer: TypeScript, web, GNOME, native apps and AI",
+    "image": "assets/images/avatar.jpg",
+    "email": "pascal@artandcode.studio",
+    "url": "https://jumplink.eu/",
+    "summary": "Moin, I'm Pascal, a developer in Cuxhaven working in TypeScript on the web and the Linux desktop. I build [gjsify](https://gjsify.org/), which brings the Node.js and web ecosystem to GNOME apps, and write the apps that come out of it.\n\nAt CORRECTIV I work on the tools behind an independent newsroom; as JumpLink I take on client projects. I live with my two children by the sea. Away from the keyboard I like cycling, woodworking, survival, retro games and anime.",
+    "location": {
+      "city": "Cuxhaven",
+      "countryCode": "DE"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "JumpLink",
+        "url": "https://github.com/JumpLink"
+      },
+      {
+        "network": "Mastodon",
+        "username": "@jumplink@floss.social",
+        "url": "https://floss.social/@jumplink"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "CORRECTIV",
+      "url": "https://correctiv.org/",
+      "position": "Software developer",
+      "startDate": "2023",
+      "summary": "Software for a non-profit newsroom. I now work in the Faktenforum team and lead the technical side of the new CORRECTIV app; before that I was in the beabee team.",
+      "highlights": [
+        "Technical lead of the new CORRECTIV app and its workbench, which configures the app and publishes its documentation",
+        "Built Stamped, a tool to verify and explore leaked email archives locally",
+        "Work on Faktenforum, CORRECTIV's community fact-checking platform",
+        "beabee: hardened the security of the membership platform and built its Telegram integration"
+      ]
+    },
+    {
+      "name": "JumpLink / Art+Code Studio",
+      "url": "https://jumplink.eu/",
+      "position": "Freelance developer",
+      "startDate": "2012",
+      "summary": "Client projects from concept to operation; today mostly GNOME apps and tooling.",
+      "highlights": [
+        "GNOME apps in TypeScript on gjsify: Learn 6502 Assembly, Beifahrer, Steuererklärung",
+        "E-commerce since 2015: Shopify themes and apps, headless shops, frontend and backend for an international fashion retailer"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Learn 6502 Assembly",
+      "url": "https://flathub.org/apps/eu.jumplink.Learn6502",
+      "description": "Learn 6502 assembly in a GNOME app: tutorial, editor, debugger, display. On Flathub.",
+      "highlights": [],
+      "keywords": [
+        "TypeScript",
+        "GJS",
+        "Adwaita",
+        "6502"
+      ]
+    },
+    {
+      "name": "Beifahrer",
+      "url": "https://jumplink.eu/beifahrer/",
+      "description": "Lets an AI agent work in your own browser, with you in control.",
+      "highlights": [],
+      "keywords": [
+        "WebExtension",
+        "MCP",
+        "TypeScript"
+      ]
+    },
+    {
+      "name": "Steuererklärung",
+      "url": "https://jumplink.eu/steuererklaerung/",
+      "description": "GNOME app for profit statement, VAT and income tax, straight to ELSTER.",
+      "highlights": [],
+      "keywords": [
+        "GJS",
+        "GNOME",
+        "ELSTER"
+      ]
+    },
+    {
+      "name": "CORRECTIV app",
+      "url": "https://correctiv.github.io/correctiv-app/",
+      "description": "Community app for CORRECTIV members and the workbench that configures it.",
+      "highlights": [],
+      "keywords": [
+        "TypeScript",
+        "CORRECTIV"
+      ]
+    },
+    {
+      "name": "Stamped",
+      "url": "https://correctiv.github.io/stamped/",
+      "description": "Verify and explore leaked email archives locally.",
+      "highlights": [],
+      "keywords": [
+        "Journalism",
+        "Verification"
+      ]
+    },
+    {
+      "name": "gjsify",
+      "url": "https://gjsify.org/",
+      "startDate": "2020",
+      "description": "Node.js and web APIs for GJS, plus the tools to build and ship GNOME apps in TypeScript.",
+      "highlights": [],
+      "keywords": [
+        "TypeScript",
+        "GJS",
+        "GNOME",
+        "GTK"
+      ]
+    },
+    {
+      "name": "ts-for-gir",
+      "url": "https://github.com/gjsify/ts-for-gir",
+      "startDate": "2020",
+      "description": "TypeScript types for GTK and every introspected library.",
+      "highlights": [],
+      "keywords": [
+        "TypeScript",
+        "GObject Introspection"
+      ]
+    },
+    {
+      "name": "Riba.js",
+      "url": "https://ribajs.com/",
+      "startDate": "2018",
+      "description": "Web framework on web components, with routing and server-side rendering.",
+      "highlights": [],
+      "keywords": [
+        "TypeScript",
+        "Web Components"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Applied Sciences Emden/Leer",
+      "studyType": "Online degree programme",
+      "area": "Media informatics",
+      "startDate": "2012",
+      "endDate": "2015"
+    },
+    {
+      "institution": "University of Applied Sciences Wedel",
+      "studyType": "Degree programme",
+      "area": "Media informatics",
+      "startDate": "2009",
+      "endDate": "2012"
+    },
+    {
+      "institution": "BBS Cuxhaven",
+      "studyType": "Technical grammar school",
+      "startDate": "2006",
+      "endDate": "2009"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Craft",
+      "keywords": [
+        "TypeScript",
+        "GNOME & GJS",
+        "Native apps (desktop & mobile)",
+        "Web"
+      ]
+    },
+    {
+      "name": "AI",
+      "keywords": [
+        "Agentic coding",
+        "MCP servers",
+        "Voice agents",
+        "Local models"
+      ]
+    },
+    {
+      "name": "Strengths",
+      "keywords": [
+        "Experience across the whole stack",
+        "Creativity",
+        "From own need to finished product"
+      ]
+    },
+    {
+      "name": "Ways of working",
+      "keywords": [
+        "Open source",
+        "CI/CD",
+        "Test-driven"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "German",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "Professional working proficiency"
+    }
+  ]
+}
