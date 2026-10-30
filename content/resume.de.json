@@ -2,15 +2,26 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Pascal Garber",
-    "label": "Softwareentwickler — TypeScript, Web und GNOME",
+    "label": "Softwareentwickler: TypeScript, Web, GNOME, native Apps und KI",
     "image": "assets/images/avatar.jpg",
     "email": "pascal@artandcode.studio",
     "url": "https://jumplink.eu/",
-    "summary": "Ich entwickle Software für das Web und den Linux-Desktop, meist in TypeScript. Bei CORRECTIV arbeite ich an den Werkzeugen hinter unabhängigem Journalismus; als JumpLink übernehme ich Kundenprojekte und schreibe freie Software — vor allem [gjsify](https://gjsify.org/), das das Node.js- und Web-Ökosystem zu GJS bringt, und die GNOME-Apps, die ich damit baue.\n\nIch lebe mit meinen zwei Kindern in Cuxhaven. Abseits der Tastatur: Radfahren, Holzarbeiten, Survival, Retro-Games und Anime.",
-    "location": { "city": "Cuxhaven", "countryCode": "DE" },
+    "summary": "Moin, ich bin Pascal, Entwickler in Cuxhaven, und arbeite in TypeScript für das Web und den Linux-Desktop. Ich baue [gjsify](https://gjsify.org/), das das Node.js- und Web-Ökosystem in GNOME-Apps bringt, und schreibe die Apps, die daraus entstehen.\n\nBei CORRECTIV arbeite ich an den Werkzeugen hinter einer unabhängigen Redaktion; als JumpLink übernehme ich Kundenprojekte. Ich lebe mit meinen zwei Kindern am Meer. Abseits der Tastatur mag ich Radfahren, Holzarbeiten, Survival, Retro-Games und Anime.",
+    "location": {
+      "city": "Cuxhaven",
+      "countryCode": "DE"
+    },
     "profiles": [
-      { "network": "GitHub", "username": "JumpLink", "url": "https://github.com/JumpLink" },
-      { "network": "Mastodon", "username": "@jumplink@floss.social", "url": "https://floss.social/@jumplink" }
+      {
+        "network": "GitHub",
+        "username": "JumpLink",
+        "url": "https://github.com/JumpLink"
+      },
+      {
+        "network": "Mastodon",
+        "username": "@jumplink@floss.social",
+        "url": "https://floss.social/@jumplink"
+      }
     ]
   },
   "work": [
@@ -19,54 +30,115 @@
       "url": "https://correctiv.org/",
       "position": "Softwareentwickler",
       "startDate": "2023",
-      "summary": "Software für eine gemeinnützige Redaktion: die Sicherheit der Mitgliederplattform beabee gehärtet und ihre Telegram-Anbindung gebaut; öffentlich auf GitHub.",
-      "highlights": []
+      "summary": "Software für eine gemeinnützige Redaktion. Heute arbeite ich im Faktenforum-Team und verantworte die technische Umsetzung der neuen CORRECTIV-App; davor war ich im beabee-Team.",
+      "highlights": [
+        "Technische Umsetzung der neuen CORRECTIV-App und ihrer Workbench, die die App konfiguriert und ihre Dokumentation veröffentlicht",
+        "Stamped gebaut, ein Werkzeug, um geleakte E-Mail-Archive lokal zu verifizieren und zu durchsuchen",
+        "Mitarbeit am Faktenforum, der Community-Faktencheck-Plattform von CORRECTIV",
+        "beabee: die Mitgliederplattform sicherer gemacht und ihre Telegram-Anbindung gebaut"
+      ]
     },
     {
       "name": "JumpLink / Art+Code Studio",
       "url": "https://jumplink.eu/",
       "position": "Freiberuflicher Entwickler",
       "startDate": "2012",
-      "summary": "Onlineshops, Websites und Backend-Dienste für Kunden, vom ersten Konzept bis zum Betrieb.",
+      "summary": "Kundenprojekte vom Konzept bis zum Betrieb; heute vor allem GNOME-Apps und Werkzeuge.",
       "highlights": [
-        "Eigene Shopify-Themes und -Apps seit 2015 — Anbindungen an Warenwirtschaft, Versand und Buchhaltung, Lastspitzen von Tausenden Bestellungen pro Minute",
-        "Peek & Cloppenburg: Frontend-Spezialist für den internationalen Launch, danach Backend-Dienste, TypeScript und Tests teamübergreifend",
-        "Headless-Shops und -Websites mit Nuxt, Vue, Strapi und Contentful",
-        "Riba.js, ein Web-Framework auf Basis von Web Components, produktiv in Kunden-Themes"
+        "GNOME-Apps in TypeScript auf gjsify: Learn 6502 Assembly, Beifahrer, Steuererklärung",
+        "E-Commerce seit 2015: Shopify-Themes und -Apps, Headless-Shops, Frontend und Backend für einen internationalen Modehändler"
       ]
     }
   ],
   "projects": [
     {
+      "name": "Learn 6502 Assembly",
+      "url": "https://flathub.org/apps/eu.jumplink.Learn6502",
+      "description": "6502-Assembler lernen in einer GNOME-App: Tutorial, Editor, Debugger, Display. Auf Flathub.",
+      "highlights": [],
+      "keywords": [
+        "TypeScript",
+        "GJS",
+        "Adwaita",
+        "6502"
+      ]
+    },
+    {
+      "name": "Beifahrer",
+      "url": "https://jumplink.eu/beifahrer/",
+      "description": "Lässt einen KI-Agenten in deinem eigenen Browser arbeiten, unter deiner Kontrolle.",
+      "highlights": [],
+      "keywords": [
+        "WebExtension",
+        "MCP",
+        "TypeScript"
+      ]
+    },
+    {
+      "name": "Steuererklärung",
+      "url": "https://jumplink.eu/steuererklaerung/",
+      "description": "GNOME-App für EÜR, Umsatzsteuer und Einkommensteuer, direkt an ELSTER.",
+      "highlights": [],
+      "keywords": [
+        "GJS",
+        "GNOME",
+        "ELSTER"
+      ]
+    },
+    {
+      "name": "CORRECTIV-App",
+      "url": "https://correctiv.github.io/correctiv-app/",
+      "description": "Community-App für CORRECTIV-Mitglieder und die Workbench, die sie konfiguriert.",
+      "highlights": [],
+      "keywords": [
+        "TypeScript",
+        "CORRECTIV"
+      ]
+    },
+    {
+      "name": "Stamped",
+      "url": "https://correctiv.github.io/stamped/",
+      "description": "Geleakte E-Mail-Archive lokal verifizieren und durchsuchen.",
+      "highlights": [],
+      "keywords": [
+        "Journalismus",
+        "Verifikation"
+      ]
+    },
+    {
       "name": "gjsify",
       "url": "https://gjsify.org/",
       "startDate": "2020",
-      "description": "Node.js-, Deno- und Web-APIs für GJS, ein Bundler mit CLI und die Werkzeuge, um GNOME-Apps in TypeScript zu bauen, zu testen und auszuliefern.",
+      "description": "Node.js- und Web-APIs für GJS, dazu die Werkzeuge, um GNOME-Apps in TypeScript zu bauen und auszuliefern.",
       "highlights": [],
-      "keywords": ["TypeScript", "GJS", "GNOME", "GTK"]
+      "keywords": [
+        "TypeScript",
+        "GJS",
+        "GNOME",
+        "GTK"
+      ]
     },
     {
       "name": "ts-for-gir",
       "url": "https://github.com/gjsify/ts-for-gir",
       "startDate": "2020",
-      "description": "Erzeugt TypeScript-Typen aus GObject-Introspection-Daten, damit GTK und jede andere introspektierbare Bibliothek mit voller Typprüfung nutzbar ist.",
+      "description": "TypeScript-Typen für GTK und jede introspektierte Bibliothek.",
       "highlights": [],
-      "keywords": ["TypeScript", "GObject Introspection"]
+      "keywords": [
+        "TypeScript",
+        "GObject Introspection"
+      ]
     },
     {
       "name": "Riba.js",
       "url": "https://ribajs.com/",
       "startDate": "2018",
-      "description": "Ein Web-Framework, das auf Web Components und dem DOM aufbaut statt auf einem virtuellen DOM, mit clientseitigem Routing und serverseitigem Rendering.",
+      "description": "Web-Framework auf Web Components, mit Routing und Server-Side-Rendering.",
       "highlights": [],
-      "keywords": ["TypeScript", "Web Components"]
-    },
-    {
-      "name": "Shopify-Modul für Nest.js",
-      "url": "https://github.com/ArtCodeStudio/nestjs-shopify-module",
-      "description": "Webhooks, API-Zugriff und Authentifizierung für Shopify-Apps auf Basis von Nest.js.",
-      "highlights": [],
-      "keywords": ["Nest.js", "Shopify"]
+      "keywords": [
+        "TypeScript",
+        "Web Components"
+      ]
     }
   ],
   "education": [
@@ -92,14 +164,49 @@
     }
   ],
   "skills": [
-    { "name": "Sprachen", "keywords": ["TypeScript", "JavaScript", "HTML", "CSS / SCSS", "SQL"] },
-    { "name": "Desktop", "keywords": ["GJS", "GTK", "libadwaita", "GObject Introspection", "Flatpak"] },
-    { "name": "Web", "keywords": ["Node.js", "Deno", "Nest.js", "Vue / Nuxt", "Angular", "React", "Web Components"] },
-    { "name": "E-Commerce", "keywords": ["Shopify-Themes", "Shopify-Apps", "Headless CMS"] },
-    { "name": "Arbeitsweise", "keywords": ["Open Source", "CI/CD", "Container", "Testgetriebene Entwicklung", "Scrum"] }
+    {
+      "name": "Handwerk",
+      "keywords": [
+        "TypeScript",
+        "GNOME & GJS",
+        "Native Apps (Desktop & Mobil)",
+        "Web"
+      ]
+    },
+    {
+      "name": "KI",
+      "keywords": [
+        "Agentisches Programmieren",
+        "MCP-Server",
+        "Sprachagenten",
+        "Lokale Modelle"
+      ]
+    },
+    {
+      "name": "Stärken",
+      "keywords": [
+        "Erfahrung über den ganzen Stack",
+        "Kreativität",
+        "Vom eigenen Bedarf zum fertigen Produkt"
+      ]
+    },
+    {
+      "name": "Arbeitsweise",
+      "keywords": [
+        "Open Source",
+        "CI/CD",
+        "Testgetrieben"
+      ]
+    }
   ],
   "languages": [
-    { "language": "Deutsch", "fluency": "Muttersprache" },
-    { "language": "Englisch", "fluency": "Verhandlungssicher" }
+    {
+      "language": "Deutsch",
+      "fluency": "Muttersprache"
+    },
+    {
+      "language": "Englisch",
+      "fluency": "Verhandlungssicher"
+    }
   ]
 }

@@ -61,11 +61,10 @@ jobs:
       - name: Install dependencies
         run: gjsify install --immutable
 
-      # `static/` holds what the generator does not make: .nojekyll and the old /support/ redirect.
+      # The `build` script bundles the scene for the browser, then the generator for gjs, runs it
+      # and copies `static/` (.nojekyll and the old /support/ redirect) over the output.
       - name: Build the site
-        run: |
-          npx gjsify site build --out _site
-          cp -r static/. _site/
+        run: gjsify run build
 
       - uses: actions/configure-pages@v5
 

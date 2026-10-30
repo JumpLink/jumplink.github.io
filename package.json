@@ -7,13 +7,105 @@
   "author": "Pascal Garber",
   "license": "MIT",
   "scripts": {
-    "build": "gjsify site build --out _site && cp -r static/. _site/",
-    "build:drafts": "gjsify site build --out _site --drafts && cp -r static/. _site/",
-    "i18n": "gjsify site i18n"
+    "bundle": "gjsify build build/site.ts --app gjs --outfile node_modules/.cache/jumplink/site.gjs.mjs",
+    "bundle:bg": "gjsify build src/bg/browser.ts --app browser --format esm --outfile node_modules/.cache/jumplink/bg.js",
+    "build": "npm run bundle:bg && npm run bundle && gjs -m node_modules/.cache/jumplink/site.gjs.mjs --out _site && cp -r static/. _site/",
+    "build:drafts": "npm run bundle:bg && npm run bundle && gjs -m node_modules/.cache/jumplink/site.gjs.mjs --out _site --drafts && cp -r static/. _site/",
+    "check": "tsc --noEmit",
+    "preview": "gjs -m build/preview.mjs _site"
+  },
+  "jumplink": {
+    "avatar": {
+      "full": {
+        "src": "assets/pixel/pascal-full-fringe.png",
+        "size": 768,
+        "scale": 2,
+        "minScale": 0.5,
+        "steps": 1,
+        "trim": 0.33,
+        "baseline": 26
+      },
+      "icon": "assets/pixel/pascal-bust.png"
+    },
+    "projects": [
+      {
+        "app": "https://jumplink.eu/Learn6502/",
+        "image": {
+          "light": "assets/projects/learn6502-light.webp"
+        }
+      },
+      {
+        "app": "https://jumplink.eu/beifahrer/",
+        "image": {
+          "light": "assets/projects/beifahrer-light.webp",
+          "dark": "assets/projects/beifahrer-dark.webp"
+        }
+      },
+      {
+        "app": "https://jumplink.eu/steuererklaerung/",
+        "image": {
+          "light": "assets/projects/steuererklaerung-light.webp"
+        }
+      },
+      {
+        "url": "https://correctiv.github.io/stamped/",
+        "name": "Stamped",
+        "summary": {
+          "en": "Verify and explore leaked email archives, offline, for newsrooms",
+          "de": "Geleakte E-Mail-Archive offline prüfen und durchsuchen, für Redaktionen"
+        },
+        "icon": "assets/icons/stamped.svg",
+        "image": {
+          "light": "assets/projects/stamped-light.webp"
+        }
+      },
+      {
+        "url": "https://correctiv.github.io/correctiv-app/",
+        "name": "CORRECTIV Workbench",
+        "summary": {
+          "en": "The workbench that previews, configures and documents the CORRECTIV app",
+          "de": "Die Workbench, die die CORRECTIV-App vorschaut, konfiguriert und dokumentiert"
+        },
+        "icon": "assets/icons/correctiv-workbench.svg",
+        "image": {
+          "light": "assets/projects/correctiv-workbench-light.png",
+          "dark": "assets/projects/correctiv-workbench-dark.png"
+        }
+      },
+      {
+        "url": "https://gjsify.org/",
+        "name": "gjsify",
+        "summary": {
+          "en": "The Node.js and web ecosystem, running inside GNOME apps",
+          "de": "Das Node.js- und Web-Ökosystem, lauffähig in GNOME-Apps"
+        },
+        "icon": "assets/icons/gjsify.svg"
+      },
+      {
+        "url": "https://github.com/gjsify/ts-for-gir",
+        "name": "ts-for-gir",
+        "summary": {
+          "en": "TypeScript types for GTK and every introspected library",
+          "de": "TypeScript-Typen für GTK und jede introspektierte Bibliothek"
+        },
+        "icon": "assets/icons/ts-for-gir.png"
+      },
+      {
+        "url": "https://ribajs.com/",
+        "name": "Riba.js",
+        "icon": "assets/icons/ribajs.svg",
+        "home": false
+      }
+    ]
   },
   "devDependencies": {
-    "@gjsify/cli": "0.64.11",
-    "@gjsify/site": "0.64.11"
+    "@gjsify/cli": "0.64.12",
+    "@gjsify/crypto": "0.64.12",
+    "@gjsify/fs": "0.64.12",
+    "@gjsify/path": "0.64.12",
+    "@gjsify/process": "0.64.12",
+    "@gjsify/site": "0.64.12",
+    "excalibur": "^0.32.0"
   },
   "gjsify": {
     "site": {
@@ -35,7 +127,7 @@
       "blog": { "posts": "blog" },
       "theme": {
         "accent": { "light": "#1c7a4a", "dark": "#57e389" },
-        "displayFont": "assets/fonts/ark-pixel-16px-proportional-latin.woff2",
+        "displayFont": "assets/fonts/adwaita-sans-latin.woff2",
         "imageRendering": "pixelated"
       },
       "support": [
@@ -45,8 +137,7 @@
         { "kind": "sepa", "name": "JumpLink - Pascal Garber", "iban": "DE94100101232090324020" }
       ],
       "privacy": {
-        "statements": { "en": "content/privacy.en.md", "de": "content/privacy.de.md" },
-        "hostingPolicyUrl": "https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
+        "statements": { "en": "content/privacy.en.md", "de": "content/privacy.de.md" }
       },
       "legalNotice": {
         "statements": { "en": "content/legal-notice.en.md", "de": "content/legal-notice.de.md" }

@@ -1,0 +1,29 @@
+{
+    "comment": [
+        "A `paths` target is a file path, not a package specifier, so the one exports subpath",
+        "(`node:fs/promises`) has to name its declaration file.",
+        "The site is bundled by `gjsify build`, never by `tsc` — this config exists only for",
+        "`npm run check`. `paths` points the `node:` specifiers at the gjsify shims the bundle",
+        "actually uses, which is closer to the truth on GJS than `@types/node` would be.",
+        "`gi://` modules are declared by `@girs/*/ambient`, referenced from `build/gi-ambient.d.ts`."
+    ],
+    "compilerOptions": {
+        "noEmit": true,
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "types": [],
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
+        "paths": {
+            "node:crypto": ["./node_modules/@gjsify/crypto"],
+            "node:fs": ["./node_modules/@gjsify/fs"],
+            "node:fs/promises": ["./node_modules/@gjsify/fs/lib/types/promises.d.ts"],
+            "node:path": ["./node_modules/@gjsify/path"],
+            "node:process": ["./node_modules/@gjsify/process"]
+        }
+    },
+    "include": ["build/**/*", "src/**/*"]
+}

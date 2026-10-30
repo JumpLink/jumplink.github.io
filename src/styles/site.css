@@ -1,0 +1,704 @@
+/* jumplink.eu — a page that starts on the dike and sinks into the water. See docs/design.md.
+   Pixel art is used on purpose and in few places: the figure, the beacon, the small accents.
+
+   The page is one vertical dive. The animated scene is a band at the top of the document — it
+   scrolls away like anything else — and it fades into `--deep`, the colour of water far below the
+   surface, which `html` carries for the whole rest of the page. Nothing is fixed, nothing is
+   dimmed: the reader simply leaves the horizon behind. */
+
+@font-face {
+    font-family: "Adwaita Sans";
+    src: url("fonts/adwaita-sans-latin.woff2") format("woff2");
+    font-weight: 300 800;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Ark Pixel 10";
+    src: url("fonts/ark-pixel-10px-proportional-latin.woff2") format("woff2");
+    font-display: swap;
+}
+
+:root {
+    /* jumplink16 */
+    --p0: #0e0a1a; --p1: #1f1638; --p2: #2f2056; --p3: #46307d; --p4: #6b3fd4;
+    --p5: #8b65e8; --p6: #b69cff; --p7: #ddd0ff; --p8: #f4f0ff;
+    --g0: #5a4b6e; --g1: #9a8fb0;
+    --s0: #f6d3ae; --s1: #e8b07a; --s2: #b0644a; --s3: #7d4436;
+    --gold: #ffcf4a; --sea: #3fd0c9; --rose: #e05a8a;
+
+    --font-display: "Adwaita Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-body: var(--font-display);
+    --font-pixel-display: "Ark Pixel 10", ui-monospace, monospace;
+    --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+    --hairline: 1px;
+    --measure: 70ch;
+    --wrap-max: 100rem;
+    /* One horizontal rhythm for the whole page, sidebar included. */
+    --gutter: clamp(1.25rem, 3.5vw, 4rem);
+    --side-w: clamp(12.5rem, 15vw, 17rem);
+
+    /* Height of the scene band at the top of the document. It is clamped in *pixels* on purpose:
+       a viewport-only unit grows with the viewport, and a full-page screenshot makes the viewport
+       as tall as the document — which is what once rendered the Kugelbake as tall as the figure.
+
+       This is the value for a page that has something to put in the sky. An article does not:
+       `body:not(.home)` shortens the band to a strip below, because a Kugelbake behind a
+       paragraph is not a background, it is a thing in the way of the text. */
+    --scene-h: clamp(620px, 82vh, 820px);
+    /* Where the Kugelbake stands across the viewport, and how far down the band the waterline
+       sits. `src/bg/browser.ts` reads both off `.bg` instead of keeping a second copy that
+       drifts out of step and makes the scene jump when the canvas takes over.
+
+       `--beacon-at` only bites on a viewport narrow enough that the scene is wider than the
+       screen; above that the pan clamps to zero and the beacon lands at `BEACON_X / 320`
+       whatever this says. That is why the beacon was moved in the scene itself (see
+       `src/bg/scene.ts`) and not here. */
+    --beacon-at: .82;
+    --horizon-at: .6222;
+    /* Where the dive into `--deep` begins, as a share of the band. */
+    --deep-at: 62%;
+
+    /* The one accent is purple, in both schemes — the palette is purple, and a teal link in a
+       purple page was a second accent pretending to be a highlight.
+
+       Every colour below is one `light-dark(day, night)` pair rather than a day block plus a
+       `prefers-color-scheme` override, and that is not only shorter. Clicking the sun or the moon
+       forces a scheme by setting `color-scheme` on `html` (see docs/design.md); `light-dark()`
+       follows that declaration, a media query cannot see it at all. Two parallel lists of thirty
+       tokens would have drifted apart the first time one of them was edited alone, and the forced
+       scheme is exactly where that drift shows. The floor this raises is Baseline 2024 — the same
+       one `color-mix()` already set here. */
+    color-scheme: light dark;
+    --text: light-dark(#18102c, #ece6fb);
+    --muted: light-dark(#3a3152, #c3bad8);
+    --link: light-dark(#3f1f9e, #c4a6ff);
+    --accent: light-dark(#3f1f9e, #b69cff);
+    --accent-text: light-dark(#fff, #150e2a);
+    --line: light-dark(
+        color-mix(in srgb, var(--p3) 22%, transparent),
+        color-mix(in srgb, var(--p6) 20%, transparent));
+    --line-strong: light-dark(
+        color-mix(in srgb, var(--p3) 45%, transparent),
+        color-mix(in srgb, var(--p6) 42%, transparent));
+    --surface: light-dark(
+        color-mix(in srgb, #fff 88%, transparent),
+        color-mix(in srgb, #140e26 80%, transparent));
+    --surface-solid: light-dark(#eaf2f6, #0b1021);
+    --raised: light-dark(
+        color-mix(in srgb, #fff 55%, transparent),
+        color-mix(in srgb, var(--p2) 45%, transparent));
+    --raised-solid: light-dark(#fff, #2a1e4e);
+    --tag-bg: light-dark(
+        color-mix(in srgb, var(--p7) 55%, transparent),
+        color-mix(in srgb, var(--p3) 45%, transparent));
+    --tag-text: light-dark(#3a2578, #ddd0ff);
+    --focus: light-dark(#3f1f9e, #c4a6ff);
+    /* The shadow colour, now a plain colour: every use is
+       `color-mix(in srgb, var(--shade) <alpha>, transparent)`. It used to be bare channels for
+       `rgb(var(--shade) / <alpha>)`, and written with commas that expands to `rgb(8, 6, 22 / .5)`,
+       which mixes the legacy and the modern syntax, is invalid, and takes the whole declaration
+       with it — silently. That is how the drop shadows and the drawer backdrop were all dead. */
+    --shade: light-dark(#080616, #02030a);
+
+    /* The pixel window: an opaque panel, a mid ring and a dark outer ring. Three colours is all
+       a 9-slice sprite ever had, and the stepped corners come out of the rings themselves. */
+    --win-bg: light-dark(#f4f0ff, #1f1638);
+    --win-title: #f4f0ff;
+    /* A talent-tree slot sits inside that panel, so it needs its own fill. */
+    --slot-bg: light-dark(#e7defc, #2b1f52);
+    --slot-line: light-dark(#8b65e8, #6b3fd4);
+
+    /* Sky: a smooth gradient, never pixelated. Day is a high, hazy coastal noon; night is the same
+       four stops in dusk colours, sitting a little higher — the two middle positions are the only
+       thing about the sky that is not a colour, so they come from `--sky-mid` / `--sky-far`. */
+    --sky: linear-gradient(180deg,
+        light-dark(#8fd3ef, #06040f) 0%,
+        light-dark(#bfe6f4, #120d26) var(--sky-mid),
+        light-dark(#e6f2f6, #221848) var(--sky-far),
+        light-dark(#f6f1e8, #2d2056) 100%);
+    /* Deep water: where the band ends and the rest of the page begins. By day the water gets
+       *lighter* with depth, so the page reads as haze rather than as a cellar. */
+    --deep: light-dark(#cfe3ec, #070d1e);
+    --bg-star: light-dark(transparent, #ddd0ff);
+    --bg-disc: light-dark(#ffcf4a, #ddd0ff);
+    --bg-glitter: light-dark(#fff4cf, #b69cff);
+    --bg-foam: light-dark(#d7f1f3, #6b7fae);
+    --bg-wood: light-dark(#7d4436, #0a0714);
+    --bg-seaFar: light-dark(#6fbdd0, #16254a);
+    --bg-seaMid: light-dark(#86c9d8, #0d1430);
+    --bg-seaNear: light-dark(#9fd5e0, #070a1c);
+
+    /* The three values a colour function cannot carry: 1 at night and 0 by day, plus those two
+       gradient stops. There is no `light-dark()` for a number, so these are the one thing that
+       still needs a block per scheme — four of them, because a forced scheme has to beat both the
+       default and the media query. The attribute selectors are more specific than the bare
+       `:root` inside the media query, so order does the rest. */
+    --night: 0;
+    --sky-mid: 42%;
+    --sky-far: 68%;
+}
+@media (prefers-color-scheme: dark) {
+    :root { --night: 1; --sky-mid: 34%; --sky-far: 62%; }
+}
+:root[data-scheme="light"] { color-scheme: light; --night: 0; --sky-mid: 42%; --sky-far: 68%; }
+:root[data-scheme="dark"] { color-scheme: dark; --night: 1; --sky-mid: 34%; --sky-far: 62%; }
+
+/* At night a link carries a faint halo of its own colour — neon, not a second hue. Only the links
+   that actually wear `--link` get it; the navigation and the footer are muted on purpose and a
+   glow under grey text would just look like a printing fault. By day `--night` is 0, the mix is
+   0 % of the link colour, and the shadow is fully transparent. */
+.prose a, .log a, .more-link, details summary, .entries h2 a:hover, .pager a:hover {
+    text-shadow: 0 0 .45em color-mix(in srgb, var(--link) calc(var(--night) * 42%), transparent);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+    -webkit-text-size-adjust: 100%;
+    /* The whole page below the scene band is deep water. */
+    background: var(--deep);
+}
+body {
+    margin: 0;
+    position: relative;
+    color: var(--text);
+    background: transparent;
+    font: clamp(1.0625rem, 1rem + .3vw, 1.28rem)/1.62 var(--font-body);
+
+    /* The scene's geometry lives on `body`, not on `.bg`, because `.sky` needs it too: the
+       headline is pushed down past the sun or moon, and only these numbers know where that is.
+       It cannot live on `:root` either — `body:not(.home)` overrides `--scene-h`, and a custom
+       property is substituted on the element that declares it, so a `:root` copy would never see
+       the shorter band of an article.
+
+       `--bg-unit` is the scale of one scene pixel, rounded *up* to a whole number so the upscale
+       stays crisp. `--bg-top` is where row 0 of the scene lands in the band: the waterline is
+       pinned to `--horizon-at`, then pulled back inside the band if that would expose an edge.
+       All of it is mirrored in `src/bg/browser.ts`. */
+    --bg-unit: max(100vw / 320, var(--scene-h) / 180);
+    --bg-w: calc(var(--bg-unit) * 320);
+    --bg-h: calc(var(--bg-unit) * 180);
+    --bg-top: clamp(
+        calc(var(--scene-h) - var(--bg-h)),
+        calc(var(--horizon-at) * var(--scene-h) - .62222 * var(--bg-h)),
+        0px
+    );
+    /* The first row of text that is guaranteed to be *below* the disc: its centre is row 56, its
+       radius 7, plus four rows of air. Without this the moon stood behind the tagline on every
+       wide screen — and a taller band alone does not help, because a taller band moves the
+       horizon down and carries the disc with it. */
+    --sky-top: calc(var(--bg-top) + 67 * var(--bg-unit));
+    /* Where column 0 of the scene lands. `.81875` is `BEACON_X / 320`. It is a variable on `body`
+       rather than a one-off inside `.bg-svg` because the scheme toggle sits on the disc and has to
+       be placed on this same grid — and it cannot live inside `.bg`, which is behind the page and
+       takes no pointer events. */
+    --bg-left: clamp(
+        calc(100vw - var(--bg-w)),
+        calc(var(--beacon-at) * 100vw - .81875 * var(--bg-w)),
+        0px
+    );
+}
+@supports (width: round(up, 1px, 1px)) {
+    body { --bg-unit: clamp(2px, round(up, max(100vw / 320, var(--scene-h) / 180), 1px), 12px); }
+}
+img { max-width: 100%; height: auto; }
+a { color: var(--link); text-underline-offset: .2em; }
+a:hover { color: var(--text); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.skip {
+    position: absolute; left: -999px; top: 0; z-index: 30;
+    background: var(--accent); color: var(--accent-text); padding: .6rem 1rem;
+}
+.skip:focus { left: 0; }
+
+/* ---------------------------------------------------------------------------------------------
+   The scene band. Three layers: the CSS sky, the static scene, and — once the bundle has started
+   — the canvas that replaces it. The geometry comes from `body` above and is mirrored in
+   `src/bg/browser.ts`: letterboxing the fallback to the same integer grid is what stops the moon
+   from jumping when the canvas takes over.
+   --------------------------------------------------------------------------------------------- */
+.bg {
+    position: absolute; top: 0; left: 0; right: 0; height: var(--scene-h);
+    z-index: -1; pointer-events: none; overflow: hidden;
+}
+.bg-sky { position: absolute; inset: 0; background: var(--sky); }
+.bg-svg, .bg-canvas {
+    position: absolute;
+    width: var(--bg-w); height: var(--bg-h);
+    top: var(--bg-top);
+    left: var(--bg-left);
+}
+.bg-canvas { image-rendering: pixelated; }
+.bg--live .bg-svg { display: none; }
+
+/* The easter egg: an invisible button exactly over the sun or the moon, which switches day and
+   night. The box is the disc's own bounding box in scene pixels — centre (180, 56), radius 7, so
+   columns 173…187 and rows 49…63 — placed off the same `--bg-*` variables the scene is placed
+   with. That makes it pure CSS: it follows every resize without a listener, and it is the same box
+   for the static SVG and for the canvas, because both are pinned to that one integer grid.
+
+   It is a child of `body`, not of `.bg`: that layer sits behind the page with `pointer-events:
+   none`. Without JavaScript it is hidden, because without JavaScript it would do nothing. */
+.scheme-toggle { display: none; }
+html.js .scheme-toggle {
+    display: block;
+    position: absolute; z-index: 2;
+    top: calc(var(--bg-top) + 49 * var(--bg-unit));
+    left: calc(var(--bg-left) + 173 * var(--bg-unit));
+    width: calc(15 * var(--bg-unit)); height: calc(15 * var(--bg-unit));
+    padding: 0; border: 0; border-radius: 50%;
+    -webkit-appearance: none; appearance: none;
+    background: none; cursor: pointer;
+}
+/* The reward for finding it: a dusk veil sweeps the page while the scheme flips underneath it. It
+   is a full-screen fade and not the sun visibly setting, because there is one WebGL context — it
+   cannot be duplicated and it repaints the frame the palette changes. The veil covers that snap
+   for the canvas and for the SVG fallback alike, which is also why it is fixed and full-bleed
+   rather than a halo around the disc. Under `prefers-reduced-motion` the blanket rule near the end
+   of this file removes the animation and the switch is instant. */
+.dusk {
+    position: fixed; inset: 0; z-index: 50; pointer-events: none;
+    background: #05030e; opacity: 0;
+}
+.dusk[data-on] { animation: dusk .82s ease-in-out; }
+@keyframes dusk {
+    0% { opacity: 0 }
+    50% { opacity: .96 }
+    100% { opacity: 0 }
+}
+/* The dive: from the waterline down the sea gives way to `--deep`, which `html` already carries.
+   The band ends in exactly that colour, so there is no seam to see. */
+.bg-deep {
+    position: absolute; inset: var(--deep-at) 0 0; z-index: 1;
+    background: linear-gradient(to bottom, transparent, var(--deep) 76%);
+}
+/* An article, the logbook, the CV: the same coast, but only the strip above the waterline, and
+   the text starts under it.
+
+   The waterline goes almost to the bottom edge of that much shorter strip, because the sky is
+   what the strip is *for*: at the home page's `--horizon-at` the sea would fill it and the sun
+   or moon, which sits high in the sky, would be cropped away above the top edge entirely. */
+body:not(.home) {
+    --scene-h: clamp(300px, 38vh, 420px);
+    --horizon-at: .95;
+    --deep-at: 78%;
+}
+
+/* ---------------------------------------------------------------------------------------------
+   The shell: a sidebar and the column of content, identical on every page.
+
+   The sidebar is the only navigation there is. On a wide screen it stands in the left margin; on
+   a narrow one it becomes a drawer — but only once the inline script has marked `<html>` as `js`,
+   so without JavaScript it stays a plain block of links in the flow and the toggle never shows.
+   --------------------------------------------------------------------------------------------- */
+.shell { display: grid; grid-template-columns: var(--side-w) minmax(0, 1fr); align-items: start; }
+.col { display: flex; flex-direction: column; min-height: 100vh; }
+.col > main { flex: 1; }
+
+.side {
+    position: sticky; top: 0; max-height: 100vh; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 2.5rem;
+    padding: clamp(1.5rem, 4vh, 3rem) 1rem 2rem var(--gutter);
+}
+.nav ul, .lang ul { list-style: none; margin: 0; padding: 0; }
+.nav li { margin: 0 0 .15em; }
+.nav a {
+    display: block; padding: .3rem 0; text-decoration: none; color: var(--muted);
+    font: 600 clamp(1.1rem, 1.5vw, 1.4rem)/1.3 var(--font-display); letter-spacing: -.012em;
+}
+.nav a:hover { color: var(--text); }
+/* “You are here” is only brighter — no marker beside it. */
+.nav a[aria-current] { color: var(--text); }
+.side .lang { margin-top: auto; }
+.lang ul { display: flex; gap: 1rem; }
+.lang a { font: 600 .9rem/1 var(--font-body); letter-spacing: .04em; color: var(--muted); text-decoration: none; }
+.lang a:hover { color: var(--text); }
+.lang a[aria-current] { color: var(--text); }
+.nav-toggle, .nav-backdrop { display: none; }
+/* Pixelarticons, always at their own 24 px: at any other size the 2 px blocks fall between pixels. */
+.icon { flex: none; width: 24px; height: 24px; shape-rendering: crispEdges; }
+
+@media (max-width: 1000px) {
+    .shell { display: block; }
+    .side { position: static; max-height: none; padding: 1.5rem var(--gutter) 0; gap: 1.5rem; }
+    /* The toggle stays put while the drawer is open — it is also the close button — so the drawer
+       starts below it rather than sliding its first menu item under a floating pill. */
+    html.js .side {
+        position: fixed; inset: 0 auto 0 0; z-index: 19;
+        width: min(21rem, 84vw); padding: 4.1rem 1.5rem 2rem;
+        background: var(--surface-solid); border-right: var(--hairline) solid var(--line);
+        box-shadow: 0 0 60px color-mix(in srgb, var(--shade) 50%, transparent);
+        transform: translateX(-100%); visibility: hidden;
+        transition: transform .26s cubic-bezier(.2, .7, .3, 1), visibility .26s;
+    }
+    html.js .side[data-open] { transform: none; visibility: visible; }
+    html.js .col { padding-top: 3.4rem; }
+    html.js .nav-toggle {
+        display: inline-flex; align-items: center; gap: .55rem;
+        position: fixed; top: .7rem; left: .7rem; z-index: 21;
+        padding: .45rem .85rem .45rem .7rem; border-radius: 999px;
+        border: var(--hairline) solid var(--line); background: var(--surface);
+        -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+        color: var(--text); font: 600 .85rem/1 var(--font-display); cursor: pointer;
+    }
+    html.js .nav-backdrop {
+        display: block; position: fixed; inset: 0; z-index: 18;
+        background: color-mix(in srgb, var(--shade) 50%, transparent); opacity: 0; visibility: hidden;
+        transition: opacity .26s linear, visibility .26s;
+    }
+    html.js.nav-open .nav-backdrop { opacity: 1; visibility: visible; }
+    .nav a { font-size: 1.3rem; }
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Type and measure. Sizes are fluid: a wide screen gets a bigger page, not a wider column of the
+   same small text.
+   --------------------------------------------------------------------------------------------- */
+/* One face for everything that is read: Adwaita Sans. The pixel face is the name in the sky and
+   nothing else — headings, years and labels in it as well made the page look mixed. */
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -.02em; }
+h1 { font-size: clamp(2.3rem, 5.2vw, 4.2rem); font-weight: 800; line-height: 1.04; margin: 0 0 .5rem; }
+h2 { font-size: clamp(1.7rem, 2.8vw, 2.7rem); font-weight: 700; line-height: 1.12; margin: 0 0 1.2rem; }
+h3 { font-size: clamp(1.05rem, 1.2vw, 1.2rem); font-weight: 700; line-height: 1.4; margin: 0 0 .25em; }
+p { margin: 0 0 1.1rem; }
+.kicker {
+    font: 600 .74rem/1.4 var(--font-body); text-transform: uppercase; letter-spacing: .18em;
+    color: var(--muted); margin: 0 0 .7rem;
+}
+.clamp { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.label { color: var(--muted); margin: 0 0 1.5rem; }
+
+/* ---------------------------------------------------------------------------------------------
+   Shared pieces. Each has one markup in `src/templates/components.ts` and one rule set here, so
+   changing it here changes it on every page that uses it.
+   --------------------------------------------------------------------------------------------- */
+/* The pixel chip: a filled slot with a 2 px ring and stepped corners, drawn by four hard shadows
+   so the corners stay open like a sprite's. Skills and tags both wear it. Sizes are in `rem` on
+   purpose: a chip is the same size in the large character sheet and in a logbook entry. */
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: .75rem 1rem; padding: 0; margin: 0 0 0 2px; }
+.chip {
+    display: inline-block; font: 500 .88rem/1.55 var(--font-body); padding: .14rem .6rem;
+    background: var(--slot-bg); color: var(--text); text-decoration: none;
+    box-shadow:
+        2px 0 0 var(--slot-line), -2px 0 0 var(--slot-line),
+        0 2px 0 var(--slot-line), 0 -2px 0 var(--slot-line);
+}
+a.chip:hover { --slot-line: var(--accent); color: var(--text); }
+a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --slot-line: var(--accent); }
+/* Groups of chips under an accent kicker: the skills, on the home page and in the CV. */
+.groups { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.4rem; }
+.group-name { color: var(--accent); margin: 0 0 .65rem; }
+
+.wrap { max-width: var(--wrap-max); margin: 0 auto; padding: 0 var(--gutter) clamp(3rem, 8vh, 7rem); }
+.wrap.prose-page { max-width: 58rem; }
+.block { margin-top: clamp(4rem, 10vh, 9rem); }
+
+.site-footer {
+    width: 100%; max-width: var(--wrap-max); margin: clamp(3rem, 8vh, 7rem) auto 0;
+    padding: 1.5rem var(--gutter) 2rem;
+    font-size: .92rem; color: var(--muted);
+    display: flex; flex-wrap: wrap; gap: .5rem 2rem; justify-content: space-between;
+}
+.site-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem 1.8rem; }
+.site-footer p { margin: 0; }
+.site-footer a { color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: .45rem; }
+.site-footer a:hover { color: var(--text); }
+
+/* ---------------------------------------------------------------------------------------------
+   Home, part one: the name in the sky. No box — the sky is the background and the name stands in
+   it. The band is `--scene-h` tall and the waterline sits at 62 % of it.
+
+   The headline starts below the sun or moon, never beside it: `--sky-top` is the first row that
+   clears the disc, and the padding takes it from there. The empty sky between the caption and
+   the waterline is the point — that is where the scene is.
+
+   `.sky` is a little shorter than the band so the figure below it overlaps the last, calmest
+   stretch of water. That overlap is the scroll cue: on a laptop fold you see the top of a head
+   rather than a corner of empty sea.
+   --------------------------------------------------------------------------------------------- */
+.sky {
+    min-height: calc(var(--scene-h) * .88);
+    padding-top: max(1.5rem, var(--sky-top));
+}
+/* The name is set in Ark Pixel's 10 px cut, the only pixel type on the site, and only
+   at whole multiples of its design size — 30, 40, 60, 80. A fluid `clamp()` would land on
+   53.7 px and rasterise every stem differently, which is the one thing a bitmap face must not
+   do. Letter-spacing stays at zero for the same reason: the font's own advance widths are
+   already whole pixels. No synthesised or `text-shadow` bold — both broke the glyphs apart. */
+.sky .name {
+    font: 30px/1 var(--font-pixel-display); letter-spacing: 0; font-synthesis: none;
+    margin: 0 0 .2em; max-width: 18ch;
+}
+@media (min-width: 720px) { .sky .name { font-size: 40px; } }
+@media (min-width: 1280px) { .sky .name { font-size: 60px; } }
+@media (min-width: 1600px) { .sky .name { font-size: 80px; } }
+.sky .tagline {
+    font-size: clamp(1.05rem, 1.6vw, 1.6rem); font-weight: 300; color: var(--muted);
+    margin: 0; max-width: 64ch; letter-spacing: -.01em;
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Home, part two: the figure and the character sheet it belongs to.
+
+   The figure is scaled in fixed steps of its source size: `round(down, …, --fig-step)` picks the
+   largest one that fits, so the scale never drifts with every pixel of window width. A source
+   with a pixel grid steps by whole multiples; one without may step by thirds. `--trim` cuts the
+   empty margins of the source PNG out of the *layout* width without touching the image, so the
+   sheet beside it is not pushed away by transparent pixels.
+   --------------------------------------------------------------------------------------------- */
+.hero {
+    display: grid; grid-template-columns: auto minmax(min(100%, 24rem), 1fr);
+    gap: clamp(1.5rem, 5vw, 7rem); align-items: center;
+    padding-top: clamp(2rem, 6vh, 5rem);
+    /* Pulled up into the band, so the figure stands just in front of the sea, not below it. */
+    margin-top: calc(var(--scene-h) * -.36);
+}
+/* The figure starts at the column's own edge, not a gutter in: the empty margins of the PNG
+   already keep it clear of the sidebar. */
+@media (min-width: 861px) { .hero { margin-left: calc(var(--gutter) * -1); } }
+.figure {
+    position: relative; padding-bottom: 1.5rem;
+    width: calc(var(--fig) * (1 - 2 * var(--trim, 0)));
+    --fig: clamp(var(--fig-min), min(78vw, 90vh), var(--fig-max));
+}
+@supports (width: round(down, 1px, 1px)) {
+    .figure { --fig: clamp(var(--fig-min), round(down, min(78vw, 90vh), var(--fig-step)), var(--fig-max)); }
+}
+/* No pointer events: the transparent margins reach into the sidebar and would swallow its links. */
+.avatar-full {
+    display: block; width: var(--fig); height: var(--fig); max-width: none; pointer-events: none;
+    margin: 0 calc(var(--fig) * var(--trim, 0) * -1); image-rendering: pixelated;
+}
+/* Beside the figure, the sheet stands free on the page: a window around it made the home page
+   read as a card on a card. It is centred against the figure, not dropped to its feet. */
+.roll { padding-bottom: 1.5rem; font-size: clamp(1.1rem, .55rem + .8vw, 1.55rem); }
+.intro { max-width: 40em; }
+
+.roll .groups { margin-top: 2.4em; }
+
+/* ---------------------------------------------------------------------------------------------
+   Inventory: the projects as windows standing free on the water. No card around them — the
+   screenshot *is* the object. They lift a little on hover. The projects without a screenshot
+   follow in a list of their own, narrower columns of icon and words.
+   --------------------------------------------------------------------------------------------- */
+.windows {
+    list-style: none; margin: 0; padding: 0; display: grid; align-items: start;
+    gap: clamp(4rem, 11vh, 9rem) clamp(3rem, 7vw, 8rem);
+    /* Never more than two side by side: each track is at least half the row minus the widest gap,
+       so a third never fits. Fewer, larger screenshots read better than a wall of them. */
+    grid-template-columns: repeat(auto-fit, minmax(max(min(100%, 24rem), calc(50% - 4rem)), 1fr));
+}
+#apps { margin-top: clamp(2.5rem, 7vh, 5.5rem); }
+.win:nth-child(even) { margin-top: clamp(0px, 3vw, 3.5rem); }
+.win > a { display: block; text-decoration: none; color: var(--text); }
+.shot { display: block; }
+/* Shown as delivered: the window's own shadow and rounded corners are in the file's alpha, so the
+   page adds no shadow, radius or frame. A screenshot that looks wrong is retaken, not patched here. */
+.shot img {
+    display: block; width: 100%; height: auto;
+    transition: transform .4s cubic-bezier(.2, .7, .3, 1);
+}
+.win > a:hover .shot img { transform: translateY(-7px) rotate(-.35deg) scale(1.008); }
+.win-text { display: block; margin-top: 1.1rem; max-width: 34ch; }
+.win-text strong {
+    display: block; font-size: clamp(1.15rem, 1.5vw, 1.45rem); font-weight: 700;
+    letter-spacing: -.018em; margin-bottom: .15rem;
+}
+.win-text > span { color: var(--muted); font-size: .98rem; }
+.win-icon { display: block; margin-bottom: .9rem; image-rendering: auto; object-fit: contain; }
+/* Under a screenshot the icon sits beside the name, like an app in a launcher. */
+.shot ~ .win-text:has(.win-icon) {
+    display: grid; grid-template-columns: auto 1fr; column-gap: .9rem; align-items: center;
+}
+.shot ~ .win-text .win-icon { grid-row: span 2; margin: 0; }
+.windows--plain {
+    margin-top: clamp(5rem, 13vh, 10rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: clamp(1.5rem, 3vh, 2.5rem) clamp(1.5rem, 3vw, 3rem);
+}
+.windows--plain .win:nth-child(even) { margin-top: 0; }
+
+.log { list-style: none; margin: 0 0 1.5rem; padding: 0; }
+.log li { display: flex; flex-direction: column; gap: .2rem; padding: 1.4rem 0; }
+.log .kicker { margin: 0; }
+.log a { font-size: clamp(1.25rem, 1.9vw, 1.75rem); font-weight: 600; letter-spacing: -.02em; text-decoration: none; }
+.log a:hover { text-decoration: underline; }
+.more-link { font-weight: 600; text-decoration: none; }
+.more-link:hover { text-decoration: underline; }
+
+/* ---------------------------------------------------------------------------------------------
+   Logbook and plain pages. Free-standing text is the default now: `.prose-page` is a measure,
+   not a card. The only boxes left are the ones that hold a single fact — a support link, the
+   transfer details, a quest, the character sheet.
+   --------------------------------------------------------------------------------------------- */
+/* `.frame` is the quiet box: a line and a fill, square like everything else, and deliberately
+   *not* a pixel window. A page with a window around every paragraph has no windows. */
+.frame {
+    background: color-mix(in srgb, var(--win-bg) 72%, transparent);
+    border: var(--hairline) solid var(--line-strong); border-radius: 0;
+}
+/* Below the waterline, not on top of it: the heading of an article starts where the band's sea
+   has already given way to `--deep`, so nothing from the scene ever sits behind a line of text. */
+.prose-page { padding-top: calc(var(--scene-h) * .95); }
+.entries { list-style: none; margin: 2.5rem 0; padding: 0; display: grid; gap: clamp(2rem, 5vh, 3.5rem); }
+.entries h2 { margin: 0 0 .3em; font-size: clamp(1.4rem, 2.2vw, 2rem); }
+.entries h2 a { color: var(--text); text-decoration: none; }
+.entries h2 a:hover { color: var(--link); text-decoration: underline; }
+.entries .kicker { display: block; margin: 0 0 .3rem; }
+.entries p { margin: 0 0 .5rem; max-width: var(--measure); color: var(--muted); }
+.prose { max-width: var(--measure); }
+/* The Markdown renderer shifts headings down one level under the page's h1, so a post's `##` is an
+   h3 here: that is the section heading and gets the section size. */
+.prose h2, .prose h3 { margin: 2.6rem 0 .8rem; font-size: clamp(1.4rem, 2.1vw, 1.9rem); line-height: 1.15; }
+.prose h4 { margin: 1.9rem 0 .5rem; font-size: clamp(1.1rem, 1.4vw, 1.3rem); }
+.prose-page > header { margin-bottom: clamp(1.75rem, 4vh, 2.75rem); }
+.prose-page > header h1 { margin-bottom: 0; }
+/* Tag chips: under the h1 of the index and of a post, and under each entry's summary. */
+.tagnav, .prose-page > header .chips { margin-top: 1rem; }
+.entries .chips { margin-top: .9rem; }
+.prose img { image-rendering: auto; border-radius: 10px; }
+.prose pre, .prose code { font-family: var(--font-mono); font-size: .9em; }
+.prose pre {
+    background: color-mix(in srgb, var(--surface-solid) 86%, transparent);
+    border: var(--hairline) solid var(--line); border-radius: 10px; padding: 1rem; overflow-x: auto;
+}
+.prose :not(pre) > code { background: var(--tag-bg); border-radius: 4px; padding: .05em .3em; }
+.prose blockquote { margin: 1.6rem 0; padding: .25rem 1.3rem; border-left: 2px solid var(--accent); color: var(--muted); }
+/* Rows divided by hairlines only, no cage around the cells: the table stays free-standing text. */
+.prose table { border-collapse: collapse; display: block; overflow-x: auto; margin: 1.4rem 0 1.6rem; }
+.prose th, .prose td { border-bottom: var(--hairline) solid var(--line); padding: .45rem 1.5rem .45rem 0; text-align: left; vertical-align: top; }
+.prose th { font-weight: 700; }
+.support-note { margin: 3.5rem 0 2rem; max-width: var(--measure); color: var(--muted); }
+.support-note p { margin: 0; }
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem 0 0; max-width: var(--measure); }
+.pager a { display: block; text-decoration: none; color: var(--text); padding: .75rem 0; }
+.pager .older { grid-column: 2; text-align: right; }
+.pager .newer { grid-column: 1; }
+.pager a:hover { color: var(--link); }
+.pager .kicker { display: block; margin: 0; }
+
+/* CV — the long form of the home page, which already shows the figure and the intro: here only a
+   page title, free on the page like every other one. */
+.cv-head { margin: 0 0 clamp(2rem, 5vh, 3.5rem); }
+.cv-head .print-only p { margin: 0 0 .25rem; }
+.print-only { display: none; }
+.cv h2.kicker { margin-bottom: 1rem; }
+/* One rail down the left, a square pip on it per quest, the quest as free text beside it. The
+   date range in the kicker is the only date: a big year beside it said the same thing twice and
+   split the page into two columns. Every highlight is shown; the CV is read, not skimmed. */
+.timeline {
+    list-style: none; margin: 2.5rem 0 0; padding: 0 0 0 clamp(1.5rem, 3vw, 2.25rem);
+    display: grid; gap: clamp(3rem, 7vh, 4.5rem);
+    border-left: 2px solid var(--line-strong);
+}
+.quest { position: relative; max-width: 62ch; }
+.quest::before {
+    content: ""; position: absolute; width: 10px; height: 10px; background: var(--accent);
+    top: .3rem; left: calc(-1 * clamp(1.5rem, 3vw, 2.25rem) - 6px);
+}
+.quest h3 { margin: .3rem 0 .6rem; font-size: clamp(1.15rem, 1.5vw, 1.45rem); letter-spacing: -.018em; }
+.quest ul { margin: .5rem 0 0; padding-left: 1.25rem; }
+.quest li { margin: .3rem 0; color: var(--muted); }
+.quest p { margin: .25rem 0; }
+.quest h3 a { text-decoration: none; }
+.quest h3 a:hover { text-decoration: underline; }
+.quest .kicker { margin: 0; }
+details summary { cursor: pointer; font-weight: 600; color: var(--link); margin-top: .5rem; }
+.earlier { margin-top: clamp(2.75rem, 6vh, 4rem); }
+.earlier summary { font-size: .98rem; color: var(--muted); margin-bottom: 1rem; }
+/* Same as the home page's plain project list: icon and words, no slot around them. */
+.inventory {
+    list-style: none; margin: 2rem 0 0; padding: 0; display: grid;
+    gap: clamp(2.75rem, 6vh, 4rem) clamp(2.5rem, 5vw, 5rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+.slot a { display: flex; gap: 1.1rem; color: var(--text); text-decoration: none; align-items: flex-start; }
+.slot a:hover strong { color: var(--link); text-decoration: underline; }
+.slot img { image-rendering: auto; object-fit: contain; flex: none; }
+.slot-text { display: flex; flex-direction: column; gap: .15rem; font-size: .92rem; color: var(--muted); }
+.slot-text strong { color: var(--text); font-size: 1.05rem; }
+.glyph { flex: none; width: 48px; height: 48px; background: var(--tag-bg); }
+.plainlist { list-style: none; padding: 0; margin: 0; }
+.plainlist li { padding: .3rem 0; }
+.inline { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; }
+/* Links standing on their own need no underline; only links inside running text keep one. */
+.inline a, .plainlist a { text-decoration: none; }
+.inline a:hover, .plainlist a:hover { text-decoration: underline; }
+.when { color: var(--muted); font-size: .92rem; margin-right: .5rem; }
+
+/* Support */
+.support-links { list-style: none; padding: 0; margin: 2rem 0; display: flex; flex-wrap: wrap; gap: 1rem; }
+.support-links a { display: block; padding: .8rem 1.4rem; font-weight: 600; text-decoration: none; color: var(--text); }
+.support-links a:hover { color: var(--link); }
+.sepa { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; padding: 1.75rem; margin: 2rem 0; }
+.sepa dl { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1rem; margin: 0; }
+.sepa dt { color: var(--muted); }
+.sepa dd { margin: 0; overflow-wrap: anywhere; }
+.sepa figure { margin: 0; text-align: center; }
+.sepa svg { width: 11rem; height: 11rem; background: #fff; display: block; border-radius: 8px; shape-rendering: crispEdges; }
+.sepa figcaption { margin: .6rem 0 0; letter-spacing: .08em; }
+.root .wrap { padding-top: calc(var(--scene-h) * .95); }
+
+/* A phone gets a shorter band — otherwise `--scene-h / 180` would scale the scene up past the
+   width and crop the Kugelbake away. The beacon goes further right than the 82 % a wide screen
+   uses: there is no sidebar here to stay clear of, but the tagline runs the full width of the
+   screen, and at 82 % the lattice stood in the middle of its first line. */
+@media (max-width: 720px) {
+    :root { --scene-h: clamp(420px, 62vh, 620px); --beacon-at: .9; }
+}
+/* A wide screen gets a taller band, because on a wide screen `--bg-unit` is driven by the width:
+   at 2560 px one scene pixel is 8 px, the scene is 1440 px tall, and a 820 px band would letterbox
+   away two thirds of the sky — the disc with it. The taller band is what gives `--sky-top` room
+   to put the headline *under* the moon instead of over it. */
+@media (min-width: 1600px) {
+    :root { --scene-h: clamp(820px, 92vh, 1040px); }
+}
+
+/* Narrow: the sheet goes under the figure, and the figure keeps a whole-number scale down to 2×. */
+@media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 1.5rem; justify-items: start; }
+    .pager { grid-template-columns: 1fr; }
+    .pager .older { grid-column: 1; text-align: left; }
+    .sky .name { max-width: none; }
+}
+@media (max-width: 480px) {
+    .windows { grid-template-columns: 1fr; }
+    .win:nth-child(even) { margin-top: 0; }
+}
+
+/* Less motion: the canvas is never loaded, the static scene stays, nothing moves or transitions. */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Print: the CV as a plain document */
+@media print {
+    :root, html, body { background: #fff !important; color: #000 !important; }
+    body { font-size: 11pt; }
+    .bg, .side, .nav-toggle, .nav-backdrop, .site-footer, .skip, .more-link,
+    .scheme-toggle, .dusk { display: none !important; }
+    .shell { display: block; }
+    .col { min-height: 0; padding-top: 0; }
+    .frame, .roll, .win, .quest, .shot {
+        background: none !important; border: 0; border-radius: 0; box-shadow: none !important;
+        -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; margin: .25rem 0;
+        filter: none !important;
+    }
+    .quest { break-inside: avoid; }
+    .quest::before { display: none; }
+    .cv-head { margin: 0 0 1rem; }
+    .sky { min-height: 0; padding-top: 0; }
+    .avatar-full, .glyph, .slot img, .shot { display: none; }
+    .print-only { display: block; }
+    a { color: #000; text-decoration: none; }
+    .kicker, .when, .label, .where, .win-text > span, .slot-text, .tagline { color: #000; }
+    .sky .name { font-family: var(--font-display); font-size: 20pt; }
+    .timeline { gap: 1rem; border: 0; padding: 0; }
+    .chip { background: none !important; box-shadow: none !important; border: 1px solid #000; color: #000 !important; padding: .05rem .4rem; }
+    .clamp { display: block; -webkit-line-clamp: unset; overflow: visible; }
+    details::details-content { content-visibility: visible; display: block; height: auto; }
+    details summary { display: none; }
+    h1 { font-size: 20pt; }
+    h2 { font-size: 14pt; }
+    .wrap, .prose-page { max-width: none; padding: 0; }
+}
