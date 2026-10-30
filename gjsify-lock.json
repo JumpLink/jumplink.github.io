@@ -6,6 +6,7 @@
     "@gjsify/fs@0.64.12",
     "@gjsify/path@0.64.12",
     "@gjsify/process@0.64.12",
+    "@gjsify/rolldown-native@0.64.12",
     "@gjsify/site@0.64.12",
     "excalibur@^0.32.0"
   ],
@@ -1562,6 +1563,73 @@
       "version": "0.64.12",
       "resolved": "https://registry.npmjs.org/@gjsify/resolve-npm/-/resolve-npm-0.64.12.tgz",
       "integrity": "sha512-NS0fNJDKkezz2BtOE0kVRnrGAgss9ZUkJdM4enzNJuzf3CnJublzPThxcwJyQCMEfbq5R8HMjdNTGqaJfFHrDQ=="
+    },
+    "node_modules/@gjsify/rolldown-native": {
+      "version": "0.64.12",
+      "resolved": "https://registry.npmjs.org/@gjsify/rolldown-native/-/rolldown-native-0.64.12.tgz",
+      "integrity": "sha512-pC1/a6s4m3tlNeL0aCQoH+wymCUhHDQejT/e9z7JYIsD4BeoiMTRTWBe5I5XAhvndbjxiRoRMKnW2qxDw3HUkA==",
+      "dependencies": {
+        "@girs/gjs": "5.4.0",
+        "@girs/glib-2.0": "5.4.0",
+        "@girs/gobject-2.0": "5.4.0"
+      },
+      "optionalDependencies": {
+        "@gjsify/rolldown-native-linux-x64": "0.64.12",
+        "@gjsify/rolldown-native-darwin-x64": "0.64.12",
+        "@gjsify/rolldown-native-linux-arm64": "0.64.12",
+        "@gjsify/rolldown-native-darwin-arm64": "0.64.12"
+      }
+    },
+    "node_modules/@gjsify/rolldown-native-darwin-arm64": {
+      "version": "0.64.12",
+      "resolved": "https://registry.npmjs.org/@gjsify/rolldown-native-darwin-arm64/-/rolldown-native-darwin-arm64-0.64.12.tgz",
+      "integrity": "sha512-jURwZNz+TuJGz3B2oPQUiqRfvN+lQxjDSE31DAEsUWUquH30Uwas4o/7w/Ykkr7CewzWHxOtvOrk4taV+VfjWw==",
+      "os": [
+        "darwin"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "optional": true
+    },
+    "node_modules/@gjsify/rolldown-native-darwin-x64": {
+      "version": "0.64.12",
+      "resolved": "https://registry.npmjs.org/@gjsify/rolldown-native-darwin-x64/-/rolldown-native-darwin-x64-0.64.12.tgz",
+      "integrity": "sha512-HoEB/v9V2vCC5joIhmjYZG36TRv7FbFfNEShtWijutBahoWhlY8l1EDXXPn23I0zcKcCpa/Nwy9ZOJ3ceYPx6Q==",
+      "os": [
+        "darwin"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "optional": true
+    },
+    "node_modules/@gjsify/rolldown-native-linux-arm64": {
+      "version": "0.64.12",
+      "resolved": "https://registry.npmjs.org/@gjsify/rolldown-native-linux-arm64/-/rolldown-native-linux-arm64-0.64.12.tgz",
+      "integrity": "sha512-3k8Hk+q6C06WAkdHWRrVpLxGBNOj1sp+6B7JRjR8hwnhNo/SeOyRdxwku1X7VFnq/+73n7dGu9UNwEDThgruzA==",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "optional": true
+    },
+    "node_modules/@gjsify/rolldown-native-linux-x64": {
+      "version": "0.64.12",
+      "resolved": "https://registry.npmjs.org/@gjsify/rolldown-native-linux-x64/-/rolldown-native-linux-x64-0.64.12.tgz",
+      "integrity": "sha512-woYTWKtQNLTt7kM+l6UaPCbljwv3u5+AWjkfKf7GKoKXpJMuraRVdoJTShNgeQKzDj8YM+AUCrqa3Ckv+q1O/w==",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "libc": [
+        "glibc"
+      ],
+      "optional": true
     },
     "node_modules/@gjsify/rolldown-plugin-deepkit": {
       "version": "0.64.12",

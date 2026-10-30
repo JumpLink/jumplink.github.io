@@ -104,6 +104,7 @@
     "@gjsify/fs": "0.64.12",
     "@gjsify/path": "0.64.12",
     "@gjsify/process": "0.64.12",
+    "@gjsify/rolldown-native": "0.64.12",
     "@gjsify/site": "0.64.12",
     "excalibur": "^0.32.0"
   },
