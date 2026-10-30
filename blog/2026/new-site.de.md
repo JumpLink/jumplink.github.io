@@ -1,28 +1,38 @@
 ---
-title: Ein neues jumplink.eu, gebaut mit den eigenen Werkzeugen
-date: 2026-10-26
-summary: jumplink.eu ist jetzt eine statische Seite aus @gjsify/site — demselben Paket, das die Seiten meiner GNOME-Apps baut.
-tags: [gjsify, GNOME]
-draft: true
+title: Ein neues jumplink.eu mit neuem Look
+date: 2026-10-30
+summary: Zeit für ein Redesign. Mehr Farbe, mehr Leben und oben auf jeder Seite der Blick vom Cuxhavener Deich.
+tags: [Website, Pixelart]
 ---
 
-Jahrelang war jumplink.eu ein einseitiger Lebenslauf in Riba.js, meinem eigenen Web-Framework. Er
-funktioniert noch, sagte aber nicht mehr, woran ich meine Zeit verbringe: an
-[gjsify](https://gjsify.org/) und den GNOME-Apps, die ich damit baue.
+Es war mal wieder Zeit für ein Redesign. Das alte Design war mir zu grau, zu textlastig und nicht
+mehr aktuell:
 
-Die neue Seite erzeugt `@gjsify/site`, das Paket, das schon die Download-Seiten von
-[Beifahrer](https://jumplink.eu/beifahrer/) und [Steuererklärung](https://jumplink.eu/steuererklaerung/)
-aus ihren AppStream-Metadaten baut. Dafür hat es zwei Dinge gelernt:
+![Die alte Seite: ein grauer, einspaltiger Lebenslauf mit Foto und Pixelschrift](new-site-old.webp)
 
-- **Entwicklerseiten.** Statt der Metadaten einer App kann eine Seite eine Person beschreiben: ein
-  Hub, der ihre Apps verlinkt, und ein Lebenslauf aus einer [JSON-Resume](https://jsonresume.org/)-Datei
-  je Sprache.
-- **Ein Blog.** Markdown-Dateien in git, mit Frontmatter für Titel, Datum und Tags. Der Build
-  schreibt eine Übersicht, Tag-Seiten, einen Atom-Feed je Sprache und je Tag und eine
-  Vorschaukarte für jeden Beitrag.
+## Der Look
 
-Beides ist schlichte Konfiguration in der `package.json`; wer mit gjsify eine App-Seite baut, kann
-genauso einen Blog ergänzen. Die Pixelschrift und die ungeglätteten Bilder sind eine Theme-Option,
-kein Fork.
+Vom Pixelart-Look wollte ich mich nicht trennen, aber ich wollte mehr Farbe und Leben in die Seite
+bringen. Ich lebe in Cuxhaven, deshalb steht oben auf jeder Seite der Blick vom Deich: Himmel, Meer
+und am Horizont die Kugelbake, das Wahrzeichen der Stadt. Ist dein System auf den dunklen Modus
+gestellt, ist es Abend mit Mond und Sternen, sonst Tag.
 
-Die alte Seite bleibt im Repository unter dem Tag `v2-riba` erhalten.
+Die Szene bewegt sich. Die Wellen laufen, tagsüber ziehen Containerschiffe, Kutter und Möwen
+vorbei, nachts Sternschnuppen und Flugzeuge. Wer in seinem System weniger Bewegung eingestellt
+hat, sieht stattdessen ein ruhiges Standbild.
+
+Auf der Startseite stehe ich selbst als Pixelfigur vor dem Wasser. Die Figur ist mit KI entstanden,
+aber lokal auf meinem eigenen Rechner: mit ComfyUI, dem Modell FLUX.2 Klein 4B und der LoRA
+`pixel-art-sprite_limbicnation`.
+
+Sonst bleibt die Seite ruhig: Text steht frei auf dem Hintergrund, fast ohne Kästen, gesetzt in
+Adwaita Sans, der Schrift von GNOME. Eine Pixelschrift gibt es nur noch für meinen Namen im Himmel.
+Ein paar Begriffe habe ich mir aus den Rollenspielen geliehen, die ich mag: Im Lebenslauf stehen
+Quests und Gegenstände, die Fähigkeiten bilden einen kleinen Fähigkeitenbaum, und der Blog heißt
+Logbuch.
+
+Übrigens, ein kleiner Hinweis: Wer auf den Mond oder die Sonne klickt, wechselt zwischen Tag und
+Nacht. Vielleicht kommen mit der Zeit noch ein paar weitere kleine Spielereien dazu. :)
+
+Die Seite setzt keine Cookies, hat kein Tracking und lädt nichts von fremden Servern. Die alte
+Seite bleibt im Repository unter dem Tag `v2-riba` erhalten.
