@@ -31,7 +31,9 @@
       {
         "app": "https://jumplink.eu/Learn6502/",
         "image": {
-          "light": "assets/projects/learn6502-light.webp"
+          "light": "assets/projects/learn6502-light.webp",
+          "dark": "assets/projects/learn6502-dark.webp",
+          "phone": true
         }
       },
       {
