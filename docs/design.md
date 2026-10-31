@@ -298,7 +298,7 @@ shows **only inside its own window** and then disappears by itself.
 | Role | Face | Notes |
 | --- | --- | --- |
 | Everything readable | **Adwaita Sans** (OFL), variable, self-hosted | `assets/fonts/adwaita-sans-latin.woff2`, latin + latin-ext, preloaded |
-| The page title | **Ark Pixel 10px** (proportional, OFL) | Only the `h1`, on every page — only at 30 / 40 / 50 / 60 px |
+| The page title | **Ark Pixel 10px** (proportional, OFL) | Only the `h1`, on every page — only at 30 / 50 / 70 / 80 px (whole multiples of 10) |
 | Code | the system monospace stack | No webfont |
 
 Everything except the `h1` is Adwaita Sans: the other headings (700, `letter-spacing: -.02em`), the CV
@@ -353,9 +353,9 @@ The character sheet below the intro is
 **finished**: this is not character creation, the character exists. Hence no "New character
 created" kicker, no empty slots and no counting. There are no class/home facts and no buttons
 beside the figure either: the kicker already says the class, and the sidebar already
-links the logbook and the CV. The hero is pulled down into the scene band (`margin-top: .52 ×
---scene-h`), so the figure's head reaches the waterline and it stands in front of the sea rather
-than below it.
+links the logbook and the CV. The hero is pulled down into the scene band (`margin-top: .6 ×
+--scene-h`, `--hero-drop`), so the figure stands in front of the sea rather than below it, with
+its head under the waterline and the harbour on the horizon left free.
 
 Every page's title block (kicker, `h1`, tags) is followed by the same gap — `.prose-page > header`:
 the CV's own header margin plus its first section's `.block` margin. Boxes that hold a single fact
