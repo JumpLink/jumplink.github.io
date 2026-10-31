@@ -195,7 +195,7 @@ so short that the beacon reached up into the sidebar's links.
 
 The name and the tagline stand at the top of the sky — level with the sidebar's first link on a
 wide screen, just under the menu button on a phone — and the sun or moon hangs below them
-(`DISC.y` 66); `.sky`'s `padding-top` is as large as reads well but capped so name, one line
+(`DISC.y` 72); `.sky`'s `padding-top` is as large as reads well but capped so name, one line
 of tagline and 1.5rem of air still fit above the disc's top row. The text used to start under the disc, which put it right in the middle of the
 animated sky; above the disc it covers only the empty top rows.
 
@@ -229,8 +229,8 @@ Whoever clicks the disc gets the other half of the day. There is no button to se
 `<button class="scheme-toggle">` sits exactly over the sun or the moon, the cursor turns into a
 pointer on it, and that is the only hint it gives.
 
-Its box is the disc's own bounding box in scene pixels — centre `(150, 66)`, radius 7, so columns
-143…157 and rows 59…73 — placed with the same `--bg-unit`, `--bg-top` and `--bg-left` the scene is
+Its box is the disc's own bounding box in scene pixels — centre `(150, 72)`, radius 7, so columns
+143…157 and rows 65…79 — placed with the same `--bg-unit`, `--bg-top` and `--bg-left` the scene is
 placed with. **That makes the geometry pure CSS:** it follows every resize without a listener, and
 it is the same box for the static SVG and for the canvas, because both are pinned to that one
 integer grid. `--bg-left` exists only for this; it used to be a one-off `clamp()` inside

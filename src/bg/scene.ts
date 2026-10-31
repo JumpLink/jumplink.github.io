@@ -410,9 +410,9 @@ export const GLITTER_OPACITY = 0.24;
  *
  * `y` leaves the top of the sky to the name: the headline stands at the top of the band, above
  * the disc, so neither covers the moving scene. At 56 there was no room for both above the disc
- * at 1440 px; 66 makes that room and still leaves the disc high above the harbour.
+ * at 1440 px; 72 makes that room and still leaves the disc well above the harbour.
  */
-export const DISC = { x: 150, y: 66, r: 7 };
+export const DISC = { x: 150, y: 72, r: 7 };
 
 /** The filled disc as horizontal runs. */
 export function discRuns(r = DISC.r): Run[] {

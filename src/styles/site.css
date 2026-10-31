@@ -232,8 +232,8 @@ a:hover { color: var(--text); }
 }
 
 /* The easter egg: an invisible button exactly over the sun or the moon, which switches day and
-   night. The box is the disc's own bounding box in scene pixels — centre (150, 66), radius 7, so
-   columns 143…157 and rows 59…73 — placed off the same `--bg-*` variables the scene is placed
+   night. The box is the disc's own bounding box in scene pixels — centre (150, 72), radius 7, so
+   columns 143…157 and rows 65…79 — placed off the same `--bg-*` variables the scene is placed
    with. That makes it pure CSS: it follows every resize without a listener, and it is the same box
    for the static SVG and for the canvas, because both are pinned to that one integer grid.
 
@@ -243,7 +243,7 @@ a:hover { color: var(--text); }
 html.js .scheme-toggle {
     display: block;
     position: absolute; z-index: 2;
-    top: calc(var(--bg-top) + 59 * var(--bg-unit));
+    top: calc(var(--bg-top) + 65 * var(--bg-unit));
     left: calc(var(--bg-left) + 143 * var(--bg-unit));
     width: calc(15 * var(--bg-unit)); height: calc(15 * var(--bg-unit));
     padding: 0; border: 0; border-radius: 50%;
@@ -422,9 +422,9 @@ a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --s
     --tagline-size: clamp(1.05rem, 1.6vw, 1.6rem);
     min-height: calc(var(--scene-h) * .88);
     /* As far down as reads well, but never so far that the tagline reaches the disc's top row
-       (59): name, one line of tagline and 1.5rem of air have to fit above it. */
+       (65): name, one line of tagline and 1.5rem of air have to fit above it. */
     padding-top: max(1rem, min(clamp(2.25rem, 7vh, 5rem),
-        calc(var(--bg-top) + 59 * var(--bg-unit) - 1.2 * var(--name-size) - 1.6 * var(--tagline-size) - 1.5rem)));
+        calc(var(--bg-top) + 65 * var(--bg-unit) - 1.2 * var(--name-size) - 1.6 * var(--tagline-size) - 1.5rem)));
 }
 /* The name is set in Ark Pixel's 10 px cut, the only pixel type on the site, and only
    at whole multiples of its design size — 30, 40, 60, 80. A fluid `clamp()` would land on
