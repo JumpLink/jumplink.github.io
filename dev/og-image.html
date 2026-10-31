@@ -1,0 +1,36 @@
+<!doctype html>
+<!-- The share card (og:image), rendered from the built site rather than drawn twice: it loads the
+     English home page, keeps only its static scene, and sets the name in the sky on top. Run by
+     `dev/og-image.sh`, which needs the preview server. -->
+<meta charset="utf-8">
+<script type="module">
+const html = await (await fetch('/en/')).text();
+const page = new DOMParser().parseFromString(html, 'text/html');
+const sheet = page.querySelector('link[rel="stylesheet"]');
+const name = page.querySelector('.sky .name').textContent;
+const tagline = page.querySelector('.sky .tagline').textContent;
+const figure = page.querySelector('.figure img');
+document.head.append(sheet);
+document.documentElement.dataset.scheme = 'light';
+document.body.className = 'home';
+document.body.style.cssText = '--scene-h: 630px; --horizon-at: .8; --view-x: 2; margin: 0; overflow: hidden; height: 630px;';
+document.body.append(page.querySelector('.bg'));
+const card = document.createElement('div');
+card.className = 'og';
+card.innerHTML = '<p class="og-name"></p><p class="og-tagline"></p><p class="og-url">jumplink.eu</p>';
+card.querySelector('.og-name').textContent = name;
+card.querySelector('.og-tagline').textContent = tagline;
+if (figure) card.append(Object.assign(document.createElement('img'), { src: figure.src, className: 'og-figure' }));
+document.body.append(card);
+const style = document.createElement('style');
+style.textContent = `
+.og { position: absolute; inset: 0; padding: 56px 64px; color: var(--text); }
+.og p { margin: 0; }
+.og-name { font: 80px/1 var(--font-pixel-display); }
+.og-tagline { font: 300 30px/1.3 var(--font-display); color: var(--muted); margin-top: 18px !important; }
+.og-figure { position: absolute; right: 150px; top: 250px; width: 384px; image-rendering: pixelated; }
+.og-url { position: absolute; left: 64px; bottom: 48px; font: 600 26px/1 var(--font-display); color: var(--muted); }
+`;
+document.head.append(style);
+await document.fonts.ready;
+</script>

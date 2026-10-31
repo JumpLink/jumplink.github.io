@@ -128,6 +128,10 @@ function profile(c: Ctx, network: string) {
     return c.resume.basics.profiles.find((p) => p.network.toLowerCase() === network && p.url);
 }
 
+/** The share card for every page: the scene with the name in its sky, rendered from the built
+ * site by `dev/og-image.sh` — rerun it when the scene or the tagline changes. */
+const SHARE_CARD = { src: 'assets/images/og.png', width: 1200, height: 630 };
+
 function head(c: Ctx, page: Page): string {
     const { config } = c.site;
     const abs = (path: string) => absoluteUrl(config, path);
@@ -138,7 +142,6 @@ function head(c: Ctx, page: Page): string {
     const fallback = page.urls[config.defaultLanguage];
     if (fallback) alternates.push(`<link rel="alternate" hreflang="x-default" href="${esc(abs(fallback))}">`);
     const feeds = [{ title: `${c.resume.basics.name} – ${c.t('Logbook')}`, href: urlOf.feed(c) }, ...(page.feeds ?? [])];
-    const image = c.resume.basics.image ? abs(c.resume.basics.image) : undefined;
     const og: [string, string | undefined][] = [
         ['og:title', page.title],
         ['og:description', page.description],
@@ -146,7 +149,10 @@ function head(c: Ctx, page: Page): string {
         ['og:type', page.ogType ?? 'website'],
         ['og:site_name', c.resume.basics.name],
         ['og:locale', ogLocale(c.lang)],
-        ['og:image', image],
+        ['og:image', abs(SHARE_CARD.src)],
+        ['og:image:width', String(SHARE_CARD.width)],
+        ['og:image:height', String(SHARE_CARD.height)],
+        ['og:image:alt', c.resume.basics.name],
     ];
     return `<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -159,7 +165,7 @@ ${og
     .filter(([, value]) => value)
     .map(([property, value]) => `<meta property="${property}" content="${esc(value ?? '')}">`)
     .join('\n')}
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 ${feeds.map((f) => `<link rel="alternate" type="application/atom+xml" title="${esc(f.title)}" href="${esc(f.href)}">`).join('\n')}
 <link rel="icon" href="${esc(config.base + (c.site.avatar.icon ?? c.site.avatar.full.src))}" type="image/png">
 <link rel="preload" href="${esc(config.base + 'assets/fonts/adwaita-sans-latin.woff2')}" as="font" type="font/woff2" crossorigin>
