@@ -174,15 +174,14 @@ export interface SpriteGraphic {
     height: number;
 }
 
-export function spriteGraphic(rows: string[], colors: SceneColors, lightsOn = true): SpriteGraphic {
-    const palette = paletteFor(colors);
+/** Rows of characters painted with a palette; `skip` leaves some characters out (lights that are off). */
+export function seasonSprite(rows: string[], palette: Record<string, string>, skip?: Set<string>): SpriteGraphic {
     const width = Math.max(...rows.map((r) => r.length));
     const height = rows.length;
     const graphic = raster(width, height, (ctx) => {
         rows.forEach((row, y) => {
             [...row].forEach((char, x) => {
-                if (char === '.') return;
-                if (!lightsOn && LIGHTS.has(char)) return;
+                if (char === '.' || skip?.has(char)) return;
                 const color = palette[char];
                 if (!color) return;
                 ctx.fillStyle = color;
@@ -192,6 +191,29 @@ export function spriteGraphic(rows: string[], colors: SceneColors, lightsOn = tr
     });
     return { graphic, width, height };
 }
+
+export const spriteGraphic = (rows: string[], colors: SceneColors, lightsOn = true): SpriteGraphic =>
+    seasonSprite(rows, paletteFor(colors), lightsOn ? undefined : LIGHTS);
+
+/** Cells in a few colours, shifted by `(dx, dy)` so scene coordinates land inside the raster. */
+export function cellsGraphic(
+    width: number,
+    height: number,
+    groups: { color: string; cells: { x: number; y: number }[] }[],
+    dx: number,
+    dy: number,
+): Graphic {
+    return raster(width, height, (ctx) => {
+        for (const group of groups) {
+            ctx.fillStyle = group.color;
+            for (const cell of group.cells) ctx.fillRect(cell.x + dx, cell.y + dy, 1, 1);
+        }
+    });
+}
+
+/** Runs in one colour, as a raster of the given size. */
+export const runsGraphic = (width: number, height: number, runs: Run[], color: string): Graphic =>
+    raster(width, height, (ctx) => fillRuns(ctx, runs, color));
 
 /** A sprite in two states, for anything whose lights blink. */
 export const blinkingSprite = (rows: string[], colors: SceneColors) => ({

@@ -115,7 +115,7 @@ export const DAY: SceneColors = {
  * almost linear in `x`, so thresholding it picks the same columns over and over — the wave crests
  * lined up in visible vertical stripes every ~58 px until this was mixed properly.
  */
-const hash = (a: number, b: number) => {
+export const hash = (a: number, b: number) => {
     let h = Math.imul(a | 0, 0x27d4eb2d) ^ Math.imul(b | 0, 0x165667b1) ^ 0x9e3779b9;
     h ^= h >>> 15;
     h = Math.imul(h, 0x2545f491);
@@ -185,7 +185,10 @@ const KUGELBAKE = [
 ];
 
 /** Top row of the cross-ball; stars keep clear of everything below it. */
-const BEACON_TIP = BEACON_BASE - KUGELBAKE.length + 1;
+export const BEACON_TIP = BEACON_BASE - KUGELBAKE.length + 1;
+
+/** Column of the beacon's left-most cell, which the seasonal decoration is placed against. */
+export const BEACON_LEFT = BEACON_X - (KUGELBAKE[0]!.length - 1) / 2;
 
 /** The beacon as a silhouette, in cells relative to the scene grid. */
 export function kugelbakeCells(): Cell[] {

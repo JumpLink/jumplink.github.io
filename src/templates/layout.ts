@@ -15,6 +15,7 @@ import {
     type DeveloperSiteConfig,
     type Resume,
 } from '@gjsify/site';
+import { SEASON_BOOT } from '../bg/season.js';
 import { staticHarbourSvg, staticSceneSvg } from '../bg/static-svg.js';
 import { icon, type IconName } from './icons.js';
 import type { Translate } from '../i18n.js';
@@ -328,7 +329,7 @@ export function document(c: Ctx, page: Page, main: string): string {
 <html lang="${esc(c.lang)}">
 <head>
 ${head(c, page)}
-<script>${SCHEME_BOOT}</script>
+<script>${SCHEME_BOOT};${SEASON_BOOT}</script>
 </head>
 <body${page.bodyClass ? ` class="${esc(page.bodyClass)}"` : ''}>
 ${background(c)}

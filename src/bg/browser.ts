@@ -10,6 +10,7 @@
 
 import { Color, DisplayMode, Engine } from 'excalibur';
 import { BackgroundScene } from './actors.js';
+import { parseSeason } from './season.js';
 import { DAY, H, HARBOUR_W, HORIZON, NIGHT, W } from './scene.js';
 
 // Where the scene is pinned inside the band. Every line below is the arithmetic the stylesheet
@@ -120,7 +121,7 @@ export function start(): void {
         return;
     }
 
-    const scene = new BackgroundScene(prefersDark() ? NIGHT : DAY, prefersDark());
+    const scene = new BackgroundScene(prefersDark() ? NIGHT : DAY, prefersDark(), parseSeason(document.documentElement.dataset.season));
     const game = engine.addScene('bg', scene);
 
     const relayout = () => layout(host, canvas, engine, scene);

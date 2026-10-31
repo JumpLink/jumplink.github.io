@@ -272,6 +272,29 @@ the frame the palette changes. A veil covers that snap for the canvas and for th
 alike. Under `prefers-reduced-motion: reduce` the blanket `animation: none` rule removes it and the
 switch is instant.
 
+### Seasons
+
+Around 31 October the coast has bats, a pumpkin and now and then a witch; from Advent to Epiphany
+it snows, the Kugelbake wears a star and lights, and Santa's sleigh crosses the sky. Each season
+shows **only inside its own window** and then disappears by itself.
+
+- **Decided in the visitor's browser, not at build time.** The site is static: a page built on
+  30 October would keep Halloween until the next deploy. A tiny inline script in `<head>`
+  (`SEASON_BOOT`, generated from `SEASON_WINDOWS` in `src/bg/season.ts`, the only copy of the
+  dates) sets `<html data-season>` from the local date. `?season=halloween|christmas|none` forces
+  one for testing.
+- **Static SVG:** both seasons are in the markup as `.bg-halloween` / `.bg-christmas` groups; CSS
+  shows one only under the matching `data-season`. Without JavaScript or with reduced motion the
+  still picture therefore carries the season too.
+- **Canvas:** `BackgroundScene(colors, night, season)` adds the lingering bats, the pumpkin with
+  its candle flicker (and a reflection at night), the snow and the twinkling decor. The first
+  passer-by of a season is always one of its own (sleigh, or ghost / bat flock / witch); later
+  about every second one. Passers-by are the gull's `flyer()`, with an optional spark trail.
+- **The Kugelbake's pieces** (pumpkin, decor) live inside `.bg-beacon` and go with it, so inner
+  pages, where the beacon is hidden, do not show them.
+- **Colours:** only `dark` and `snow` change with the scheme (`--bg-bat`, `--bg-snow`); pumpkin,
+  reindeer and the rest keep their own palette.
+
 ## Type
 
 | Role | Face | Notes |

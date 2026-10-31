@@ -26,6 +26,19 @@ import {
     bandTop,
     type Run,
 } from './scene.js';
+import {
+    BAT_FRAMES,
+    BAT_HOMES,
+    PUMPKIN,
+    PUMPKIN_POS,
+    SNOW_OPACITY,
+    christmasDecor,
+    flakeAt,
+    flakeCells,
+    snowField,
+    spriteRuns,
+    staticPalette,
+} from './season.js';
 
 /**
  * Runs as one `path`: a one-unit stroke per run. The `+ 0.5` puts the stroke's centre line on the
@@ -62,6 +75,47 @@ function sea(): string {
         parts.push(columns(tops, `var(--bg-${SEA_BANDS[i]!.key})`));
     }
     return parts.join('');
+}
+
+/** A sprite as one path per colour, its top-left corner at `(x, y)`. */
+function spritePaths(rows: string[], x: number, y: number): string {
+    const palette = staticPalette();
+    return Object.keys(palette)
+        .map((char) =>
+            path(
+                spriteRuns(rows, char).map((r) => ({ ...r, x: r.x + x, y: r.y + y })),
+                palette[char]!,
+            ),
+        )
+        .join('');
+}
+
+/** The pixels a season adds. Each group stays hidden until `<html data-season>` names its season;
+ * the Kugelbake's own pieces go inside the beacon's group, so they leave with it on inner pages. */
+function seasons(): { sky: string; beacon: string } {
+    const bats = BAT_HOMES.map(([x, y]) => spritePaths(BAT_FRAMES[0]!, x, y)).join('');
+    const pumpkin = spritePaths(PUMPKIN, PUMPKIN_POS.x, PUMPKIN_POS.y);
+
+    // One path per fade step, like the stars: a flake thins out over the sea.
+    const buckets = new Map<string, Run[]>();
+    for (const flake of snowField()) {
+        const { x, y, fade } = flakeAt(flake, 0);
+        if (fade <= 0) continue;
+        const key = (SNOW_OPACITY * (Math.round(fade * 4) / 4)).toFixed(2);
+        const runs = buckets.get(key) ?? [];
+        runs.push(...flakeCells(x, y, flake.size).map((c) => ({ x: c.x, y: c.y, w: 1 })));
+        buckets.set(key, runs);
+    }
+    const snow = [...buckets].map(([opacity, runs]) => path(runs, 'var(--bg-snow)', Number(opacity))).join('');
+
+    const decor = christmasDecor(0)
+        .map((group) => path(group.cells.map((c) => ({ x: c.x, y: c.y, w: 1 })), group.color))
+        .join('');
+
+    return {
+        sky: `<g class="bg-halloween">${bats}</g><g class="bg-christmas">${snow}</g>`,
+        beacon: `<g class="bg-halloween">${pumpkin}</g><g class="bg-christmas">${decor}</g>`,
+    };
 }
 
 /**
@@ -106,7 +160,9 @@ export function staticSceneSvg(): string {
     }
 
     const beacon = kugelbakeCells().map((c) => ({ x: c.x, y: c.y, w: 1 }));
-    parts.push(`<g class="bg-beacon">${path(beacon, 'var(--bg-wood)')}</g>`);
+    const season = seasons();
+    parts.push(season.sky);
+    parts.push(`<g class="bg-beacon">${path(beacon, 'var(--bg-wood)')}${season.beacon}</g>`);
 
     return `<svg class="bg-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" shape-rendering="crispEdges" fill="none" stroke-width="1">${parts.join('')}</svg>`;
 }

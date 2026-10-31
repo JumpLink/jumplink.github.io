@@ -130,6 +130,10 @@
     --bg-lampWhite: light-dark(#9fb8cc, #f4f0ff);
     --bg-lampWarm-water: light-dark(transparent, #ffb45a);
     --bg-lampWhite-water: light-dark(transparent, #f4f0ff);
+    /* The seasons: a silhouette has to stay darker than the day sky and lighter than the night
+       one, snow has to read on both. Pumpkins and reindeer carry their own colours. */
+    --bg-bat: light-dark(#2f2056, #5a45a0);
+    --bg-snow: light-dark(#fff, #f4f0ff);
 
     /* The two values a colour function cannot carry: those gradient stops. There is no `light-dark()` for a number, so these are the one thing that
        still needs a block per scheme — four of them, because a forced scheme has to beat both the
@@ -284,6 +288,10 @@ body:not(.home) {
     --beacon: 0;
 }
 body:not(.home) .bg-beacon { display: none; }
+/* A season is on only while `<html data-season>` says so; the inline script in `<head>` sets it
+   from the visitor's own date. */
+.bg-halloween, .bg-christmas { display: none; }
+html[data-season="halloween"] .bg-halloween, html[data-season="christmas"] .bg-christmas { display: inline; }
 /* No dive here: the strip simply ends, the text starts under its edge. */
 body:not(.home) .bg-deep { display: none; }
 
