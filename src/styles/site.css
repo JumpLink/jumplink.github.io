@@ -33,6 +33,7 @@
 
     --hairline: 1px;
     --measure: 70ch;
+    --title-gap: calc(clamp(1.75rem, 4vh, 2.75rem) + clamp(4rem, 10vh, 9rem));
     --wrap-max: 100rem;
     /* One horizontal rhythm for the whole page, sidebar included. */
     --gutter: clamp(1.25rem, 3.5vw, 4rem);
@@ -475,7 +476,7 @@ a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --s
 .roll { padding-bottom: 1.5rem; font-size: clamp(1.1rem, .55rem + .8vw, 1.55rem); }
 .intro { max-width: 40em; }
 
-.roll .groups { margin-top: 2.4em; }
+.roll .groups { margin-top: var(--title-gap); }
 
 /* ---------------------------------------------------------------------------------------------
    Inventory: the projects as windows standing free on the water. No card around them — the
@@ -549,7 +550,7 @@ a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --s
 /* The title block stands apart from what it introduces: the gap the CV has always had, now on
    every page. The CV's first section brings its own `.block` margin, so its header keeps the
    short one. */
-.prose-page > header { margin-bottom: calc(clamp(1.75rem, 4vh, 2.75rem) + clamp(4rem, 10vh, 9rem)); }
+.prose-page > header { margin-bottom: var(--title-gap); }
 .prose-page > header.cv-head { margin-bottom: clamp(1.75rem, 4vh, 2.75rem); }
 .prose-page > header h1 { margin-bottom: 0; }
 /* Tag chips: under the h1 of the index and of a post, and under each entry's summary. */
@@ -669,7 +670,7 @@ details summary { cursor: pointer; font-weight: 600; color: var(--link); margin-
     .roll { display: contents; }
     .lead { grid-column: 1; grid-row: 1; }
     .intro { margin: 0; }
-    .roll .groups { grid-column: 1 / -1; margin-top: .5em; }
+    .roll .groups { grid-column: 1 / -1; margin-top: 3rem; }
     .pager { grid-template-columns: 1fr; }
     .pager .older { grid-column: 1; text-align: left; }
 }
