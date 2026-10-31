@@ -519,6 +519,13 @@ a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --s
     gap: clamp(1.5rem, 3vh, 2.5rem) clamp(1.5rem, 3vw, 3rem);
 }
 .windows--plain .win:nth-child(even) { margin-top: 0; }
+/* Phone windows (360 px logical, portrait): many to a row, each about a phone's own width, so a
+   single one does not blow up to half the page. */
+.windows--phone {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 11rem), 15rem));
+    gap: clamp(3rem, 8vh, 6rem) clamp(2rem, 4vw, 4.5rem);
+}
+.windows--phone + .windows { margin-top: clamp(5rem, 13vh, 10rem); }
 
 .more-link { font-weight: 600; text-decoration: none; }
 .more-link:hover { text-decoration: underline; }
@@ -676,6 +683,7 @@ details summary { cursor: pointer; font-weight: 600; color: var(--link); margin-
 }
 @media (max-width: 480px) {
     .windows { grid-template-columns: 1fr; }
+    .windows--phone { grid-template-columns: repeat(2, 1fr); column-gap: 1.5rem; }
     .win:nth-child(even) { margin-top: 0; }
 }
 

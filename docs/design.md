@@ -474,7 +474,13 @@ Pascal rejected that as working around bad images instead of fixing them.
 
 **All shots are the mobile layout, the same size, light and dark.** Every project on the home
 page shows its narrow (360 px logical) window, so the windows line up as one row of equals, and
-`light` and `dark` are both expected — the page follows the reader's scheme.
+`light` and `dark` are both expected — the page follows the reader's scheme. Taken at scale 2
+(782×1582 px with the shadow), so they stay sharp on a HiDPI screen.
+
+Until every project has one, `"phone": true` on `image` marks the phone shots. They get a row of
+their own (`.windows--phone`) above the wide shots, several to a row and each capped at about a
+phone's width: next to a desktop window a phone window was a sliver, and alone in a two-column
+grid it grew to half the page. Once all projects are phone shots, the flag and the wide grid go.
 
 Screenshots: PNG or WebP with alpha, in `assets/projects/`; a conversion may resize but never
 crop, flatten or recolour. **Only demo content.**

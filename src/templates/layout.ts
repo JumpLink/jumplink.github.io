@@ -55,6 +55,8 @@ export interface Avatar {
 export interface ProjectImage {
     light: string;
     dark?: string;
+    /** The app's narrow (360 px logical) window: it goes into the phone row, not the wide grid. */
+    phone?: boolean;
 }
 
 /**

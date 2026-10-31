@@ -82,6 +82,7 @@ function resolve(c: Ctx, entry: ProjectEntry, apps: RelatedApp[]): ResolvedProje
     const image = entry.image && {
         light: base + entry.image.light,
         ...(entry.image.dark ? { dark: base + entry.image.dark } : {}),
+        ...(entry.image.phone ? { phone: true } : {}),
     };
     const icon = entry.icon && base + entry.icon;
     if (entry.app !== undefined) {
@@ -117,8 +118,10 @@ function window_(p: ResolvedProject): string {
     return `<li class="win${p.image ? '' : ' win--plain'}"><a href="${esc(p.url)}">${shot}<span class="win-text">${icon}<strong>${esc(p.name)}</strong><span>${esc(p.summary)}</span></span></a></li>`;
 }
 
-/** The screenshots first, then the projects without one in their own list — mixed into the
- * screenshot grid, a name and a line of text went under between two windows. */
+/** The phone shots first, then the wide ones, then the projects without a screenshot in their own
+ * list — mixed into the screenshot grid, a name and a line of text went under between two windows.
+ * A phone window beside a desktop one is a sliver, hence a row of its own until every project has
+ * its phone shot. */
 function list(cls: string, entries: ResolvedProject[]): string {
     return entries.length === 0 ? '' : `<ul class="${cls}">${entries.map(window_).join('')}</ul>`;
 }
@@ -132,7 +135,7 @@ function projects(c: Ctx): string {
     return `<section class="block" id="projects" aria-labelledby="projects-h">
 <p class="kicker">${esc(c.t('Inventory'))}</p>
 <h2 id="projects-h">${esc(c.t('Things I made'))}</h2>
-<div id="apps">${list('windows', entries.filter((p) => p.image))}${list('windows windows--plain', entries.filter((p) => !p.image))}</div>
+<div id="apps">${list('windows windows--phone', entries.filter((p) => p.image?.phone))}${list('windows', entries.filter((p) => p.image && !p.image.phone))}${list('windows windows--plain', entries.filter((p) => !p.image))}</div>
 </section>`;
 }
 

@@ -44,7 +44,9 @@
       {
         "app": "https://jumplink.eu/steuererklaerung/",
         "image": {
-          "light": "assets/projects/steuererklaerung-light.webp"
+          "light": "assets/projects/steuererklaerung-mobile-light.webp",
+          "dark": "assets/projects/steuererklaerung-mobile-dark.webp",
+          "phone": true
         }
       },
       {
