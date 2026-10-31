@@ -130,8 +130,8 @@ export const GHOST_FRAMES = [
 /** The jack-o'-lantern, 7 × 7. */
 export const PUMPKIN = ['...g...', '.ooeoo.', 'oooeooo', 'oyoeoyo', 'ooyyyoo', 'oyoyoyo', '.ooeoo.'];
 
-/** It floats in the sea right of the figure on the home page, and bobs a row up and down with the swell. */
-export const PUMPKIN_POS = { x: 110, y: HORIZON + 10 };
+/** It floats right under the waterline, right of the figure: further down, on a tall window, the home text starts there. It bobs a row up and down with the swell. */
+export const PUMPKIN_POS = { x: 110, y: HORIZON + 2 };
 
 /** Its light in the water, relative to a point eight rows under its top. */
 export const PUMPKIN_REFLECTION: Run[] = [
