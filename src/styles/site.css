@@ -439,7 +439,7 @@ a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --s
    sheet beside it is not pushed away by transparent pixels.
    --------------------------------------------------------------------------------------------- */
 .hero {
-    display: grid; grid-template-columns: auto minmax(min(100%, 24rem), 1fr);
+    display: grid; grid-template-columns: minmax(min(100%, 24rem), 1fr) auto;
     gap: clamp(1.5rem, 5vw, 7rem); align-items: start;
     --hero-pad: clamp(2rem, 6vh, 5rem);
     padding-top: var(--hero-pad);
@@ -451,9 +451,10 @@ a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --s
    top is a little above that. */
 .lead { margin-top: max(0px, calc(var(--content-at) - var(--scene-h) * .52 - var(--hero-pad))); }
 .lead h1 { margin-bottom: 1.4rem; }
-/* The figure starts at the column's own edge, not a gutter in: the empty margins of the PNG
-   already keep it clear of the sidebar. */
-@media (min-width: 861px) { .hero { margin-left: calc(var(--gutter) * -1); } }
+/* The words come first and start at the same x as an inner page's heading; the figure stands
+   to their right, so the title does not move when the page changes. */
+.hero > .roll { grid-column: 1; grid-row: 1; }
+.hero > .figure { grid-column: 2; grid-row: 1; }
 .figure {
     position: relative; padding-bottom: 1.5rem;
     width: calc(var(--fig) * (1 - 2 * var(--trim, 0)));
@@ -543,7 +544,11 @@ a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --s
    h3 here: that is the section heading and gets the section size. */
 .prose h2, .prose h3 { margin: 2.6rem 0 .8rem; font-size: clamp(1.4rem, 2.1vw, 1.9rem); line-height: 1.15; }
 .prose h4 { margin: 1.9rem 0 .5rem; font-size: clamp(1.1rem, 1.4vw, 1.3rem); }
-.prose-page > header { margin-bottom: clamp(1.75rem, 4vh, 2.75rem); }
+/* The title block stands apart from what it introduces: the gap the CV has always had, now on
+   every page. The CV's first section brings its own `.block` margin, so its header keeps the
+   short one. */
+.prose-page > header { margin-bottom: calc(clamp(1.75rem, 4vh, 2.75rem) + clamp(4rem, 10vh, 9rem)); }
+.prose-page > header.cv-head { margin-bottom: clamp(1.75rem, 4vh, 2.75rem); }
 .prose-page > header h1 { margin-bottom: 0; }
 /* Tag chips: under the h1 of the index and of a post, and under each entry's summary. */
 .tagnav, .prose-page > header .chips { margin-top: 1rem; }
@@ -571,7 +576,6 @@ a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --s
 
 /* CV — the long form of the home page, which already shows the figure and the intro: here only a
    page title, free on the page like every other one. */
-.cv-head { margin: 0 0 clamp(2rem, 5vh, 3.5rem); }
 .cv-head .print-only p { margin: 0 0 .25rem; }
 .print-only { display: none; }
 .cv h2.kicker { margin-bottom: 1rem; }
@@ -619,10 +623,10 @@ details summary { cursor: pointer; font-weight: 600; color: var(--link); margin-
 .when { color: var(--muted); font-size: .92rem; margin-right: .5rem; }
 
 /* Support */
-.support-links { list-style: none; padding: 0; margin: 2rem 0; display: flex; flex-wrap: wrap; gap: 1rem; }
+.support-links { list-style: none; padding: 0; margin: 2rem 0; display: flex; flex-wrap: wrap; gap: 1rem; max-width: var(--measure); }
 .support-links a { display: block; padding: .8rem 1.4rem; font-weight: 600; text-decoration: none; color: var(--text); }
 .support-links a:hover { color: var(--link); }
-.sepa { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; padding: 1.75rem; margin: 2rem 0; }
+.sepa { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; padding: 1.75rem; margin: 2rem 0; max-width: var(--measure); }
 .sepa dl { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1rem; margin: 0; }
 .sepa dt { color: var(--muted); }
 .sepa dd { margin: 0; overflow-wrap: anywhere; }
@@ -659,8 +663,9 @@ details summary { cursor: pointer; font-weight: 600; color: var(--link); margin-
 /* Narrow: the intro stays beside the figure, the skill tree goes under both. `.roll` steps out of
    the way so its two parts can sit in different rows of the hero's grid. */
 @media (max-width: 860px) {
-    .hero { grid-template-columns: auto minmax(0, 1fr); column-gap: 1rem; row-gap: 0; }
+    .hero { grid-template-columns: minmax(0, 1fr) auto; column-gap: 1rem; row-gap: 0; }
     .roll { display: contents; }
+    .lead { grid-column: 1; grid-row: 1; }
     .intro { margin: 0; }
     .roll .groups { grid-column: 1 / -1; margin-top: .5em; }
     .pager { grid-template-columns: 1fr; }
@@ -691,7 +696,7 @@ details summary { cursor: pointer; font-weight: 600; color: var(--link); margin-
     }
     .quest { break-inside: avoid; }
     .quest::before { display: none; }
-    .cv-head { margin: 0 0 1rem; }
+    .prose-page > header, .prose-page > header.cv-head { margin-bottom: 1rem; }
     .hero { margin-top: 0; padding-top: 0; }
     .lead { margin-top: 0; }
     .avatar-full, .glyph, .slot img, .shot { display: none; }

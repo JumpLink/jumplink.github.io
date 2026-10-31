@@ -29,7 +29,7 @@ Four rules keep it from turning into a costume:
 | Background | The coast, once, at the top of the document | A band that scrolls away into deep water |
 | Navigation | A list in the margin, on every page | Sidebar on desktop, off-canvas drawer below 1000 px |
 | Home, upper | The name standing in the sky | No box, no card; the largest type on the site |
-| Home, lower | The figure on the dike, the finished sheet beside it | Sheet is **locked**: the character exists already |
+| Home, lower | The finished sheet, the figure on the dike to its right | Sheet is **locked**: the character exists already |
 | Projects | Free-floating windows, each a screenshot | Drifting idly, lifting on hover; no card around them |
 | Blog | **Logbuch** (ship's log) | Index lists entries with the date as a kicker; posts read like articles |
 | CV | Character sheet, long form | No portrait or intro (the home page has both): a title, work as a timeline, skills; prints plain with name, label and contact at the head |
@@ -194,8 +194,8 @@ text runs nearly to the right edge there, and the whole harbour stood in it. Inn
 so short that the beacon reached up into the sidebar's links.
 
 Nothing stands in the sky: the sun or moon hangs in open air, and the text starts just under the
-waterline (`--content-at`, the waterline plus `clamp(1.5rem, 4vh, 3rem)`) — on the home page beside
-the figure, on every other page as the heading. The sky above is only the scene.
+waterline (`--content-at`, the waterline plus `clamp(1.5rem, 4vh, 3rem)`) — on the home page left
+of the figure, on every other page as the heading. The sky above is only the scene.
 
 The sea is three bands, far to near, each painted from a wandering upper edge (`bandTop`) down to
 the floor. An ordered dither between the colours was the first attempt and read as exactly what it
@@ -342,8 +342,9 @@ What is left of pixel art follows the same rules as before:
 
 ## The home page
 
-The figure stands on the dike with the page's first words beside it. Those start under the
-waterline like the heading of any other page: a kicker with the role (the part of the resume's
+The page's first words stand on the left, the figure on the dike to their right. The words start
+at the same x as the heading of every other page, so the title does not move on a page change
+(the home band is taller, so its y still differs), and under the waterline like them: a kicker with the role (the part of the resume's
 `label` before its colon, so only "Software developer"), the name as the `h1` in the pixel face,
 and the intro. The rest of the `label` stays in the title and the description. There is no card
 and no "hero section"; the band *is* the picture.
@@ -355,6 +356,10 @@ beside the figure either: the kicker already says the class, and the sidebar alr
 links the logbook and the CV. The hero is pulled down into the scene band (`margin-top: .52 ×
 --scene-h`), so the figure's head reaches the waterline and it stands in front of the sea rather
 than below it.
+
+Every page's title block (kicker, `h1`, tags) is followed by the same gap — `.prose-page > header`:
+the CV's own header margin plus its first section's `.block` margin. Boxes that hold a single fact
+(the transfer details, the support links) stay within `--measure` however wide the page is.
 
 ### No pixel window
 

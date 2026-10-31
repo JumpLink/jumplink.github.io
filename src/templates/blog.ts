@@ -41,9 +41,11 @@ export function blogIndexPage(c: Ctx, tag?: string): string {
             : ` · ${esc(c.t('By topic:'))} ${tags.map((t) => link(blogFeedUrl(config, c.lang, t), t)).join(', ')}`;
     const back = tag ? ` · ${link(urlOf.blog(c), c.t('All entries'))}` : '';
     const main = `<div class="wrap prose-page">
+<header>
 ${kicker(tag ? c.t('Logbook') : c.t('Entries by {name}', { name }))}
 <h1>${esc(heading)}</h1>
 ${tags.length > 0 ? `<nav class="tagnav" aria-label="${esc(c.t('All tags'))}">${tagChips(c, tags, tag)}</nav>` : ''}
+</header>
 ${list}
 <p>${subscribe}${byTopic}${back}</p>
 </div>`;

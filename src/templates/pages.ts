@@ -41,8 +41,10 @@ export function supportPage(c: Ctx): string {
     const name = c.resume.basics.name;
     const description = c.t('{name} writes free software. Support the work with a transfer or a service.', { name });
     const main = `<div class="wrap prose-page">
+<header>
 ${kicker(c.t('Support'))}
 <h1>${esc(c.t('Support my work'))}</h1>
+</header>
 <p>${esc(description)}</p>
 ${links.length ? `<ul class="support-links">${links.join('')}</ul>` : ''}
 ${card ? sepa(c, card) : ''}
@@ -64,8 +66,10 @@ export function statementPage(c: Ctx, view: 'privacy' | 'legal-notice', markdown
     const title = view === 'privacy' ? c.t('Privacy') : c.t('Legal notice');
     const description = view === 'privacy' ? c.t('What this site does with data.') : c.t('Who publishes this site, and how to reach them.');
     const main = `<div class="wrap prose-page">
+<header>
 ${kicker(title)}
 <h1>${esc(title)}</h1>
+</header>
 <div class="prose">${renderMarkdown(markdown)}</div>
 </div>`;
     return document(

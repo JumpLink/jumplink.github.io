@@ -47,8 +47,8 @@ function figure(c: Ctx): string {
 }
 
 /**
- * Part one: the figure and, beside it, who it is and what it can do — free-standing text, no
- * window around it. The kicker is the part of the label before its colon ("Software developer:
+ * Part one: who it is and what it can do — free-standing text, no window around it — with the
+ * figure to its right. The kicker is the part of the label before its colon ("Software developer:
  * TypeScript, …"): the rest is what the intro says anyway, and stays in the title and description.
  */
 function hero(c: Ctx): string {
@@ -56,7 +56,6 @@ function hero(c: Ctx): string {
     const intro = (basics.summary ?? '').split(/\n\s*\n/)[0]?.trim();
     const role = basics.label?.split(':')[0]?.trim();
     return `<section class="hero">
-${figure(c)}
 <div class="roll">
 <div class="lead">
 ${role ? kicker(role) : ''}
@@ -65,6 +64,7 @@ ${intro ? `<p class="intro">${inlineMd(intro)}</p>` : ''}
 </div>
 ${skillGroups(c)}
 </div>
+${figure(c)}
 </section>`;
 }
 
