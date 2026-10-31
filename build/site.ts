@@ -26,6 +26,7 @@ import {
     type DeveloperSiteConfig,
     type RootManifest,
 } from '@gjsify/site';
+import { createHighlighter } from '@gjsify/site-highlight';
 import { missing, translator } from '../src/i18n.js';
 import { blogFeed, blogIndexPage, blogPostPage } from '../src/templates/blog.js';
 import { cvPage } from '../src/templates/cv.js';
@@ -86,7 +87,11 @@ async function main() {
 
     const postsDir = resolve(root, config.blog?.posts ?? 'blog');
     const posts = config.blog ? await loadBlogPosts({ dir: postsDir, languages: config.languages, drafts }) : [];
-    const html = new Map(posts.map((p) => [`${p.lang}/${p.slug}`, renderPostBody(config, p, postsDir, posts)]));
+    // Code blocks are coloured here, at build time, so the pages ship no highlighter script. The page
+    // toggle sets `data-scheme`, so the sheet follows that rather than the package's `data-theme`.
+    const highlighter = await createHighlighter({ schemeAttribute: 'data-scheme' });
+    const markdown = { highlight: (code: string, lang: string) => highlighter.highlight(code, lang) };
+    const html = new Map(posts.map((p) => [`${p.lang}/${p.slug}`, renderPostBody(config, p, postsDir, posts, markdown)]));
     const privacy = config.privacy ? await loadPrivacyStatements(config.privacy, root) : {};
     const legal = config.legalNotice ? await loadLegalNoticeStatements(config.legalNotice, root) : {};
 
@@ -98,7 +103,10 @@ async function main() {
         await write(name, content);
         return `${config.base}${name}`;
     };
-    const cssHref = await hashed('assets/site-*.css', await readFile(join(root, 'src/styles/site.css'), 'utf8'));
+    const cssHref = await hashed(
+        'assets/site-*.css',
+        `${await readFile(join(root, 'src/styles/site.css'), 'utf8')}\n${highlighter.css}`,
+    );
 
     // The animated background is a separate browser bundle (`npm run bundle:bg`). It is optional:
     // without it every page still shows the static sky and scene, so a missing file only warns.
