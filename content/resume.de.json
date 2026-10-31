@@ -6,7 +6,7 @@
     "image": "assets/images/avatar.jpg",
     "email": "pascal@artandcode.studio",
     "url": "https://jumplink.eu/",
-    "summary": "Moin, ich bin Pascal, Entwickler in Cuxhaven, und arbeite in TypeScript für das Web und den Linux-Desktop. Ich baue [gjsify](https://gjsify.org/), das das Node.js- und Web-Ökosystem in GNOME-Apps bringt, und schreibe die Apps, die daraus entstehen.\n\nBei CORRECTIV arbeite ich an den Werkzeugen hinter einer unabhängigen Redaktion; als JumpLink übernehme ich Kundenprojekte. Ich lebe mit meinen zwei Kindern am Meer. Abseits der Tastatur mag ich Radfahren, Holzarbeiten, Survival, Retro-Games und Anime.",
+    "summary": "Moin, ich bin Pascal, Entwickler in Cuxhaven, und arbeite in TypeScript für das Web und den Linux-Desktop. Ich baue [gjsify](https://gjsify.org/), das das Node.js- und Web-Ökosystem in GNOME-Apps bringt, und schreibe die Apps, die daraus entstehen. Als Freelancer übernehme ich auch Entwicklungsaufträge: [schreib mir](mailto:pascal@artandcode.studio).\n\nBei CORRECTIV arbeite ich an den Werkzeugen hinter einer unabhängigen Redaktion. Ich lebe mit meinen zwei Kindern am Meer. Abseits der Tastatur mag ich Radfahren, Holzarbeiten, Survival, Retro-Games und Anime.",
     "location": {
       "city": "Cuxhaven",
       "countryCode": "DE"
@@ -184,7 +184,7 @@
       "keywords": [
         "TypeScript",
         "GNOME & GJS",
-        "Native Apps (Desktop & Mobil)",
+        "Native Apps für Linux, Windows, Android, iOS und Linux Mobile",
         "Web"
       ]
     },

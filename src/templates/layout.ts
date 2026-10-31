@@ -356,5 +356,5 @@ export const kicker = (text: string) => `<p class="kicker">${esc(text)}</p>`;
 
 /** Escapes text and turns `[text](https://…)` links into anchors. */
 export function inlineMd(text: string): string {
-    return esc(text).replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2">$1</a>');
+    return esc(text).replace(/\[([^\]]+)\]\(((?:https?|mailto):[^)\s]+)\)/g, '<a href="$2">$1</a>');
 }
