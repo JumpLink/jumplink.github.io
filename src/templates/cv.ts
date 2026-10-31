@@ -3,7 +3,7 @@
 import { absoluteUrl, esc, formatResumeDate, relatedText } from '@gjsify/site';
 import { skillGroups } from './components.js';
 import { document, kicker, urlOf, urlsFor, type Ctx } from './layout.js';
-import { personJsonLd } from './seo.js';
+import { personJsonLd, plainText } from './seo.js';
 
 const range = (c: Ctx, start?: string, end?: string) => {
     if (!start && !end) return '';
@@ -101,8 +101,10 @@ ${section('cv-profiles', t('Profiles'), profiles.length ? `<ul class="inline">${
     return document(
         c,
         {
-            title: `${t('CV')} – ${basics.name}`,
-            description: t('Experience, projects and skills of {name}.', { name: basics.name }),
+            title: `${t('Curriculum vitae')} – ${basics.name}`,
+            description: [t('Experience, projects and skills of {name}.', { name: basics.name }), basics.label && `${basics.label}.`]
+                .filter(Boolean)
+                .join(' '),
             urls: urlsFor(c, (lang) => urlOf.view(c, 'cv', lang)),
             ogType: 'profile',
             current: 'cv',
@@ -111,7 +113,7 @@ ${section('cv-profiles', t('Profiles'), profiles.length ? `<ul class="inline">${
                     name: basics.name,
                     url: basics.url ?? config.url,
                     jobTitle: basics.label,
-                    description: basics.summary?.split(/\n\s*\n/)[0]?.trim(),
+                    description: plainText(basics.summary?.split(/\n\s*\n/)[0]),
                     image: basics.image ? absoluteUrl(config, basics.image) : undefined,
                     email: basics.email,
                     sameAs: basics.profiles.map((p) => p.url).filter((u): u is string => Boolean(u)),

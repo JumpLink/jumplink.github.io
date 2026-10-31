@@ -31,7 +31,7 @@ import { blogFeed, blogIndexPage, blogPostPage } from '../src/templates/blog.js'
 import { cvPage } from '../src/templates/cv.js';
 import { homePage } from '../src/templates/home.js';
 import type { Avatar, Ctx, ProjectEntry, Site } from '../src/templates/layout.js';
-import { rootRedirect, statementPage, supportPage } from '../src/templates/pages.js';
+import { notFoundPage, rootRedirect, statementPage, supportPage } from '../src/templates/pages.js';
 import { robotsTxt, sitemapXml } from '../src/templates/seo.js';
 
 const args = process.argv.slice(2).filter((a) => a !== '--');
@@ -165,7 +165,9 @@ async function main() {
     }
 
     const defaultResume = data.resumes[config.defaultLanguage];
-    await write('index.html', rootRedirect(config, defaultResume?.basics.name ?? config.url, site.cssHref));
+    const siteName = defaultResume?.basics.name ?? config.url;
+    await write('index.html', rootRedirect(config, siteName, site.cssHref));
+    await write('404.html', notFoundPage(config, siteName, site.cssHref, translator));
     await write('sitemap.xml', sitemapXml(sitemap, config.defaultLanguage));
     await write('robots.txt', robotsTxt([abs(`${config.base}sitemap.xml`)]));
 

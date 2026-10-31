@@ -50,6 +50,15 @@ const DE: Record<string, string> = {
     'Portrait of {name} in pixel art': 'Porträt von {name} als Pixelgrafik',
     'Experience, projects and skills of {name}.': 'Erfahrung, Projekte und Fähigkeiten von {name}.',
     'Software and writing by {name}.': 'Software und Texte von {name}.',
+    'Projects, a logbook and the CV of {name}.': 'Projekte, Logbuch und Lebenslauf von {name}.',
+    'Curriculum vitae': 'Lebenslauf',
+    'The logbook of {name}: notes and write-ups on software, projects and tools. Follow it by feed or by topic.':
+        'Das Logbuch von {name}: Notizen und Berichte über Software, Projekte und Werkzeuge. Per Feed oder nach Thema verfolgen.',
+    'Entries tagged “{tag}” in the logbook of {name}, newest first. This topic has its own Atom feed.':
+        'Einträge mit „{tag}“ im Logbuch von {name}, neueste zuerst. Dieses Thema hat einen eigenen Atom-Feed.',
+    'Page not found': 'Seite nicht gefunden',
+    'This page does not exist, or it has moved.': 'Diese Seite gibt es nicht, oder sie ist umgezogen.',
+    'Go to the home page': 'Zur Startseite',
     '{name} writes free software. Support the work with a transfer or a service.':
         '{name} schreibt freie Software. Unterstütze die Arbeit per Überweisung oder über einen Dienst.',
     'Bank transfer': 'Überweisung',

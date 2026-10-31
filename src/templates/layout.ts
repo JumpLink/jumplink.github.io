@@ -166,6 +166,10 @@ ${og
     .map(([property, value]) => `<meta property="${property}" content="${esc(value ?? '')}">`)
     .join('\n')}
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(page.title)}">
+<meta name="twitter:description" content="${esc(page.description)}">
+<meta name="twitter:image" content="${esc(abs(SHARE_CARD.src))}">
+<meta name="twitter:image:alt" content="${esc(c.resume.basics.name)}">
 ${feeds.map((f) => `<link rel="alternate" type="application/atom+xml" title="${esc(f.title)}" href="${esc(f.href)}">`).join('\n')}
 <link rel="icon" href="${esc(config.base + (c.site.avatar.icon ?? c.site.avatar.full.src))}" type="image/png">
 <link rel="preload" href="${esc(config.base + 'assets/fonts/adwaita-sans-latin.woff2')}" as="font" type="font/woff2" crossorigin>

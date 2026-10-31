@@ -51,7 +51,9 @@ ${list}
         c,
         {
             title: `${heading} – ${name}`,
-            description: c.t('Entries by {name}', { name }),
+            description: tag
+                ? c.t('Entries tagged “{tag}” in the logbook of {name}, newest first. This topic has its own Atom feed.', { tag, name })
+                : c.t('The logbook of {name}: notes and write-ups on software, projects and tools. Follow it by feed or by topic.', { name }),
             urls: urlsFor(c, (lang) => (tag ? tagUrl(config, lang, tag) : blogIndexUrl(config, lang))),
             feeds: tagFeeds(c, tag ? [tag] : tags),
             current: 'blog',

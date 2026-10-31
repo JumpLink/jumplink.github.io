@@ -646,6 +646,9 @@ details summary { cursor: pointer; font-weight: 600; color: var(--link); margin-
 .sepa svg { width: 11rem; height: 11rem; background: #fff; display: block; border-radius: 8px; shape-rendering: crispEdges; }
 .sepa figcaption { margin: .6rem 0 0; letter-spacing: .08em; }
 .root .wrap { padding-top: calc(var(--scene-h) * .95); }
+/* The 404 page has no scene to leave room for. */
+.notfound .wrap { padding-top: clamp(2rem, 12vh, 6rem); }
+.notfound section + section { margin-top: 2.5rem; }
 
 /* Without the sidebar the headline starts at the left gutter, right where the Kugelbake stands, so
    the view starts at column 40: the beacon's right third at the edge of the screen. */

@@ -1,4 +1,4 @@
-// Plain pages: support, privacy, legal notice, and the root language redirect.
+// Plain pages: support, privacy, legal notice, the root language redirect and the 404 page.
 
 import {
     absoluteUrl,
@@ -11,6 +11,7 @@ import {
     sitePageUrl,
     type DeveloperSiteConfig,
     type SiteSupportSepa,
+    type Translate,
 } from '@gjsify/site';
 import { document, kicker, urlOf, urlsFor, type Ctx } from './layout.js';
 
@@ -101,6 +102,45 @@ ${alternates.join('\n')}
 <main id="main" class="wrap">
 <h1>${esc(name)}</h1>
 <ul class="support-links">${config.languages.map((code) => `<li class="frame"><a href="${esc(home(code))}" hreflang="${esc(code)}" lang="${esc(code)}">${esc(languageName(code))}</a></li>`).join('')}</ul>
+</main>
+</body>
+</html>
+`;
+}
+
+/**
+ * `404.html`: GitHub Pages serves it for every unknown path, so there is no language to read from
+ * the URL. Each language gets its message and a way home; the page stays out of the index.
+ */
+export function notFoundPage(
+    config: DeveloperSiteConfig,
+    name: string,
+    cssHref: string,
+    translate: (lang: string) => Translate,
+): string {
+    const title = (code: string) => translate(code)('Page not found');
+    const sections = config.languages.map((code, i) => {
+        const t = translate(code);
+        const heading = i === 0 ? 'h1' : 'h2';
+        return `<section lang="${esc(code)}">
+<${heading}>${esc(t('Page not found'))}</${heading}>
+<p>${esc(t('This page does not exist, or it has moved.'))}</p>
+<ul class="support-links"><li class="frame"><a href="${esc(sitePageUrl(config, code))}" hreflang="${esc(code)}">${esc(t('Go to the home page'))}</a></li></ul>
+</section>`;
+    });
+    return `<!doctype html>
+<html lang="${esc(config.defaultLanguage)}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="robots" content="noindex">
+<title>${esc(`${title(config.defaultLanguage)} – ${name}`)}</title>
+<link rel="stylesheet" href="${esc(cssHref)}">
+</head>
+<body class="notfound">
+<main id="main" class="wrap">
+${sections.join('\n')}
 </main>
 </body>
 </html>

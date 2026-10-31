@@ -5,8 +5,9 @@
 // The sky, the sea and the Kugelbake are not on this page: they are the background of every page
 // (see `src/bg/`), so the home page is only what stands in front of them.
 
-import { esc, relatedText, relatedUrl, type RelatedApp } from '@gjsify/site';
+import { absoluteUrl, esc, relatedText, relatedUrl, type RelatedApp } from '@gjsify/site';
 import { entryList, skillGroups } from './components.js';
+import { websiteJsonLd } from './seo.js';
 import { document, inlineMd, urlOf, urlsFor, type Ctx, type ProjectEntry, type ProjectImage } from './layout.js';
 
 /** Part one: the name in the sky. No box, no card — the sky is the backdrop and the name is in it. */
@@ -157,10 +158,20 @@ ${latest(c)}
         c,
         {
             title: `${basics.name} – ${basics.label ?? c.t('Software and writing by {name}.', { name: basics.name })}`,
-            description: c.t('Software and writing by {name}.', { name: basics.name }),
+            description: [basics.label && `${basics.label}.`, c.t('Projects, a logbook and the CV of {name}.', { name: basics.name })]
+                .filter(Boolean)
+                .join(' '),
             urls: urlsFor(c, (lang) => urlOf.home(c, lang)),
             home: true,
             bodyClass: 'home',
+            jsonLd: [
+                websiteJsonLd({
+                    name: basics.name,
+                    url: absoluteUrl(c.site.config, urlOf.home(c)),
+                    lang: c.lang,
+                    sameAs: basics.profiles.map((p) => p.url).filter((u): u is string => Boolean(u)),
+                }),
+            ],
         },
         main,
     );
