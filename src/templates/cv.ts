@@ -9,7 +9,8 @@ const range = (c: Ctx, start?: string, end?: string) => {
     if (!start && !end) return '';
     const from = start ? formatResumeDate(start, c.lang) : '';
     const to = end ? formatResumeDate(end, c.lang) : c.t('today');
-    return `${from} – ${to}`;
+    // A stint inside one year reads "2019", not "2019 – 2019".
+    return from === to ? from : `${from} – ${to}`;
 };
 
 const link = (url: string | undefined, text: string) =>

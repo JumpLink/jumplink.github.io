@@ -39,6 +39,21 @@
       ]
     },
     {
+      "name": "Peek & Cloppenburg",
+      "url": "https://www.peek-cloppenburg.de/",
+      "position": "Freier Entwickler vor Ort",
+      "location": "Düsseldorf",
+      "startDate": "2019",
+      "endDate": "2019",
+      "summary": "Sieben Monate in Düsseldorf gelebt und direkt im Haus bei Fashion Digital gearbeitet, dem Onlineshop der Peek-&-Cloppenburg-Gruppe. Geholt fürs Frontend, bald auch im Backend.",
+      "highlights": [
+        "Mit dem Checkout-Team in Scrum den Shop für den Start in den Niederlanden vorbereitet: weitere Länder, weitere Bezahlarten",
+        "Einen Microservice für Lieferzeiten und Versandkosten fast vollständig neu geschrieben",
+        "Teamübergreifend TypeScript und eine aktuelle Node.js-Version eingeführt, kaputte Tests repariert und tragfähige geschrieben",
+        "Mit internen Vorträgen einen Rewrite des hauseigenen Shop-Systems angestoßen"
+      ]
+    },
+    {
       "name": "JumpLink / Art+Code Studio",
       "url": "https://jumplink.eu/",
       "position": "Freiberuflicher Entwickler",
@@ -46,7 +61,7 @@
       "summary": "Kundenprojekte vom Konzept bis zum Betrieb; heute vor allem GNOME-Apps und Werkzeuge.",
       "highlights": [
         "GNOME-Apps in TypeScript auf gjsify: Learn 6502 Assembly, Beifahrer, Steuererklärung",
-        "E-Commerce seit 2015: Shopify-Themes und -Apps, Headless-Shops, Frontend und Backend für einen internationalen Modehändler"
+        "E-Commerce seit 2015: Shopify-Themes und -Apps, Headless-Shops"
       ]
     }
   ],
