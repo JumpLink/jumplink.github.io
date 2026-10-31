@@ -276,24 +276,21 @@ html.js .scheme-toggle {
     position: absolute; inset: var(--deep-at) 0 0; z-index: 1;
     background: linear-gradient(to bottom, transparent, var(--deep) 76%);
 }
-/* An article, the logbook, the CV: the same coast in a shorter strip, and the text starts under
-   it. The strip is shorter by cutting sky off the top, not by fading the scene out: the dive
-   starts at the waterline exactly as on the home page. The waterline still sits lower than
-   there, so the sun or moon — which is also the scheme toggle — stays inside the strip. */
+/* An article, the logbook, the CV: the same coast, with less sky. The waterline and the dive sit
+   where they do on the home page (same share of the band), the band is just lower, so the sun or
+   moon — which is also the scheme toggle — still fits above the water. The text starts right under
+   the waterline and so lies over the sea, as the home page's does. */
 body:not(.home) {
-    --scene-h: clamp(340px, 46vh, 480px);
-    --horizon-at: .78;
-    --deep-at: 78%;
+    --scene-h: clamp(440px, 58vh, 600px);
     /* In a strip this short the Kugelbake reaches up into the sidebar's links. */
     --beacon: 0;
+    --content-at: calc(var(--horizon-at) * var(--scene-h) + clamp(1.5rem, 4vh, 3rem));
 }
 body:not(.home) .bg-beacon { display: none; }
 /* A season is on only while `<html data-season>` says so; the inline script in `<head>` sets it
    from the visitor's own date. */
 .bg-halloween, .bg-christmas { display: none; }
 html[data-season="halloween"] .bg-halloween, html[data-season="christmas"] .bg-christmas { display: inline; }
-/* No dive here: the strip simply ends, the text starts under its edge. */
-body:not(.home) .bg-deep { display: none; }
 
 /* ---------------------------------------------------------------------------------------------
    The shell: a sidebar and the column of content, identical on every page.
@@ -554,9 +551,8 @@ a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --s
     background: color-mix(in srgb, var(--win-bg) 72%, transparent);
     border: var(--hairline) solid var(--line-strong); border-radius: 0;
 }
-/* Below the strip, not on top of it: the band ends in a hard edge, so the heading starts a little
-   under it and nothing from the scene ever sits behind a line of text. */
-.prose-page { padding-top: calc(var(--scene-h) + clamp(1.5rem, 4vh, 3rem)); }
+/* Just under the waterline: the heading lies over the sea, the way the home page's text does. */
+.prose-page { padding-top: var(--content-at); }
 .entries { list-style: none; margin: 2.5rem 0; padding: 0; display: grid; gap: clamp(2rem, 5vh, 3.5rem); }
 .entries .entry-title { margin: 0 0 .3em; font-size: clamp(1.4rem, 2.2vw, 2rem); }
 .entries .entry-title a { color: var(--text); text-decoration: none; }
@@ -654,7 +650,7 @@ details summary { cursor: pointer; font-weight: 600; color: var(--link); margin-
 .sepa figure { margin: 0; text-align: center; }
 .sepa svg { width: 11rem; height: 11rem; background: #fff; display: block; border-radius: 8px; shape-rendering: crispEdges; }
 .sepa figcaption { margin: .6rem 0 0; letter-spacing: .08em; }
-.root .wrap { padding-top: calc(var(--scene-h) * .95); }
+.root .wrap { padding-top: var(--content-at); }
 /* The 404 page has no scene to leave room for. */
 .notfound .wrap { padding-top: clamp(2rem, 12vh, 6rem); }
 .notfound section + section { margin-top: 2.5rem; }
