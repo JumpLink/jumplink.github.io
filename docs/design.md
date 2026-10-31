@@ -88,8 +88,9 @@ Used **only** for UI and the scene. Characters (the avatar, other figures) keep 
 | `--rose` | `#e05a8a` | rare highlight |
 
 **The accent is purple, everywhere.** Links, focus rings, the talent-tree
-pips: all `--p4`…`--p6`, never the teal or the gold. A link on dark is `#c4a6ff` with a faint
-`text-shadow` glow, on light the darker `#3f1f9e`; both clear AA against their background. The two
+pips: all `--p4`…`--p6`, never the teal or the gold. A link on dark is `#c4a6ff`, on light the
+darker `#3f1f9e`, and neither glows: a purple halo under the links read as a second, louder style
+next to the flat pixel picture, and it went; both clear AA against their background. The two
 bright palette entries stay defined because the *picture* needs them — a sun is gold, the sea is
 teal — but nothing in the interface may borrow them, or the site has three accents and no accent.
 The red and green on the Kugelbake are the exception that proves it: those are navigation lights,
@@ -118,9 +119,9 @@ of them was edited alone, and the forced scheme is exactly where that drift woul
 is a browser floor of Baseline 2024 (Chrome 123, Firefox 120, Safari 17.5) — the same floor
 `color-mix()` already set here.
 
-Three values are left over, because `light-dark()` only takes colours: `--night` (1 at night, 0 by
-day, used for the link glow) and `--sky-mid` / `--sky-far`, the two middle stops of the sky
-gradient, which sit a little higher at night. Those get a block per scheme — four of them, so a
+Two values are left over, because `light-dark()` only takes colours: `--sky-mid` / `--sky-far`,
+the two middle stops of the sky gradient, which sit a little higher at night. Those get a block per
+scheme — four of them, so a
 forced scheme beats both the default and the media query.
 
 The background follows the scheme **live**: a change of scheme rebuilds the scene without a
@@ -160,7 +161,8 @@ Inside the band, three layers:
 2. **`.bg-svg`** — the scene as a static SVG of `<rect>`s, inline in the HTML. This is what a
    reader sees without JavaScript and under `prefers-reduced-motion: reduce`. Its fills are CSS
    variables (`--bg-star`, `--bg-disc`, `--bg-glitter`, `--bg-foam`, `--bg-wood`,
-   `--bg-sea{Far,Mid,Near}`), so one SVG serves both schemes.
+   `--bg-sea{Far,Mid,Near}`, `--bg-harbour`, `--bg-lamp{Warm,White}[-water]`), so one SVG serves
+   both schemes. The harbour is a second, small SVG, `.bg-harbour` (see below).
 3. **`.bg-canvas`** — the animated scene, created by JavaScript and only once it runs, so a reader
    without it never meets an empty canvas. When it appears, `.bg--live` hides the SVG.
 
@@ -168,32 +170,45 @@ The canvas is an [Excalibur](https://excaliburjs.com/) engine at 320×180 logica
 `antialiasing: false`, `suppressHiDPIScaling: true` and `image-rendering: pixelated`, scaled by an
 integer factor (2…12) so every source pixel stays square. Geometry lives in two places that must
 agree — `src/bg/browser.ts` and the `.bg*` rules in `site.css`: the horizon at `--horizon-at`
-(62.22 % of the band, `HORIZON / H`) and the Kugelbake at `--beacon-at` (81.875 %, `BEACON_X / W`).
+(62.22 % of the band, `HORIZON / H`) and the view at `--view-x` (the scene column at the viewport's left edge).
 Both are **owned by the stylesheet**; `browser.ts` reads them off the element with one generic
 `cssRatio(host, name, fallback)` rather than keeping copies that drift, and both sides round the
 scale with the same `round(up, …)` / `Math.ceil` so the moon does not jump when the canvas takes
 over from the SVG.
 
-`--beacon-at` is not free to choose: the beacon and the sun/moon are pinned to the same 320×180
-scene, so panning it changes both. `.82` is as far right as the lattice goes before it leaves the
-band, and it has to go that far: anywhere nearer the middle it stands inside the headline. A phone
-pushes it further still, to `.93` — there is no sidebar to keep clear, but the tagline runs the
-full width of the screen, and at `.82` the lattice sat in the middle of its first line.
+The Kugelbake stands on the left (`BEACON_X` 36), in the gap between the sidebar and the headline;
+a wide screen shows the scene from column 0. Without the sidebar (≤1000 px) the headline starts at
+the left gutter, exactly where the beacon would be, so the view starts at column 40
+(`--view-x`): the beacon's right third shows, cut off by the edge of the screen. The disc moved
+from column 180 to 150 for that — a phone shows about 130 columns, and from column 40 on the disc
+at 180 fell off the right edge. Earlier it stood on the right at 82 %, and every position
+nearer the middle put it inside the headline.
 
-The sky's text has to clear the disc, so the band tells it where to start rather than guessing:
-`--sky-top` is the disc's lower edge plus four scene pixels (`DISC.y + DISC.r + 4`, in `--bg-unit`
-units, offset by `--bg-top`), and `.sky` takes it as `padding-top`. That is one expression for
-every viewport instead of a breakpoint per screen size — 287 px at 2560, 348 at 1920, 228 at 1280,
-~190 on a phone, all computed from the same scene.
+On the right edge, a stretch of the harbour far off: sheds, a tower, one container crane. By day a
+hazy silhouette, at night dark with warm and white lamps and their long, broken reflections on the
+water. It is pinned to the **viewport's** right edge, `--harbour-edge` scene columns in (4), not to a column of the
+scene — the scene pans, and a fixed column showed the harbour on one screen and cut it off on the
+next. `browser.ts` moves the actor, the stylesheet places `.bg-harbour`; both round the edge down to
+a whole column. Phones (≤480 px) set `--harbour-edge: -25`, so only its left third shows: the
+tagline runs nearly to the right edge there, and the whole harbour stood in it. Inner pages leave the Kugelbake out (`--beacon: 0`): their band is
+so short that the beacon reached up into the sidebar's links.
+
+The name and the tagline stand at the top of the sky — level with the sidebar's first link on a
+wide screen, just under the menu button on a phone — and the sun or moon hangs below them
+(`DISC.y` 66); `.sky`'s `padding-top` is as large as reads well but capped so name, one line
+of tagline and 1.5rem of air still fit above the disc's top row. The text used to start under the disc, which put it right in the middle of the
+animated sky; above the disc it covers only the empty top rows.
 
 The sea is three bands, far to near, each painted from a wandering upper edge (`bandTop`) down to
 the floor. An ordered dither between the colours was the first attempt and read as exactly what it
 was: a checked belt ruled across the whole width.
 
-Always moving: the sea in three bands, the sun or moon, and at night the stars twinkling. On top
-of that, timed events — the first after about 5 s, then every 15–60 s: by day a container ship, a
-fishing cutter or gulls; by night a shooting star, an aircraft with blinking navigation lights,
-now and then a ship showing position lights.
+Always moving: the sea in three bands, the sun or moon, and at night the stars twinkling and the
+harbour lamps flickering on the water. On top of that, timed events — the first after about 5 s,
+then every 15–60 s: by day a container ship (rose containers, dark hull) on the horizon, a fishing
+cutter or gulls; by night a shooting star, an aircraft with blinking navigation lights, now and
+then a ship showing position lights. Ships sit in front of the sea layer: behind it, the water hid
+the whole hull, and by day only a pale bridge was left against a pale sky.
 
 Rules it keeps:
 
@@ -214,8 +229,8 @@ Whoever clicks the disc gets the other half of the day. There is no button to se
 `<button class="scheme-toggle">` sits exactly over the sun or the moon, the cursor turns into a
 pointer on it, and that is the only hint it gives.
 
-Its box is the disc's own bounding box in scene pixels — centre `(180, 56)`, radius 7, so columns
-173…187 and rows 49…63 — placed with the same `--bg-unit`, `--bg-top` and `--bg-left` the scene is
+Its box is the disc's own bounding box in scene pixels — centre `(150, 66)`, radius 7, so columns
+143…157 and rows 59…73 — placed with the same `--bg-unit`, `--bg-top` and `--bg-left` the scene is
 placed with. **That makes the geometry pure CSS:** it follows every resize without a listener, and
 it is the same box for the static SVG and for the canvas, because both are pinned to that one
 integer grid. `--bg-left` exists only for this; it used to be a one-off `clamp()` inside

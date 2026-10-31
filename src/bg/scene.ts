@@ -1,4 +1,5 @@
-// The animated background: the sea off Cuxhaven with the Kugelbake on the horizon.
+// The animated background: the sea off Cuxhaven, the Kugelbake on the left and a stretch of the
+// harbour far off on the right.
 //
 // This module is pure data and geometry. The build renders it once as a static SVG
 // (`static-svg.ts`), the browser bundle draws and animates the same shapes with Excalibur
@@ -11,16 +12,15 @@ export const H = 180;
 /** Row of the waterline: sky above, sea below. */
 export const HORIZON = 112;
 /**
- * Column the Kugelbake stands on. `browser.ts` pins this column to the same fraction of the
- * viewport (`--beacon-at`), which is what keeps the beacon out from behind the headline.
+ * Column the Kugelbake stands on: far out to the left, in the gap between the navigation and the
+ * headline. A wide screen shows the scene from column 0 (`--view-x: 0`), so this column alone decides
+ * where the beacon lands, and anything much further right stands it behind the name.
  *
- * It sits far out to the right, at 82 % of the width, and that is not cosmetic: on every viewport
- * wide enough to drive the scale the scene is exactly as wide as the screen, the pan clamps to
- * zero and the beacon lands at `BEACON_X / W` whatever `--beacon-at` says. Standing it at the
- * middle of the scene therefore stood it in the middle of the screen, under the first line of
- * text. The only lever that actually moves it is this column.
+ * Without the sidebar the headline starts at the left gutter, and there is no column left of it to
+ * stand in. Narrow screens therefore start the view at column 40 (`--view-x` in `site.css`) and
+ * show only the beacon's right third at the edge of the screen.
  */
-export const BEACON_X = 262;
+export const BEACON_X = 36;
 
 export interface Cell {
     x: number;
@@ -50,6 +50,13 @@ export interface SceneColors {
     lightRed: string;
     lightGreen: string;
     lightWhite: string;
+    /** Containers on the cargo ship, and its bridge. */
+    cargo: string;
+    deck: string;
+    /** The harbour: its silhouette, and its warm and white lamps — the silhouette's colour by day. */
+    harbour: string;
+    lampWarm: string;
+    lampWhite: string;
 }
 
 /** jumplink16, as the scene uses it. Night is the dike after dark, day the same water at noon. */
@@ -68,6 +75,11 @@ export const NIGHT: SceneColors = {
     lightRed: '#e05a8a',
     lightGreen: '#3fd0c9',
     lightWhite: '#f4f0ff',
+    cargo: '#46307d',
+    deck: '#46307d',
+    harbour: '#120c24',
+    lampWarm: '#ffb45a',
+    lampWhite: '#f4f0ff',
 };
 
 // By day the water gets *lighter* with depth, not darker: the page below the band is bright haze,
@@ -88,6 +100,12 @@ export const DAY: SceneColors = {
     lightRed: '#e05a8a',
     lightGreen: '#1c7a4a',
     lightWhite: '#f4f0ff',
+    cargo: '#e05a8a',
+    deck: '#46307d',
+    // Haze: far enough off that it is lighter than anything on the water.
+    harbour: '#9fb8cc',
+    lampWarm: '#9fb8cc',
+    lampWhite: '#9fb8cc',
 };
 
 /**
@@ -180,6 +198,90 @@ export function kugelbakeCells(): Cell[] {
     });
     return cells;
 }
+
+// ---------------------------------------------------------------------------------------------
+// The harbour
+// ---------------------------------------------------------------------------------------------
+
+/**
+ * A stretch of the harbour seen from the dike: sheds, a tower and one container crane, small
+ * because it is kilometres off. `o` and `w` are warm and white lamps — lit windows and the quay's
+ * lights at night, plain silhouette by day.
+ *
+ * It does not stand on a fixed column. The scene is wider than most screens and pans, so a fixed
+ * column would show the harbour on one screen and cut it off on the next; instead both renderers
+ * pin it to the right edge of the viewport, `--harbour-edge` columns in (`site.css`) — on a phone
+ * that is negative, and only the harbour's left third shows.
+ */
+const HARBOUR = [
+    '..............o.........................',
+    '..............#.........................',
+    '.............###........................',
+    '..###################...................',
+    '..#..........#....#.....w...............',
+    '..#..........#....#....###..............',
+    '.............#....#....###..............',
+    '.............######....###..............',
+    '.............#....#....###.....o........',
+    '.............#....#....###....###.......',
+    '#########....#....#...#####...###.......',
+    '#o###w###....#....#...##w##..#####..w...',
+    '#########..o.#....#..#############.###..',
+    '########################w##########o###.',
+    'w#o####w####o#####o######o#####w####o###',
+];
+
+export const HARBOUR_W = HARBOUR[0]!.length;
+export const HARBOUR_H = HARBOUR.length;
+/** Its bottom row sits on the last row of sky: the quay is on the far shore, not on the water. */
+export const HARBOUR_TOP = HORIZON - HARBOUR_H;
+/** How far the longest reflection reaches below the horizon. */
+export const REFLECTION_H = 22;
+
+export type LampKind = 'lampWarm' | 'lampWhite';
+
+export interface Lamp extends Cell {
+    kind: LampKind;
+}
+
+const LAMPS: Record<string, LampKind> = { o: 'lampWarm', w: 'lampWhite' };
+
+/** The silhouette and the lamps, relative to the harbour's own top-left corner. */
+export function harbourCells(): { solid: Cell[]; lamps: Lamp[] } {
+    const solid: Cell[] = [];
+    const lamps: Lamp[] = [];
+    HARBOUR.forEach((row, y) => {
+        [...row].forEach((char, x) => {
+            if (char === '#') solid.push({ x, y });
+            else if (LAMPS[char]) lamps.push({ x, y, kind: LAMPS[char]! });
+        });
+    });
+    return { solid, lamps };
+}
+
+/**
+ * The lamps mirrored in the water, the way they are on a calm night in the photos: long vertical
+ * streaks, broken up, fading with depth. A lamp low on the quay throws a longer streak than one up
+ * on the crane, which is the wrong way round optically and the right way round to look at — the
+ * quay lights are what the water actually carries. Rows are below the horizon, columns relative
+ * to the harbour; `frame` shuffles which dashes are lit.
+ */
+export function reflectionRuns(frame: number): Record<LampKind, Run[]> {
+    const runs: Record<LampKind, Run[]> = { lampWarm: [], lampWhite: [] };
+    for (const lamp of harbourCells().lamps) {
+        const low = lamp.y / (HARBOUR_H - 1);
+        const length = Math.round(6 + low * (REFLECTION_H - 8) * (0.6 + 0.4 * hash(lamp.x, 71)));
+        for (let y = 1; y < length; y++) {
+            const fade = 1 - y / length;
+            if (hash(lamp.x * 13 + frame * 5, y + lamp.y * 17) > 0.25 + 0.65 * fade) continue;
+            runs[lamp.kind].push({ x: lamp.x, y, w: 1 });
+        }
+    }
+    return runs;
+}
+
+/** How bright the reflections are against the night water. */
+export const REFLECTION_OPACITY = 0.55;
 
 // ---------------------------------------------------------------------------------------------
 // Stars
@@ -302,16 +404,15 @@ export const GLITTER_OPACITY = 0.24;
 
 /**
  * The moon or the sun. `x` is not free: the disc and the Kugelbake are pinned to the same scene,
- * so panning to place one places the other. The two are kept 82 columns apart — at the smallest
- * upscale that is 164 px, which still fits on a phone next to each other; the first draft had
- * them 200 columns apart and placing the beacon at 82 % pushed the moon off the left edge of a
- * 390 px screen.
+ * so panning to place one places the other. A wide screen shows both, the disc over the name. A
+ * phone shows about 130 columns from column 40 on — the last third of the beacon — and the disc
+ * has to fit in that, which is why it is not further right.
  *
- * `y` is what makes it visible: it is high in the sky, and the stylesheet pads the headline down
- * past `y + r` (see `--sky-top`), so the disc stands in open sky *above* the name instead of
- * behind the line of text. Low in the sky it was simply hidden by the tagline on a wide screen.
+ * `y` leaves the top of the sky to the name: the headline stands at the top of the band, above
+ * the disc, so neither covers the moving scene. At 56 there was no room for both above the disc
+ * at 1440 px; 66 makes that room and still leaves the disc high above the harbour.
  */
-export const DISC = { x: 180, y: 56, r: 7 };
+export const DISC = { x: 150, y: 66, r: 7 };
 
 /** The filled disc as horizontal runs. */
 export function discRuns(r = DISC.r): Run[] {
@@ -350,13 +451,13 @@ export function glitterRuns(frame: number): Run[] {
 // Sprites for the random events, as pixel rows ('.' is transparent)
 // ---------------------------------------------------------------------------------------------
 
-/** `h` = hull, `s` = superstructure/sail, `c` = cargo, `r`/`g`/`w` = position lights. */
+/** `h` = hull, `s` = sail, `d` = bridge, `c` = containers, `r`/`g`/`w` = position lights. */
 export const CARGO_SHIP = [
     '.............................',
     '..........................w..',
-    '..........................s..',
-    '....ccc...cc....ccc.......s..',
-    '...cccc..cccc..cccc.......ss.',
+    '..........................d..',
+    '....ccc...cc....ccc.......d..',
+    '...cccc..cccc..cccc.......dd.',
     'r.hhhhhhhhhhhhhhhhhhhhhhhhhsg',
     '.hhhhhhhhhhhhhhhhhhhhhhhhhhh.',
     '..hhhhhhhhhhhhhhhhhhhhhhhhh..',

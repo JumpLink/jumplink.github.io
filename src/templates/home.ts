@@ -5,8 +5,8 @@
 // The sky, the sea and the Kugelbake are not on this page: they are the background of every page
 // (see `src/bg/`), so the home page is only what stands in front of them.
 
-import { esc, formatPostDate, postUrl, relatedText, relatedUrl, type RelatedApp } from '@gjsify/site';
-import { skillGroups } from './components.js';
+import { esc, relatedText, relatedUrl, type RelatedApp } from '@gjsify/site';
+import { entryList, skillGroups } from './components.js';
 import { document, inlineMd, urlOf, urlsFor, type Ctx, type ProjectEntry, type ProjectImage } from './layout.js';
 
 /** Part one: the name in the sky. No box, no card — the sky is the backdrop and the name is in it. */
@@ -137,14 +137,10 @@ function projects(c: Ctx): string {
 function latest(c: Ctx): string {
     const posts = c.site.posts.filter((p) => p.lang === c.lang).slice(0, 3);
     if (!c.site.config.blog || posts.length === 0) return '';
-    const items = posts.map(
-        (p) =>
-            `<li><time class="kicker" datetime="${esc(p.date)}">${esc(formatPostDate(p.date, c.lang))}</time><a href="${esc(postUrl(c.site.config, p))}">${esc(p.title)}</a></li>`,
-    );
     return `<section class="block" aria-labelledby="log-h">
 <p class="kicker">${esc(c.t('Latest entries'))}</p>
 <h2 id="log-h">${esc(c.t('Logbook'))}</h2>
-<ul class="log">${items.join('')}</ul>
+${entryList(c, posts, 3)}
 <p><a class="more-link" href="${esc(urlOf.blog(c))}">${esc(c.t('All entries'))}</a></p>
 </section>`;
 }

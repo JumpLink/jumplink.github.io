@@ -10,7 +10,7 @@
 
 import { Color, DisplayMode, Engine } from 'excalibur';
 import { BackgroundScene } from './actors.js';
-import { BEACON_X, DAY, H, HORIZON, NIGHT, W } from './scene.js';
+import { DAY, H, HARBOUR_W, HORIZON, NIGHT, W } from './scene.js';
 
 // Where the scene is pinned inside the band. Every line below is the arithmetic the stylesheet
 // does for `.bg-svg` — the same scale, the same two clamps — because the canvas is laid over that
@@ -23,8 +23,8 @@ const MIN_UNIT = 2;
 const MAX_UNIT = 12;
 /**
  * Two numbers the stylesheet owns, because both differ per page and per breakpoint: how far down
- * the band the waterline sits (`--horizon-at`) and how far across the viewport the Kugelbake
- * stands (`--beacon-at`). Read them from the host rather than keeping a second copy here that
+ * the band the waterline sits (`--horizon-at`) which scene column the viewport starts at
+ * (`--view-x`), and how far in from the right edge the harbour stands (`--harbour-edge`). Read them from the host rather than keeping a second copy here that
  * drifts out of step and makes the scene jump at the canvas hand-over.
  */
 function cssRatio(host: Element, name: string, fallback: number): number {
@@ -54,7 +54,7 @@ function scaleFor(width: number, height: number): number {
     return clamp(MIN_UNIT, Math.ceil(Math.max(width / W, height / H)), MAX_UNIT);
 }
 
-function layout(host: HTMLElement, canvas: HTMLCanvasElement, engine: Engine): void {
+function layout(host: HTMLElement, canvas: HTMLCanvasElement, engine: Engine, scene: BackgroundScene): void {
     const vw = window.innerWidth;
     // The band's own height, not the viewport's: the scene scrolls away with the page, and the
     // stylesheet clamps that height in pixels.
@@ -63,12 +63,16 @@ function layout(host: HTMLElement, canvas: HTMLCanvasElement, engine: Engine): v
     const width = W * scale;
     const height = H * scale;
 
-    // Pin the horizon and the beacon where the design wants them, then pull the canvas back
-    // inside the band if that would expose an edge.
+    // Pin the horizon where the design wants it, then pull the canvas back inside the band if that
+    // would expose an edge. Across, `--view-x` is the scene column at the viewport's left edge.
     const horizonAt = cssRatio(host, '--horizon-at', HORIZON_AT);
-    const beaconAt = cssRatio(host, '--beacon-at', BEACON_X / W);
+    const viewX = cssRatio(host, '--view-x', 0);
     const top = clamp(bandH - height, Math.round(bandH * horizonAt - HORIZON * scale), 0);
-    const left = clamp(vw - width, Math.round(vw * beaconAt - BEACON_X * scale), 0);
+    const left = clamp(Math.min(0, vw - width), -viewX * scale, 0);
+    // The last whole column on screen, the same `round(down)` the stylesheet does for `.bg-harbour`.
+    const lastColumn = Math.min(W, Math.floor((vw - left) / scale));
+    scene.showBeacon(cssRatio(host, '--beacon', 1) > 0);
+    scene.placeHarbour(lastColumn - HARBOUR_W - cssRatio(host, '--harbour-edge', 4));
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
     canvas.style.left = `${left}px`;
@@ -119,7 +123,7 @@ export function start(): void {
     const scene = new BackgroundScene(prefersDark() ? NIGHT : DAY, prefersDark());
     const game = engine.addScene('bg', scene);
 
-    const relayout = () => layout(host, canvas, engine);
+    const relayout = () => layout(host, canvas, engine, scene);
     relayout();
     window.addEventListener('resize', relayout, { passive: true });
 

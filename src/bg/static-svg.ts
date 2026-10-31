@@ -8,13 +8,19 @@
 import {
     discRuns,
     glitterRuns,
+    harbourCells,
     kugelbakeCells,
+    reflectionRuns,
     starField,
     waveBands,
     DISC,
     GLITTER_OPACITY,
     H,
+    HARBOUR_H,
+    HARBOUR_W,
     HORIZON,
+    REFLECTION_H,
+    REFLECTION_OPACITY,
     SEA_BANDS,
     W,
     bandTop,
@@ -100,7 +106,25 @@ export function staticSceneSvg(): string {
     }
 
     const beacon = kugelbakeCells().map((c) => ({ x: c.x, y: c.y, w: 1 }));
-    parts.push(path(beacon, 'var(--bg-wood)'));
+    parts.push(`<g class="bg-beacon">${path(beacon, 'var(--bg-wood)')}</g>`);
 
     return `<svg class="bg-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" shape-rendering="crispEdges" fill="none" stroke-width="1">${parts.join('')}</svg>`;
+}
+
+/**
+ * The harbour, its own small `<svg>` because it is pinned to the right edge of the viewport rather
+ * than to a column of the scene (see `HARBOUR` in `scene.ts`). Its box runs from the harbour's top
+ * row down past the waterline, so the lamps' reflections fit in it. By day the lamps take the
+ * silhouette's colour and the reflections are transparent — both through `light-dark()`.
+ */
+export function staticHarbourSvg(): string {
+    const { solid, lamps } = harbourCells();
+    const cells = (list: { x: number; y: number }[]) => list.map((c) => ({ x: c.x, y: c.y, w: 1 }));
+    const parts = [path(cells(solid), 'var(--bg-harbour)')];
+    for (const kind of ['lampWarm', 'lampWhite'] as const) {
+        parts.push(path(cells(lamps.filter((l) => l.kind === kind)), `var(--bg-${kind})`));
+        const streaks = reflectionRuns(0)[kind].map((r) => ({ ...r, y: HARBOUR_H + r.y }));
+        parts.push(path(streaks, `var(--bg-${kind}-water)`, REFLECTION_OPACITY));
+    }
+    return `<svg class="bg-harbour" viewBox="0 0 ${HARBOUR_W} ${HARBOUR_H + REFLECTION_H}" aria-hidden="true" focusable="false" shape-rendering="crispEdges" fill="none" stroke-width="1">${parts.join('')}</svg>`;
 }

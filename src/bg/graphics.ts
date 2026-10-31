@@ -10,11 +10,16 @@ import {
     discRuns,
     glitterHalf,
     glitterRuns,
+    harbourCells,
     kugelbakeCells,
+    reflectionRuns,
     waveBands,
     DISC,
     H,
+    HARBOUR_H,
+    HARBOUR_W,
     HORIZON,
+    REFLECTION_H,
     SEA_BANDS,
     W,
     bandTop,
@@ -116,6 +121,32 @@ export function beaconGraphic(colors: SceneColors): { graphic: Graphic; x: numbe
     return { graphic, x: minX, y: minY };
 }
 
+/** The harbour with its lamps, as one silhouette. By day the lamps are the silhouette's colour. */
+export function harbourGraphic(colors: SceneColors): Graphic {
+    const { solid, lamps } = harbourCells();
+    return raster(HARBOUR_W, HARBOUR_H, (ctx) => {
+        ctx.fillStyle = colors.harbour;
+        for (const cell of solid) ctx.fillRect(cell.x, cell.y, 1, 1);
+        for (const lamp of lamps) {
+            ctx.fillStyle = colors[lamp.kind];
+            ctx.fillRect(lamp.x, lamp.y, 1, 1);
+        }
+    });
+}
+
+const REFLECTION_FRAMES = 4;
+
+/** The lamps' streaks on the water, a few frames for the scene to shuffle through. */
+export function reflectionGraphics(colors: SceneColors): Graphic[] {
+    return Array.from({ length: REFLECTION_FRAMES }, (_, frame) =>
+        raster(HARBOUR_W, REFLECTION_H, (ctx) => {
+            const runs = reflectionRuns(frame);
+            fillRuns(ctx, runs.lampWarm, colors.lampWarm);
+            fillRuns(ctx, runs.lampWhite, colors.lampWhite);
+        }),
+    );
+}
+
 // ---------------------------------------------------------------------------------------------
 // Sprites
 // ---------------------------------------------------------------------------------------------
@@ -125,7 +156,8 @@ function paletteFor(colors: SceneColors): Record<string, string> {
     return {
         h: colors.hull,
         s: colors.sail,
-        c: colors.sail,
+        c: colors.cargo,
+        d: colors.deck,
         b: colors.bird,
         r: colors.lightRed,
         g: colors.lightGreen,

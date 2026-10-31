@@ -19,6 +19,8 @@ import {
     blinkingSprite,
     discGraphic,
     glitterGraphics,
+    harbourGraphic,
+    reflectionGraphics,
     seaGraphic,
     spriteGraphic,
     starGraphic,
@@ -35,14 +37,19 @@ import {
     GLITTER_OPACITY,
     GULL_FRAMES,
     H,
+    HARBOUR_TOP,
+    HARBOUR_W,
     HORIZON,
     PLANE,
+    REFLECTION_OPACITY,
     W,
     type SceneColors,
     type WaveBand,
 } from './scene.js';
 
-const Z = { sky: 0, disc: 10, far: 20, sea: 30, wave: 40, near: 50, beacon: 60 };
+// Ships sit on the sea, not behind it: behind it, the water covered the whole hull, and by day
+// all that was left was a pale bridge against a pale sky.
+const Z = { sky: 0, disc: 10, harbour: 20, sea: 30, reflection: 34, ship: 36, wave: 40, near: 50, beacon: 60 };
 
 const TOP_LEFT = Vector.Zero;
 
@@ -99,6 +106,19 @@ function glitterActor(frames: Graphic[]): Actor {
     return actor;
 }
 
+/** The harbour lamps on the water, flickering through their frames a little faster than the
+ * moonlight: small lights break up more on the swell than one big one does. */
+function reflectionActor(frames: Graphic[], x: number): Actor {
+    const animation = new Animation({
+        frames: frames.map((graphic) => ({ graphic, duration: 240 })),
+        strategy: AnimationStrategy.Loop,
+        origin: TOP_LEFT,
+    });
+    const actor = sprite(animation, vec(x, HORIZON), Z.reflection);
+    actor.graphics.opacity = REFLECTION_OPACITY;
+    return actor;
+}
+
 // ---------------------------------------------------------------------------------------------
 // Passers-by
 // ---------------------------------------------------------------------------------------------
@@ -130,10 +150,13 @@ function blinker(pair: { on: SpriteGraphic; off: SpriteGraphic }, y: number, spe
     return drifter(animation, pair.on.width, y, speed, Z.sky);
 }
 
+/** The cargo ship's top row: its lowest hull row lies on the first row of water. */
+const cargoY = (height: number) => HORIZON - height + 2;
+
 function cargoShip(colors: SceneColors): Actor {
     const ship = spriteGraphic(CARGO_SHIP, colors);
     const speed = pick([1, -1]) * rnd(5, 8);
-    return drifter(ship.graphic, ship.width, HORIZON - ship.height + 3, speed, Z.far);
+    return drifter(ship.graphic, ship.width, cargoY(ship.height), speed, Z.ship);
 }
 
 function cutter(colors: SceneColors): Actor {
@@ -175,8 +198,9 @@ function plane(colors: SceneColors): Actor {
 function nightShip(colors: SceneColors): Actor {
     const rows = Math.random() < 0.5 ? CARGO_SHIP : CUTTER;
     const pair = blinkingSprite(rows, colors);
-    const y = rows === CARGO_SHIP ? HORIZON - pair.on.height + 3 : HORIZON + rnd(8, 18);
-    return drifter(pair.on.graphic, pair.on.width, y, pick([1, -1]) * rnd(5, 12), Z.far);
+    const far = rows === CARGO_SHIP;
+    const y = far ? cargoY(pair.on.height) : HORIZON + rnd(8, 18);
+    return drifter(pair.on.graphic, pair.on.width, y, pick([1, -1]) * rnd(5, 12), far ? Z.ship : Z.near);
 }
 
 /** A shooting star: a fast diagonal streak in the upper sky that fades as it falls. */
@@ -208,6 +232,11 @@ export class BackgroundScene extends Scene {
     private colors: SceneColors;
     private night: boolean;
     private countdown = FIRST_EVENT;
+    /** Column the harbour starts on; `browser.ts` sets it from the viewport, see `placeHarbour`. */
+    private harbourX = W - HARBOUR_W;
+    private harbour: Actor[] = [];
+    private beacon?: Actor;
+    private beaconVisible = true;
 
     constructor(colors: SceneColors, night: boolean) {
         super();
@@ -226,6 +255,7 @@ export class BackgroundScene extends Scene {
         this.colors = colors;
         this.night = night;
         this.clear(false);
+        this.harbour = [];
         this.build();
         this.countdown = FIRST_EVENT;
     }
@@ -245,8 +275,26 @@ export class BackgroundScene extends Scene {
             this.add(waveActor(layer.graphic, layer.band));
         }
 
+        this.harbour.push(sprite(harbourGraphic(colors), vec(this.harbourX, HARBOUR_TOP), Z.harbour));
+        if (this.night) this.harbour.push(reflectionActor(reflectionGraphics(colors), this.harbourX));
+        for (const actor of this.harbour) this.add(actor);
+
         const beacon = beaconGraphic(colors);
-        this.add(sprite(beacon.graphic, vec(beacon.x, beacon.y), Z.beacon));
+        this.beacon = sprite(beacon.graphic, vec(beacon.x, beacon.y), Z.beacon);
+        this.beacon.graphics.isVisible = this.beaconVisible;
+        this.add(this.beacon);
+    }
+
+    /** Inner pages leave the Kugelbake out, see `--beacon` in `site.css`. */
+    showBeacon(visible: boolean): void {
+        this.beaconVisible = visible;
+        if (this.beacon) this.beacon.graphics.isVisible = visible;
+    }
+
+    /** Keep the harbour at the right edge of whatever part of the scene the viewport shows. */
+    placeHarbour(x: number): void {
+        this.harbourX = x;
+        for (const actor of this.harbour) actor.pos = vec(x, actor.pos.y);
     }
 
     onPreUpdate(_engine: Engine, elapsed: number): void {

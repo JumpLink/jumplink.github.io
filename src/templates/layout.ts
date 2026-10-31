@@ -15,7 +15,7 @@ import {
     type DeveloperSiteConfig,
     type Resume,
 } from '@gjsify/site';
-import { staticSceneSvg } from '../bg/static-svg.js';
+import { staticHarbourSvg, staticSceneSvg } from '../bg/static-svg.js';
 import { icon, type IconName } from './icons.js';
 import type { Translate } from '../i18n.js';
 
@@ -249,7 +249,7 @@ function background(c: Ctx): string {
           `var g=function(){import(${JSON.stringify(c.site.bgHref)}).catch(function(){})};` +
           `window.requestIdleCallback?requestIdleCallback(g,{timeout:3000}):addEventListener("load",g)})()</script>`
         : '';
-    return `<div class="bg" aria-hidden="true"><div class="bg-sky"></div>${staticSceneSvg()}<div class="bg-deep"></div></div>
+    return `<div class="bg" aria-hidden="true"><div class="bg-sky"></div>${staticSceneSvg()}${staticHarbourSvg()}<div class="bg-deep"></div></div>
 ${load}`;
 }
 

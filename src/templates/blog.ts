@@ -13,19 +13,11 @@ import {
     tagsOf,
     type BlogPost,
 } from '@gjsify/site';
-import { chips } from './components.js';
+import { dateLine, entryList, tagChips } from './components.js';
 import { document, kicker, urlOf, urlsFor, type Ctx } from './layout.js';
 import { blogPostingJsonLd } from './seo.js';
 
 const inLang = (c: Ctx) => c.site.posts.filter((p) => p.lang === c.lang);
-
-// Tags wear the same chips as the skills: all of them once under the h1 of the index, and each
-// entry's own under its summary or title.
-const tagChips = (c: Ctx, tags: readonly string[], current?: string) =>
-    chips(tags.map((tag) => ({ text: tag, href: tagUrl(c.site.config, c.lang, tag), rel: 'tag', current: tag === current })));
-
-const dateLine = (c: Ctx, post: BlogPost, extra = '') =>
-    `<p class="kicker"><time datetime="${esc(post.date)}">${esc(formatPostDate(post.date, c.lang))}</time>${extra}</p>`;
 
 // Every tag has its own feed, so a reader (or Planet GNOME) can follow one topic only.
 const tagFeeds = (c: Ctx, tags: readonly string[]) =>
@@ -36,16 +28,8 @@ export function blogIndexPage(c: Ctx, tag?: string): string {
     const name = c.resume.basics.name;
     const posts = inLang(c).filter((p) => tag === undefined || p.tags.includes(tag));
     const heading = tag ? c.t('Entries tagged “{tag}”', { tag }) : c.t('Logbook');
-    const items = posts.map(
-        (p) => `<li><article>
-${dateLine(c, p)}
-<h2><a href="${esc(postUrl(config, p))}">${esc(p.title)}</a></h2>
-<p class="clamp">${esc(postDescription(p))}</p>
-${tagChips(c, p.tags)}
-</article></li>`,
-    );
     const list =
-        posts.length > 0 ? `<ol class="entries">${items.join('')}</ol>` : `<p>${esc(c.t('No entries in this language yet.'))}</p>`;
+        posts.length > 0 ? entryList(c, posts) : `<p>${esc(c.t('No entries in this language yet.'))}</p>`;
     const feed = urlOf.feed(c);
     const tagFeed = tag ? blogFeedUrl(config, c.lang, tag) : undefined;
     const tags = tagsOf(c.site.posts, c.lang);
