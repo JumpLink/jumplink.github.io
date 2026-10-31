@@ -26,7 +26,7 @@ locally on my own computer: with ComfyUI, the FLUX.2 Klein 4B model and the
 `pixel-art-sprite_limbicnation` LoRA.
 
 Everything else stays calm: text stands free on the background with hardly any boxes, set in
-Adwaita Sans, GNOME's typeface. The only pixel font left is the one for my name in the sky. A few
+Adwaita Sans, GNOME's typeface. The only pixel font left is the one for the page titles. A few
 words are borrowed from the RPGs I like: the CV lists quests and items, the skills form a small
 skill tree, and the blog is the Logbook.
 

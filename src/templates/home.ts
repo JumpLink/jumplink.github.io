@@ -1,6 +1,6 @@
-// Home page, read top to bottom as one dive: the name standing in the sky, then the pixel figure
-// on the dike with the character sheet that belongs to it, then the projects as windows floating
-// on the water, then the last log entries.
+// Home page, read top to bottom as one dive: the pixel figure on the dike with the name and the
+// character sheet beside it, then the projects as windows floating on the water, then the last
+// log entries.
 //
 // The sky, the sea and the Kugelbake are not on this page: they are the background of every page
 // (see `src/bg/`), so the home page is only what stands in front of them.
@@ -8,16 +8,7 @@
 import { absoluteUrl, esc, relatedText, relatedUrl, type RelatedApp } from '@gjsify/site';
 import { entryList, skillGroups } from './components.js';
 import { websiteJsonLd } from './seo.js';
-import { document, inlineMd, urlOf, urlsFor, type Ctx, type ProjectEntry, type ProjectImage } from './layout.js';
-
-/** Part one: the name in the sky. No box, no card — the sky is the backdrop and the name is in it. */
-function sky(c: Ctx): string {
-    const { basics } = c.resume;
-    return `<section class="sky">
-<h1 class="name">${esc(basics.name)}</h1>
-${basics.label ? `<p class="tagline">${esc(basics.label)}</p>` : ''}
-</section>`;
-}
+import { document, inlineMd, kicker, urlOf, urlsFor, type Ctx, type ProjectEntry, type ProjectImage } from './layout.js';
 
 /**
  * The pixel figure, standing on a line that reads as the dike's edge — never floating.
@@ -55,13 +46,23 @@ function figure(c: Ctx): string {
 </div>`;
 }
 
-/** Part two: the figure and, beside it, what it can do — free-standing text, no window around it. */
+/**
+ * Part one: the figure and, beside it, who it is and what it can do — free-standing text, no
+ * window around it. The kicker is the part of the label before its colon ("Software developer:
+ * TypeScript, …"): the rest is what the intro says anyway, and stays in the title and description.
+ */
 function hero(c: Ctx): string {
-    const intro = (c.resume.basics.summary ?? '').split(/\n\s*\n/)[0]?.trim();
+    const { basics } = c.resume;
+    const intro = (basics.summary ?? '').split(/\n\s*\n/)[0]?.trim();
+    const role = basics.label?.split(':')[0]?.trim();
     return `<section class="hero">
 ${figure(c)}
 <div class="roll">
+<div class="lead">
+${role ? kicker(role) : ''}
+<h1>${esc(basics.name)}</h1>
 ${intro ? `<p class="intro">${inlineMd(intro)}</p>` : ''}
+</div>
 ${skillGroups(c)}
 </div>
 </section>`;
@@ -149,7 +150,6 @@ ${entryList(c, posts, 3)}
 export function homePage(c: Ctx): string {
     const { basics } = c.resume;
     const main = `<div class="wrap">
-${sky(c)}
 ${hero(c)}
 ${projects(c)}
 ${latest(c)}

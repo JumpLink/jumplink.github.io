@@ -1,14 +1,14 @@
 <!doctype html>
 <!-- The share card (og:image), rendered from the built site rather than drawn twice: it loads the
-     English home page, keeps only its static scene, and sets the name in the sky on top. Run by
+     English home page, keeps only its static scene, and sets the name on top. Run by
      `dev/og-image.sh`, which needs the preview server. -->
 <meta charset="utf-8">
 <script type="module">
 const html = await (await fetch('/en/')).text();
 const page = new DOMParser().parseFromString(html, 'text/html');
 const sheet = page.querySelector('link[rel="stylesheet"]');
-const name = page.querySelector('.sky .name').textContent;
-const tagline = page.querySelector('.sky .tagline').textContent;
+const name = page.querySelector('.hero h1').textContent;
+const tagline = page.title.slice(name.length).replace(/^\s*–\s*/, '');
 const figure = page.querySelector('.figure img');
 document.head.append(sheet);
 document.documentElement.dataset.scheme = 'light';

@@ -26,7 +26,7 @@ aber lokal auf meinem eigenen Rechner: mit ComfyUI, dem Modell FLUX.2 Klein 4B u
 `pixel-art-sprite_limbicnation`.
 
 Sonst bleibt die Seite ruhig: Text steht frei auf dem Hintergrund, fast ohne Kästen, gesetzt in
-Adwaita Sans, der Schrift von GNOME. Eine Pixelschrift gibt es nur noch für meinen Namen im Himmel.
+Adwaita Sans, der Schrift von GNOME. Eine Pixelschrift gibt es nur noch für die Seitentitel.
 Ein paar Begriffe habe ich mir aus den Rollenspielen geliehen, die ich mag: Im Lebenslauf stehen
 Quests und Gegenstände, die Fähigkeiten bilden einen kleinen Fähigkeitenbaum, und der Blog heißt
 Logbuch.

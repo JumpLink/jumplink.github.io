@@ -176,9 +176,9 @@ Both are **owned by the stylesheet**; `browser.ts` reads them off the element wi
 scale with the same `round(up, …)` / `Math.ceil` so the moon does not jump when the canvas takes
 over from the SVG.
 
-The Kugelbake stands on the left (`BEACON_X` 36), in the gap between the sidebar and the headline;
-a wide screen shows the scene from column 0. Without the sidebar (≤1000 px) the headline starts at
-the left gutter, exactly where the beacon would be, so the view starts at column 40
+The Kugelbake stands on the left (`BEACON_X` 36), in the gap between the sidebar and the text;
+a wide screen shows the scene from column 0. Without the sidebar (≤1000 px) the text starts at
+the left gutter, where the beacon would be, so the view starts at column 40
 (`--view-x`): the beacon's right third shows, cut off by the edge of the screen. The disc moved
 from column 180 to 150 for that — a phone shows about 130 columns, and from column 40 on the disc
 at 180 fell off the right edge. Earlier it stood on the right at 82 %, and every position
@@ -190,14 +190,12 @@ water. It is pinned to the **viewport's** right edge, `--harbour-edge` scene col
 scene — the scene pans, and a fixed column showed the harbour on one screen and cut it off on the
 next. `browser.ts` moves the actor, the stylesheet places `.bg-harbour`; both round the edge down to
 a whole column. Phones (≤480 px) set `--harbour-edge: -25`, so only its left third shows: the
-tagline runs nearly to the right edge there, and the whole harbour stood in it. Inner pages leave the Kugelbake out (`--beacon: 0`): their band is
+text runs nearly to the right edge there, and the whole harbour stood in it. Inner pages leave the Kugelbake out (`--beacon: 0`): their band is
 so short that the beacon reached up into the sidebar's links.
 
-The name and the tagline stand at the top of the sky — level with the sidebar's first link on a
-wide screen, just under the menu button on a phone — and the sun or moon hangs below them
-(`DISC.y` 72); `.sky`'s `padding-top` is as large as reads well but capped so name, one line
-of tagline and 1.5rem of air still fit above the disc's top row. The text used to start under the disc, which put it right in the middle of the
-animated sky; above the disc it covers only the empty top rows.
+Nothing stands in the sky: the sun or moon hangs in open air, and the text starts just under the
+waterline (`--content-at`, the waterline plus `clamp(1.5rem, 4vh, 3rem)`) — on the home page beside
+the figure, on every other page as the heading. The sky above is only the scene.
 
 The sea is three bands, far to near, each painted from a wandering upper edge (`bandTop`) down to
 the floor. An ordered dither between the colours was the first attempt and read as exactly what it
@@ -300,14 +298,15 @@ shows **only inside its own window** and then disappears by itself.
 | Role | Face | Notes |
 | --- | --- | --- |
 | Everything readable | **Adwaita Sans** (OFL), variable, self-hosted | `assets/fonts/adwaita-sans-latin.woff2`, latin + latin-ext, preloaded |
-| The name | **Ark Pixel 10px** (proportional, OFL) | Only the name in the sky — only at 30 / 40 / 60 / 80 px |
+| The page title | **Ark Pixel 10px** (proportional, OFL) | Only the `h1`, on every page — only at 30 / 40 / 50 / 60 px |
 | Code | the system monospace stack | No webfont |
 
-Everything except the name is Adwaita Sans: headings (800/700, `letter-spacing: -.02em`), the CV
+Everything except the `h1` is Adwaita Sans: the other headings (700, `letter-spacing: -.02em`), the CV
 years (800, accent), kickers (semibold, uppercase, tracked `.18em`) and labels. Pixel type was
-tried for headings and for labels; with the pixel figure, the pixel scene and pixel headings the
-page read as mixed, so the pixel face is now the one teaser in the sky and the pixel look comes
-from the images.
+tried for every heading and for labels; with the pixel figure, the pixel scene and pixel type
+everywhere the page read as mixed, so the pixel face is the first heading of each page and the
+rest of the pixel look comes from the images. The sizes are whole multiples of the font's design
+size — a fluid size would rasterise every stem differently.
 
 No CDN: both faces are files in the repo. The display font is configured once, in
 `package.json` → `gjsify.site.theme.displayFont`.
@@ -343,17 +342,17 @@ What is left of pixel art follows the same rules as before:
 
 ## The home page
 
-Two halves, and the split is the point.
+The figure stands on the dike with the page's first words beside it. Those start under the
+waterline like the heading of any other page: a kicker with the role (the part of the resume's
+`label` before its colon, so only "Software developer"), the name as the `h1` in the pixel face,
+and the intro. The rest of the `label` stays in the title and the description. There is no card
+and no "hero section"; the band *is* the picture.
 
-**Above:** the name, set in the sky, free-standing, the largest type on the site. Under it one
-line — the `label` from the resume, nothing else — and then open sky down to the waterline. There
-is no card here and no "hero section"; the band *is* the picture.
-
-**Below:** the figure standing on the dike, with the character sheet beside it. The sheet is
+The character sheet below the intro is
 **finished**: this is not character creation, the character exists. Hence no "New character
 created" kicker, no empty slots and no counting. There are no class/home facts and no buttons
-beside the figure either: the tagline in the sky already says the class, and the sidebar already
-links the logbook and the CV. The hero is pulled up into the scene band (`margin-top: -.36 ×
+beside the figure either: the kicker already says the class, and the sidebar already
+links the logbook and the CV. The hero is pulled down into the scene band (`margin-top: .52 ×
 --scene-h`), so the figure's head reaches the waterline and it stands in front of the sea rather
 than below it.
 

@@ -161,8 +161,8 @@ body {
     background: transparent;
     font: clamp(1.0625rem, 1rem + .3vw, 1.28rem)/1.62 var(--font-body);
 
-    /* The scene's geometry lives on `body`, not on `.bg`, because `.sky` needs it too: the
-       headline is pushed down past the sun or moon, and only these numbers know where that is.
+    /* The scene's geometry lives on `body`, not on `.bg`, because the text needs it too: the
+       first words start under the waterline, and only these numbers know where that is.
        It cannot live on `:root` either — `body:not(.home)` overrides `--scene-h`, and a custom
        property is substituted on the element that declares it, so a `:root` copy would never see
        the shorter band of an article.
@@ -284,8 +284,10 @@ body:not(.home) {
     --scene-h: clamp(440px, 58vh, 600px);
     /* In a strip this short the Kugelbake reaches up into the sidebar's links. */
     --beacon: 0;
-    --content-at: calc(var(--horizon-at) * var(--scene-h) + clamp(1.5rem, 4vh, 3rem));
 }
+/* Where the first words start: just under the waterline, on every page. On `body` rather than
+   `:root` because it reads the page's own `--scene-h`. */
+body { --content-at: calc(var(--horizon-at) * var(--scene-h) + clamp(1.5rem, 4vh, 3rem)); }
 body:not(.home) .bg-beacon { display: none; }
 /* A season is on only while `<html data-season>` says so; the inline script in `<head>` sets it
    from the visitor's own date. */
@@ -362,10 +364,22 @@ html[data-season="halloween"] .bg-halloween, html[data-season="christmas"] .bg-c
    Type and measure. Sizes are fluid: a wide screen gets a bigger page, not a wider column of the
    same small text.
    --------------------------------------------------------------------------------------------- */
-/* One face for everything that is read: Adwaita Sans. The pixel face is the name in the sky and
-   nothing else — headings, years and labels in it as well made the page look mixed. */
+/* One face for everything that is read: Adwaita Sans. The pixel face is the page's first heading
+   and nothing else — h2s, years and labels in it as well made the page look mixed. */
 h1, h2, h3 { font-family: var(--font-display); letter-spacing: -.02em; }
-h1 { font-size: clamp(2.3rem, 5.2vw, 4.2rem); font-weight: 800; line-height: 1.04; margin: 0 0 .5rem; }
+/* Ark Pixel's 10 px cut, and only at whole multiples of its design size — 30, 40, 50, 60. A fluid
+   `clamp()` would land on 53.7 px and rasterise every stem differently, which is the one thing a
+   bitmap face must not do. Letter-spacing stays at zero for the same reason: the font's own
+   advance widths are already whole pixels. No synthesised or `text-shadow` bold — both broke the
+   glyphs apart. */
+h1 {
+    --h1-size: 30px;
+    font: 400 var(--h1-size)/1.2 var(--font-pixel-display); letter-spacing: 0; font-synthesis: none;
+    margin: 0 0 .5rem;
+}
+@media (min-width: 720px) { h1 { --h1-size: 40px; } }
+@media (min-width: 1280px) { h1 { --h1-size: 50px; } }
+@media (min-width: 1600px) { h1 { --h1-size: 60px; } }
 h2 { font-size: clamp(1.7rem, 2.8vw, 2.7rem); font-weight: 700; line-height: 1.12; margin: 0 0 1.2rem; }
 h3 { font-size: clamp(1.05rem, 1.2vw, 1.2rem); font-weight: 700; line-height: 1.4; margin: 0 0 .25em; }
 p { margin: 0 0 1.1rem; }
@@ -412,52 +426,11 @@ a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --s
 .site-footer a:hover { color: var(--text); }
 
 /* ---------------------------------------------------------------------------------------------
-   Home, part one: the name in the sky. No box — the sky is the background and the name stands in
-   it. The band is `--scene-h` tall and the waterline sits at 62 % of it.
+   Home: the figure and the page's first words beside it.
 
-   The headline stands at the top of the sky, level with the sidebar's first link, and the sun or
-   moon hangs below it. The empty sky between the caption and the waterline is the point — that
-   is where the scene is, so the text keeps out of it.
-
-   `.sky` is a little shorter than the band so the figure below it overlaps the last, calmest
-   stretch of water. That overlap is the scroll cue: on a laptop fold you see the top of a head
-   rather than a corner of empty sea.
-   --------------------------------------------------------------------------------------------- */
-.sky {
-    --name-size: 30px;
-    --tagline-size: clamp(1.05rem, 1.6vw, 1.6rem);
-    min-height: calc(var(--scene-h) * .88);
-    /* As far down as reads well, but never so far that the tagline reaches the disc's top row
-       (65): name, one line of tagline and 1.5rem of air have to fit above it. */
-    padding-top: max(1rem, min(clamp(2.25rem, 7vh, 5rem),
-        calc(var(--bg-top) + 65 * var(--bg-unit) - 1.2 * var(--name-size) - 1.6 * var(--tagline-size) - 1.5rem)));
-}
-/* The name is set in Ark Pixel's 10 px cut, the only pixel type on the site, and only
-   at whole multiples of its design size — 30, 40, 60, 80. A fluid `clamp()` would land on
-   53.7 px and rasterise every stem differently, which is the one thing a bitmap face must not
-   do. Letter-spacing stays at zero for the same reason: the font's own advance widths are
-   already whole pixels. No synthesised or `text-shadow` bold — both broke the glyphs apart. */
-.sky .name {
-    font: var(--name-size)/1 var(--font-pixel-display); letter-spacing: 0; font-synthesis: none;
-    margin: 0 0 .2em; max-width: 18ch;
-}
-@media (min-width: 720px) { .sky { --name-size: 40px; } }
-@media (min-width: 1280px) { .sky { --name-size: 60px; } }
-@media (min-width: 1600px) { .sky { --name-size: 80px; } }
-.sky .tagline {
-    font-size: var(--tagline-size); font-weight: 300; color: var(--muted);
-    margin: 0; max-width: 64ch; letter-spacing: -.01em;
-}
-/* Without the sidebar the menu button already holds the column down. On a short phone the disc
-   rises beside the tagline instead of below it, so the tagline wraps eight scene pixels before the
-   disc's left edge (column 143) — the column starts at `--gutter`. */
-@media (max-width: 1000px) {
-    .sky { padding-top: 2rem; }
-    .sky .tagline { max-width: calc(var(--bg-left) + 135 * var(--bg-unit) - var(--gutter)); }
-}
-
-/* ---------------------------------------------------------------------------------------------
-   Home, part two: the figure and the character sheet it belongs to.
+   Nothing stands in the sky: the sky and the sea are the scene, and the text starts just under the
+   waterline like on every other page (`--content-at`). The scene band is `--scene-h` tall and the
+   waterline sits at `--horizon-at` of it.
 
    The figure is scaled in fixed steps of its source size: `round(down, …, --fig-step)` picks the
    largest one that fits, so the scale never drifts with every pixel of window width. A source
@@ -467,11 +440,17 @@ a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --s
    --------------------------------------------------------------------------------------------- */
 .hero {
     display: grid; grid-template-columns: auto minmax(min(100%, 24rem), 1fr);
-    gap: clamp(1.5rem, 5vw, 7rem); align-items: center;
-    padding-top: clamp(2rem, 6vh, 5rem);
-    /* Pulled up into the band, so the figure stands just in front of the sea, not below it. */
-    margin-top: calc(var(--scene-h) * -.36);
+    gap: clamp(1.5rem, 5vw, 7rem); align-items: start;
+    --hero-pad: clamp(2rem, 6vh, 5rem);
+    padding-top: var(--hero-pad);
+    /* Down into the band, so the figure's head reaches the waterline: it stands in front of the
+       sea, not below it. */
+    margin-top: calc(var(--scene-h) * .52);
 }
+/* The words start where an inner page's heading does, just under the waterline — the hero's own
+   top is a little above that. */
+.lead { margin-top: max(0px, calc(var(--content-at) - var(--scene-h) * .52 - var(--hero-pad))); }
+.lead h1 { margin-bottom: 1.4rem; }
 /* The figure starts at the column's own edge, not a gutter in: the empty margins of the PNG
    already keep it clear of the sidebar. */
 @media (min-width: 861px) { .hero { margin-left: calc(var(--gutter) * -1); } }
@@ -686,7 +665,6 @@ details summary { cursor: pointer; font-weight: 600; color: var(--link); margin-
     .roll .groups { grid-column: 1 / -1; margin-top: .5em; }
     .pager { grid-template-columns: 1fr; }
     .pager .older { grid-column: 1; text-align: left; }
-    .sky .name { max-width: none; }
 }
 @media (max-width: 480px) {
     .windows { grid-template-columns: 1fr; }
@@ -714,18 +692,18 @@ details summary { cursor: pointer; font-weight: 600; color: var(--link); margin-
     .quest { break-inside: avoid; }
     .quest::before { display: none; }
     .cv-head { margin: 0 0 1rem; }
-    .sky { min-height: 0; padding-top: 0; }
+    .hero { margin-top: 0; padding-top: 0; }
+    .lead { margin-top: 0; }
     .avatar-full, .glyph, .slot img, .shot { display: none; }
     .print-only { display: block; }
     a { color: #000; text-decoration: none; }
-    .kicker, .when, .label, .where, .win-text > span, .slot-text, .tagline { color: #000; }
-    .sky .name { font-family: var(--font-display); font-size: 20pt; }
+    .kicker, .when, .label, .where, .win-text > span, .slot-text { color: #000; }
     .timeline { gap: 1rem; border: 0; padding: 0; }
     .chip { background: none !important; box-shadow: none !important; border: 1px solid #000; color: #000 !important; padding: .05rem .4rem; }
     .clamp { display: block; -webkit-line-clamp: unset; overflow: visible; }
     details::details-content { content-visibility: visible; display: block; height: auto; }
     details summary { display: none; }
-    h1 { font-size: 20pt; }
+    h1 { font-family: var(--font-display); font-size: 20pt; line-height: 1.2; }
     h2 { font-size: 14pt; }
     .wrap, .prose-page { max-width: none; padding: 0; }
 }
