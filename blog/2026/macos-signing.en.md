@@ -9,9 +9,9 @@ Writing an app is one half of the job, getting it to run on other people's machi
 With `gjsify ship` you build installable packages from your project, with no packaging files in
 the repo and no hand-driven `dpkg-deb`, `rpmbuild` or `hdiutil`. What is new: for macOS, `ship` now
 also **signs and has Apple notarise** the result. I used it for three apps:
-[Learn 6502 Assembly](https://github.com/JumpLink/easy6502),
-[Steuererklärung](https://github.com/JumpLink/steuererklaerung) and
-[Beifahrer](https://github.com/JumpLink/beifahrer). All three now ship as a dmg for Apple Silicon
+[Learn 6502 Assembly](https://jumplink.eu/Learn6502/),
+[Steuererklärung](https://jumplink.eu/steuererklaerung/) and
+[Beifahrer](https://jumplink.eu/beifahrer/). All three now ship as a dmg for Apple Silicon
 and for Intel, and macOS opens them without a warning.
 
 ## One command per operating system

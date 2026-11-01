@@ -9,9 +9,9 @@ Eine App zu schreiben ist die eine Hälfte, sie bei Leuten zum Laufen zu bringen
 `gjsify ship` baust du aus deinem Projekt installierbare Pakete, ohne Packaging-Dateien im Repo
 und ohne `dpkg-deb`, `rpmbuild` oder `hdiutil` von Hand zu bedienen. Neu ist, dass `ship` für macOS
 jetzt auch **signiert und von Apple notarisieren lässt**. Das habe ich bei drei Apps benutzt:
-[Learn 6502 Assembly](https://github.com/JumpLink/easy6502),
-[Steuererklärung](https://github.com/JumpLink/steuererklaerung) und
-[Beifahrer](https://github.com/JumpLink/beifahrer). Alle drei gibt es jetzt als dmg für Apple
+[Learn 6502 Assembly](https://jumplink.eu/Learn6502/),
+[Steuererklärung](https://jumplink.eu/steuererklaerung/) und
+[Beifahrer](https://jumplink.eu/beifahrer/). Alle drei gibt es jetzt als dmg für Apple
 Silicon und für Intel, und macOS öffnet sie ohne Warnung.
 
 ## Ein Befehl pro Betriebssystem
