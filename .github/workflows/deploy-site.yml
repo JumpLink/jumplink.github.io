@@ -53,13 +53,27 @@ jobs:
           key: gjsify-tarballs-${{ hashFiles('gjsify-lock.json') }}
           restore-keys: gjsify-tarballs-
 
+      # A gjsify release publishes its ~130 packages one by one over about an hour, and npm's CDN
+      # serves a tarball 404 for minutes after the publish. A deploy that lands in that window
+      # fails on a package that is about to exist (run 41183369564), so both installs retry.
       - name: Bootstrap the gjsify CLI
         run: |
           VERSION=$(node -p "require('./package.json').devDependencies['@gjsify/cli']")
-          npm install -g "@gjsify/cli@$VERSION"
+          for attempt in 1 2 3 4 5 6; do
+            npm install -g --prefer-online "@gjsify/cli@$VERSION" && exit 0
+            echo "attempt $attempt failed, retrying in 60s"
+            sleep 60
+          done
+          exit 1
 
       - name: Install dependencies
-        run: gjsify install --immutable
+        run: |
+          for attempt in 1 2 3 4 5 6; do
+            gjsify install --immutable && exit 0
+            echo "attempt $attempt failed, retrying in 60s"
+            sleep 60
+          done
+          exit 1
 
       # The `build` script bundles the scene for the browser, then the generator for gjs, runs it
       # and copies `static/` (.nojekyll and the old /support/ redirect) over the output.
