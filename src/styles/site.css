@@ -564,6 +564,9 @@ a.chip[aria-current] { background: var(--accent); color: var(--accent-text); --s
 .tagnav, .prose-page > header .chips { margin-top: 1rem; }
 .entries .chips { margin-top: .9rem; }
 .prose img { image-rendering: auto; border-radius: 10px; }
+.prose figure { margin: 1.6rem 0; }
+.prose figure img { display: block; }
+.prose figcaption { margin: .6rem 0 0; font-size: .92rem; color: var(--muted); }
 .prose pre, .prose code { font-family: var(--font-mono); font-size: .9em; }
 .prose pre {
     background: color-mix(in srgb, var(--surface-solid) 86%, transparent);
