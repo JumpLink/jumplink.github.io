@@ -37,6 +37,13 @@
         }
       },
       {
+        "app": "https://jumplink.eu/curlew/",
+        "image": {
+          "light": "assets/projects/curlew-light.webp",
+          "dark": "assets/projects/curlew-dark.webp"
+        }
+      },
+      {
         "app": "https://jumplink.eu/beifahrer/",
         "image": {
           "light": "assets/projects/beifahrer-light.webp",
