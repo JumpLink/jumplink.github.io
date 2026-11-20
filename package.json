@@ -132,9 +132,10 @@
           "de": "content/resume.de.json"
         },
         "apps": [
+          "https://jumplink.eu/Learn6502/",
+          "https://jumplink.eu/curlew/",
           "https://jumplink.eu/beifahrer/",
-          "https://jumplink.eu/steuererklaerung/",
-          "https://jumplink.eu/Learn6502/"
+          "https://jumplink.eu/steuererklaerung/"
         ]
       },
       "blog": { "posts": "blog" },

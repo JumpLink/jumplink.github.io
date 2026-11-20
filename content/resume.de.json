@@ -60,14 +60,14 @@
       "startDate": "2012",
       "summary": "Kundenprojekte vom Konzept bis zum Betrieb; heute vor allem GNOME-Apps und Werkzeuge.",
       "highlights": [
-        "GNOME-Apps in TypeScript auf gjsify: Learn 6502 Assembly, Beifahrer, Steuererklärung",
+        "GNOME-Apps in TypeScript auf gjsify: Learn 6502 Assembly, Curlew, Beifahrer, Steuererklärung",
         "E-Commerce seit 2015: Shopify-Themes und -Apps, Headless-Shops"
       ]
     }
   ],
   "projects": [
     {
-      "name": "Learn 6502 Assembly",
+      "name": "Learn 6502",
       "url": "https://flathub.org/apps/eu.jumplink.Learn6502",
       "description": "6502-Assembler lernen in einer GNOME-App: Tutorial, Editor, Debugger, Display. Auf Flathub.",
       "highlights": [],
@@ -76,6 +76,18 @@
         "GJS",
         "Adwaita",
         "6502"
+      ]
+    },
+    {
+      "name": "Curlew",
+      "url": "https://jumplink.eu/curlew/",
+      "description": "Ein Chat pro Person über Mail, Matrix, XMPP, Signal, Telegram und WhatsApp.",
+      "highlights": [],
+      "keywords": [
+        "TypeScript",
+        "GJS",
+        "Adwaita",
+        "Matrix"
       ]
     },
     {
