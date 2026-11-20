@@ -68,8 +68,8 @@
   "projects": [
     {
       "name": "Learn 6502",
-      "url": "https://flathub.org/apps/eu.jumplink.Learn6502",
-      "description": "Learn 6502 assembly in a GNOME app: tutorial, editor, debugger, display. On Flathub.",
+      "url": "https://jumplink.eu/Learn6502/",
+      "description": "Learn 6502 assembly in a GNOME app: tutorial, editor, debugger, display. For Linux, macOS, Windows and Android.",
       "highlights": [],
       "keywords": [
         "TypeScript",
